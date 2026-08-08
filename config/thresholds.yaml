@@ -1,0 +1,16 @@
+# Locked pass/fail thresholds for each quality dimension.
+# Grounded in Batini et al. (2009) and Wang & Strong (1996).
+# Provided by Kevin; never edited by automated pipeline code.
+# Accuracy is intentionally absent (no metric defined in the source document).
+
+completeness:
+  max_missingness_rate:          # Maximum acceptable proportion of absent samples per modality (0.0–1.0)
+
+consistency:
+  max_conformance_violation_rate:  # Maximum acceptable proportion of format/range/sampling violations (0.0–1.0)
+
+timeliness:
+  max_cross_modal_offset_seconds:  # Maximum acceptable mean timestamp offset across modalities after alignment (seconds)
+
+validity:
+  max_plausibility_failure_rate:   # Maximum acceptable proportion of values outside physiological bounds (0.0–1.0)

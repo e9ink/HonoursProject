@@ -1,0 +1,43 @@
+# Credible physiological value ranges for each signal, per dataset.
+# Sourced from Tobi (Dr. Tobias Cibis) or a clinical contact.
+# Provided by Kevin; never edited or invented by automated pipeline code.
+# Each signal entry requires: min, max, and a provenance note.
+
+wesad:
+  # WESAD signals: ECG, EDA, EMG, respiration, skin_temperature, accelerometry
+  # (Schmidt et al., 2018)
+  ECG:
+    min:        # minimum credible ECG value (units: )
+    max:        # maximum credible ECG value (units: )
+    provenance: # e.g. "Provided by Dr. Tobias Cibis, [date]"
+  EDA:
+    min:        # minimum credible EDA value (units: )
+    max:        # maximum credible EDA value (units: )
+    provenance:
+  EMG:
+    min:        # minimum credible EMG value (units: )
+    max:        # maximum credible EMG value (units: )
+    provenance:
+  respiration:
+    min:        # minimum credible respiration value (units: )
+    max:        # maximum credible respiration value (units: )
+    provenance:
+  skin_temperature:
+    min:        # minimum credible skin temperature (units: )
+    max:        # maximum credible skin temperature (units: )
+    provenance:
+  accelerometry:
+    min:        # minimum credible accelerometry value (units: )
+    max:        # maximum credible accelerometry value (units: )
+    provenance:
+
+deap:
+  # DEAP signals: EEG + peripheral physiological signals
+  # (Koelstra et al., 2012)
+  # Peripheral signal list to be confirmed when Task 14 begins.
+  EEG:
+    min:        # minimum credible EEG value (units: )
+    max:        # maximum credible EEG value (units: )
+    provenance:
+  # Add peripheral signals here (e.g. GSR, respiration, skin_temperature,
+  # plethysmograph) once confirmed for Task 14.
