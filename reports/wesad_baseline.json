@@ -1,0 +1,2034 @@
+{
+  "bronze_path": "C:\\Users\\kevin\\OneDrive\\Honours Project\\bronze\\WESAD",
+  "dataset": "WESAD",
+  "n_participants": 15,
+  "participant_ids": [
+    "S10",
+    "S11",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9"
+  ],
+  "participants": {
+    "S10": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 3992284,
+        "implied_duration_seconds": 5703.2629,
+        "n_samples": 3992284,
+        "n_sequence_gaps": 0,
+        "nseq_end": 3992283,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          }
+        },
+        "sensors_in_header": [
+          "ECG",
+          "EDA",
+          "EMG",
+          "TEMP",
+          "XYZ",
+          "XYZ",
+          "XYZ",
+          "RESPIRATION"
+        ],
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "implied_duration_seconds": 6822.75,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 218328,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1500966308.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "implied_duration_seconds": 6822.5781,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 436645,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1500966308.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 6822.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 27288,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1500966308.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "implied_duration_seconds": 6813.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 6813,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1500966318.0
+        },
+        "IBI": {
+          "n_events": 5176,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate.",
+          "start_time_unix": 1500966308.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 6822.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 27288,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1500966308.0
+        }
+      }
+    },
+    "S11": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 3788875,
+        "implied_duration_seconds": 5412.6786,
+        "n_samples": 3788875,
+        "n_sequence_gaps": 0,
+        "nseq_end": 3788874,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          }
+        },
+        "sensors_in_header": [
+          "ECG",
+          "EDA",
+          "EMG",
+          "TEMP",
+          "XYZ",
+          "XYZ",
+          "XYZ",
+          "RESPIRATION"
+        ],
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "implied_duration_seconds": 6460.5,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 206736,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1500981259.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "implied_duration_seconds": 6460.4375,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 413468,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1500981259.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 6460.5,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 25842,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1500981259.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "implied_duration_seconds": 6451.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 6451,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1500981269.0
+        },
+        "IBI": {
+          "n_events": 3278,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate.",
+          "start_time_unix": 1500981259.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 6460.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 25840,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1500981259.0
+        }
+      }
+    },
+    "S13": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 4016515,
+        "implied_duration_seconds": 5737.8786,
+        "n_samples": 4016515,
+        "n_sequence_gaps": 0,
+        "nseq_end": 4016514,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          }
+        },
+        "sensors_in_header": [
+          "ECG",
+          "EDA",
+          "EMG",
+          "TEMP",
+          "XYZ",
+          "XYZ",
+          "XYZ",
+          "RESPIRATION"
+        ],
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "implied_duration_seconds": 6862.6875,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 219606,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502190787.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "implied_duration_seconds": 6862.625,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 439208,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502190787.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 6862.5,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 27450,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502190787.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "implied_duration_seconds": 6853.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 6853,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502190797.0
+        },
+        "IBI": {
+          "n_events": 2858,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate.",
+          "start_time_unix": 1502190787.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 6862.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 27448,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502190787.0
+        }
+      }
+    },
+    "S14": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 4034461,
+        "implied_duration_seconds": 5763.5157,
+        "n_samples": 4034461,
+        "n_sequence_gaps": 0,
+        "nseq_end": 4034460,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          }
+        },
+        "sensors_in_header": [
+          "ECG",
+          "EDA",
+          "EMG",
+          "TEMP",
+          "XYZ",
+          "XYZ",
+          "XYZ",
+          "RESPIRATION"
+        ],
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "implied_duration_seconds": 6986.25,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 223560,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502262571.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "implied_duration_seconds": 6986.375,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 447128,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502262571.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 6985.5,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 27942,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502262571.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "implied_duration_seconds": 6977.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 6977,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502262581.0
+        },
+        "IBI": {
+          "n_events": 4996,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate.",
+          "start_time_unix": 1502262571.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 6986.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 27944,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502262571.0
+        }
+      }
+    },
+    "S15": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 3936977,
+        "implied_duration_seconds": 5624.2529,
+        "n_samples": 3936977,
+        "n_sequence_gaps": 0,
+        "nseq_end": 3936976,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          }
+        },
+        "sensors_in_header": [
+          "ECG",
+          "EDA",
+          "EMG",
+          "TEMP",
+          "XYZ",
+          "XYZ",
+          "XYZ",
+          "RESPIRATION"
+        ],
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "implied_duration_seconds": 6642.75,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 212568,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502349056.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "implied_duration_seconds": 6642.7969,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 425139,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502349056.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 6642.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 26568,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502349056.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "implied_duration_seconds": 6633.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 6633,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502349066.0
+        },
+        "IBI": {
+          "n_events": 3398,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate.",
+          "start_time_unix": 1502349056.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 6642.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 26568,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502349056.0
+        }
+      }
+    },
+    "S16": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 4156017,
+        "implied_duration_seconds": 5937.1671,
+        "n_samples": 4156017,
+        "n_sequence_gaps": 0,
+        "nseq_end": 4156016,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          }
+        },
+        "sensors_in_header": [
+          "ECG",
+          "EDA",
+          "EMG",
+          "TEMP",
+          "XYZ",
+          "XYZ",
+          "XYZ",
+          "RESPIRATION"
+        ],
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "implied_duration_seconds": 7107.1875,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 227430,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502366365.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "implied_duration_seconds": 7107.0312,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 454850,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502366365.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 7107.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 28428,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502366365.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "implied_duration_seconds": 7098.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 7098,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502366375.0
+        },
+        "IBI": {
+          "n_events": 3938,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate.",
+          "start_time_unix": 1502366365.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 7106.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 28424,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502366365.0
+        }
+      }
+    },
+    "S17": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 4287118,
+        "implied_duration_seconds": 6124.4543,
+        "n_samples": 4287118,
+        "n_sequence_gaps": 0,
+        "nseq_end": 4287117,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          }
+        },
+        "sensors_in_header": [
+          "ECG",
+          "EDA",
+          "EMG",
+          "TEMP",
+          "XYZ",
+          "XYZ",
+          "XYZ",
+          "RESPIRATION"
+        ],
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "implied_duration_seconds": 7231.6875,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 231414,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502435962.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "implied_duration_seconds": 7231.6406,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 462825,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502435962.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 7231.5,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 28926,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502435962.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "implied_duration_seconds": 7222.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 7222,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502435972.0
+        },
+        "IBI": {
+          "n_events": 2138,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate.",
+          "start_time_unix": 1502435962.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 7230.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 28920,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1502435962.0
+        }
+      }
+    },
+    "S2": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 4442067,
+        "implied_duration_seconds": 6345.81,
+        "n_samples": 4442067,
+        "n_sequence_gaps": 0,
+        "nseq_end": 4442066,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          }
+        },
+        "sensors_in_header": [
+          "ECG",
+          "EDA",
+          "EMG",
+          "TEMP",
+          "XYZ",
+          "XYZ",
+          "XYZ",
+          "RESPIRATION"
+        ],
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "implied_duration_seconds": 7874.0625,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 251970,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1495437325.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "implied_duration_seconds": 7874.1094,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 503943,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1495437325.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 7873.5,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 31494,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1495437325.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "implied_duration_seconds": 7865.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 7865,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1495437335.0
+        },
+        "IBI": {
+          "n_events": 3458,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate.",
+          "start_time_unix": 1495437325.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 7874.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 31496,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1495437325.0
+        }
+      }
+    },
+    "S3": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 4643347,
+        "implied_duration_seconds": 6633.3529,
+        "n_samples": 4643347,
+        "n_sequence_gaps": 0,
+        "nseq_end": 4643346,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          }
+        },
+        "sensors_in_header": [
+          "ECG",
+          "EDA",
+          "EMG",
+          "TEMP",
+          "XYZ",
+          "XYZ",
+          "XYZ",
+          "RESPIRATION"
+        ],
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "implied_duration_seconds": 7723.5,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 247152,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1495624128.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "implied_duration_seconds": 7723.5469,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 494307,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1495624128.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 7723.5,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 30894,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1495624128.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "implied_duration_seconds": 7714.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 7714,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1495624138.0
+        },
+        "IBI": {
+          "n_events": 1920,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate.",
+          "start_time_unix": 1495624128.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 7722.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 30888,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1495624128.0
+        }
+      }
+    },
+    "S4": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 4588553,
+        "implied_duration_seconds": 6555.0757,
+        "n_samples": 4588553,
+        "n_sequence_gaps": 0,
+        "nseq_end": 4588552,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          }
+        },
+        "sensors_in_header": [
+          "ECG",
+          "EDA",
+          "EMG",
+          "TEMP",
+          "XYZ",
+          "XYZ",
+          "XYZ",
+          "RESPIRATION"
+        ],
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "implied_duration_seconds": 7999.3125,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 255978,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1497342820.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "implied_duration_seconds": 7999.4062,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 511962,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1497342820.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 7999.5,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 31998,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1497342820.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "implied_duration_seconds": 7990.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 7990,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1497342830.0
+        },
+        "IBI": {
+          "n_events": 3278,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate.",
+          "start_time_unix": 1497342820.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 7998.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 31992,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1497342820.0
+        }
+      }
+    },
+    "S5": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 4498418,
+        "implied_duration_seconds": 6426.3114,
+        "n_samples": 4498418,
+        "n_sequence_gaps": 0,
+        "nseq_end": 4498417,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          }
+        },
+        "sensors_in_header": [
+          "ECG",
+          "EDA",
+          "EMG",
+          "TEMP",
+          "XYZ",
+          "XYZ",
+          "XYZ",
+          "RESPIRATION"
+        ],
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "implied_duration_seconds": 7550.625,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 241620,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1497356533.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "implied_duration_seconds": 7550.6406,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 483241,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1497356533.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 7551.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 30204,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1497356533.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "implied_duration_seconds": 7541.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 7541,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1497356543.0
+        },
+        "IBI": {
+          "n_events": 1230,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate.",
+          "start_time_unix": 1497356533.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 7550.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 30200,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1497356533.0
+        }
+      }
+    },
+    "S6": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 5055420,
+        "implied_duration_seconds": 7222.0286,
+        "n_samples": 5055420,
+        "n_sequence_gaps": 0,
+        "nseq_end": 5055419,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          }
+        },
+        "sensors_in_header": [
+          "ECG",
+          "EDA",
+          "EMG",
+          "TEMP",
+          "XYZ",
+          "XYZ",
+          "XYZ",
+          "RESPIRATION"
+        ],
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "implied_duration_seconds": 8323.5,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 266352,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1497439238.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "implied_duration_seconds": 8323.5625,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 532708,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1497439238.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 8323.5,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 33294,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1497439238.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "implied_duration_seconds": 8314.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 8314,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1497439248.0
+        },
+        "IBI": {
+          "n_events": 2828,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate.",
+          "start_time_unix": 1497439238.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 8322.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 33288,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1497439238.0
+        }
+      }
+    },
+    "S7": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 3785775,
+        "implied_duration_seconds": 5408.25,
+        "n_samples": 3785775,
+        "n_sequence_gaps": 0,
+        "nseq_end": 3785774,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          }
+        },
+        "sensors_in_header": [
+          "ECG",
+          "EDA",
+          "EMG",
+          "TEMP",
+          "XYZ",
+          "XYZ",
+          "XYZ",
+          "RESPIRATION"
+        ],
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "implied_duration_seconds": 6494.4375,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 207822,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1499339464.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "implied_duration_seconds": 6494.4688,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 415646,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1499339464.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 6493.5,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 25974,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1499339464.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "implied_duration_seconds": 6485.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 6485,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1499339474.0
+        },
+        "IBI": {
+          "n_events": 2948,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate.",
+          "start_time_unix": 1499339464.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 6494.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 25976,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1499339464.0
+        }
+      }
+    },
+    "S8": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 3959911,
+        "implied_duration_seconds": 5657.0157,
+        "n_samples": 3959911,
+        "n_sequence_gaps": 0,
+        "nseq_end": 3959910,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          }
+        },
+        "sensors_in_header": [
+          "ECG",
+          "EDA",
+          "EMG",
+          "TEMP",
+          "XYZ",
+          "XYZ",
+          "XYZ",
+          "RESPIRATION"
+        ],
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "implied_duration_seconds": 6638.4375,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 212430,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1499685040.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "implied_duration_seconds": 6638.5,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 424864,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1499685040.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 6637.5,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 26550,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1499685040.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "implied_duration_seconds": 6629.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 6629,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1499685050.0
+        },
+        "IBI": {
+          "n_events": 2378,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate.",
+          "start_time_unix": 1499685040.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 6638.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 26552,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1499685040.0
+        }
+      }
+    },
+    "S9": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 3749760,
+        "implied_duration_seconds": 5356.8,
+        "n_samples": 3749760,
+        "n_sequence_gaps": 0,
+        "nseq_end": 3749759,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0
+          }
+        },
+        "sensors_in_header": [
+          "ECG",
+          "EDA",
+          "EMG",
+          "TEMP",
+          "XYZ",
+          "XYZ",
+          "XYZ",
+          "RESPIRATION"
+        ],
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "implied_duration_seconds": 6228.5625,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 199314,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1499771441.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "implied_duration_seconds": 6228.5781,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 398629,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1499771441.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 6228.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 24912,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1499771441.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "implied_duration_seconds": 6219.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 6219,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1499771451.0
+        },
+        "IBI": {
+          "n_events": 3278,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate.",
+          "start_time_unix": 1499771441.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "implied_duration_seconds": 6228.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 24912,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "sampling_rate_note": "E4 CSV format provides no per-sample timestamps; actual sampling rate cannot be independently verified. Declared rate reported.",
+          "start_time_unix": 1499771441.0
+        }
+      }
+    }
+  }
+}

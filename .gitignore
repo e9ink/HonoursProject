@@ -3,3 +3,10 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .pytest_cache/
+
+# Raw dataset files — stored on disk but too large for git.
+# Bronze immutability is enforced by the pipeline (never writes to bronze/),
+# not by git tracking.
+bronze/WESAD/
+bronze/DEAP/
+archive.zip
