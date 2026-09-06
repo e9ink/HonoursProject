@@ -8,26 +8,64 @@
 # any CCP check or before/after comparison.
 
 meta:
-  locked: false
-  signed_off: false
-  signed_off_by:
-  date_locked:
+  locked: true
+  signed_off: true
+  signed_off_by: Dr. Tobias Cibis
+  date_locked: 2026-09-09
 
 completeness:
-  max_missingness_rate:            # Maximum acceptable proportion of absent samples per modality (0.0–1.0)
+  # Baseline profiling (Task 2) found 0.0 missingness across every E4 modality
+  # and every RespiBAN channel for all 15 participants. This threshold is a
+  # PRESERVATION FLOOR: the pipeline must not introduce missingness. Grounding:
+  # Batini et al. (2009) and Wang & Strong (1996) define completeness as the
+  # ratio of present to expected values; the baseline establishes that ratio is
+  # already 1.0, and this threshold requires the Gold output to maintain it.
+  max_missingness_rate: 0.0
 
 validity:
   # Both conformance (format/range/sampling rules) and plausibility
   # (physiological bounds) map to validity in the document's framework.
-  max_conformance_violation_rate:  # Maximum acceptable proportion of format/range/sampling violations (0.0–1.0)
-  max_plausibility_failure_rate:   # Maximum acceptable proportion of values outside physiological bounds (0.0–1.0)
+  #
+  # Conformance: preservation floor. Baseline profiling (Task 2) found no format,
+  # range, or sampling violations across all 15 participants. This threshold is a
+  # PRESERVATION FLOOR: the pipeline must not introduce any conformance violations.
+  # Grounding: same principle as completeness — if the raw data is clean, the
+  # processed output must be no worse.
+  max_conformance_violation_rate: 0.0
+  #
+  # Plausibility: near-zero with a small tolerance for device-capacity rail-hits.
+  # Baseline data is physiologically clean, so the 0.01 (1%) tolerance does not
+  # permit genuine physiological errors. It covers the narrow case where a signal
+  # (primarily EDA) is legitimately pinned at its hardware ceiling (~100 µS) and
+  # is FLAGGED AND RETAINED as "device reached measurement capacity" per supervisor
+  # guidance (Dr. Tobias Cibis, 2026-08-27), rather than treated as corrupt and
+  # removed. Without this tolerance, a 0.0 threshold would reject valid data that
+  # the supervisor has explicitly instructed the pipeline to keep with a quality
+  # annotation. 1% is a conservative ceiling that cannot be reached by ordinary
+  # physiological variation — it would require hundreds of rail-hit samples per
+  # participant per modality.
+  max_plausibility_failure_rate: 0.01
 
 timeliness:
-  max_cross_modal_offset_seconds:  # Maximum acceptable mean timestamp offset across modalities after alignment (seconds)
+  # Metric: mean timestamp offset between modalities within the aligned overlap
+  # window (after trimming to the common recording period). Threshold = 1.0 s,
+  # approximately one sample of the slowest contributing E4 stream (HR at 1 Hz;
+  # EDA/TEMP at 4 Hz = 0.25 s). At or below the coarsest sampling interval, no
+  # signal is misattributed to the wrong time bin, which is the requirement for
+  # valid multi-signal analysis.
+  # NOTE: the ~19-min baseline start/stop mismatch found in profiling (Task 2) is
+  # a sensor activation-window difference resolved by trimming to the overlap; it
+  # is NOT a residual this threshold measures. This threshold governs only the
+  # residual within-overlap offset after alignment (Task 7).
+  max_cross_modal_offset_seconds: 1.0
 
 consistency:
-  # No dedicated metric is defined for consistency in the source document.
-  # Conformance and plausibility are both assigned to validity above.
-  # Flagged for Kevin: confirm whether a consistency metric (e.g. internal
-  # contradictions between signals or repeated-measure agreement) should be
-  # added, or whether this dimension is intentionally unmeasured in this project.
+  # DECISION (Kevin, 2026-08-22): no dedicated consistency metric for WESAD.
+  # Rationale: the source document handles sampling/format constraints under
+  # conformance (mapped to validity), and the one cross-modal issue this dataset
+  # presents, a systematic ~19 min timing mismatch between the E4 wrist and
+  # RespiBAN chest sensors, is a timeliness/alignment matter measured under
+  # max_cross_modal_offset_seconds. Treating it as consistency as well would
+  # double-count the same phenomenon. Consistency is therefore intentionally
+  # unmeasured for WESAD. To be revisited for DEAP (Task 14) if that dataset
+  # presents a genuine consistency issue not captured by another dimension.

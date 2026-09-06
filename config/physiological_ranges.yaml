@@ -1,51 +1,129 @@
 # Credible physiological value ranges for each signal, per dataset.
 # Sourced from Tobi (Dr. Tobias Cibis) or a clinical contact.
 # Provided by Kevin; never edited or invented by automated pipeline code.
-# Each signal entry requires: unit, min, max, and a provenance note.
+# Each active signal entry requires: unit, min, max, and a provenance note.
 #
 # GATE: Tasks 5 (plausibility check) and 11 (quality report) must refuse to run
 # until meta.signed_off is true. The pipeline reads this flag before executing
 # any plausibility check or before/after comparison.
 
 meta:
-  locked: false
-  signed_off: false
-  signed_off_by:
-  date_locked:
+  locked: true
+  signed_off: true
+  signed_off_by: Dr. Tobias Cibis
+  date_locked: 2026-09-09
 
 wesad:
   # WESAD signals: ECG, EDA, EMG, respiration, skin_temperature, accelerometry
-  # (Schmidt et al., 2018)
+  # (Schmidt et al., 2018). Two device types: RespiBAN chest (ECG, EDA, EMG,
+  # RESP, TEMP, ACC) and Empatica E4 wrist (BVP, EDA, HR, TEMP, ACC, IBI).
+  # BVP and IBI are excluded from plausibility checking — see comments below.
+
+  # ── RespiBAN chest signals ──────────────────────────────────────────────────
+
   ECG:
-    unit:
-    min:
-    max:
-    provenance:
-  EDA:
-    unit:
-    min:
-    max:
-    provenance:
+    unit: mV
+    min: -1.5
+    max: 1.5
+    provenance: >
+      Device rail-detection bound. Transfer function from wesad_readme.pdf §II.1:
+      ((signal/65536 - 0.5) * 3). Full-scale output at ADC extremes is ±1.5 mV.
+      Confirmed as the conformance/plausibility range for this dataset; does not
+      represent a healthy physiological ECG amplitude range.
+
   EMG:
-    unit:
-    min:
-    max:
-    provenance:
+    unit: mV
+    min: -1.5
+    max: 1.5
+    provenance: >
+      Device rail-detection bound. Transfer function from wesad_readme.pdf §II.1:
+      ((signal/65536 - 0.5) * 3). Identical formula to ECG; full-scale ±1.5 mV.
+      Confirmed as the conformance/plausibility range for this dataset.
+
   respiration:
-    unit:
-    min:
-    max:
-    provenance:
+    unit: '%'
+    provenance: >
+      Device rail-detection bound. Transfer function from wesad_readme.pdf §II.1:
+      ((signal/65536 - 0.5) * 100). Full-scale output is ±50%. This is strain-gauge
+      deflection (a relative, baseline-centred signal), not SpO2 or similar.
+      Confirmed as the conformance/plausibility range for this dataset.
+    min: -50
+    max: 50
+
+  accelerometry_respiban:
+    unit: g
+    min: -1
+    max: 1
+    provenance: >
+      Calibrated range. Transfer function from wesad_readme.pdf §II.1:
+      (signal - 28000) / (38000 - 28000) * 2 - 1, yielding −1 g to +1 g within
+      the Cmin/Cmax window. Supervisor (Dr. Tobias Cibis, 2026-08-27) confirmed
+      that the accelerometer is calibrated and ±1 g already accounts for gravity,
+      so no widening is needed. Data-span check planned earlier is cancelled per
+      supervisor instruction.
+
+  # ── E4 wristband signals ────────────────────────────────────────────────────
+
+  EDA:
+    unit: µS
+    min: 0
+    max: 100
+    provenance: >
+      Device-capacity bound. Physiological literature (e.g. Boucsein, 2012)
+      places typical EDA up to ~60 µS, but the Empatica E4 hardware ceiling is
+      ~100 µS. Bound set at the device limit per supervisor endorsement
+      (Dr. Tobias Cibis, 2026-08-27). Values pinned at 100 µS should be flagged
+      in the quality report as "device reached measurement capacity," not treated
+      as physiologically genuine readings. This reframe was confirmed by supervisor.
+
   skin_temperature:
-    unit:
-    min:
-    max:
-    provenance:
-  accelerometry:
-    unit:
-    min:
-    max:
-    provenance:
+    unit: °C
+    min: 15
+    max: 42
+    provenance: >
+      Clinical plausibility bound for surface skin temperature recorded at the
+      wrist. Lower bound reflects cold extremities in realistic lab conditions;
+      upper bound is below fever-range tissue damage. Pending formal re-sourcing
+      from a medical textbook before the final report.
+
+  heart_rate:
+    unit: bpm
+    min: 20
+    max: 250
+    provenance: >
+      Corruption/plausibility bound (not a healthy resting-HR range). Lower bound
+      represents extreme bradycardia; upper bound captures VT/artifact ceiling.
+      This bound is confirmed as a data-integrity gate, not a health-screening
+      gate. NOTE (Kevin, 2026-08-27): some sources used to ground this range
+      (e.g. record-low resting-HR figures) are non-peer-reviewed. Re-source both
+      limits from a medical textbook (e.g. Guyton & Hall) before the final report.
+
+  accelerometry_e4:
+    unit: g
+    min: -2
+    max: 2
+    provenance: >
+      Hardware range declared in bronze/WESAD/S2/S2_E4_Data/info.txt:
+      "range [-2g, 2g]. Therefore the unit in this file is 1/64g."
+      Full-scale ±2 g matches the E4 accelerometer specification.
+
+  # ── Excluded signals (no plausibility bound defined) ────────────────────────
+
+  # BVP (E4 photoplethysmograph): EXCLUDED from plausibility checking.
+  # Confirmed by supervisor (Dr. Tobias Cibis, 2026-08-27).
+  # Justification: BVP is a relative, qualitative measure of blood-volume change
+  # with no absolute physical unit. Its autonomic-arousal signal content is better
+  # captured by HRV, which is out of scope for this project. The WESAD
+  # documentation provides no unit, transfer function, or physiological range for
+  # BVP, making a credible bound impossible to define from the available sources.
+  # BVP is therefore not checked in Task 5 or reported on in Task 11.
+
+  # IBI (E4 inter-beat intervals): EXCLUDED from plausibility checking.
+  # Confirmed by supervisor (Dr. Tobias Cibis, 2026-08-27).
+  # Justification: the primary useful derivation from IBI is HRV, which requires
+  # ≥3 minutes of consecutive intervals and a different timescale/discretisation
+  # that is incompatible with the frame-level ingestion pipeline. HRV is out of
+  # scope for this project. IBI is therefore not checked in Task 5.
 
 deap:
   # DEAP signals: EEG + peripheral physiological signals

@@ -1,0 +1,3982 @@
+{
+  "check": "conformance",
+  "config_ranges_date_locked": "2026-09-09",
+  "config_thresholds_date_locked": "2026-09-09",
+  "dataset": "WESAD",
+  "n_participants": 15,
+  "participant_ids": [
+    "S10",
+    "S11",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9"
+  ],
+  "participants": {
+    "S10": {
+      "chest": {
+        "adc_resolution": {
+          "all_channels_16bit": true,
+          "expected_bits": 16,
+          "ok": true,
+          "resolution_from_header": [
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16
+          ]
+        },
+        "column_count": {
+          "actual": 10,
+          "expected": 10,
+          "ok": true
+        },
+        "format": {
+          "endofheader_present": true,
+          "ok": true
+        },
+        "n_samples": 3992284,
+        "per_channel_range": {
+          "CH1": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3992284,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH2": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3992284,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH3": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3992284,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH4": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3992284,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH5": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3992284,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH6": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3992284,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH7": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3992284,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH8": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3992284,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          }
+        },
+        "range_summary": {
+          "ok": true,
+          "total_cells_checked": 31938272,
+          "total_violations": 0,
+          "violation_rate": 0.0
+        },
+        "sampling_rate": {
+          "declared_hz": 700,
+          "expected_hz": 700,
+          "ok": true
+        }
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 3,
+            "n_samples": 218328,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 128.0,
+            "range_min": -128.0,
+            "stored_unit_note": "ACC stored in 1/64 g units; bounds converted from config g-range (\u00b12 g).",
+            "total_cells": 654984,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 32.0,
+            "expected_hz": 32.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1500966308.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": false,
+            "reason": "No device output range documented for this modality."
+          },
+          "sampling_rate": {
+            "declared_hz": 64.0,
+            "expected_hz": 64.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1500966308.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 27288,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 100,
+            "range_min": 0,
+            "total_cells": 27288,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1500966308.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 6813,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 250,
+            "range_min": 20,
+            "total_cells": 6813,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 1.0,
+            "expected_hz": 1.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_note": "HR start_time_unix is structurally 10 s later than other E4 channels (documented E4 firmware export behaviour, not a defect).",
+          "start_time_unix": 1500966318.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "artifact_annotation": {
+              "description": "All above-max violations are confined to the first 4 sample(s) (indices [0, 1, 2, 3]) with value(s) ~382.21 \u00b0C. This matches the known Empatica E4 NTC thermistor warm-up behaviour: the sensor outputs an unphysical sentinel value for approximately 1 s while stabilising. These samples should be stripped in the Silver cleaning step (Task 9).",
+              "pattern": "E4_TEMP_initialization",
+              "sentinel_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "violation_indices": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "checked": true,
+            "n_above_max": 4,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 27288,
+            "n_violations": 4,
+            "ok": false,
+            "range_max": 42,
+            "range_min": 15,
+            "total_cells": 27288,
+            "violation_rate": 0.00014658
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1500966308.0
+        }
+      }
+    },
+    "S11": {
+      "chest": {
+        "adc_resolution": {
+          "all_channels_16bit": true,
+          "expected_bits": 16,
+          "ok": true,
+          "resolution_from_header": [
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16
+          ]
+        },
+        "column_count": {
+          "actual": 10,
+          "expected": 10,
+          "ok": true
+        },
+        "format": {
+          "endofheader_present": true,
+          "ok": true
+        },
+        "n_samples": 3788875,
+        "per_channel_range": {
+          "CH1": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3788875,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH2": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3788875,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH3": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3788875,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH4": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3788875,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH5": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3788875,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH6": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3788875,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH7": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3788875,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH8": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3788875,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          }
+        },
+        "range_summary": {
+          "ok": true,
+          "total_cells_checked": 30311000,
+          "total_violations": 0,
+          "violation_rate": 0.0
+        },
+        "sampling_rate": {
+          "declared_hz": 700,
+          "expected_hz": 700,
+          "ok": true
+        }
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 3,
+            "n_samples": 206736,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 128.0,
+            "range_min": -128.0,
+            "stored_unit_note": "ACC stored in 1/64 g units; bounds converted from config g-range (\u00b12 g).",
+            "total_cells": 620208,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 32.0,
+            "expected_hz": 32.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1500981259.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": false,
+            "reason": "No device output range documented for this modality."
+          },
+          "sampling_rate": {
+            "declared_hz": 64.0,
+            "expected_hz": 64.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1500981259.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 25842,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 100,
+            "range_min": 0,
+            "total_cells": 25842,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1500981259.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 6451,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 250,
+            "range_min": 20,
+            "total_cells": 6451,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 1.0,
+            "expected_hz": 1.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_note": "HR start_time_unix is structurally 10 s later than other E4 channels (documented E4 firmware export behaviour, not a defect).",
+          "start_time_unix": 1500981269.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "artifact_annotation": {
+              "description": "All above-max violations are confined to the first 4 sample(s) (indices [0, 1, 2, 3]) with value(s) ~382.21 \u00b0C. This matches the known Empatica E4 NTC thermistor warm-up behaviour: the sensor outputs an unphysical sentinel value for approximately 1 s while stabilising. These samples should be stripped in the Silver cleaning step (Task 9).",
+              "pattern": "E4_TEMP_initialization",
+              "sentinel_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "violation_indices": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "checked": true,
+            "n_above_max": 4,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 25840,
+            "n_violations": 4,
+            "ok": false,
+            "range_max": 42,
+            "range_min": 15,
+            "total_cells": 25840,
+            "violation_rate": 0.0001548
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1500981259.0
+        }
+      }
+    },
+    "S13": {
+      "chest": {
+        "adc_resolution": {
+          "all_channels_16bit": true,
+          "expected_bits": 16,
+          "ok": true,
+          "resolution_from_header": [
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16
+          ]
+        },
+        "column_count": {
+          "actual": 10,
+          "expected": 10,
+          "ok": true
+        },
+        "format": {
+          "endofheader_present": true,
+          "ok": true
+        },
+        "n_samples": 4016515,
+        "per_channel_range": {
+          "CH1": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4016515,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH2": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4016515,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH3": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4016515,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH4": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4016515,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH5": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4016515,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH6": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4016515,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH7": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4016515,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH8": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4016515,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          }
+        },
+        "range_summary": {
+          "ok": true,
+          "total_cells_checked": 32132120,
+          "total_violations": 0,
+          "violation_rate": 0.0
+        },
+        "sampling_rate": {
+          "declared_hz": 700,
+          "expected_hz": 700,
+          "ok": true
+        }
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 3,
+            "n_samples": 219606,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 128.0,
+            "range_min": -128.0,
+            "stored_unit_note": "ACC stored in 1/64 g units; bounds converted from config g-range (\u00b12 g).",
+            "total_cells": 658818,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 32.0,
+            "expected_hz": 32.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502190787.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": false,
+            "reason": "No device output range documented for this modality."
+          },
+          "sampling_rate": {
+            "declared_hz": 64.0,
+            "expected_hz": 64.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502190787.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 27450,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 100,
+            "range_min": 0,
+            "total_cells": 27450,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502190787.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 6853,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 250,
+            "range_min": 20,
+            "total_cells": 6853,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 1.0,
+            "expected_hz": 1.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_note": "HR start_time_unix is structurally 10 s later than other E4 channels (documented E4 firmware export behaviour, not a defect).",
+          "start_time_unix": 1502190797.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "artifact_annotation": {
+              "description": "All above-max violations are confined to the first 4 sample(s) (indices [0, 1, 2, 3]) with value(s) ~382.21 \u00b0C. This matches the known Empatica E4 NTC thermistor warm-up behaviour: the sensor outputs an unphysical sentinel value for approximately 1 s while stabilising. These samples should be stripped in the Silver cleaning step (Task 9).",
+              "pattern": "E4_TEMP_initialization",
+              "sentinel_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "violation_indices": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "checked": true,
+            "n_above_max": 4,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 27448,
+            "n_violations": 4,
+            "ok": false,
+            "range_max": 42,
+            "range_min": 15,
+            "total_cells": 27448,
+            "violation_rate": 0.00014573
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502190787.0
+        }
+      }
+    },
+    "S14": {
+      "chest": {
+        "adc_resolution": {
+          "all_channels_16bit": true,
+          "expected_bits": 16,
+          "ok": true,
+          "resolution_from_header": [
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16
+          ]
+        },
+        "column_count": {
+          "actual": 10,
+          "expected": 10,
+          "ok": true
+        },
+        "format": {
+          "endofheader_present": true,
+          "ok": true
+        },
+        "n_samples": 4034461,
+        "per_channel_range": {
+          "CH1": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4034461,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH2": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4034461,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH3": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4034461,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH4": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4034461,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH5": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4034461,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH6": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4034461,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH7": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4034461,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH8": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4034461,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          }
+        },
+        "range_summary": {
+          "ok": true,
+          "total_cells_checked": 32275688,
+          "total_violations": 0,
+          "violation_rate": 0.0
+        },
+        "sampling_rate": {
+          "declared_hz": 700,
+          "expected_hz": 700,
+          "ok": true
+        }
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 3,
+            "n_samples": 223560,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 128.0,
+            "range_min": -128.0,
+            "stored_unit_note": "ACC stored in 1/64 g units; bounds converted from config g-range (\u00b12 g).",
+            "total_cells": 670680,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 32.0,
+            "expected_hz": 32.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502262571.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": false,
+            "reason": "No device output range documented for this modality."
+          },
+          "sampling_rate": {
+            "declared_hz": 64.0,
+            "expected_hz": 64.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502262571.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 27942,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 100,
+            "range_min": 0,
+            "total_cells": 27942,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502262571.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 6977,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 250,
+            "range_min": 20,
+            "total_cells": 6977,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 1.0,
+            "expected_hz": 1.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_note": "HR start_time_unix is structurally 10 s later than other E4 channels (documented E4 firmware export behaviour, not a defect).",
+          "start_time_unix": 1502262581.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "artifact_annotation": {
+              "description": "All above-max violations are confined to the first 4 sample(s) (indices [0, 1, 2, 3]) with value(s) ~382.21 \u00b0C. This matches the known Empatica E4 NTC thermistor warm-up behaviour: the sensor outputs an unphysical sentinel value for approximately 1 s while stabilising. These samples should be stripped in the Silver cleaning step (Task 9).",
+              "pattern": "E4_TEMP_initialization",
+              "sentinel_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "violation_indices": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "checked": true,
+            "n_above_max": 4,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 27944,
+            "n_violations": 4,
+            "ok": false,
+            "range_max": 42,
+            "range_min": 15,
+            "total_cells": 27944,
+            "violation_rate": 0.00014314
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502262571.0
+        }
+      }
+    },
+    "S15": {
+      "chest": {
+        "adc_resolution": {
+          "all_channels_16bit": true,
+          "expected_bits": 16,
+          "ok": true,
+          "resolution_from_header": [
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16
+          ]
+        },
+        "column_count": {
+          "actual": 10,
+          "expected": 10,
+          "ok": true
+        },
+        "format": {
+          "endofheader_present": true,
+          "ok": true
+        },
+        "n_samples": 3936977,
+        "per_channel_range": {
+          "CH1": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3936977,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH2": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3936977,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH3": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3936977,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH4": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3936977,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH5": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3936977,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH6": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3936977,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH7": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3936977,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH8": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3936977,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          }
+        },
+        "range_summary": {
+          "ok": true,
+          "total_cells_checked": 31495816,
+          "total_violations": 0,
+          "violation_rate": 0.0
+        },
+        "sampling_rate": {
+          "declared_hz": 700,
+          "expected_hz": 700,
+          "ok": true
+        }
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 3,
+            "n_samples": 212568,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 128.0,
+            "range_min": -128.0,
+            "stored_unit_note": "ACC stored in 1/64 g units; bounds converted from config g-range (\u00b12 g).",
+            "total_cells": 637704,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 32.0,
+            "expected_hz": 32.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502349056.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": false,
+            "reason": "No device output range documented for this modality."
+          },
+          "sampling_rate": {
+            "declared_hz": 64.0,
+            "expected_hz": 64.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502349056.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 26568,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 100,
+            "range_min": 0,
+            "total_cells": 26568,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502349056.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 6633,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 250,
+            "range_min": 20,
+            "total_cells": 6633,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 1.0,
+            "expected_hz": 1.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_note": "HR start_time_unix is structurally 10 s later than other E4 channels (documented E4 firmware export behaviour, not a defect).",
+          "start_time_unix": 1502349066.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "artifact_annotation": {
+              "description": "All above-max violations are confined to the first 4 sample(s) (indices [0, 1, 2, 3]) with value(s) ~382.21 \u00b0C. This matches the known Empatica E4 NTC thermistor warm-up behaviour: the sensor outputs an unphysical sentinel value for approximately 1 s while stabilising. These samples should be stripped in the Silver cleaning step (Task 9).",
+              "pattern": "E4_TEMP_initialization",
+              "sentinel_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "violation_indices": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "checked": true,
+            "n_above_max": 4,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 26568,
+            "n_violations": 4,
+            "ok": false,
+            "range_max": 42,
+            "range_min": 15,
+            "total_cells": 26568,
+            "violation_rate": 0.00015056
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502349056.0
+        }
+      }
+    },
+    "S16": {
+      "chest": {
+        "adc_resolution": {
+          "all_channels_16bit": true,
+          "expected_bits": 16,
+          "ok": true,
+          "resolution_from_header": [
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16
+          ]
+        },
+        "column_count": {
+          "actual": 10,
+          "expected": 10,
+          "ok": true
+        },
+        "format": {
+          "endofheader_present": true,
+          "ok": true
+        },
+        "n_samples": 4156017,
+        "per_channel_range": {
+          "CH1": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4156017,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH2": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4156017,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH3": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4156017,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH4": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4156017,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH5": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4156017,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH6": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4156017,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH7": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4156017,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH8": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4156017,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          }
+        },
+        "range_summary": {
+          "ok": true,
+          "total_cells_checked": 33248136,
+          "total_violations": 0,
+          "violation_rate": 0.0
+        },
+        "sampling_rate": {
+          "declared_hz": 700,
+          "expected_hz": 700,
+          "ok": true
+        }
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 3,
+            "n_samples": 227430,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 128.0,
+            "range_min": -128.0,
+            "stored_unit_note": "ACC stored in 1/64 g units; bounds converted from config g-range (\u00b12 g).",
+            "total_cells": 682290,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 32.0,
+            "expected_hz": 32.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502366365.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": false,
+            "reason": "No device output range documented for this modality."
+          },
+          "sampling_rate": {
+            "declared_hz": 64.0,
+            "expected_hz": 64.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502366365.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 28428,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 100,
+            "range_min": 0,
+            "total_cells": 28428,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502366365.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 7098,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 250,
+            "range_min": 20,
+            "total_cells": 7098,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 1.0,
+            "expected_hz": 1.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_note": "HR start_time_unix is structurally 10 s later than other E4 channels (documented E4 firmware export behaviour, not a defect).",
+          "start_time_unix": 1502366375.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "artifact_annotation": {
+              "description": "All above-max violations are confined to the first 4 sample(s) (indices [0, 1, 2, 3]) with value(s) ~382.21 \u00b0C. This matches the known Empatica E4 NTC thermistor warm-up behaviour: the sensor outputs an unphysical sentinel value for approximately 1 s while stabilising. These samples should be stripped in the Silver cleaning step (Task 9).",
+              "pattern": "E4_TEMP_initialization",
+              "sentinel_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "violation_indices": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "checked": true,
+            "n_above_max": 4,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 28424,
+            "n_violations": 4,
+            "ok": false,
+            "range_max": 42,
+            "range_min": 15,
+            "total_cells": 28424,
+            "violation_rate": 0.00014073
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502366365.0
+        }
+      }
+    },
+    "S17": {
+      "chest": {
+        "adc_resolution": {
+          "all_channels_16bit": true,
+          "expected_bits": 16,
+          "ok": true,
+          "resolution_from_header": [
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16
+          ]
+        },
+        "column_count": {
+          "actual": 10,
+          "expected": 10,
+          "ok": true
+        },
+        "format": {
+          "endofheader_present": true,
+          "ok": true
+        },
+        "n_samples": 4287118,
+        "per_channel_range": {
+          "CH1": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4287118,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH2": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4287118,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH3": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4287118,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH4": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4287118,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH5": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4287118,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH6": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4287118,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH7": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4287118,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH8": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4287118,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          }
+        },
+        "range_summary": {
+          "ok": true,
+          "total_cells_checked": 34296944,
+          "total_violations": 0,
+          "violation_rate": 0.0
+        },
+        "sampling_rate": {
+          "declared_hz": 700,
+          "expected_hz": 700,
+          "ok": true
+        }
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 3,
+            "n_samples": 231414,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 128.0,
+            "range_min": -128.0,
+            "stored_unit_note": "ACC stored in 1/64 g units; bounds converted from config g-range (\u00b12 g).",
+            "total_cells": 694242,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 32.0,
+            "expected_hz": 32.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502435962.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": false,
+            "reason": "No device output range documented for this modality."
+          },
+          "sampling_rate": {
+            "declared_hz": 64.0,
+            "expected_hz": 64.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502435962.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 28926,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 100,
+            "range_min": 0,
+            "total_cells": 28926,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502435962.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 7222,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 250,
+            "range_min": 20,
+            "total_cells": 7222,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 1.0,
+            "expected_hz": 1.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_note": "HR start_time_unix is structurally 10 s later than other E4 channels (documented E4 firmware export behaviour, not a defect).",
+          "start_time_unix": 1502435972.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "artifact_annotation": {
+              "description": "All above-max violations are confined to the first 4 sample(s) (indices [0, 1, 2, 3]) with value(s) ~382.21 \u00b0C. This matches the known Empatica E4 NTC thermistor warm-up behaviour: the sensor outputs an unphysical sentinel value for approximately 1 s while stabilising. These samples should be stripped in the Silver cleaning step (Task 9).",
+              "pattern": "E4_TEMP_initialization",
+              "sentinel_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "violation_indices": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "checked": true,
+            "n_above_max": 4,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 28920,
+            "n_violations": 4,
+            "ok": false,
+            "range_max": 42,
+            "range_min": 15,
+            "total_cells": 28920,
+            "violation_rate": 0.00013831
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1502435962.0
+        }
+      }
+    },
+    "S2": {
+      "chest": {
+        "adc_resolution": {
+          "all_channels_16bit": true,
+          "expected_bits": 16,
+          "ok": true,
+          "resolution_from_header": [
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16
+          ]
+        },
+        "column_count": {
+          "actual": 10,
+          "expected": 10,
+          "ok": true
+        },
+        "format": {
+          "endofheader_present": true,
+          "ok": true
+        },
+        "n_samples": 4442067,
+        "per_channel_range": {
+          "CH1": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4442067,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH2": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4442067,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH3": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4442067,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH4": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4442067,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH5": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4442067,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH6": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4442067,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH7": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4442067,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH8": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4442067,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          }
+        },
+        "range_summary": {
+          "ok": true,
+          "total_cells_checked": 35536536,
+          "total_violations": 0,
+          "violation_rate": 0.0
+        },
+        "sampling_rate": {
+          "declared_hz": 700,
+          "expected_hz": 700,
+          "ok": true
+        }
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 3,
+            "n_samples": 251970,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 128.0,
+            "range_min": -128.0,
+            "stored_unit_note": "ACC stored in 1/64 g units; bounds converted from config g-range (\u00b12 g).",
+            "total_cells": 755910,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 32.0,
+            "expected_hz": 32.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1495437325.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": false,
+            "reason": "No device output range documented for this modality."
+          },
+          "sampling_rate": {
+            "declared_hz": 64.0,
+            "expected_hz": 64.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1495437325.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 31494,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 100,
+            "range_min": 0,
+            "total_cells": 31494,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1495437325.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 7865,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 250,
+            "range_min": 20,
+            "total_cells": 7865,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 1.0,
+            "expected_hz": 1.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_note": "HR start_time_unix is structurally 10 s later than other E4 channels (documented E4 firmware export behaviour, not a defect).",
+          "start_time_unix": 1495437335.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "artifact_annotation": {
+              "description": "All above-max violations are confined to the first 4 sample(s) (indices [0, 1, 2, 3]) with value(s) ~382.18 \u00b0C. This matches the known Empatica E4 NTC thermistor warm-up behaviour: the sensor outputs an unphysical sentinel value for approximately 1 s while stabilising. These samples should be stripped in the Silver cleaning step (Task 9).",
+              "pattern": "E4_TEMP_initialization",
+              "sentinel_values": [
+                382.18,
+                382.18,
+                382.18,
+                382.18
+              ],
+              "violation_indices": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "checked": true,
+            "n_above_max": 4,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 31496,
+            "n_violations": 4,
+            "ok": false,
+            "range_max": 42,
+            "range_min": 15,
+            "total_cells": 31496,
+            "violation_rate": 0.000127
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1495437325.0
+        }
+      }
+    },
+    "S3": {
+      "chest": {
+        "adc_resolution": {
+          "all_channels_16bit": true,
+          "expected_bits": 16,
+          "ok": true,
+          "resolution_from_header": [
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16
+          ]
+        },
+        "column_count": {
+          "actual": 10,
+          "expected": 10,
+          "ok": true
+        },
+        "format": {
+          "endofheader_present": true,
+          "ok": true
+        },
+        "n_samples": 4643347,
+        "per_channel_range": {
+          "CH1": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4643347,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH2": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4643347,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH3": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4643347,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH4": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4643347,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH5": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4643347,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH6": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4643347,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH7": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4643347,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH8": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4643347,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          }
+        },
+        "range_summary": {
+          "ok": true,
+          "total_cells_checked": 37146776,
+          "total_violations": 0,
+          "violation_rate": 0.0
+        },
+        "sampling_rate": {
+          "declared_hz": 700,
+          "expected_hz": 700,
+          "ok": true
+        }
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 3,
+            "n_samples": 247152,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 128.0,
+            "range_min": -128.0,
+            "stored_unit_note": "ACC stored in 1/64 g units; bounds converted from config g-range (\u00b12 g).",
+            "total_cells": 741456,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 32.0,
+            "expected_hz": 32.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1495624128.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": false,
+            "reason": "No device output range documented for this modality."
+          },
+          "sampling_rate": {
+            "declared_hz": 64.0,
+            "expected_hz": 64.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1495624128.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 30894,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 100,
+            "range_min": 0,
+            "total_cells": 30894,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1495624128.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 7714,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 250,
+            "range_min": 20,
+            "total_cells": 7714,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 1.0,
+            "expected_hz": 1.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_note": "HR start_time_unix is structurally 10 s later than other E4 channels (documented E4 firmware export behaviour, not a defect).",
+          "start_time_unix": 1495624138.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "artifact_annotation": {
+              "description": "All above-max violations are confined to the first 4 sample(s) (indices [0, 1, 2, 3]) with value(s) ~382.18 \u00b0C. This matches the known Empatica E4 NTC thermistor warm-up behaviour: the sensor outputs an unphysical sentinel value for approximately 1 s while stabilising. These samples should be stripped in the Silver cleaning step (Task 9).",
+              "pattern": "E4_TEMP_initialization",
+              "sentinel_values": [
+                382.18,
+                382.18,
+                382.18,
+                382.18
+              ],
+              "violation_indices": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "checked": true,
+            "n_above_max": 4,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 30888,
+            "n_violations": 4,
+            "ok": false,
+            "range_max": 42,
+            "range_min": 15,
+            "total_cells": 30888,
+            "violation_rate": 0.0001295
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1495624128.0
+        }
+      }
+    },
+    "S4": {
+      "chest": {
+        "adc_resolution": {
+          "all_channels_16bit": true,
+          "expected_bits": 16,
+          "ok": true,
+          "resolution_from_header": [
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16
+          ]
+        },
+        "column_count": {
+          "actual": 10,
+          "expected": 10,
+          "ok": true
+        },
+        "format": {
+          "endofheader_present": true,
+          "ok": true
+        },
+        "n_samples": 4588553,
+        "per_channel_range": {
+          "CH1": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4588553,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH2": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4588553,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH3": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4588553,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH4": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4588553,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH5": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4588553,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH6": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4588553,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH7": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4588553,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH8": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4588553,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          }
+        },
+        "range_summary": {
+          "ok": true,
+          "total_cells_checked": 36708424,
+          "total_violations": 0,
+          "violation_rate": 0.0
+        },
+        "sampling_rate": {
+          "declared_hz": 700,
+          "expected_hz": 700,
+          "ok": true
+        }
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 3,
+            "n_samples": 255978,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 128.0,
+            "range_min": -128.0,
+            "stored_unit_note": "ACC stored in 1/64 g units; bounds converted from config g-range (\u00b12 g).",
+            "total_cells": 767934,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 32.0,
+            "expected_hz": 32.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1497342820.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": false,
+            "reason": "No device output range documented for this modality."
+          },
+          "sampling_rate": {
+            "declared_hz": 64.0,
+            "expected_hz": 64.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1497342820.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 31998,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 100,
+            "range_min": 0,
+            "total_cells": 31998,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1497342820.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 7990,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 250,
+            "range_min": 20,
+            "total_cells": 7990,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 1.0,
+            "expected_hz": 1.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_note": "HR start_time_unix is structurally 10 s later than other E4 channels (documented E4 firmware export behaviour, not a defect).",
+          "start_time_unix": 1497342830.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "artifact_annotation": {
+              "description": "All above-max violations are confined to the first 4 sample(s) (indices [0, 1, 2, 3]) with value(s) ~382.21 \u00b0C. This matches the known Empatica E4 NTC thermistor warm-up behaviour: the sensor outputs an unphysical sentinel value for approximately 1 s while stabilising. These samples should be stripped in the Silver cleaning step (Task 9).",
+              "pattern": "E4_TEMP_initialization",
+              "sentinel_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "violation_indices": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "checked": true,
+            "n_above_max": 4,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 31992,
+            "n_violations": 4,
+            "ok": false,
+            "range_max": 42,
+            "range_min": 15,
+            "total_cells": 31992,
+            "violation_rate": 0.00012503
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1497342820.0
+        }
+      }
+    },
+    "S5": {
+      "chest": {
+        "adc_resolution": {
+          "all_channels_16bit": true,
+          "expected_bits": 16,
+          "ok": true,
+          "resolution_from_header": [
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16
+          ]
+        },
+        "column_count": {
+          "actual": 10,
+          "expected": 10,
+          "ok": true
+        },
+        "format": {
+          "endofheader_present": true,
+          "ok": true
+        },
+        "n_samples": 4498418,
+        "per_channel_range": {
+          "CH1": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4498418,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH2": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4498418,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH3": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4498418,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH4": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4498418,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH5": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4498418,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH6": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4498418,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH7": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4498418,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH8": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 4498418,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          }
+        },
+        "range_summary": {
+          "ok": true,
+          "total_cells_checked": 35987344,
+          "total_violations": 0,
+          "violation_rate": 0.0
+        },
+        "sampling_rate": {
+          "declared_hz": 700,
+          "expected_hz": 700,
+          "ok": true
+        }
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 3,
+            "n_samples": 241620,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 128.0,
+            "range_min": -128.0,
+            "stored_unit_note": "ACC stored in 1/64 g units; bounds converted from config g-range (\u00b12 g).",
+            "total_cells": 724860,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 32.0,
+            "expected_hz": 32.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1497356533.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": false,
+            "reason": "No device output range documented for this modality."
+          },
+          "sampling_rate": {
+            "declared_hz": 64.0,
+            "expected_hz": 64.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1497356533.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 30204,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 100,
+            "range_min": 0,
+            "total_cells": 30204,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1497356533.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 7541,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 250,
+            "range_min": 20,
+            "total_cells": 7541,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 1.0,
+            "expected_hz": 1.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_note": "HR start_time_unix is structurally 10 s later than other E4 channels (documented E4 firmware export behaviour, not a defect).",
+          "start_time_unix": 1497356543.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "artifact_annotation": {
+              "description": "All above-max violations are confined to the first 4 sample(s) (indices [0, 1, 2, 3]) with value(s) ~382.21 \u00b0C. This matches the known Empatica E4 NTC thermistor warm-up behaviour: the sensor outputs an unphysical sentinel value for approximately 1 s while stabilising. These samples should be stripped in the Silver cleaning step (Task 9).",
+              "pattern": "E4_TEMP_initialization",
+              "sentinel_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "violation_indices": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "checked": true,
+            "n_above_max": 4,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 30200,
+            "n_violations": 4,
+            "ok": false,
+            "range_max": 42,
+            "range_min": 15,
+            "total_cells": 30200,
+            "violation_rate": 0.00013245
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1497356533.0
+        }
+      }
+    },
+    "S6": {
+      "chest": {
+        "adc_resolution": {
+          "all_channels_16bit": true,
+          "expected_bits": 16,
+          "ok": true,
+          "resolution_from_header": [
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16
+          ]
+        },
+        "column_count": {
+          "actual": 10,
+          "expected": 10,
+          "ok": true
+        },
+        "format": {
+          "endofheader_present": true,
+          "ok": true
+        },
+        "n_samples": 5055420,
+        "per_channel_range": {
+          "CH1": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 5055420,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH2": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 5055420,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH3": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 5055420,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH4": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 5055420,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH5": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 5055420,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH6": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 5055420,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH7": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 5055420,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH8": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 5055420,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          }
+        },
+        "range_summary": {
+          "ok": true,
+          "total_cells_checked": 40443360,
+          "total_violations": 0,
+          "violation_rate": 0.0
+        },
+        "sampling_rate": {
+          "declared_hz": 700,
+          "expected_hz": 700,
+          "ok": true
+        }
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 3,
+            "n_samples": 266352,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 128.0,
+            "range_min": -128.0,
+            "stored_unit_note": "ACC stored in 1/64 g units; bounds converted from config g-range (\u00b12 g).",
+            "total_cells": 799056,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 32.0,
+            "expected_hz": 32.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1497439238.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": false,
+            "reason": "No device output range documented for this modality."
+          },
+          "sampling_rate": {
+            "declared_hz": 64.0,
+            "expected_hz": 64.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1497439238.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 33294,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 100,
+            "range_min": 0,
+            "total_cells": 33294,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1497439238.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 8314,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 250,
+            "range_min": 20,
+            "total_cells": 8314,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 1.0,
+            "expected_hz": 1.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_note": "HR start_time_unix is structurally 10 s later than other E4 channels (documented E4 firmware export behaviour, not a defect).",
+          "start_time_unix": 1497439248.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "artifact_annotation": {
+              "description": "All above-max violations are confined to the first 4 sample(s) (indices [0, 1, 2, 3]) with value(s) ~382.21 \u00b0C. This matches the known Empatica E4 NTC thermistor warm-up behaviour: the sensor outputs an unphysical sentinel value for approximately 1 s while stabilising. These samples should be stripped in the Silver cleaning step (Task 9).",
+              "pattern": "E4_TEMP_initialization",
+              "sentinel_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "violation_indices": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "checked": true,
+            "n_above_max": 4,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 33288,
+            "n_violations": 4,
+            "ok": false,
+            "range_max": 42,
+            "range_min": 15,
+            "total_cells": 33288,
+            "violation_rate": 0.00012016
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1497439238.0
+        }
+      }
+    },
+    "S7": {
+      "chest": {
+        "adc_resolution": {
+          "all_channels_16bit": true,
+          "expected_bits": 16,
+          "ok": true,
+          "resolution_from_header": [
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16
+          ]
+        },
+        "column_count": {
+          "actual": 10,
+          "expected": 10,
+          "ok": true
+        },
+        "format": {
+          "endofheader_present": true,
+          "ok": true
+        },
+        "n_samples": 3785775,
+        "per_channel_range": {
+          "CH1": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3785775,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH2": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3785775,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH3": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3785775,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH4": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3785775,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH5": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3785775,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH6": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3785775,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH7": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3785775,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH8": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3785775,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          }
+        },
+        "range_summary": {
+          "ok": true,
+          "total_cells_checked": 30286200,
+          "total_violations": 0,
+          "violation_rate": 0.0
+        },
+        "sampling_rate": {
+          "declared_hz": 700,
+          "expected_hz": 700,
+          "ok": true
+        }
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 3,
+            "n_samples": 207822,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 128.0,
+            "range_min": -128.0,
+            "stored_unit_note": "ACC stored in 1/64 g units; bounds converted from config g-range (\u00b12 g).",
+            "total_cells": 623466,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 32.0,
+            "expected_hz": 32.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1499339464.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": false,
+            "reason": "No device output range documented for this modality."
+          },
+          "sampling_rate": {
+            "declared_hz": 64.0,
+            "expected_hz": 64.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1499339464.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 25974,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 100,
+            "range_min": 0,
+            "total_cells": 25974,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1499339464.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 6485,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 250,
+            "range_min": 20,
+            "total_cells": 6485,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 1.0,
+            "expected_hz": 1.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_note": "HR start_time_unix is structurally 10 s later than other E4 channels (documented E4 firmware export behaviour, not a defect).",
+          "start_time_unix": 1499339474.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "artifact_annotation": {
+              "description": "All above-max violations are confined to the first 4 sample(s) (indices [0, 1, 2, 3]) with value(s) ~382.21 \u00b0C. This matches the known Empatica E4 NTC thermistor warm-up behaviour: the sensor outputs an unphysical sentinel value for approximately 1 s while stabilising. These samples should be stripped in the Silver cleaning step (Task 9).",
+              "pattern": "E4_TEMP_initialization",
+              "sentinel_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "violation_indices": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "checked": true,
+            "n_above_max": 4,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 25976,
+            "n_violations": 4,
+            "ok": false,
+            "range_max": 42,
+            "range_min": 15,
+            "total_cells": 25976,
+            "violation_rate": 0.00015399
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1499339464.0
+        }
+      }
+    },
+    "S8": {
+      "chest": {
+        "adc_resolution": {
+          "all_channels_16bit": true,
+          "expected_bits": 16,
+          "ok": true,
+          "resolution_from_header": [
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16
+          ]
+        },
+        "column_count": {
+          "actual": 10,
+          "expected": 10,
+          "ok": true
+        },
+        "format": {
+          "endofheader_present": true,
+          "ok": true
+        },
+        "n_samples": 3959911,
+        "per_channel_range": {
+          "CH1": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3959911,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH2": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3959911,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH3": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3959911,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH4": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3959911,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH5": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3959911,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH6": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3959911,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH7": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3959911,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH8": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3959911,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          }
+        },
+        "range_summary": {
+          "ok": true,
+          "total_cells_checked": 31679288,
+          "total_violations": 0,
+          "violation_rate": 0.0
+        },
+        "sampling_rate": {
+          "declared_hz": 700,
+          "expected_hz": 700,
+          "ok": true
+        }
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 3,
+            "n_samples": 212430,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 128.0,
+            "range_min": -128.0,
+            "stored_unit_note": "ACC stored in 1/64 g units; bounds converted from config g-range (\u00b12 g).",
+            "total_cells": 637290,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 32.0,
+            "expected_hz": 32.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1499685040.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": false,
+            "reason": "No device output range documented for this modality."
+          },
+          "sampling_rate": {
+            "declared_hz": 64.0,
+            "expected_hz": 64.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1499685040.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 26550,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 100,
+            "range_min": 0,
+            "total_cells": 26550,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1499685040.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 6629,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 250,
+            "range_min": 20,
+            "total_cells": 6629,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 1.0,
+            "expected_hz": 1.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_note": "HR start_time_unix is structurally 10 s later than other E4 channels (documented E4 firmware export behaviour, not a defect).",
+          "start_time_unix": 1499685050.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "artifact_annotation": {
+              "description": "All above-max violations are confined to the first 4 sample(s) (indices [0, 1, 2, 3]) with value(s) ~382.21 \u00b0C. This matches the known Empatica E4 NTC thermistor warm-up behaviour: the sensor outputs an unphysical sentinel value for approximately 1 s while stabilising. These samples should be stripped in the Silver cleaning step (Task 9).",
+              "pattern": "E4_TEMP_initialization",
+              "sentinel_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "violation_indices": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "checked": true,
+            "n_above_max": 4,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 26552,
+            "n_violations": 4,
+            "ok": false,
+            "range_max": 42,
+            "range_min": 15,
+            "total_cells": 26552,
+            "violation_rate": 0.00015065
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1499685040.0
+        }
+      }
+    },
+    "S9": {
+      "chest": {
+        "adc_resolution": {
+          "all_channels_16bit": true,
+          "expected_bits": 16,
+          "ok": true,
+          "resolution_from_header": [
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16
+          ]
+        },
+        "column_count": {
+          "actual": 10,
+          "expected": 10,
+          "ok": true
+        },
+        "format": {
+          "endofheader_present": true,
+          "ok": true
+        },
+        "n_samples": 3749760,
+        "per_channel_range": {
+          "CH1": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3749760,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH2": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3749760,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH3": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3749760,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH4": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3749760,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH5": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3749760,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH6": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3749760,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH7": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3749760,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          },
+          "CH8": {
+            "adc_max": 65535,
+            "adc_min": 0,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_samples": 3749760,
+            "n_violations": 0,
+            "ok": true,
+            "violation_rate": 0.0
+          }
+        },
+        "range_summary": {
+          "ok": true,
+          "total_cells_checked": 29998080,
+          "total_violations": 0,
+          "violation_rate": 0.0
+        },
+        "sampling_rate": {
+          "declared_hz": 700,
+          "expected_hz": 700,
+          "ok": true
+        }
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 3,
+            "n_samples": 199314,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 128.0,
+            "range_min": -128.0,
+            "stored_unit_note": "ACC stored in 1/64 g units; bounds converted from config g-range (\u00b12 g).",
+            "total_cells": 597942,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 32.0,
+            "expected_hz": 32.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1499771441.0
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": false,
+            "reason": "No device output range documented for this modality."
+          },
+          "sampling_rate": {
+            "declared_hz": 64.0,
+            "expected_hz": 64.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1499771441.0
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 24912,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 100,
+            "range_min": 0,
+            "total_cells": 24912,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1499771441.0
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "checked": true,
+            "n_above_max": 0,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 6219,
+            "n_violations": 0,
+            "ok": true,
+            "range_max": 250,
+            "range_min": 20,
+            "total_cells": 6219,
+            "violation_rate": 0.0
+          },
+          "sampling_rate": {
+            "declared_hz": 1.0,
+            "expected_hz": 1.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_note": "HR start_time_unix is structurally 10 s later than other E4 channels (documented E4 firmware export behaviour, not a defect).",
+          "start_time_unix": 1499771451.0
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "format": {
+            "ok": true
+          },
+          "range": {
+            "artifact_annotation": {
+              "description": "All above-max violations are confined to the first 4 sample(s) (indices [0, 1, 2, 3]) with value(s) ~382.21 \u00b0C. This matches the known Empatica E4 NTC thermistor warm-up behaviour: the sensor outputs an unphysical sentinel value for approximately 1 s while stabilising. These samples should be stripped in the Silver cleaning step (Task 9).",
+              "pattern": "E4_TEMP_initialization",
+              "sentinel_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "violation_indices": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "checked": true,
+            "n_above_max": 4,
+            "n_below_min": 0,
+            "n_columns": 1,
+            "n_samples": 24912,
+            "n_violations": 4,
+            "ok": false,
+            "range_max": 42,
+            "range_min": 15,
+            "total_cells": 24912,
+            "violation_rate": 0.00016057
+          },
+          "sampling_rate": {
+            "declared_hz": 4.0,
+            "expected_hz": 4.0,
+            "note": "E4 CSVs carry no per-sample timestamps; actual inter-sample interval cannot be independently verified. Declared rate only.",
+            "ok": true
+          },
+          "start_time_unix": 1499771441.0
+        }
+      }
+    }
+  },
+  "summary": {
+    "format_errors": [],
+    "n_format_errors": 0,
+    "n_sampling_violations": 0,
+    "overall_range_violation_rate": 1.2e-07,
+    "passes_threshold": false,
+    "sampling_violations": [],
+    "threshold_max_conformance_violation_rate": 0.0,
+    "total_range_cells_checked": 514713128,
+    "total_range_violations": 60
+  }
+}

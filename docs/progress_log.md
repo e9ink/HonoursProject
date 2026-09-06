@@ -188,3 +188,108 @@ The E4 CSV export format does not include per-sample timestamps. The declared ra
 
 **4. IBI has no missingness rate.**  
 IBI is event-driven (no fixed expected sample count), so a missingness rate cannot be defined in the same way as for fixed-rate signals. The report records only event count and NaN count for IBI.
+
+---
+
+## Threshold decisions
+
+*Date: 2026-08-22. Authority: Kevin holds delegated authority for cleaning-strategy and quality-dimension decisions per supervisor sign-off, on condition of documented justification and revision if evidence warrants it. These decisions are pre-registered: they are recorded before any check runs and must not be adjusted to fit results.*
+
+---
+
+### Completeness — `max_missingness_rate: 0.0`
+
+**Decision:** set to 0.0.
+
+**Justification:** Bronze baseline profiling (Task 2) found exactly 0.0 missingness across every E4 modality (ACC, BVP, EDA, HR, TEMP) and every RespiBAN channel (ECG, EDA, EMG, TEMP, ACC_x/y/z, RESP) for all 15 participants. There are no NaN cells, no sequence gaps, and no dropped samples anywhere in the raw data. Batini et al. (2009) and Wang & Strong (1996) define completeness as the ratio of present to expected values; that ratio is already 1.0 at Bronze. This threshold is therefore a **preservation floor**: the pipeline must not introduce missingness, and the Gold output must match the Bronze baseline.
+
+Setting a more lenient threshold (e.g. 0.01) would permit the pipeline to degrade a dataset that arrived complete. That is not acceptable given the clean baseline.
+
+---
+
+### Consistency — no metric defined (intentionally unmeasured for WESAD)
+
+**Decision:** consistency carries no metric for WESAD and no threshold is set.
+
+**Justification:** The source document does not define a consistency check separate from conformance and plausibility. Both of those are already mapped to the validity dimension (`max_conformance_violation_rate` and `max_plausibility_failure_rate`). The one cross-modal structural issue the WESAD baseline reveals — a systematic ~19-minute timing mismatch between the E4 wristband and the RespiBAN chest sensor, present in all 15 participants — is a **timeliness and alignment** matter. It is captured by `max_cross_modal_offset_seconds` (timeliness) and addressed operationally by the cross-modal alignment step (Task 7). Treating it as a consistency violation as well would double-count the same phenomenon against two separate thresholds.
+
+Consistency is therefore intentionally unmeasured for WESAD. This decision will be revisited for DEAP (Task 14) if that dataset presents a genuine consistency issue not captured by another dimension.
+
+---
+
+### Timeliness — `max_cross_modal_offset_seconds` — **not yet set**
+
+Deliberately unset. The threshold requires a baseline cross-modal offset measurement, which will come from Task 7 (cross-modal temporal alignment). The value will be set from that output before Task 11 runs.
+
+---
+
+### Validity — `max_conformance_violation_rate` and `max_plausibility_failure_rate` — **not yet set**
+
+Both deliberately unset.
+
+- `max_conformance_violation_rate`: to be set after Task 3 (conformance check) establishes what violation rates the raw data presents.
+- `max_plausibility_failure_rate`: blocked on literature-sourced physiological ranges (`config/physiological_ranges.yaml`), which must be supplied by Tobi before Task 5 can run. The gate (`meta.signed_off: false`) remains in force.
+
+---
+
+## Physiological range decisions — supervisor confirmation
+
+*Date: 2026-08-27. Authority: Dr. Tobias Cibis confirmed each decision listed below in a supervision meeting. Kevin holds delegated authority to implement these decisions in the config file. `meta.signed_off` remains false pending a formal sign-off call (scheduled 2026-09-09).*
+
+---
+
+### BVP (E4 photoplethysmograph) — **excluded from plausibility checking**
+
+**Decision:** no physiological range defined; BVP is excluded from Task 5 and Task 11.
+
+**Justification:** BVP is a relative, qualitative measure of blood-volume change with no absolute physical unit. Its autonomic-arousal content is better captured by HRV. HRV is out of scope for this project. The WESAD documentation (wesad_readme.pdf, info.txt) provides no unit, transfer function, or range for BVP, making a credible bound impossible to define from available sources. Supervisor confirmed exclusion on 2026-08-27. *(Replaces the earlier "flag for Tobi" marker — this decision is now closed.)*
+
+---
+
+### IBI (E4 inter-beat intervals) — **excluded from plausibility checking**
+
+**Decision:** no plausibility bound defined; IBI is excluded from Task 5.
+
+**Justification:** the primary useful derivation from IBI is HRV, which requires ≥3 minutes of consecutive intervals and a different timescale/discretisation that is incompatible with the frame-level ingestion pipeline. HRV is out of scope. Supervisor confirmed exclusion on 2026-08-27. The previously suggested provisional 0.24–3.0 s IBI bound is dropped entirely.
+
+---
+
+### RespiBAN accelerometry — **±1 g calibrated range confirmed; data-span check cancelled**
+
+**Decision:** keep the −1 to +1 g plausibility bound derived from the calibration transfer function. Cancel the previously planned data-span check.
+
+**Justification:** the RespiBAN accelerometer is calibrated to the Cmin/Cmax window (28000–38000 ADC), and the ±1 g output range already accounts for the effect of gravity on a static sensor. Supervisor confirmed (2026-08-27) that no additional widening is needed and that the ±1 g reference range will not produce systematic false positives. The earlier note suggesting ±1 g might be wrong and needs widening is removed.
+
+---
+
+### EDA (E4 wristband) — **bound changed from 0–60 to 0–100 µS; reframed as device-capacity bound**
+
+**Decision:** set `min: 0`, `max: 100` µS.
+
+**Justification:** the physiological literature (e.g. Boucsein, 2012) places typical EDA up to ~60 µS. However, the Empatica E4 hardware ceiling is ~100 µS. Supervisor endorsed reframing the bound as a device-capacity limit rather than a physiological limit (2026-08-27). Consequence for the quality report (Task 11): values at or near 100 µS should be flagged as "device reached measurement capacity" rather than treated as physiologically genuine — this is a quality annotation, not a rejection. The 0–60 µS physiological ceiling remains documented as context but is not the operative threshold.
+
+---
+
+### Heart rate (E4 HR) — **20–250 bpm confirmed; provenance to-do flagged**
+
+**Decision:** keep `min: 20`, `max: 250` bpm as a corruption/plausibility bound.
+
+**Justification:** this bound is a data-integrity gate (detecting obviously corrupted values), not a healthy-resting-HR screen. Lower bound represents extreme bradycardia; upper bound captures the VT/artifact ceiling. Supervisor confirmed the range is appropriate for this use. **Provenance to-do (Kevin):** some sources used to ground these limits (e.g. record-low resting-HR figures) are non-peer-reviewed. Both limits should be re-sourced from a medical textbook (e.g. Guyton & Hall, *Medical Physiology*) before the final report. This is flagged in `config/physiological_ranges.yaml`.
+
+---
+
+### ECG, EMG — unchanged
+
+−1.5 to +1.5 mV (device rail-detection, from transfer function). No change from prior derivation.
+
+### Respiration (RespiBAN CH8) — unchanged
+
+−50 to +50 % (device rail-detection, from transfer function). No change from prior derivation.
+
+### Skin temperature (E4) — unchanged
+
+15 to 42 °C. Pending formal re-sourcing from a medical textbook before the final report.
+
+### E4 accelerometry — unchanged
+
+−2 to +2 g (from E4 hardware specification in info.txt).
