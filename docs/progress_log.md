@@ -292,4 +292,62 @@ Both deliberately unset.
 
 ### E4 accelerometry — unchanged
 
-−2 to +2 g (from E4 hardware specification in info.txt).
+−2 to +2 g (from E4 hardware specification in info.txt)
+
+---
+
+## Conformance check finding: E4 TEMP warm-up artifact (Task 3)
+
+*Date: 2026-09-09. Authority: Kevin holds delegated authority for cleaning-strategy decisions per supervisor sign-off, on condition of documented justification.*
+
+---
+
+### The finding
+
+The E4 TEMP channel outputs an unphysical sentinel value (~382 °C, either 382.18 or 382.21 depending on firmware version) for the first 4 samples of every participant's recording — approximately 1 second at 4 Hz. This occurs while the Empatica E4's NTC thermistor stabilises after recording begins. The pattern is identical in shape across all 15 participants: indices [0, 1, 2, 3], always above-max, never below-min, no other out-of-range TEMP values anywhere in the dataset.
+
+Detected by the Task 3 conformance range check against the configured bound of 15–42 °C (`config/physiological_ranges.yaml`, `wesad.skin_temperature`, signed off 2026-09-09).
+
+| Statistic | Value |
+|---|---|
+| Participants affected | 15 / 15 |
+| Samples per participant | 4 |
+| Total violating samples | 60 |
+| Total cells checked (all signals) | 514,713,128 |
+| Overall range violation rate | 1.2e-7 |
+| Threshold (`max_conformance_violation_rate`) | 0.0 |
+| Pre-cleaning status | **fails threshold** (expected — see decision below) |
+
+---
+
+### Why baseline profiling did not detect this
+
+Task 2 profiling (Bronze baseline) measured missingness: it counted NaN cells, sequence gaps, and dropped samples. These 60 samples are **present and numerically valid** — they are not NaN, not missing, not gaps. A missingness check cannot detect present-but-implausible values. The range conformance check in Task 3 is precisely the mechanism designed to catch this class of artifact.
+
+This is a positive example of the CCP framework working as intended: a pre-registered conformance check (registered before any check ran, in the threshold and range config files) surfaces an artifact that the Bronze baseline did not and could not detect. The framework is catching something real.
+
+---
+
+### Decision
+
+**Keep `max_conformance_violation_rate: 0.0` unchanged.**
+
+The threshold is a Gold-output preservation floor, not a Bronze-state description. It asserts that the Silver and Gold pipeline steps must not introduce conformance violations — it does not assert that the raw Bronze data is already clean. The current pre-cleaning "fail" is the correct and expected result: it documents that the raw data contains a known artifact and motivates the cleaning step that removes it.
+
+Loosening the threshold to, e.g., 0.001 to accommodate this artifact would:
+1. Permit the Gold output to contain up to 0.1% out-of-range values with no flag — far more than the 60 warm-up samples warrant.
+2. Undermine the preservation-floor principle: if cleaning is successful, the Gold rate should be 0.0, so there is nothing to accommodate.
+
+The threshold stays at 0.0. Task 3 correctly reports "fails threshold" for the pre-cleaning data. Task 11 (before/after quality report) will show the rate drop from 1.2e-7 to 0.0 as evidence that cleaning resolved the artifact.
+
+---
+
+### Carried-forward task: Task 8 cleaning requirement
+
+**Task 8 (Silver cleaning) must strip the first 4 TEMP samples per participant** — the thermistor warm-up window. Specifically:
+
+- Signal: E4 TEMP only (no other signal shows this pattern).
+- Action: remove samples at indices [0, 1, 2, 3] (the first 1 second of each TEMP recording).
+- Scope: all 15 participants.
+- Verification: after stripping, re-run conformance on the Silver TEMP data and confirm violation rate = 0.0.
+- Do NOT strip additional samples: only the 4 identified warm-up samples per participant are affected. The rest of the TEMP data is clean..
