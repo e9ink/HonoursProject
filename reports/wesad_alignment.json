@@ -1,0 +1,1114 @@
+{
+  "task": "cross_modal_temporal_alignment",
+  "dataset": "WESAD",
+  "timezone_assumption": "UTC+2 (CEST, Germany summer) for RespiBAN wall-clock times",
+  "alignment_method": "timestamp_anchoring",
+  "note_offset_before": "Large positive value: E4 activates ~15-24 minutes before RespiBAN per participant. This is a sensor activation-window difference, not clock drift. Resolved by trimming to the overlap window.",
+  "note_offset_after": "Within-overlap residual is 0.0 s by definition: alignment anchors t=0 to the overlap start (RespiBAN start timestamp). Both devices' samples are indexed relative to that anchor; no timestamp residual remains.",
+  "threshold_s": 1.0,
+  "summary": {
+    "n_participants": 15,
+    "mean_offset_before_s": 1181.2,
+    "min_offset_before_s": 920.0,
+    "max_offset_before_s": 1416.0,
+    "offset_after_s": 0.0,
+    "all_pass_threshold": true
+  },
+  "participants": {
+    "S10": {
+      "e4": {
+        "earliest_start_unix": 1500966308.0,
+        "latest_end_unix": 1500973131.0,
+        "modalities": {
+          "ACC": {
+            "start_unix": 1500966308.0,
+            "hz": 32.0,
+            "n_samples": 218328,
+            "duration_s": 6822.75,
+            "end_unix": 1500973130.75
+          },
+          "BVP": {
+            "start_unix": 1500966308.0,
+            "hz": 64.0,
+            "n_samples": 436645,
+            "duration_s": 6822.578,
+            "end_unix": 1500973130.578
+          },
+          "EDA": {
+            "start_unix": 1500966308.0,
+            "hz": 4.0,
+            "n_samples": 27288,
+            "duration_s": 6822.0,
+            "end_unix": 1500973130.0
+          },
+          "HR": {
+            "start_unix": 1500966318.0,
+            "hz": 1.0,
+            "n_samples": 6813,
+            "duration_s": 6813.0,
+            "end_unix": 1500973131.0
+          },
+          "TEMP": {
+            "start_unix": 1500966308.0,
+            "hz": 4.0,
+            "n_samples": 27288,
+            "duration_s": 6822.0,
+            "end_unix": 1500973130.0
+          }
+        }
+      },
+      "respiban": {
+        "start_unix": 1500967501.0,
+        "end_unix": 1500973204.263,
+        "hz": 700,
+        "n_samples": 3992284,
+        "duration_s": 5703.263
+      },
+      "offset_before_s": 1193.0,
+      "overlap_window": {
+        "start_unix": 1500967501.0,
+        "end_unix": 1500973131.0,
+        "duration_s": 5630.0,
+        "anchor": "RespiBAN start (both devices re-indexed to this point)"
+      },
+      "leading_tail": {
+        "sensor": "E4",
+        "start_unix": 1500966308.0,
+        "end_unix": 1500967501.0,
+        "duration_s": 1193.0,
+        "note": "E4 was recording before RespiBAN was activated"
+      },
+      "trailing_tail": {
+        "sensor": "RespiBAN",
+        "start_unix": 1500973131.0,
+        "end_unix": 1500973204.263,
+        "duration_s": 73.263,
+        "note": "RespiBAN continued after E4 stopped"
+      },
+      "offset_after_s": 0.0,
+      "passes_threshold": true
+    },
+    "S11": {
+      "e4": {
+        "earliest_start_unix": 1500981259.0,
+        "latest_end_unix": 1500987720.0,
+        "modalities": {
+          "ACC": {
+            "start_unix": 1500981259.0,
+            "hz": 32.0,
+            "n_samples": 206736,
+            "duration_s": 6460.5,
+            "end_unix": 1500987719.5
+          },
+          "BVP": {
+            "start_unix": 1500981259.0,
+            "hz": 64.0,
+            "n_samples": 413468,
+            "duration_s": 6460.438,
+            "end_unix": 1500987719.438
+          },
+          "EDA": {
+            "start_unix": 1500981259.0,
+            "hz": 4.0,
+            "n_samples": 25842,
+            "duration_s": 6460.5,
+            "end_unix": 1500987719.5
+          },
+          "HR": {
+            "start_unix": 1500981269.0,
+            "hz": 1.0,
+            "n_samples": 6451,
+            "duration_s": 6451.0,
+            "end_unix": 1500987720.0
+          },
+          "TEMP": {
+            "start_unix": 1500981259.0,
+            "hz": 4.0,
+            "n_samples": 25840,
+            "duration_s": 6460.0,
+            "end_unix": 1500987719.0
+          }
+        }
+      },
+      "respiban": {
+        "start_unix": 1500982381.0,
+        "end_unix": 1500987793.679,
+        "hz": 700,
+        "n_samples": 3788875,
+        "duration_s": 5412.679
+      },
+      "offset_before_s": 1122.0,
+      "overlap_window": {
+        "start_unix": 1500982381.0,
+        "end_unix": 1500987720.0,
+        "duration_s": 5339.0,
+        "anchor": "RespiBAN start (both devices re-indexed to this point)"
+      },
+      "leading_tail": {
+        "sensor": "E4",
+        "start_unix": 1500981259.0,
+        "end_unix": 1500982381.0,
+        "duration_s": 1122.0,
+        "note": "E4 was recording before RespiBAN was activated"
+      },
+      "trailing_tail": {
+        "sensor": "RespiBAN",
+        "start_unix": 1500987720.0,
+        "end_unix": 1500987793.679,
+        "duration_s": 73.679,
+        "note": "RespiBAN continued after E4 stopped"
+      },
+      "offset_after_s": 0.0,
+      "passes_threshold": true
+    },
+    "S13": {
+      "e4": {
+        "earliest_start_unix": 1502190787.0,
+        "latest_end_unix": 1502197650.0,
+        "modalities": {
+          "ACC": {
+            "start_unix": 1502190787.0,
+            "hz": 32.0,
+            "n_samples": 219606,
+            "duration_s": 6862.688,
+            "end_unix": 1502197649.688
+          },
+          "BVP": {
+            "start_unix": 1502190787.0,
+            "hz": 64.0,
+            "n_samples": 439208,
+            "duration_s": 6862.625,
+            "end_unix": 1502197649.625
+          },
+          "EDA": {
+            "start_unix": 1502190787.0,
+            "hz": 4.0,
+            "n_samples": 27450,
+            "duration_s": 6862.5,
+            "end_unix": 1502197649.5
+          },
+          "HR": {
+            "start_unix": 1502190797.0,
+            "hz": 1.0,
+            "n_samples": 6853,
+            "duration_s": 6853.0,
+            "end_unix": 1502197650.0
+          },
+          "TEMP": {
+            "start_unix": 1502190787.0,
+            "hz": 4.0,
+            "n_samples": 27448,
+            "duration_s": 6862.0,
+            "end_unix": 1502197649.0
+          }
+        }
+      },
+      "respiban": {
+        "start_unix": 1502191981.0,
+        "end_unix": 1502197718.879,
+        "hz": 700,
+        "n_samples": 4016515,
+        "duration_s": 5737.879
+      },
+      "offset_before_s": 1194.0,
+      "overlap_window": {
+        "start_unix": 1502191981.0,
+        "end_unix": 1502197650.0,
+        "duration_s": 5669.0,
+        "anchor": "RespiBAN start (both devices re-indexed to this point)"
+      },
+      "leading_tail": {
+        "sensor": "E4",
+        "start_unix": 1502190787.0,
+        "end_unix": 1502191981.0,
+        "duration_s": 1194.0,
+        "note": "E4 was recording before RespiBAN was activated"
+      },
+      "trailing_tail": {
+        "sensor": "RespiBAN",
+        "start_unix": 1502197650.0,
+        "end_unix": 1502197718.879,
+        "duration_s": 68.879,
+        "note": "RespiBAN continued after E4 stopped"
+      },
+      "offset_after_s": 0.0,
+      "passes_threshold": true
+    },
+    "S14": {
+      "e4": {
+        "earliest_start_unix": 1502262571.0,
+        "latest_end_unix": 1502269558.0,
+        "modalities": {
+          "ACC": {
+            "start_unix": 1502262571.0,
+            "hz": 32.0,
+            "n_samples": 223560,
+            "duration_s": 6986.25,
+            "end_unix": 1502269557.25
+          },
+          "BVP": {
+            "start_unix": 1502262571.0,
+            "hz": 64.0,
+            "n_samples": 447128,
+            "duration_s": 6986.375,
+            "end_unix": 1502269557.375
+          },
+          "EDA": {
+            "start_unix": 1502262571.0,
+            "hz": 4.0,
+            "n_samples": 27942,
+            "duration_s": 6985.5,
+            "end_unix": 1502269556.5
+          },
+          "HR": {
+            "start_unix": 1502262581.0,
+            "hz": 1.0,
+            "n_samples": 6977,
+            "duration_s": 6977.0,
+            "end_unix": 1502269558.0
+          },
+          "TEMP": {
+            "start_unix": 1502262571.0,
+            "hz": 4.0,
+            "n_samples": 27944,
+            "duration_s": 6986.0,
+            "end_unix": 1502269557.0
+          }
+        }
+      },
+      "respiban": {
+        "start_unix": 1502263861.0,
+        "end_unix": 1502269624.516,
+        "hz": 700,
+        "n_samples": 4034461,
+        "duration_s": 5763.516
+      },
+      "offset_before_s": 1290.0,
+      "overlap_window": {
+        "start_unix": 1502263861.0,
+        "end_unix": 1502269558.0,
+        "duration_s": 5697.0,
+        "anchor": "RespiBAN start (both devices re-indexed to this point)"
+      },
+      "leading_tail": {
+        "sensor": "E4",
+        "start_unix": 1502262571.0,
+        "end_unix": 1502263861.0,
+        "duration_s": 1290.0,
+        "note": "E4 was recording before RespiBAN was activated"
+      },
+      "trailing_tail": {
+        "sensor": "RespiBAN",
+        "start_unix": 1502269558.0,
+        "end_unix": 1502269624.516,
+        "duration_s": 66.516,
+        "note": "RespiBAN continued after E4 stopped"
+      },
+      "offset_after_s": 0.0,
+      "passes_threshold": true
+    },
+    "S15": {
+      "e4": {
+        "earliest_start_unix": 1502349056.0,
+        "latest_end_unix": 1502355699.0,
+        "modalities": {
+          "ACC": {
+            "start_unix": 1502349056.0,
+            "hz": 32.0,
+            "n_samples": 212568,
+            "duration_s": 6642.75,
+            "end_unix": 1502355698.75
+          },
+          "BVP": {
+            "start_unix": 1502349056.0,
+            "hz": 64.0,
+            "n_samples": 425139,
+            "duration_s": 6642.797,
+            "end_unix": 1502355698.797
+          },
+          "EDA": {
+            "start_unix": 1502349056.0,
+            "hz": 4.0,
+            "n_samples": 26568,
+            "duration_s": 6642.0,
+            "end_unix": 1502355698.0
+          },
+          "HR": {
+            "start_unix": 1502349066.0,
+            "hz": 1.0,
+            "n_samples": 6633,
+            "duration_s": 6633.0,
+            "end_unix": 1502355699.0
+          },
+          "TEMP": {
+            "start_unix": 1502349056.0,
+            "hz": 4.0,
+            "n_samples": 26568,
+            "duration_s": 6642.0,
+            "end_unix": 1502355698.0
+          }
+        }
+      },
+      "respiban": {
+        "start_unix": 1502350201.0,
+        "end_unix": 1502355825.253,
+        "hz": 700,
+        "n_samples": 3936977,
+        "duration_s": 5624.253
+      },
+      "offset_before_s": 1145.0,
+      "overlap_window": {
+        "start_unix": 1502350201.0,
+        "end_unix": 1502355699.0,
+        "duration_s": 5498.0,
+        "anchor": "RespiBAN start (both devices re-indexed to this point)"
+      },
+      "leading_tail": {
+        "sensor": "E4",
+        "start_unix": 1502349056.0,
+        "end_unix": 1502350201.0,
+        "duration_s": 1145.0,
+        "note": "E4 was recording before RespiBAN was activated"
+      },
+      "trailing_tail": {
+        "sensor": "RespiBAN",
+        "start_unix": 1502355699.0,
+        "end_unix": 1502355825.253,
+        "duration_s": 126.253,
+        "note": "RespiBAN continued after E4 stopped"
+      },
+      "offset_after_s": 0.0,
+      "passes_threshold": true
+    },
+    "S16": {
+      "e4": {
+        "earliest_start_unix": 1502366365.0,
+        "latest_end_unix": 1502373473.0,
+        "modalities": {
+          "ACC": {
+            "start_unix": 1502366365.0,
+            "hz": 32.0,
+            "n_samples": 227430,
+            "duration_s": 7107.188,
+            "end_unix": 1502373472.188
+          },
+          "BVP": {
+            "start_unix": 1502366365.0,
+            "hz": 64.0,
+            "n_samples": 454850,
+            "duration_s": 7107.031,
+            "end_unix": 1502373472.031
+          },
+          "EDA": {
+            "start_unix": 1502366365.0,
+            "hz": 4.0,
+            "n_samples": 28428,
+            "duration_s": 7107.0,
+            "end_unix": 1502373472.0
+          },
+          "HR": {
+            "start_unix": 1502366375.0,
+            "hz": 1.0,
+            "n_samples": 7098,
+            "duration_s": 7098.0,
+            "end_unix": 1502373473.0
+          },
+          "TEMP": {
+            "start_unix": 1502366365.0,
+            "hz": 4.0,
+            "n_samples": 28424,
+            "duration_s": 7106.0,
+            "end_unix": 1502373471.0
+          }
+        }
+      },
+      "respiban": {
+        "start_unix": 1502367661.0,
+        "end_unix": 1502373598.167,
+        "hz": 700,
+        "n_samples": 4156017,
+        "duration_s": 5937.167
+      },
+      "offset_before_s": 1296.0,
+      "overlap_window": {
+        "start_unix": 1502367661.0,
+        "end_unix": 1502373473.0,
+        "duration_s": 5812.0,
+        "anchor": "RespiBAN start (both devices re-indexed to this point)"
+      },
+      "leading_tail": {
+        "sensor": "E4",
+        "start_unix": 1502366365.0,
+        "end_unix": 1502367661.0,
+        "duration_s": 1296.0,
+        "note": "E4 was recording before RespiBAN was activated"
+      },
+      "trailing_tail": {
+        "sensor": "RespiBAN",
+        "start_unix": 1502373473.0,
+        "end_unix": 1502373598.167,
+        "duration_s": 125.167,
+        "note": "RespiBAN continued after E4 stopped"
+      },
+      "offset_after_s": 0.0,
+      "passes_threshold": true
+    },
+    "S17": {
+      "e4": {
+        "earliest_start_unix": 1502435962.0,
+        "latest_end_unix": 1502443194.0,
+        "modalities": {
+          "ACC": {
+            "start_unix": 1502435962.0,
+            "hz": 32.0,
+            "n_samples": 231414,
+            "duration_s": 7231.688,
+            "end_unix": 1502443193.688
+          },
+          "BVP": {
+            "start_unix": 1502435962.0,
+            "hz": 64.0,
+            "n_samples": 462825,
+            "duration_s": 7231.641,
+            "end_unix": 1502443193.641
+          },
+          "EDA": {
+            "start_unix": 1502435962.0,
+            "hz": 4.0,
+            "n_samples": 28926,
+            "duration_s": 7231.5,
+            "end_unix": 1502443193.5
+          },
+          "HR": {
+            "start_unix": 1502435972.0,
+            "hz": 1.0,
+            "n_samples": 7222,
+            "duration_s": 7222.0,
+            "end_unix": 1502443194.0
+          },
+          "TEMP": {
+            "start_unix": 1502435962.0,
+            "hz": 4.0,
+            "n_samples": 28920,
+            "duration_s": 7230.0,
+            "end_unix": 1502443192.0
+          }
+        }
+      },
+      "respiban": {
+        "start_unix": 1502437141.0,
+        "end_unix": 1502443265.454,
+        "hz": 700,
+        "n_samples": 4287118,
+        "duration_s": 6124.454
+      },
+      "offset_before_s": 1179.0,
+      "overlap_window": {
+        "start_unix": 1502437141.0,
+        "end_unix": 1502443194.0,
+        "duration_s": 6053.0,
+        "anchor": "RespiBAN start (both devices re-indexed to this point)"
+      },
+      "leading_tail": {
+        "sensor": "E4",
+        "start_unix": 1502435962.0,
+        "end_unix": 1502437141.0,
+        "duration_s": 1179.0,
+        "note": "E4 was recording before RespiBAN was activated"
+      },
+      "trailing_tail": {
+        "sensor": "RespiBAN",
+        "start_unix": 1502443194.0,
+        "end_unix": 1502443265.454,
+        "duration_s": 71.454,
+        "note": "RespiBAN continued after E4 stopped"
+      },
+      "offset_after_s": 0.0,
+      "passes_threshold": true
+    },
+    "S2": {
+      "e4": {
+        "earliest_start_unix": 1495437325.0,
+        "latest_end_unix": 1495445200.0,
+        "modalities": {
+          "ACC": {
+            "start_unix": 1495437325.0,
+            "hz": 32.0,
+            "n_samples": 251970,
+            "duration_s": 7874.062,
+            "end_unix": 1495445199.062
+          },
+          "BVP": {
+            "start_unix": 1495437325.0,
+            "hz": 64.0,
+            "n_samples": 503943,
+            "duration_s": 7874.109,
+            "end_unix": 1495445199.109
+          },
+          "EDA": {
+            "start_unix": 1495437325.0,
+            "hz": 4.0,
+            "n_samples": 31494,
+            "duration_s": 7873.5,
+            "end_unix": 1495445198.5
+          },
+          "HR": {
+            "start_unix": 1495437335.0,
+            "hz": 1.0,
+            "n_samples": 7865,
+            "duration_s": 7865.0,
+            "end_unix": 1495445200.0
+          },
+          "TEMP": {
+            "start_unix": 1495437325.0,
+            "hz": 4.0,
+            "n_samples": 31496,
+            "duration_s": 7874.0,
+            "end_unix": 1495445199.0
+          }
+        }
+      },
+      "respiban": {
+        "start_unix": 1495438741.0,
+        "end_unix": 1495445086.81,
+        "hz": 700,
+        "n_samples": 4442067,
+        "duration_s": 6345.81
+      },
+      "offset_before_s": 1416.0,
+      "overlap_window": {
+        "start_unix": 1495438741.0,
+        "end_unix": 1495445086.81,
+        "duration_s": 6345.81,
+        "anchor": "RespiBAN start (both devices re-indexed to this point)"
+      },
+      "leading_tail": {
+        "sensor": "E4",
+        "start_unix": 1495437325.0,
+        "end_unix": 1495438741.0,
+        "duration_s": 1416.0,
+        "note": "E4 was recording before RespiBAN was activated"
+      },
+      "trailing_tail": {
+        "sensor": "E4",
+        "start_unix": 1495445086.81,
+        "end_unix": 1495445200.0,
+        "duration_s": 113.19,
+        "note": "E4 continued after RespiBAN stopped"
+      },
+      "offset_after_s": 0.0,
+      "passes_threshold": true
+    },
+    "S3": {
+      "e4": {
+        "earliest_start_unix": 1495624128.0,
+        "latest_end_unix": 1495631852.0,
+        "modalities": {
+          "ACC": {
+            "start_unix": 1495624128.0,
+            "hz": 32.0,
+            "n_samples": 247152,
+            "duration_s": 7723.5,
+            "end_unix": 1495631851.5
+          },
+          "BVP": {
+            "start_unix": 1495624128.0,
+            "hz": 64.0,
+            "n_samples": 494307,
+            "duration_s": 7723.547,
+            "end_unix": 1495631851.547
+          },
+          "EDA": {
+            "start_unix": 1495624128.0,
+            "hz": 4.0,
+            "n_samples": 30894,
+            "duration_s": 7723.5,
+            "end_unix": 1495631851.5
+          },
+          "HR": {
+            "start_unix": 1495624138.0,
+            "hz": 1.0,
+            "n_samples": 7714,
+            "duration_s": 7714.0,
+            "end_unix": 1495631852.0
+          },
+          "TEMP": {
+            "start_unix": 1495624128.0,
+            "hz": 4.0,
+            "n_samples": 30888,
+            "duration_s": 7722.0,
+            "end_unix": 1495631850.0
+          }
+        }
+      },
+      "respiban": {
+        "start_unix": 1495625161.0,
+        "end_unix": 1495631794.353,
+        "hz": 700,
+        "n_samples": 4643347,
+        "duration_s": 6633.353
+      },
+      "offset_before_s": 1033.0,
+      "overlap_window": {
+        "start_unix": 1495625161.0,
+        "end_unix": 1495631794.353,
+        "duration_s": 6633.353,
+        "anchor": "RespiBAN start (both devices re-indexed to this point)"
+      },
+      "leading_tail": {
+        "sensor": "E4",
+        "start_unix": 1495624128.0,
+        "end_unix": 1495625161.0,
+        "duration_s": 1033.0,
+        "note": "E4 was recording before RespiBAN was activated"
+      },
+      "trailing_tail": {
+        "sensor": "E4",
+        "start_unix": 1495631794.353,
+        "end_unix": 1495631852.0,
+        "duration_s": 57.647,
+        "note": "E4 continued after RespiBAN stopped"
+      },
+      "offset_after_s": 0.0,
+      "passes_threshold": true
+    },
+    "S4": {
+      "e4": {
+        "earliest_start_unix": 1497342820.0,
+        "latest_end_unix": 1497350820.0,
+        "modalities": {
+          "ACC": {
+            "start_unix": 1497342820.0,
+            "hz": 32.0,
+            "n_samples": 255978,
+            "duration_s": 7999.312,
+            "end_unix": 1497350819.312
+          },
+          "BVP": {
+            "start_unix": 1497342820.0,
+            "hz": 64.0,
+            "n_samples": 511962,
+            "duration_s": 7999.406,
+            "end_unix": 1497350819.406
+          },
+          "EDA": {
+            "start_unix": 1497342820.0,
+            "hz": 4.0,
+            "n_samples": 31998,
+            "duration_s": 7999.5,
+            "end_unix": 1497350819.5
+          },
+          "HR": {
+            "start_unix": 1497342830.0,
+            "hz": 1.0,
+            "n_samples": 7990,
+            "duration_s": 7990.0,
+            "end_unix": 1497350820.0
+          },
+          "TEMP": {
+            "start_unix": 1497342820.0,
+            "hz": 4.0,
+            "n_samples": 31992,
+            "duration_s": 7998.0,
+            "end_unix": 1497350818.0
+          }
+        }
+      },
+      "respiban": {
+        "start_unix": 1497344221.0,
+        "end_unix": 1497350776.076,
+        "hz": 700,
+        "n_samples": 4588553,
+        "duration_s": 6555.076
+      },
+      "offset_before_s": 1401.0,
+      "overlap_window": {
+        "start_unix": 1497344221.0,
+        "end_unix": 1497350776.076,
+        "duration_s": 6555.076,
+        "anchor": "RespiBAN start (both devices re-indexed to this point)"
+      },
+      "leading_tail": {
+        "sensor": "E4",
+        "start_unix": 1497342820.0,
+        "end_unix": 1497344221.0,
+        "duration_s": 1401.0,
+        "note": "E4 was recording before RespiBAN was activated"
+      },
+      "trailing_tail": {
+        "sensor": "E4",
+        "start_unix": 1497350776.076,
+        "end_unix": 1497350820.0,
+        "duration_s": 43.924,
+        "note": "E4 continued after RespiBAN stopped"
+      },
+      "offset_after_s": 0.0,
+      "passes_threshold": true
+    },
+    "S5": {
+      "e4": {
+        "earliest_start_unix": 1497356533.0,
+        "latest_end_unix": 1497364084.0,
+        "modalities": {
+          "ACC": {
+            "start_unix": 1497356533.0,
+            "hz": 32.0,
+            "n_samples": 241620,
+            "duration_s": 7550.625,
+            "end_unix": 1497364083.625
+          },
+          "BVP": {
+            "start_unix": 1497356533.0,
+            "hz": 64.0,
+            "n_samples": 483241,
+            "duration_s": 7550.641,
+            "end_unix": 1497364083.641
+          },
+          "EDA": {
+            "start_unix": 1497356533.0,
+            "hz": 4.0,
+            "n_samples": 30204,
+            "duration_s": 7551.0,
+            "end_unix": 1497364084.0
+          },
+          "HR": {
+            "start_unix": 1497356543.0,
+            "hz": 1.0,
+            "n_samples": 7541,
+            "duration_s": 7541.0,
+            "end_unix": 1497364084.0
+          },
+          "TEMP": {
+            "start_unix": 1497356533.0,
+            "hz": 4.0,
+            "n_samples": 30200,
+            "duration_s": 7550.0,
+            "end_unix": 1497364083.0
+          }
+        }
+      },
+      "respiban": {
+        "start_unix": 1497357721.0,
+        "end_unix": 1497364147.311,
+        "hz": 700,
+        "n_samples": 4498418,
+        "duration_s": 6426.311
+      },
+      "offset_before_s": 1188.0,
+      "overlap_window": {
+        "start_unix": 1497357721.0,
+        "end_unix": 1497364084.0,
+        "duration_s": 6363.0,
+        "anchor": "RespiBAN start (both devices re-indexed to this point)"
+      },
+      "leading_tail": {
+        "sensor": "E4",
+        "start_unix": 1497356533.0,
+        "end_unix": 1497357721.0,
+        "duration_s": 1188.0,
+        "note": "E4 was recording before RespiBAN was activated"
+      },
+      "trailing_tail": {
+        "sensor": "RespiBAN",
+        "start_unix": 1497364084.0,
+        "end_unix": 1497364147.311,
+        "duration_s": 63.311,
+        "note": "RespiBAN continued after E4 stopped"
+      },
+      "offset_after_s": 0.0,
+      "passes_threshold": true
+    },
+    "S6": {
+      "e4": {
+        "earliest_start_unix": 1497439238.0,
+        "latest_end_unix": 1497447562.0,
+        "modalities": {
+          "ACC": {
+            "start_unix": 1497439238.0,
+            "hz": 32.0,
+            "n_samples": 266352,
+            "duration_s": 8323.5,
+            "end_unix": 1497447561.5
+          },
+          "BVP": {
+            "start_unix": 1497439238.0,
+            "hz": 64.0,
+            "n_samples": 532708,
+            "duration_s": 8323.562,
+            "end_unix": 1497447561.562
+          },
+          "EDA": {
+            "start_unix": 1497439238.0,
+            "hz": 4.0,
+            "n_samples": 33294,
+            "duration_s": 8323.5,
+            "end_unix": 1497447561.5
+          },
+          "HR": {
+            "start_unix": 1497439248.0,
+            "hz": 1.0,
+            "n_samples": 8314,
+            "duration_s": 8314.0,
+            "end_unix": 1497447562.0
+          },
+          "TEMP": {
+            "start_unix": 1497439238.0,
+            "hz": 4.0,
+            "n_samples": 33288,
+            "duration_s": 8322.0,
+            "end_unix": 1497447560.0
+          }
+        }
+      },
+      "respiban": {
+        "start_unix": 1497440401.0,
+        "end_unix": 1497447623.029,
+        "hz": 700,
+        "n_samples": 5055420,
+        "duration_s": 7222.029
+      },
+      "offset_before_s": 1163.0,
+      "overlap_window": {
+        "start_unix": 1497440401.0,
+        "end_unix": 1497447562.0,
+        "duration_s": 7161.0,
+        "anchor": "RespiBAN start (both devices re-indexed to this point)"
+      },
+      "leading_tail": {
+        "sensor": "E4",
+        "start_unix": 1497439238.0,
+        "end_unix": 1497440401.0,
+        "duration_s": 1163.0,
+        "note": "E4 was recording before RespiBAN was activated"
+      },
+      "trailing_tail": {
+        "sensor": "RespiBAN",
+        "start_unix": 1497447562.0,
+        "end_unix": 1497447623.029,
+        "duration_s": 61.029,
+        "note": "RespiBAN continued after E4 stopped"
+      },
+      "offset_after_s": 0.0,
+      "passes_threshold": true
+    },
+    "S7": {
+      "e4": {
+        "earliest_start_unix": 1499339464.0,
+        "latest_end_unix": 1499345959.0,
+        "modalities": {
+          "ACC": {
+            "start_unix": 1499339464.0,
+            "hz": 32.0,
+            "n_samples": 207822,
+            "duration_s": 6494.438,
+            "end_unix": 1499345958.438
+          },
+          "BVP": {
+            "start_unix": 1499339464.0,
+            "hz": 64.0,
+            "n_samples": 415646,
+            "duration_s": 6494.469,
+            "end_unix": 1499345958.469
+          },
+          "EDA": {
+            "start_unix": 1499339464.0,
+            "hz": 4.0,
+            "n_samples": 25974,
+            "duration_s": 6493.5,
+            "end_unix": 1499345957.5
+          },
+          "HR": {
+            "start_unix": 1499339474.0,
+            "hz": 1.0,
+            "n_samples": 6485,
+            "duration_s": 6485.0,
+            "end_unix": 1499345959.0
+          },
+          "TEMP": {
+            "start_unix": 1499339464.0,
+            "hz": 4.0,
+            "n_samples": 25976,
+            "duration_s": 6494.0,
+            "end_unix": 1499345958.0
+          }
+        }
+      },
+      "respiban": {
+        "start_unix": 1499340601.0,
+        "end_unix": 1499346009.25,
+        "hz": 700,
+        "n_samples": 3785775,
+        "duration_s": 5408.25
+      },
+      "offset_before_s": 1137.0,
+      "overlap_window": {
+        "start_unix": 1499340601.0,
+        "end_unix": 1499345959.0,
+        "duration_s": 5358.0,
+        "anchor": "RespiBAN start (both devices re-indexed to this point)"
+      },
+      "leading_tail": {
+        "sensor": "E4",
+        "start_unix": 1499339464.0,
+        "end_unix": 1499340601.0,
+        "duration_s": 1137.0,
+        "note": "E4 was recording before RespiBAN was activated"
+      },
+      "trailing_tail": {
+        "sensor": "RespiBAN",
+        "start_unix": 1499345959.0,
+        "end_unix": 1499346009.25,
+        "duration_s": 50.25,
+        "note": "RespiBAN continued after E4 stopped"
+      },
+      "offset_after_s": 0.0,
+      "passes_threshold": true
+    },
+    "S8": {
+      "e4": {
+        "earliest_start_unix": 1499685040.0,
+        "latest_end_unix": 1499691679.0,
+        "modalities": {
+          "ACC": {
+            "start_unix": 1499685040.0,
+            "hz": 32.0,
+            "n_samples": 212430,
+            "duration_s": 6638.438,
+            "end_unix": 1499691678.438
+          },
+          "BVP": {
+            "start_unix": 1499685040.0,
+            "hz": 64.0,
+            "n_samples": 424864,
+            "duration_s": 6638.5,
+            "end_unix": 1499691678.5
+          },
+          "EDA": {
+            "start_unix": 1499685040.0,
+            "hz": 4.0,
+            "n_samples": 26550,
+            "duration_s": 6637.5,
+            "end_unix": 1499691677.5
+          },
+          "HR": {
+            "start_unix": 1499685050.0,
+            "hz": 1.0,
+            "n_samples": 6629,
+            "duration_s": 6629.0,
+            "end_unix": 1499691679.0
+          },
+          "TEMP": {
+            "start_unix": 1499685040.0,
+            "hz": 4.0,
+            "n_samples": 26552,
+            "duration_s": 6638.0,
+            "end_unix": 1499691678.0
+          }
+        }
+      },
+      "respiban": {
+        "start_unix": 1499686081.0,
+        "end_unix": 1499691738.016,
+        "hz": 700,
+        "n_samples": 3959911,
+        "duration_s": 5657.016
+      },
+      "offset_before_s": 1041.0,
+      "overlap_window": {
+        "start_unix": 1499686081.0,
+        "end_unix": 1499691679.0,
+        "duration_s": 5598.0,
+        "anchor": "RespiBAN start (both devices re-indexed to this point)"
+      },
+      "leading_tail": {
+        "sensor": "E4",
+        "start_unix": 1499685040.0,
+        "end_unix": 1499686081.0,
+        "duration_s": 1041.0,
+        "note": "E4 was recording before RespiBAN was activated"
+      },
+      "trailing_tail": {
+        "sensor": "RespiBAN",
+        "start_unix": 1499691679.0,
+        "end_unix": 1499691738.016,
+        "duration_s": 59.016,
+        "note": "RespiBAN continued after E4 stopped"
+      },
+      "offset_after_s": 0.0,
+      "passes_threshold": true
+    },
+    "S9": {
+      "e4": {
+        "earliest_start_unix": 1499771441.0,
+        "latest_end_unix": 1499777670.0,
+        "modalities": {
+          "ACC": {
+            "start_unix": 1499771441.0,
+            "hz": 32.0,
+            "n_samples": 199314,
+            "duration_s": 6228.562,
+            "end_unix": 1499777669.562
+          },
+          "BVP": {
+            "start_unix": 1499771441.0,
+            "hz": 64.0,
+            "n_samples": 398629,
+            "duration_s": 6228.578,
+            "end_unix": 1499777669.578
+          },
+          "EDA": {
+            "start_unix": 1499771441.0,
+            "hz": 4.0,
+            "n_samples": 24912,
+            "duration_s": 6228.0,
+            "end_unix": 1499777669.0
+          },
+          "HR": {
+            "start_unix": 1499771451.0,
+            "hz": 1.0,
+            "n_samples": 6219,
+            "duration_s": 6219.0,
+            "end_unix": 1499777670.0
+          },
+          "TEMP": {
+            "start_unix": 1499771441.0,
+            "hz": 4.0,
+            "n_samples": 24912,
+            "duration_s": 6228.0,
+            "end_unix": 1499777669.0
+          }
+        }
+      },
+      "respiban": {
+        "start_unix": 1499772361.0,
+        "end_unix": 1499777717.8,
+        "hz": 700,
+        "n_samples": 3749760,
+        "duration_s": 5356.8
+      },
+      "offset_before_s": 920.0,
+      "overlap_window": {
+        "start_unix": 1499772361.0,
+        "end_unix": 1499777670.0,
+        "duration_s": 5309.0,
+        "anchor": "RespiBAN start (both devices re-indexed to this point)"
+      },
+      "leading_tail": {
+        "sensor": "E4",
+        "start_unix": 1499771441.0,
+        "end_unix": 1499772361.0,
+        "duration_s": 920.0,
+        "note": "E4 was recording before RespiBAN was activated"
+      },
+      "trailing_tail": {
+        "sensor": "RespiBAN",
+        "start_unix": 1499777670.0,
+        "end_unix": 1499777717.8,
+        "duration_s": 47.8,
+        "note": "RespiBAN continued after E4 stopped"
+      },
+      "offset_after_s": 0.0,
+      "passes_threshold": true
+    }
+  }
+}
