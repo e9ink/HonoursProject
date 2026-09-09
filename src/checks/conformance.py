@@ -133,11 +133,8 @@ def _check_e4_modality(csv_path: Path, modality: str, ranges: dict) -> dict:
         raw = pd.read_csv(csv_path, header=None, dtype=str)
         start_time = float(raw.iloc[0, 0].strip())
         declared_hz = float(raw.iloc[1, 0].strip())
-        data = (
-            raw.iloc[2:]
-            .apply(lambda col: pd.to_numeric(col, errors="coerce"))
-            .reset_index(drop=True)
-        )
+        raw_data = raw.iloc[2:].reset_index(drop=True)
+        data = raw_data.apply(lambda col: pd.to_numeric(col, errors="coerce"))
         findings["format"] = {"ok": True}
     except Exception as exc:
         findings["format"] = {"ok": False, "error": str(exc)}
@@ -162,6 +159,20 @@ def _check_e4_modality(csv_path: Path, modality: str, ranges: dict) -> dict:
         findings["sampling_rate"]["violation"] = (
             f"Declared {declared_hz} Hz does not match expected {expected_hz} Hz."
         )
+
+    # --- Non-numeric check ---
+    # An empty cell is genuinely missing (completeness's concern).
+    # A present-but-non-parseable cell is malformed data (conformance's concern).
+    genuinely_empty = raw_data.apply(
+        lambda col: col.map(
+            lambda v: pd.isna(v) or (isinstance(v, str) and v.strip() == "")
+        )
+    )
+    n_non_numeric = int((data.isna() & ~genuinely_empty).sum().sum())
+    findings["non_numeric"] = {
+        "n_non_numeric": n_non_numeric,
+        "ok": n_non_numeric == 0,
+    }
 
     # --- Range ---
     bounds = _e4_range_bounds(modality, ranges)
@@ -345,8 +356,12 @@ def check_respiban(txt_path: Path) -> dict:
     channel_cols = [c for c in RESPIBAN_COLS if c.startswith("CH")]
     per_channel: dict = {}
     for ch in sorted(channel_cols):
-        col = pd.to_numeric(data[ch], errors="coerce")
+        raw_col = data[ch]
+        col = pd.to_numeric(raw_col, errors="coerce")
         n_total = len(col)
+        # Detect non-numeric: present cells that failed numeric conversion.
+        is_genuinely_empty = raw_col.isna() | (raw_col.astype(str).str.strip() == "")
+        n_non_numeric = int((col.isna() & ~is_genuinely_empty).sum())
         below = int((col < adc_min).sum())
         above = int((col > adc_max).sum())
         n_violations = below + above
@@ -355,25 +370,28 @@ def check_respiban(txt_path: Path) -> dict:
             "adc_min": adc_min,
             "adc_max": adc_max,
             "n_samples": n_total,
+            "n_non_numeric": n_non_numeric,
             "n_below_min": below,
             "n_above_max": above,
             "n_violations": n_violations,
             "violation_rate": rate,
-            "ok": n_violations == 0,
+            "ok": n_violations == 0 and n_non_numeric == 0,
         }
 
     findings["per_channel_range"] = per_channel
     total_ch_cells = sum(v["n_samples"] for v in per_channel.values())
     total_ch_violations = sum(v["n_violations"] for v in per_channel.values())
+    total_ch_non_numeric = sum(v["n_non_numeric"] for v in per_channel.values())
     findings["range_summary"] = {
         "total_cells_checked": total_ch_cells,
+        "total_non_numeric": total_ch_non_numeric,
         "total_violations": total_ch_violations,
         "violation_rate": (
             round(total_ch_violations / total_ch_cells, 8)
             if total_ch_cells > 0
             else 0.0
         ),
-        "ok": total_ch_violations == 0,
+        "ok": total_ch_violations == 0 and total_ch_non_numeric == 0,
     }
 
     return findings
@@ -404,6 +422,7 @@ def check_participant(participant_dir: Path, ranges: dict) -> dict:
 def _aggregate(participants: dict) -> dict:
     total_cells = 0
     total_violations = 0
+    total_non_numeric = 0
     format_errors: list[str] = []
     sampling_violations: list[str] = []
 
@@ -422,6 +441,7 @@ def _aggregate(participants: dict) -> dict:
             if rng.get("checked"):
                 total_cells += rng["total_cells"]
                 total_violations += rng["n_violations"]
+            total_non_numeric += m.get("non_numeric", {}).get("n_non_numeric", 0)
 
         # RespiBAN
         chest = p["chest"]
@@ -437,6 +457,7 @@ def _aggregate(participants: dict) -> dict:
         if rs:
             total_cells += rs.get("total_cells_checked", 0)
             total_violations += rs.get("total_violations", 0)
+            total_non_numeric += rs.get("total_non_numeric", 0)
 
     overall_rate = (
         round(total_violations / total_cells, 8) if total_cells > 0 else 0.0
@@ -445,6 +466,7 @@ def _aggregate(participants: dict) -> dict:
         "total_range_cells_checked": total_cells,
         "total_range_violations": total_violations,
         "overall_range_violation_rate": overall_rate,
+        "total_non_numeric_violations": total_non_numeric,
         "format_errors": sorted(format_errors),
         "sampling_violations": sorted(sampling_violations),
         "n_format_errors": len(format_errors),
@@ -478,6 +500,7 @@ def main() -> None:
         summary["overall_range_violation_rate"] <= conf_threshold
         and summary["n_format_errors"] == 0
         and summary["n_sampling_violations"] == 0
+        and summary["total_non_numeric_violations"] == 0
     )
     summary["threshold_max_conformance_violation_rate"] = conf_threshold
     summary["passes_threshold"] = passes
@@ -499,6 +522,7 @@ def main() -> None:
 
     print(f"\nConformance report written to: {output_path}")
     print(f"Overall range violation rate : {summary['overall_range_violation_rate']}")
+    print(f"Non-numeric violations       : {summary['total_non_numeric_violations']}")
     print(f"Format errors                : {summary['n_format_errors']}")
     print(f"Sampling violations          : {summary['n_sampling_violations']}")
     print(f"Passes threshold             : {passes}")

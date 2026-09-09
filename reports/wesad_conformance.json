@@ -55,6 +55,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3992284,
             "n_violations": 0,
             "ok": true,
@@ -65,6 +66,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3992284,
             "n_violations": 0,
             "ok": true,
@@ -75,6 +77,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3992284,
             "n_violations": 0,
             "ok": true,
@@ -85,6 +88,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3992284,
             "n_violations": 0,
             "ok": true,
@@ -95,6 +99,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3992284,
             "n_violations": 0,
             "ok": true,
@@ -105,6 +110,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3992284,
             "n_violations": 0,
             "ok": true,
@@ -115,6 +121,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3992284,
             "n_violations": 0,
             "ok": true,
@@ -125,6 +132,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3992284,
             "n_violations": 0,
             "ok": true,
@@ -134,6 +142,7 @@
         "range_summary": {
           "ok": true,
           "total_cells_checked": 31938272,
+          "total_non_numeric": 0,
           "total_violations": 0,
           "violation_rate": 0.0
         },
@@ -147,6 +156,10 @@
         "ACC": {
           "declared_hz": 32.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -176,6 +189,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": false,
             "reason": "No device output range documented for this modality."
@@ -191,6 +208,10 @@
         "EDA": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -219,6 +240,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": true,
             "n_above_max": 0,
@@ -244,6 +269,10 @@
         "TEMP": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -318,6 +347,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3788875,
             "n_violations": 0,
             "ok": true,
@@ -328,6 +358,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3788875,
             "n_violations": 0,
             "ok": true,
@@ -338,6 +369,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3788875,
             "n_violations": 0,
             "ok": true,
@@ -348,6 +380,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3788875,
             "n_violations": 0,
             "ok": true,
@@ -358,6 +391,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3788875,
             "n_violations": 0,
             "ok": true,
@@ -368,6 +402,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3788875,
             "n_violations": 0,
             "ok": true,
@@ -378,6 +413,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3788875,
             "n_violations": 0,
             "ok": true,
@@ -388,6 +424,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3788875,
             "n_violations": 0,
             "ok": true,
@@ -397,6 +434,7 @@
         "range_summary": {
           "ok": true,
           "total_cells_checked": 30311000,
+          "total_non_numeric": 0,
           "total_violations": 0,
           "violation_rate": 0.0
         },
@@ -410,6 +448,10 @@
         "ACC": {
           "declared_hz": 32.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -439,6 +481,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": false,
             "reason": "No device output range documented for this modality."
@@ -454,6 +500,10 @@
         "EDA": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -482,6 +532,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": true,
             "n_above_max": 0,
@@ -507,6 +561,10 @@
         "TEMP": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -581,6 +639,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4016515,
             "n_violations": 0,
             "ok": true,
@@ -591,6 +650,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4016515,
             "n_violations": 0,
             "ok": true,
@@ -601,6 +661,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4016515,
             "n_violations": 0,
             "ok": true,
@@ -611,6 +672,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4016515,
             "n_violations": 0,
             "ok": true,
@@ -621,6 +683,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4016515,
             "n_violations": 0,
             "ok": true,
@@ -631,6 +694,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4016515,
             "n_violations": 0,
             "ok": true,
@@ -641,6 +705,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4016515,
             "n_violations": 0,
             "ok": true,
@@ -651,6 +716,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4016515,
             "n_violations": 0,
             "ok": true,
@@ -660,6 +726,7 @@
         "range_summary": {
           "ok": true,
           "total_cells_checked": 32132120,
+          "total_non_numeric": 0,
           "total_violations": 0,
           "violation_rate": 0.0
         },
@@ -673,6 +740,10 @@
         "ACC": {
           "declared_hz": 32.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -702,6 +773,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": false,
             "reason": "No device output range documented for this modality."
@@ -717,6 +792,10 @@
         "EDA": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -745,6 +824,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": true,
             "n_above_max": 0,
@@ -770,6 +853,10 @@
         "TEMP": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -844,6 +931,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4034461,
             "n_violations": 0,
             "ok": true,
@@ -854,6 +942,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4034461,
             "n_violations": 0,
             "ok": true,
@@ -864,6 +953,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4034461,
             "n_violations": 0,
             "ok": true,
@@ -874,6 +964,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4034461,
             "n_violations": 0,
             "ok": true,
@@ -884,6 +975,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4034461,
             "n_violations": 0,
             "ok": true,
@@ -894,6 +986,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4034461,
             "n_violations": 0,
             "ok": true,
@@ -904,6 +997,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4034461,
             "n_violations": 0,
             "ok": true,
@@ -914,6 +1008,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4034461,
             "n_violations": 0,
             "ok": true,
@@ -923,6 +1018,7 @@
         "range_summary": {
           "ok": true,
           "total_cells_checked": 32275688,
+          "total_non_numeric": 0,
           "total_violations": 0,
           "violation_rate": 0.0
         },
@@ -936,6 +1032,10 @@
         "ACC": {
           "declared_hz": 32.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -965,6 +1065,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": false,
             "reason": "No device output range documented for this modality."
@@ -980,6 +1084,10 @@
         "EDA": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -1008,6 +1116,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": true,
             "n_above_max": 0,
@@ -1033,6 +1145,10 @@
         "TEMP": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -1107,6 +1223,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3936977,
             "n_violations": 0,
             "ok": true,
@@ -1117,6 +1234,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3936977,
             "n_violations": 0,
             "ok": true,
@@ -1127,6 +1245,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3936977,
             "n_violations": 0,
             "ok": true,
@@ -1137,6 +1256,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3936977,
             "n_violations": 0,
             "ok": true,
@@ -1147,6 +1267,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3936977,
             "n_violations": 0,
             "ok": true,
@@ -1157,6 +1278,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3936977,
             "n_violations": 0,
             "ok": true,
@@ -1167,6 +1289,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3936977,
             "n_violations": 0,
             "ok": true,
@@ -1177,6 +1300,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3936977,
             "n_violations": 0,
             "ok": true,
@@ -1186,6 +1310,7 @@
         "range_summary": {
           "ok": true,
           "total_cells_checked": 31495816,
+          "total_non_numeric": 0,
           "total_violations": 0,
           "violation_rate": 0.0
         },
@@ -1199,6 +1324,10 @@
         "ACC": {
           "declared_hz": 32.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -1228,6 +1357,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": false,
             "reason": "No device output range documented for this modality."
@@ -1243,6 +1376,10 @@
         "EDA": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -1271,6 +1408,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": true,
             "n_above_max": 0,
@@ -1296,6 +1437,10 @@
         "TEMP": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -1370,6 +1515,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4156017,
             "n_violations": 0,
             "ok": true,
@@ -1380,6 +1526,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4156017,
             "n_violations": 0,
             "ok": true,
@@ -1390,6 +1537,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4156017,
             "n_violations": 0,
             "ok": true,
@@ -1400,6 +1548,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4156017,
             "n_violations": 0,
             "ok": true,
@@ -1410,6 +1559,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4156017,
             "n_violations": 0,
             "ok": true,
@@ -1420,6 +1570,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4156017,
             "n_violations": 0,
             "ok": true,
@@ -1430,6 +1581,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4156017,
             "n_violations": 0,
             "ok": true,
@@ -1440,6 +1592,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4156017,
             "n_violations": 0,
             "ok": true,
@@ -1449,6 +1602,7 @@
         "range_summary": {
           "ok": true,
           "total_cells_checked": 33248136,
+          "total_non_numeric": 0,
           "total_violations": 0,
           "violation_rate": 0.0
         },
@@ -1462,6 +1616,10 @@
         "ACC": {
           "declared_hz": 32.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -1491,6 +1649,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": false,
             "reason": "No device output range documented for this modality."
@@ -1506,6 +1668,10 @@
         "EDA": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -1534,6 +1700,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": true,
             "n_above_max": 0,
@@ -1559,6 +1729,10 @@
         "TEMP": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -1633,6 +1807,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4287118,
             "n_violations": 0,
             "ok": true,
@@ -1643,6 +1818,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4287118,
             "n_violations": 0,
             "ok": true,
@@ -1653,6 +1829,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4287118,
             "n_violations": 0,
             "ok": true,
@@ -1663,6 +1840,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4287118,
             "n_violations": 0,
             "ok": true,
@@ -1673,6 +1851,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4287118,
             "n_violations": 0,
             "ok": true,
@@ -1683,6 +1862,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4287118,
             "n_violations": 0,
             "ok": true,
@@ -1693,6 +1873,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4287118,
             "n_violations": 0,
             "ok": true,
@@ -1703,6 +1884,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4287118,
             "n_violations": 0,
             "ok": true,
@@ -1712,6 +1894,7 @@
         "range_summary": {
           "ok": true,
           "total_cells_checked": 34296944,
+          "total_non_numeric": 0,
           "total_violations": 0,
           "violation_rate": 0.0
         },
@@ -1725,6 +1908,10 @@
         "ACC": {
           "declared_hz": 32.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -1754,6 +1941,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": false,
             "reason": "No device output range documented for this modality."
@@ -1769,6 +1960,10 @@
         "EDA": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -1797,6 +1992,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": true,
             "n_above_max": 0,
@@ -1822,6 +2021,10 @@
         "TEMP": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -1896,6 +2099,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4442067,
             "n_violations": 0,
             "ok": true,
@@ -1906,6 +2110,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4442067,
             "n_violations": 0,
             "ok": true,
@@ -1916,6 +2121,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4442067,
             "n_violations": 0,
             "ok": true,
@@ -1926,6 +2132,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4442067,
             "n_violations": 0,
             "ok": true,
@@ -1936,6 +2143,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4442067,
             "n_violations": 0,
             "ok": true,
@@ -1946,6 +2154,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4442067,
             "n_violations": 0,
             "ok": true,
@@ -1956,6 +2165,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4442067,
             "n_violations": 0,
             "ok": true,
@@ -1966,6 +2176,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4442067,
             "n_violations": 0,
             "ok": true,
@@ -1975,6 +2186,7 @@
         "range_summary": {
           "ok": true,
           "total_cells_checked": 35536536,
+          "total_non_numeric": 0,
           "total_violations": 0,
           "violation_rate": 0.0
         },
@@ -1988,6 +2200,10 @@
         "ACC": {
           "declared_hz": 32.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -2017,6 +2233,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": false,
             "reason": "No device output range documented for this modality."
@@ -2032,6 +2252,10 @@
         "EDA": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -2060,6 +2284,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": true,
             "n_above_max": 0,
@@ -2085,6 +2313,10 @@
         "TEMP": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -2159,6 +2391,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4643347,
             "n_violations": 0,
             "ok": true,
@@ -2169,6 +2402,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4643347,
             "n_violations": 0,
             "ok": true,
@@ -2179,6 +2413,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4643347,
             "n_violations": 0,
             "ok": true,
@@ -2189,6 +2424,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4643347,
             "n_violations": 0,
             "ok": true,
@@ -2199,6 +2435,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4643347,
             "n_violations": 0,
             "ok": true,
@@ -2209,6 +2446,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4643347,
             "n_violations": 0,
             "ok": true,
@@ -2219,6 +2457,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4643347,
             "n_violations": 0,
             "ok": true,
@@ -2229,6 +2468,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4643347,
             "n_violations": 0,
             "ok": true,
@@ -2238,6 +2478,7 @@
         "range_summary": {
           "ok": true,
           "total_cells_checked": 37146776,
+          "total_non_numeric": 0,
           "total_violations": 0,
           "violation_rate": 0.0
         },
@@ -2251,6 +2492,10 @@
         "ACC": {
           "declared_hz": 32.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -2280,6 +2525,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": false,
             "reason": "No device output range documented for this modality."
@@ -2295,6 +2544,10 @@
         "EDA": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -2323,6 +2576,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": true,
             "n_above_max": 0,
@@ -2348,6 +2605,10 @@
         "TEMP": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -2422,6 +2683,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4588553,
             "n_violations": 0,
             "ok": true,
@@ -2432,6 +2694,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4588553,
             "n_violations": 0,
             "ok": true,
@@ -2442,6 +2705,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4588553,
             "n_violations": 0,
             "ok": true,
@@ -2452,6 +2716,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4588553,
             "n_violations": 0,
             "ok": true,
@@ -2462,6 +2727,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4588553,
             "n_violations": 0,
             "ok": true,
@@ -2472,6 +2738,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4588553,
             "n_violations": 0,
             "ok": true,
@@ -2482,6 +2749,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4588553,
             "n_violations": 0,
             "ok": true,
@@ -2492,6 +2760,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4588553,
             "n_violations": 0,
             "ok": true,
@@ -2501,6 +2770,7 @@
         "range_summary": {
           "ok": true,
           "total_cells_checked": 36708424,
+          "total_non_numeric": 0,
           "total_violations": 0,
           "violation_rate": 0.0
         },
@@ -2514,6 +2784,10 @@
         "ACC": {
           "declared_hz": 32.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -2543,6 +2817,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": false,
             "reason": "No device output range documented for this modality."
@@ -2558,6 +2836,10 @@
         "EDA": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -2586,6 +2868,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": true,
             "n_above_max": 0,
@@ -2611,6 +2897,10 @@
         "TEMP": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -2685,6 +2975,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4498418,
             "n_violations": 0,
             "ok": true,
@@ -2695,6 +2986,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4498418,
             "n_violations": 0,
             "ok": true,
@@ -2705,6 +2997,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4498418,
             "n_violations": 0,
             "ok": true,
@@ -2715,6 +3008,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4498418,
             "n_violations": 0,
             "ok": true,
@@ -2725,6 +3019,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4498418,
             "n_violations": 0,
             "ok": true,
@@ -2735,6 +3030,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4498418,
             "n_violations": 0,
             "ok": true,
@@ -2745,6 +3041,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4498418,
             "n_violations": 0,
             "ok": true,
@@ -2755,6 +3052,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 4498418,
             "n_violations": 0,
             "ok": true,
@@ -2764,6 +3062,7 @@
         "range_summary": {
           "ok": true,
           "total_cells_checked": 35987344,
+          "total_non_numeric": 0,
           "total_violations": 0,
           "violation_rate": 0.0
         },
@@ -2777,6 +3076,10 @@
         "ACC": {
           "declared_hz": 32.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -2806,6 +3109,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": false,
             "reason": "No device output range documented for this modality."
@@ -2821,6 +3128,10 @@
         "EDA": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -2849,6 +3160,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": true,
             "n_above_max": 0,
@@ -2874,6 +3189,10 @@
         "TEMP": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -2948,6 +3267,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 5055420,
             "n_violations": 0,
             "ok": true,
@@ -2958,6 +3278,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 5055420,
             "n_violations": 0,
             "ok": true,
@@ -2968,6 +3289,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 5055420,
             "n_violations": 0,
             "ok": true,
@@ -2978,6 +3300,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 5055420,
             "n_violations": 0,
             "ok": true,
@@ -2988,6 +3311,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 5055420,
             "n_violations": 0,
             "ok": true,
@@ -2998,6 +3322,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 5055420,
             "n_violations": 0,
             "ok": true,
@@ -3008,6 +3333,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 5055420,
             "n_violations": 0,
             "ok": true,
@@ -3018,6 +3344,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 5055420,
             "n_violations": 0,
             "ok": true,
@@ -3027,6 +3354,7 @@
         "range_summary": {
           "ok": true,
           "total_cells_checked": 40443360,
+          "total_non_numeric": 0,
           "total_violations": 0,
           "violation_rate": 0.0
         },
@@ -3040,6 +3368,10 @@
         "ACC": {
           "declared_hz": 32.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -3069,6 +3401,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": false,
             "reason": "No device output range documented for this modality."
@@ -3084,6 +3420,10 @@
         "EDA": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -3112,6 +3452,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": true,
             "n_above_max": 0,
@@ -3137,6 +3481,10 @@
         "TEMP": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -3211,6 +3559,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3785775,
             "n_violations": 0,
             "ok": true,
@@ -3221,6 +3570,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3785775,
             "n_violations": 0,
             "ok": true,
@@ -3231,6 +3581,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3785775,
             "n_violations": 0,
             "ok": true,
@@ -3241,6 +3592,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3785775,
             "n_violations": 0,
             "ok": true,
@@ -3251,6 +3603,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3785775,
             "n_violations": 0,
             "ok": true,
@@ -3261,6 +3614,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3785775,
             "n_violations": 0,
             "ok": true,
@@ -3271,6 +3625,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3785775,
             "n_violations": 0,
             "ok": true,
@@ -3281,6 +3636,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3785775,
             "n_violations": 0,
             "ok": true,
@@ -3290,6 +3646,7 @@
         "range_summary": {
           "ok": true,
           "total_cells_checked": 30286200,
+          "total_non_numeric": 0,
           "total_violations": 0,
           "violation_rate": 0.0
         },
@@ -3303,6 +3660,10 @@
         "ACC": {
           "declared_hz": 32.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -3332,6 +3693,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": false,
             "reason": "No device output range documented for this modality."
@@ -3347,6 +3712,10 @@
         "EDA": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -3375,6 +3744,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": true,
             "n_above_max": 0,
@@ -3400,6 +3773,10 @@
         "TEMP": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -3474,6 +3851,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3959911,
             "n_violations": 0,
             "ok": true,
@@ -3484,6 +3862,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3959911,
             "n_violations": 0,
             "ok": true,
@@ -3494,6 +3873,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3959911,
             "n_violations": 0,
             "ok": true,
@@ -3504,6 +3884,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3959911,
             "n_violations": 0,
             "ok": true,
@@ -3514,6 +3895,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3959911,
             "n_violations": 0,
             "ok": true,
@@ -3524,6 +3906,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3959911,
             "n_violations": 0,
             "ok": true,
@@ -3534,6 +3917,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3959911,
             "n_violations": 0,
             "ok": true,
@@ -3544,6 +3928,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3959911,
             "n_violations": 0,
             "ok": true,
@@ -3553,6 +3938,7 @@
         "range_summary": {
           "ok": true,
           "total_cells_checked": 31679288,
+          "total_non_numeric": 0,
           "total_violations": 0,
           "violation_rate": 0.0
         },
@@ -3566,6 +3952,10 @@
         "ACC": {
           "declared_hz": 32.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -3595,6 +3985,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": false,
             "reason": "No device output range documented for this modality."
@@ -3610,6 +4004,10 @@
         "EDA": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -3638,6 +4036,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": true,
             "n_above_max": 0,
@@ -3663,6 +4065,10 @@
         "TEMP": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -3737,6 +4143,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3749760,
             "n_violations": 0,
             "ok": true,
@@ -3747,6 +4154,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3749760,
             "n_violations": 0,
             "ok": true,
@@ -3757,6 +4165,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3749760,
             "n_violations": 0,
             "ok": true,
@@ -3767,6 +4176,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3749760,
             "n_violations": 0,
             "ok": true,
@@ -3777,6 +4187,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3749760,
             "n_violations": 0,
             "ok": true,
@@ -3787,6 +4198,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3749760,
             "n_violations": 0,
             "ok": true,
@@ -3797,6 +4209,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3749760,
             "n_violations": 0,
             "ok": true,
@@ -3807,6 +4220,7 @@
             "adc_min": 0,
             "n_above_max": 0,
             "n_below_min": 0,
+            "n_non_numeric": 0,
             "n_samples": 3749760,
             "n_violations": 0,
             "ok": true,
@@ -3816,6 +4230,7 @@
         "range_summary": {
           "ok": true,
           "total_cells_checked": 29998080,
+          "total_non_numeric": 0,
           "total_violations": 0,
           "violation_rate": 0.0
         },
@@ -3829,6 +4244,10 @@
         "ACC": {
           "declared_hz": 32.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -3858,6 +4277,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": false,
             "reason": "No device output range documented for this modality."
@@ -3873,6 +4296,10 @@
         "EDA": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -3901,6 +4328,10 @@
           "format": {
             "ok": true
           },
+          "non_numeric": {
+            "n_non_numeric": 0,
+            "ok": true
+          },
           "range": {
             "checked": true,
             "n_above_max": 0,
@@ -3926,6 +4357,10 @@
         "TEMP": {
           "declared_hz": 4.0,
           "format": {
+            "ok": true
+          },
+          "non_numeric": {
+            "n_non_numeric": 0,
             "ok": true
           },
           "range": {
@@ -3976,6 +4411,7 @@
     "passes_threshold": false,
     "sampling_violations": [],
     "threshold_max_conformance_violation_rate": 0.0,
+    "total_non_numeric_violations": 0,
     "total_range_cells_checked": 514713128,
     "total_range_violations": 60
   }

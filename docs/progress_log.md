@@ -350,4 +350,105 @@ The threshold stays at 0.0. Task 3 correctly reports "fails threshold" for the p
 - Action: remove samples at indices [0, 1, 2, 3] (the first 1 second of each TEMP recording).
 - Scope: all 15 participants.
 - Verification: after stripping, re-run conformance on the Silver TEMP data and confirm violation rate = 0.0.
-- Do NOT strip additional samples: only the 4 identified warm-up samples per participant are affected. The rest of the TEMP data is clean..
+- Do NOT strip additional samples: only the 4 identified warm-up samples per participant are affected. The rest of the TEMP data is clean.
+
+---
+
+## Plausibility check open issues (Task 5)
+
+*Date: 2026-09-09. Status: both issues are OPEN, pending supervisor conversation. No config value or bound has been changed.*
+
+---
+
+### Issue 1 — RespiBAN accelerometer bound vs observed motion
+
+**Finding:** the plausibility check flagged 201,687 values on the RespiBAN accelerometer (almost entirely CH5 / x-axis) for exceeding the configured ±1 g calibrated bound. Example: participant S2 alone had ~25,000 above-Cmax violations on CH5. All were classified as `device_rail` (not `physiological_implausible`), so the total failure rate (0.00052) still passed the 0.01 threshold and the genuine physiological finding was not obscured.
+
+**Why this matters:** these are legitimate motion values, not corruption. Normal body movement plus the effect of gravity routinely produces accelerations above 1 g on a chest-worn device. The values are not implausible — they are simply outside the calibration window.
+
+**Apparent conflict:** supervisor guidance (Dr. Tobias Cibis, 2026-08-27) stated that the ±1 g calibrated range "already accounts for gravity" and is not a false-positive risk. The finding suggests this is not quite right: ±1 g is the calibration reference range (Cmin=28000 to Cmax=38000 ADC), not the sensor's physical measurement ceiling. Dynamic movement causes the raw ADC to go outside [28000, 38000], producing converted values beyond ±1 g. The check is technically correct; the bound may not be the right one for plausibility.
+
+**Status: OPEN — pending supervisor input (next available meeting).**
+
+Options to put to Tobi:
+- (a) Widen the `accelerometry_respiban` bound to the sensor's true full-scale range (e.g. ±8 g or ±16 g for the BITalino/RespiBAN sensor), so only physically impossible values fail.
+- (b) Exclude this channel from plausibility checking entirely (as was done for BVP), treating the calibration window as a conformance check only.
+
+**No bound will be changed until Tobi confirms a direction.**
+
+---
+
+### Issue 2 — RespiBAN chest EDA and TEMP channels (CH2, CH4) skipped
+
+**Finding:** the plausibility check skipped RespiBAN CH2 (EDA) and CH4 (TEMP) with the note "no config bound defined." The skip happens by default (absence of a bound) rather than by deliberate documented decision.
+
+**Why this matters:** the E4 wrist EDA and skin-temperature bounds (0–100 µS, 15–42 °C) describe physiological properties that are independent of measurement site. The chest-mounted EDA and TEMP sensors, once their transfer functions are applied, measure the same physiological quantities. In principle the same bounds could apply. Leaving them unchecked by default is a silent omission.
+
+**Status: OPEN — Kevin's decision.**
+
+Options:
+- (a) Add config bounds for CH2/CH4 in `config/physiological_ranges.yaml` under new keys (e.g. `EDA_chest`, `TEMP_chest`), reusing the same physiological range values with a note that these are site-independent bounds.
+- (b) Explicitly scope them out of plausibility checking with a recorded reason (e.g. "RespiBAN EDA/TEMP are redundant measurements; quality is assessed via the E4 signals only").
+
+**No bounds will be added or changed until Kevin makes the call.**
+
+---
+
+### Continuity note — 60 physiological_implausible flags
+
+The 60 `physiological_implausible` flags in the Task 5 output are the same E4 TEMP warm-up artifact already identified in Task 3 (conformance), documented above, and already queued for stripping in Task 8. No new action is needed for these.
+
+---
+
+## Internal validation finding: non-numeric junk gap (Task 6)
+
+**Date:** 2026-09-09
+
+### Gap found
+
+During Task 6 (internal validation), the test suite revealed that a non-numeric value placed in a numeric channel — for example the string "bad" sitting where an integer ADC reading is expected — slipped through **both** the conformance check and the completeness check without being counted or flagged.
+
+- **Conformance path (both E4 and RespiBAN):** pd.to_numeric(..., errors="coerce") silently converted the non-numeric string to NaN. Because NaN < min and NaN > max are both False in pandas, the cell was never counted as a range violation.
+- **Completeness path for RespiBAN:** check_chest reads channel columns without numeric coercion. col.isnull() returns False for a string object, so the non-numeric value was not counted as missing either.
+- **Completeness path for E4:** _check_e4_fixed does apply pd.to_numeric(..., errors="coerce"), so the value became NaN and *was* counted in 
+_nan. The E4 chain therefore worked; only the RespiBAN chest path had a full slip-through.
+
+### Why it matters
+
+A data-quality framework must catch malformed values even where the current dataset does not contain them. The current WESAD Bronze data is clean — no non-numeric junk strings appear in any channel. However, the gap is a coverage risk: if future datasets (e.g. DEAP) contain export artefacts or encoding issues that produce non-numeric channel values, they would pass silently through both CCP checks.
+
+### Decision
+
+**Assign non-numeric detection clearly to conformance.** The reasoning: a non-numeric value where a numeric value is expected is a *format* problem (malformed data), not an *absence* problem (missing data). This matches the CCP framework's intent — conformance is responsible for format and structural integrity.
+
+The fix was applied consistently across both sensor paths in src/checks/conformance.py:
+
+- **E4 path (_check_e4_modality):** After coercing to numeric, cells that became NaN are tested against the original raw string. If the raw cell was non-empty (i.e. not a genuine null or blank), the cell is counted in a new 
+on_numeric.n_non_numeric field in the findings, separate from range violations.
+- **RespiBAN path (check_respiban):** Same logic per channel; each channel entry gains 
+_non_numeric, and the ange_summary gains 	otal_non_numeric. The aggregate _aggregate() tracks 	otal_non_numeric_violations and main() includes it in the passes_threshold gate.
+
+**Authority:** This is a check-design decision within Kevin's delegated authority over the pipeline implementation. It does not change any physiological bound or threshold, does not affect signed-off config files, and does not require supervisor sign-off.
+
+### Real-data verification
+
+After applying the fix, the conformance check was re-run on the full WESAD Bronze dataset (15 participants). Result:
+
+- 	otal_non_numeric_violations: 0 — no false positives introduced.
+- 	otal_range_violations: 60 — unchanged (TEMP warm-up artifact, pre-existing).
+- 
+_format_errors: 0, 
+_sampling_violations: 0 — unchanged.
+
+The real WESAD data contains no non-numeric channel values. This fix closes a coverage gap rather than correcting observed corruption.
+
+### Internal validation tests
+
+New test class TestNonNumericConformance in 	ests/test_conformance.py asserts:
+- A "bad" string in an E4 channel is counted in 
+on_numeric.n_non_numeric and NOT in ange.n_violations.
+- A "bad" string in a RespiBAN channel is counted in per_channel_range.n_non_numeric and NOT in 
+_violations.
+- A genuinely empty cell (empty string or NaN) is NOT counted as a non-numeric violation on either path — it remains completeness's concern.
+
+---
