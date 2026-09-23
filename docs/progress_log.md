@@ -354,6 +354,29 @@ The threshold stays at 0.0. Task 3 correctly reports "fails threshold" for the p
 
 ---
 
+## Alignment detection rebuilt: result and limitation
+
+*Date: 2026-09-23. Commit: `c007ad5`.*
+
+### What was done
+
+The hardcoded `offset_after_s = 0.0` placeholder in `src/alignment.py` was replaced with a real 5-point measurement. The rebuilt code reconstructs each sensor's timeline from its absolute start time and declared sample rate, then compares the two reconstructed timelines at 0%, 25%, 50%, 75%, and 100% of the overlap window. At each evaluation point, the nearest discrete sample from each device is identified via integer rounding, and `offset_s = E4_reconstructed_T − RespiBAN_reconstructed_T` is recorded. `offset_after_s` is the maximum absolute offset across the five points.
+
+### Result
+
+- 12/15 participants show 0.000 s at all five points. The evaluation instants happen to land on exact E4 4 Hz grid boundaries for these participants, so no rounding residual accumulates — a legitimate computational result, not a tautology.
+- S2, S3, S4 show small non-zero residuals, up to 0.107 s (S2). This is within the ±0.125 s quantization bound of the 4 Hz E4 EDA reference signal, and the non-zero values confirm the measurement is genuinely computed rather than hardcoded.
+- `drift_indicator_s` (offset at 100% minus offset at 0%) is approximately 0 for all participants — no inter-device clock drift detected.
+- All 15 participants pass the 1.0 s threshold. Dataset-wide mean residual: 0.019 s; maximum: 0.107 s.
+
+### Limitation (stated plainly)
+
+This measurement verifies that the two sensors' reconstructed sample grids stay mutually consistent across the overlap window with no inter-device drift. It does **not** independently verify that the absolute start times are correct, because the RespiBAN start time is reconstructed from a wall-clock string under an assumed UTC+2 (CEST) timezone. A shared start-time error — for example, a wrong timezone — would shift both reconstructed timelines together and would not appear as a within-overlap offset; instead it would show up as a large constant value at all five points. The observed near-zero offsets indicate no such gross error is present, but they do not prove the UTC+2 assumption is exactly right.
+
+Per the supervisor decision recorded in the 9 Sept meeting (Meeting 4), fully resolving absolute cross-sensor alignment is out of scope for this project. The rebuilt detector flags inter-device clock drift and gross constant start-time errors, which is the agreed scope. The S2/S3/S4 residuals are quantization-level and are not a data quality concern.
+
+---
+
 ## Plausibility check open issues (Task 5)
 
 *Date: 2026-09-09. Status: both issues are OPEN, pending supervisor conversation. No config value or bound has been changed.*

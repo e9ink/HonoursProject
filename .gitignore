@@ -4,10 +4,12 @@ __pycache__/
 *.egg-info/
 .pytest_cache/
 
-# Raw dataset files — stored on disk but must never leave this machine
-# (access agreements). Exclude everything in bronze/ except the .gitkeep
-# placeholder that preserves the folder in git.
+# Raw and derived dataset files — stored on disk but must never leave this machine
+# (data access agreements cover both raw and cleaned participant physiological data).
+# Exclude everything in bronze/ and silver/ except .gitkeep placeholders.
 bronze/*
 !bronze/.gitkeep
+silver/*
+!silver/.gitkeep
 archive.zip
 TRM_Assessment_2_Final.pdf

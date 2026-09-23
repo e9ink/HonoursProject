@@ -1,0 +1,500 @@
+{
+  "task": "silver_cleaning",
+  "dataset": "WESAD",
+  "cleaning_actions_applied": [
+    "e4_temp_warmup_strip"
+  ],
+  "note_flag_and_retain": "Out-of-range values in all other signals are flag-and-retain: recorded in reports/wesad_conformance.json and reports/wesad_plausibility.json, NOT removed or altered here.",
+  "note_nan_and_completeness": "The 4 replaced warm-up samples per participant are stored as space-only rows in the silver TEMP.csv (NaN encoding). When read with skip_blank_lines=False (required for full fidelity), they appear as 4 NaN values per participant (60 total). The conformance check reads with skip_blank_lines=True (default), which drops the space rows, so n_samples appears 4 shorter but n_violations stays 0. Either way, the warm-up artefact is honestly marked missing, not silently fabricated. See conformance_completeness_impact below.",
+  "conformance_completeness_impact": {
+    "completeness_before_cleaning": "0 NaN TEMP samples across all participants",
+    "completeness_after_cleaning": "60 NaN TEMP samples across 15 participants (4 per participant)",
+    "interpretation": "NOT a new data problem. NaN marks where a known artefact was removed; the gap is documented. Downstream analysis should exclude warm-up NaN samples from TEMP computations."
+  },
+  "conformance_range_violations": {
+    "temp_violations_before_cleaning": 60,
+    "temp_violations_after_cleaning": 0,
+    "all_participants_clean": true
+  },
+  "skin_temp_bounds_used": {
+    "min": 15.0,
+    "max": 42.0
+  },
+  "summary": {
+    "n_participants_cleaned": 15,
+    "indices_replaced_per_participant": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "total_samples_replaced": 60
+  },
+  "participants": {
+    "S10": {
+      "cleaning": {
+        "action": "e4_temp_warmup_strip",
+        "bronze_path": "bronze\\WESAD\\S10\\S10_E4_Data\\TEMP.csv",
+        "silver_path": "silver\\WESAD\\S10\\S10_E4_Data\\TEMP.csv",
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "original_values": [
+          382.21,
+          382.21,
+          382.21,
+          382.21
+        ],
+        "channel_length_before": 27288,
+        "channel_length_after": 27288,
+        "length_unchanged": true
+      },
+      "verification": {
+        "n_total": 27288,
+        "n_nan": 4,
+        "n_range_violations": 0,
+        "range_ok": true
+      },
+      "conformance_temp_violations_before": 4,
+      "conformance_temp_violations_after": 0
+    },
+    "S11": {
+      "cleaning": {
+        "action": "e4_temp_warmup_strip",
+        "bronze_path": "bronze\\WESAD\\S11\\S11_E4_Data\\TEMP.csv",
+        "silver_path": "silver\\WESAD\\S11\\S11_E4_Data\\TEMP.csv",
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "original_values": [
+          382.21,
+          382.21,
+          382.21,
+          382.21
+        ],
+        "channel_length_before": 25840,
+        "channel_length_after": 25840,
+        "length_unchanged": true
+      },
+      "verification": {
+        "n_total": 25840,
+        "n_nan": 4,
+        "n_range_violations": 0,
+        "range_ok": true
+      },
+      "conformance_temp_violations_before": 4,
+      "conformance_temp_violations_after": 0
+    },
+    "S13": {
+      "cleaning": {
+        "action": "e4_temp_warmup_strip",
+        "bronze_path": "bronze\\WESAD\\S13\\S13_E4_Data\\TEMP.csv",
+        "silver_path": "silver\\WESAD\\S13\\S13_E4_Data\\TEMP.csv",
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "original_values": [
+          382.21,
+          382.21,
+          382.21,
+          382.21
+        ],
+        "channel_length_before": 27448,
+        "channel_length_after": 27448,
+        "length_unchanged": true
+      },
+      "verification": {
+        "n_total": 27448,
+        "n_nan": 4,
+        "n_range_violations": 0,
+        "range_ok": true
+      },
+      "conformance_temp_violations_before": 4,
+      "conformance_temp_violations_after": 0
+    },
+    "S14": {
+      "cleaning": {
+        "action": "e4_temp_warmup_strip",
+        "bronze_path": "bronze\\WESAD\\S14\\S14_E4_Data\\TEMP.csv",
+        "silver_path": "silver\\WESAD\\S14\\S14_E4_Data\\TEMP.csv",
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "original_values": [
+          382.21,
+          382.21,
+          382.21,
+          382.21
+        ],
+        "channel_length_before": 27944,
+        "channel_length_after": 27944,
+        "length_unchanged": true
+      },
+      "verification": {
+        "n_total": 27944,
+        "n_nan": 4,
+        "n_range_violations": 0,
+        "range_ok": true
+      },
+      "conformance_temp_violations_before": 4,
+      "conformance_temp_violations_after": 0
+    },
+    "S15": {
+      "cleaning": {
+        "action": "e4_temp_warmup_strip",
+        "bronze_path": "bronze\\WESAD\\S15\\S15_E4_Data\\TEMP.csv",
+        "silver_path": "silver\\WESAD\\S15\\S15_E4_Data\\TEMP.csv",
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "original_values": [
+          382.21,
+          382.21,
+          382.21,
+          382.21
+        ],
+        "channel_length_before": 26568,
+        "channel_length_after": 26568,
+        "length_unchanged": true
+      },
+      "verification": {
+        "n_total": 26568,
+        "n_nan": 4,
+        "n_range_violations": 0,
+        "range_ok": true
+      },
+      "conformance_temp_violations_before": 4,
+      "conformance_temp_violations_after": 0
+    },
+    "S16": {
+      "cleaning": {
+        "action": "e4_temp_warmup_strip",
+        "bronze_path": "bronze\\WESAD\\S16\\S16_E4_Data\\TEMP.csv",
+        "silver_path": "silver\\WESAD\\S16\\S16_E4_Data\\TEMP.csv",
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "original_values": [
+          382.21,
+          382.21,
+          382.21,
+          382.21
+        ],
+        "channel_length_before": 28424,
+        "channel_length_after": 28424,
+        "length_unchanged": true
+      },
+      "verification": {
+        "n_total": 28424,
+        "n_nan": 4,
+        "n_range_violations": 0,
+        "range_ok": true
+      },
+      "conformance_temp_violations_before": 4,
+      "conformance_temp_violations_after": 0
+    },
+    "S17": {
+      "cleaning": {
+        "action": "e4_temp_warmup_strip",
+        "bronze_path": "bronze\\WESAD\\S17\\S17_E4_Data\\TEMP.csv",
+        "silver_path": "silver\\WESAD\\S17\\S17_E4_Data\\TEMP.csv",
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "original_values": [
+          382.21,
+          382.21,
+          382.21,
+          382.21
+        ],
+        "channel_length_before": 28920,
+        "channel_length_after": 28920,
+        "length_unchanged": true
+      },
+      "verification": {
+        "n_total": 28920,
+        "n_nan": 4,
+        "n_range_violations": 0,
+        "range_ok": true
+      },
+      "conformance_temp_violations_before": 4,
+      "conformance_temp_violations_after": 0
+    },
+    "S2": {
+      "cleaning": {
+        "action": "e4_temp_warmup_strip",
+        "bronze_path": "bronze\\WESAD\\S2\\S2_E4_Data\\TEMP.csv",
+        "silver_path": "silver\\WESAD\\S2\\S2_E4_Data\\TEMP.csv",
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "original_values": [
+          382.18,
+          382.18,
+          382.18,
+          382.18
+        ],
+        "channel_length_before": 31496,
+        "channel_length_after": 31496,
+        "length_unchanged": true
+      },
+      "verification": {
+        "n_total": 31496,
+        "n_nan": 4,
+        "n_range_violations": 0,
+        "range_ok": true
+      },
+      "conformance_temp_violations_before": 4,
+      "conformance_temp_violations_after": 0
+    },
+    "S3": {
+      "cleaning": {
+        "action": "e4_temp_warmup_strip",
+        "bronze_path": "bronze\\WESAD\\S3\\S3_E4_Data\\TEMP.csv",
+        "silver_path": "silver\\WESAD\\S3\\S3_E4_Data\\TEMP.csv",
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "original_values": [
+          382.18,
+          382.18,
+          382.18,
+          382.18
+        ],
+        "channel_length_before": 30888,
+        "channel_length_after": 30888,
+        "length_unchanged": true
+      },
+      "verification": {
+        "n_total": 30888,
+        "n_nan": 4,
+        "n_range_violations": 0,
+        "range_ok": true
+      },
+      "conformance_temp_violations_before": 4,
+      "conformance_temp_violations_after": 0
+    },
+    "S4": {
+      "cleaning": {
+        "action": "e4_temp_warmup_strip",
+        "bronze_path": "bronze\\WESAD\\S4\\S4_E4_Data\\TEMP.csv",
+        "silver_path": "silver\\WESAD\\S4\\S4_E4_Data\\TEMP.csv",
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "original_values": [
+          382.21,
+          382.21,
+          382.21,
+          382.21
+        ],
+        "channel_length_before": 31992,
+        "channel_length_after": 31992,
+        "length_unchanged": true
+      },
+      "verification": {
+        "n_total": 31992,
+        "n_nan": 4,
+        "n_range_violations": 0,
+        "range_ok": true
+      },
+      "conformance_temp_violations_before": 4,
+      "conformance_temp_violations_after": 0
+    },
+    "S5": {
+      "cleaning": {
+        "action": "e4_temp_warmup_strip",
+        "bronze_path": "bronze\\WESAD\\S5\\S5_E4_Data\\TEMP.csv",
+        "silver_path": "silver\\WESAD\\S5\\S5_E4_Data\\TEMP.csv",
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "original_values": [
+          382.21,
+          382.21,
+          382.21,
+          382.21
+        ],
+        "channel_length_before": 30200,
+        "channel_length_after": 30200,
+        "length_unchanged": true
+      },
+      "verification": {
+        "n_total": 30200,
+        "n_nan": 4,
+        "n_range_violations": 0,
+        "range_ok": true
+      },
+      "conformance_temp_violations_before": 4,
+      "conformance_temp_violations_after": 0
+    },
+    "S6": {
+      "cleaning": {
+        "action": "e4_temp_warmup_strip",
+        "bronze_path": "bronze\\WESAD\\S6\\S6_E4_Data\\TEMP.csv",
+        "silver_path": "silver\\WESAD\\S6\\S6_E4_Data\\TEMP.csv",
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "original_values": [
+          382.21,
+          382.21,
+          382.21,
+          382.21
+        ],
+        "channel_length_before": 33288,
+        "channel_length_after": 33288,
+        "length_unchanged": true
+      },
+      "verification": {
+        "n_total": 33288,
+        "n_nan": 4,
+        "n_range_violations": 0,
+        "range_ok": true
+      },
+      "conformance_temp_violations_before": 4,
+      "conformance_temp_violations_after": 0
+    },
+    "S7": {
+      "cleaning": {
+        "action": "e4_temp_warmup_strip",
+        "bronze_path": "bronze\\WESAD\\S7\\S7_E4_Data\\TEMP.csv",
+        "silver_path": "silver\\WESAD\\S7\\S7_E4_Data\\TEMP.csv",
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "original_values": [
+          382.21,
+          382.21,
+          382.21,
+          382.21
+        ],
+        "channel_length_before": 25976,
+        "channel_length_after": 25976,
+        "length_unchanged": true
+      },
+      "verification": {
+        "n_total": 25976,
+        "n_nan": 4,
+        "n_range_violations": 0,
+        "range_ok": true
+      },
+      "conformance_temp_violations_before": 4,
+      "conformance_temp_violations_after": 0
+    },
+    "S8": {
+      "cleaning": {
+        "action": "e4_temp_warmup_strip",
+        "bronze_path": "bronze\\WESAD\\S8\\S8_E4_Data\\TEMP.csv",
+        "silver_path": "silver\\WESAD\\S8\\S8_E4_Data\\TEMP.csv",
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "original_values": [
+          382.21,
+          382.21,
+          382.21,
+          382.21
+        ],
+        "channel_length_before": 26552,
+        "channel_length_after": 26552,
+        "length_unchanged": true
+      },
+      "verification": {
+        "n_total": 26552,
+        "n_nan": 4,
+        "n_range_violations": 0,
+        "range_ok": true
+      },
+      "conformance_temp_violations_before": 4,
+      "conformance_temp_violations_after": 0
+    },
+    "S9": {
+      "cleaning": {
+        "action": "e4_temp_warmup_strip",
+        "bronze_path": "bronze\\WESAD\\S9\\S9_E4_Data\\TEMP.csv",
+        "silver_path": "silver\\WESAD\\S9\\S9_E4_Data\\TEMP.csv",
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "original_values": [
+          382.21,
+          382.21,
+          382.21,
+          382.21
+        ],
+        "channel_length_before": 24912,
+        "channel_length_after": 24912,
+        "length_unchanged": true
+      },
+      "verification": {
+        "n_total": 24912,
+        "n_nan": 4,
+        "n_range_violations": 0,
+        "range_ok": true
+      },
+      "conformance_temp_violations_before": 4,
+      "conformance_temp_violations_after": 0
+    }
+  }
+}
