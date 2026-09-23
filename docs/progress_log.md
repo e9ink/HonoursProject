@@ -452,3 +452,153 @@ _violations.
 - A genuinely empty cell (empty string or NaN) is NOT counted as a non-numeric violation on either path — it remains completeness's concern.
 
 ---
+
+## Task 7 alignment: offset_after_s is not a real measurement (OPEN)
+
+**Date noted:** 2026-09-09
+
+### The problem
+
+In `src/alignment.py`, `offset_after_s` is a hardcoded literal `0.0`, not a value derived from data:
+
+```python
+offset_after_s = 0.0
+passes_threshold = offset_after_s <= threshold_s
+```
+
+The timeliness threshold check (`offset_after_s <= max_cross_modal_offset_seconds`) is therefore vacuous: it passes for every participant by construction and is structurally incapable of failing. Only `offset_before_s` (the raw sensor activation-window difference, ~920–1416 s per participant) is a genuine measurement. The timeliness dimension currently has no real evaluation behind it.
+
+### Why it matters
+
+The pipeline is supposed to verify that, after co-registering E4 and RespiBAN onto a shared timeline, the residual timestamp offset within the overlap window is within the pre-registered threshold (1.0 s). That verification does not happen. A report based on the current output would misrepresent the timeliness dimension as having been evaluated when it has not.
+
+### Sources of real misalignment a proper metric must be able to catch
+
+Identified by tracing the clock assumptions in the current code:
+
+1. **Relative clock drift** — both devices use independent crystal oscillators with no synchronisation signal. Typical drift is 10–100 ppm; over a ~2-hour (7200 s) recording that accumulates to 0.07–0.72 s of progressive divergence, which sits at or near the 1.0 s threshold. Drift is invisible to any start-anchored metric because it grows sample-by-sample from t=0.
+
+2. **RespiBAN header start-time precision** — the OpenSignals header records wall-clock time to one decimal place (e.g., `"9:39:1.0"`), giving at best 0.1 s resolution. This is a systematic floor on how precisely the RespiBAN start can be reconstructed.
+
+3. **Timezone-conversion error** — the UTC+2 (CEST) assumption was verified as consistent across all 15 participants, but a wrong timezone assumption would manifest as a large constant offset (e.g., ±3600 s for a one-hour error). The current metric cannot detect this because the same conversion error would be applied at both the start anchor and any interior comparison point — only a check against an independent reference could catch it.
+
+4. **nSeq counter rollover** — the RespiBAN 16-bit sequence counter wraps at 65535; at 700 Hz that is every ~93.6 s, wrapping approximately 77 times over a 2-hour recording. Any miscounting of rollovers in the implied end time propagates silently into overlap duration estimates.
+
+### Status
+
+**OPEN — pending discussion with Tobi.**
+
+This is a measurement-methodology question in his domain (physiological signal timing). Two candidate approaches to raise with him before any implementation:
+
+**(a) Sample-count reconstruction residual** — reconstruct each device's implied timestamp at multiple points across the overlap window from `start_unix + sample_index / hz`, then measure the residual offset between the two reconstructed timelines at each interior point. This requires no signal content and is computable purely from the existing CSVs, but its accuracy is bounded by clock-drift uncertainty and the 0.1 s start-time resolution.
+
+**(b) Signal cross-correlation on a shared physiological event** — identify a signal that both devices capture (e.g., a gross body movement visible in both E4 ACC and RespiBAN ACC), compute the lag at which their cross-correlation peaks within the overlap window, and use that lag as the residual. This is physically grounded but requires a detectable shared event and is sensitive to signal preprocessing choices.
+
+**Do not modify `alignment.py` until the approach is chosen.**
+
+---
+
+## Supervisor decisions, 9 Sept meeting (Meeting 4)
+
+**Date:** 2026-09-09  
+**Attendees:** Kevin Hudoyo, Dr. Tobias Cibis
+
+---
+
+### Decision 1 — RespiBAN accelerometer plausibility bound: ±8 g (RESOLVED)
+
+**Resolved:** supervisor set the bound at **±8 g**.
+
+Kevin had proposed ±5 g. Tobi raised it to ±8 g. Reasoning: the WESAD study involves driving tasks, and genuine high-g events (e.g. hard cornering) can produce body accelerations that exceed ±5 g. A ±8 g bound admits real motion peaks while still flagging sensor-floor artefacts such as the S3 raw-ADC = 0 event (which produces −6.6 g under the transfer function and lies inside the ±8 g window, consistent with a floor-hit rather than a plausibility violation).
+
+**Resolves:** the earlier open item "RespiBAN accelerometer bound — ±1g calibrated vs motion — pending Tobi input."
+
+`config/ranges.yaml` and `src/checks/plausibility.py` have not yet been updated; this decision is recorded here until implementation begins.
+
+---
+
+### Decision 2 — Out-of-bounds handling: flag and retain, never delete (RESOLVED)
+
+**Resolved:** out-of-range values are **flagged in metadata and retained in place**. Deletion is prohibited.
+
+Reasoning: the WESAD data is a strictly evenly-spaced time series for both devices. Deleting samples changes recording length, breaks sample-count-based timing reconstruction, and corrupts temporal alignment between channels and devices. Instead, out-of-range values are left at their original positions and annotated in the quality metadata so that downstream analysts are aware and can decide per their own context and use case.
+
+This confirms the transparent-reporting approach over sample-level exclusion, and applies to accelerometer out-of-bounds values, and more broadly to any out-of-range signal in the pipeline.
+
+---
+
+### Decision 3 — Multi-layered, frequency-based flagging (design principle, TO IMPLEMENT)
+
+**Decided:** flagging granularity should **scale with occurrence frequency** to avoid metadata explosion.
+
+Design principle:
+- **Low-frequency out-of-range values** (isolated or occasional): flag individually (per-sample or per-event annotation).
+- **High-frequency occurrences** (approaching every sample in a column or recording): flag at the **column or recording level** rather than per-value — a single flag on the segment is sufficient and avoids a metadata object as large as the data itself.
+
+This is a new design instruction to be incorporated into the flagging and reporting logic (Tasks 8–11). It has not yet been built. Note it as a refinement to implement, not an existing behaviour.
+
+---
+
+### Decision 4 — Chest EDA and TEMP plausibility bounds: use the same ranges as wrist (RESOLVED)
+
+**Resolved:** apply the **same physiologically-reasonable bounds** for EDA and skin temperature to the RespiBAN chest channels (CH2 and CH4) as are already defined for the E4 wrist equivalents.
+
+Reasoning: physiological plausibility is a body-wide property, not specific to measurement site. The same EDA and temperature ranges that are physiologically implausible on the wrist are equally implausible on the chest. Temperature bounds must be specified as **skin surface temperature**, not core body temperature (the sensor is a surface contact sensor on both devices).
+
+**Resolves:** the earlier open item "RespiBAN CH2/CH4 plausibility scope — pending Kevin's decision."
+
+`config/ranges.yaml` has not yet been updated; this decision is recorded here until implementation begins.
+
+---
+
+### Decision 5 — Cross-modal alignment: detect and flag, do NOT attempt to fix (RESOLVED)
+
+**Resolved:** the pipeline should **measure and report misalignment**, but must **not attempt to correct it**.
+
+Reasoning: correcting cross-sensor clock misalignment is a major research problem in its own right, requiring either a shared trigger stream (not present in WESAD) or full resampling with interpolation (which introduces its own artefacts and is out of scope for this project). Attempting a fix would be technically unsound.
+
+The timeliness check is therefore reframed: its job is **detection and reporting**, not achieving alignment. Concretely:
+
+- The pipeline should reconstruct each sensor's implied timeline at multiple points across the overlap window (using `start_unix + sample_index / hz` for both E4 and RespiBAN) and measure the residual offset at those interior points — replacing the current hardcoded `offset_after_s = 0.0` placeholder with a real computed value.
+- If that residual exceeds the threshold (`max_cross_modal_offset_seconds: 1.0 s`), the result is flagged and reported; no resampling or timestamp correction follows.
+- No alignment-correction code is to be written.
+
+**Resolves:** the earlier open item "Task 7 alignment: offset_after_s is not a real measurement (OPEN)" — the approach is now decided (sample-count reconstruction residual, option (a) from that section). Implementation of `alignment.py` update is pending.
+
+---
+
+## Frequency-based flagging: deferred to DEAP (decision)
+
+**Date:** 2026-09-23
+
+### Context
+
+Supervisor (Dr. Tobias Cibis, 9 Sept 2026, Meeting 4) described a multi-layered, frequency-based flagging refinement: flag individual values when out-of-range occurrences are rare; flag at the column or recording level when frequent, to avoid excessive flag metadata. This was recorded as Decision 3 in the Meeting 4 section above as a design principle to implement.
+
+### Finding that drove this decision
+
+A flag-frequency analysis of the existing conformance, completeness, and plausibility reports (read-only, no re-runs) found exactly one flagged signal across all of WESAD:
+
+| Signal | Participants | Total flags | Total samples | Mean frequency | Shape |
+|---|---|---|---|---|---|
+| E4 TEMP warm-up | 15/15 | 60 | 427,736 | 0.0141% | Contiguous, always indices [0–3] |
+
+Every other signal, channel, participant, and check (conformance, completeness, plausibility) is completely clean. Zero violations. WESAD therefore contains only the "rare / individual-flag" case. It has no "frequent" case — no signal approaches a per-sample or per-column flag frequency that would require escalation to column- or recording-level flagging. There is no data against which to calibrate or validate a rare-vs-frequent threshold.
+
+### Decision
+
+**Kevin (2026-09-23): implement only the confirmed behaviour WESAD requires now — per-value flag-and-retain — and defer the frequency-based escalation mechanism until DEAP.**
+
+Rationale:
+
+- WESAD needs only the individual-flag branch. Building the escalation mechanism now would produce code that is never exercised by any WESAD data, and would require choosing a rare-vs-frequent threshold with no empirical grounding.
+- DEAP is messier and more likely to exercise the "frequent" branch, making it the appropriate point to design and validate the escalation mechanism against real cases rather than against an assumption.
+- This follows the project's general principle of not building untested machinery on assumed inputs.
+
+The supervisor's frequency-escalation principle is **deferred, not dropped**. It is retained here for the DEAP stage (Task 14).
+
+### Status
+
+**DEFERRED — to be revisited at Task 14 (DEAP).**
+
+---

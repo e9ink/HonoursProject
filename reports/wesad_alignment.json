@@ -3,15 +3,19 @@
   "dataset": "WESAD",
   "timezone_assumption": "UTC+2 (CEST, Germany summer) for RespiBAN wall-clock times",
   "alignment_method": "timestamp_anchoring",
+  "offset_measurement_method": "5-point nearest-sample reconstruction across the overlap window (fractions 0%, 25%, 50%, 75%, 100%). offset_s = E4_reconstructed_T minus RespiBAN_reconstructed_T at each point. offset_after_s = max absolute offset across the five points.",
   "note_offset_before": "Large positive value: E4 activates ~15-24 minutes before RespiBAN per participant. This is a sensor activation-window difference, not clock drift. Resolved by trimming to the overlap window.",
-  "note_offset_after": "Within-overlap residual is 0.0 s by definition: alignment anchors t=0 to the overlap start (RespiBAN start timestamp). Both devices' samples are indexed relative to that anchor; no timestamp residual remains.",
+  "note_offset_after": "Within-overlap residual measured by 5-point nearest-sample reconstruction. Expected to be bounded by E4 EDA quantization noise (\u00b10.125 s at 4 Hz) when sensors are well-aligned. Not zero by construction.",
   "threshold_s": 1.0,
   "summary": {
     "n_participants": 15,
     "mean_offset_before_s": 1181.2,
     "min_offset_before_s": 920.0,
     "max_offset_before_s": 1416.0,
-    "offset_after_s": 0.0,
+    "mean_offset_after_s": 0.019048,
+    "max_offset_after_s": 0.107143,
+    "n_pass_threshold": 15,
+    "n_fail_threshold": 0,
     "all_pass_threshold": true
   },
   "participants": {
@@ -84,6 +88,62 @@
         "end_unix": 1500973204.263,
         "duration_s": 73.263,
         "note": "RespiBAN continued after E4 stopped"
+      },
+      "within_overlap_offsets": {
+        "e4_reference_modality": "EDA",
+        "e4_reference_hz": 4.0,
+        "quantization_bound_e4_s": 0.125,
+        "quantization_bound_rb_s": 0.000714,
+        "points": [
+          {
+            "fraction": 0.0,
+            "wall_clock_unix": 1500967501.0,
+            "e4_sample_n": 4772,
+            "rb_sample_n": 0,
+            "e4_reconstructed_unix": 1500967501.0,
+            "rb_reconstructed_unix": 1500967501.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.25,
+            "wall_clock_unix": 1500968908.5,
+            "e4_sample_n": 10402,
+            "rb_sample_n": 985250,
+            "e4_reconstructed_unix": 1500968908.5,
+            "rb_reconstructed_unix": 1500968908.5,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.5,
+            "wall_clock_unix": 1500970316.0,
+            "e4_sample_n": 16032,
+            "rb_sample_n": 1970500,
+            "e4_reconstructed_unix": 1500970316.0,
+            "rb_reconstructed_unix": 1500970316.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.75,
+            "wall_clock_unix": 1500971723.5,
+            "e4_sample_n": 21662,
+            "rb_sample_n": 2955750,
+            "e4_reconstructed_unix": 1500971723.5,
+            "rb_reconstructed_unix": 1500971723.5,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 1.0,
+            "wall_clock_unix": 1500973131.0,
+            "e4_sample_n": 27292,
+            "rb_sample_n": 3941000,
+            "e4_reconstructed_unix": 1500973131.0,
+            "rb_reconstructed_unix": 1500973131.0,
+            "offset_s": 0.0
+          }
+        ],
+        "max_abs_offset_s": 0.0,
+        "drift_indicator_s": 0.0,
+        "note": "offset_s = E4_reconstructed_T minus RespiBAN_reconstructed_T. A constant non-zero value at all five points signals a systematic start-time error; a growing value indicates inter-device clock drift."
       },
       "offset_after_s": 0.0,
       "passes_threshold": true
@@ -158,6 +218,62 @@
         "duration_s": 73.679,
         "note": "RespiBAN continued after E4 stopped"
       },
+      "within_overlap_offsets": {
+        "e4_reference_modality": "EDA",
+        "e4_reference_hz": 4.0,
+        "quantization_bound_e4_s": 0.125,
+        "quantization_bound_rb_s": 0.000714,
+        "points": [
+          {
+            "fraction": 0.0,
+            "wall_clock_unix": 1500982381.0,
+            "e4_sample_n": 4488,
+            "rb_sample_n": 0,
+            "e4_reconstructed_unix": 1500982381.0,
+            "rb_reconstructed_unix": 1500982381.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.25,
+            "wall_clock_unix": 1500983715.75,
+            "e4_sample_n": 9827,
+            "rb_sample_n": 934325,
+            "e4_reconstructed_unix": 1500983715.75,
+            "rb_reconstructed_unix": 1500983715.75,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.5,
+            "wall_clock_unix": 1500985050.5,
+            "e4_sample_n": 15166,
+            "rb_sample_n": 1868650,
+            "e4_reconstructed_unix": 1500985050.5,
+            "rb_reconstructed_unix": 1500985050.5,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.75,
+            "wall_clock_unix": 1500986385.25,
+            "e4_sample_n": 20505,
+            "rb_sample_n": 2802975,
+            "e4_reconstructed_unix": 1500986385.25,
+            "rb_reconstructed_unix": 1500986385.25,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 1.0,
+            "wall_clock_unix": 1500987720.0,
+            "e4_sample_n": 25844,
+            "rb_sample_n": 3737300,
+            "e4_reconstructed_unix": 1500987720.0,
+            "rb_reconstructed_unix": 1500987720.0,
+            "offset_s": 0.0
+          }
+        ],
+        "max_abs_offset_s": 0.0,
+        "drift_indicator_s": 0.0,
+        "note": "offset_s = E4_reconstructed_T minus RespiBAN_reconstructed_T. A constant non-zero value at all five points signals a systematic start-time error; a growing value indicates inter-device clock drift."
+      },
       "offset_after_s": 0.0,
       "passes_threshold": true
     },
@@ -230,6 +346,62 @@
         "end_unix": 1502197718.879,
         "duration_s": 68.879,
         "note": "RespiBAN continued after E4 stopped"
+      },
+      "within_overlap_offsets": {
+        "e4_reference_modality": "EDA",
+        "e4_reference_hz": 4.0,
+        "quantization_bound_e4_s": 0.125,
+        "quantization_bound_rb_s": 0.000714,
+        "points": [
+          {
+            "fraction": 0.0,
+            "wall_clock_unix": 1502191981.0,
+            "e4_sample_n": 4776,
+            "rb_sample_n": 0,
+            "e4_reconstructed_unix": 1502191981.0,
+            "rb_reconstructed_unix": 1502191981.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.25,
+            "wall_clock_unix": 1502193398.25,
+            "e4_sample_n": 10445,
+            "rb_sample_n": 992075,
+            "e4_reconstructed_unix": 1502193398.25,
+            "rb_reconstructed_unix": 1502193398.25,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.5,
+            "wall_clock_unix": 1502194815.5,
+            "e4_sample_n": 16114,
+            "rb_sample_n": 1984150,
+            "e4_reconstructed_unix": 1502194815.5,
+            "rb_reconstructed_unix": 1502194815.5,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.75,
+            "wall_clock_unix": 1502196232.75,
+            "e4_sample_n": 21783,
+            "rb_sample_n": 2976225,
+            "e4_reconstructed_unix": 1502196232.75,
+            "rb_reconstructed_unix": 1502196232.75,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 1.0,
+            "wall_clock_unix": 1502197650.0,
+            "e4_sample_n": 27452,
+            "rb_sample_n": 3968300,
+            "e4_reconstructed_unix": 1502197650.0,
+            "rb_reconstructed_unix": 1502197650.0,
+            "offset_s": 0.0
+          }
+        ],
+        "max_abs_offset_s": 0.0,
+        "drift_indicator_s": 0.0,
+        "note": "offset_s = E4_reconstructed_T minus RespiBAN_reconstructed_T. A constant non-zero value at all five points signals a systematic start-time error; a growing value indicates inter-device clock drift."
       },
       "offset_after_s": 0.0,
       "passes_threshold": true
@@ -304,6 +476,62 @@
         "duration_s": 66.516,
         "note": "RespiBAN continued after E4 stopped"
       },
+      "within_overlap_offsets": {
+        "e4_reference_modality": "EDA",
+        "e4_reference_hz": 4.0,
+        "quantization_bound_e4_s": 0.125,
+        "quantization_bound_rb_s": 0.000714,
+        "points": [
+          {
+            "fraction": 0.0,
+            "wall_clock_unix": 1502263861.0,
+            "e4_sample_n": 5160,
+            "rb_sample_n": 0,
+            "e4_reconstructed_unix": 1502263861.0,
+            "rb_reconstructed_unix": 1502263861.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.25,
+            "wall_clock_unix": 1502265285.25,
+            "e4_sample_n": 10857,
+            "rb_sample_n": 996975,
+            "e4_reconstructed_unix": 1502265285.25,
+            "rb_reconstructed_unix": 1502265285.25,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.5,
+            "wall_clock_unix": 1502266709.5,
+            "e4_sample_n": 16554,
+            "rb_sample_n": 1993950,
+            "e4_reconstructed_unix": 1502266709.5,
+            "rb_reconstructed_unix": 1502266709.5,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.75,
+            "wall_clock_unix": 1502268133.75,
+            "e4_sample_n": 22251,
+            "rb_sample_n": 2990925,
+            "e4_reconstructed_unix": 1502268133.75,
+            "rb_reconstructed_unix": 1502268133.75,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 1.0,
+            "wall_clock_unix": 1502269558.0,
+            "e4_sample_n": 27948,
+            "rb_sample_n": 3987900,
+            "e4_reconstructed_unix": 1502269558.0,
+            "rb_reconstructed_unix": 1502269558.0,
+            "offset_s": 0.0
+          }
+        ],
+        "max_abs_offset_s": 0.0,
+        "drift_indicator_s": 0.0,
+        "note": "offset_s = E4_reconstructed_T minus RespiBAN_reconstructed_T. A constant non-zero value at all five points signals a systematic start-time error; a growing value indicates inter-device clock drift."
+      },
       "offset_after_s": 0.0,
       "passes_threshold": true
     },
@@ -376,6 +604,62 @@
         "end_unix": 1502355825.253,
         "duration_s": 126.253,
         "note": "RespiBAN continued after E4 stopped"
+      },
+      "within_overlap_offsets": {
+        "e4_reference_modality": "EDA",
+        "e4_reference_hz": 4.0,
+        "quantization_bound_e4_s": 0.125,
+        "quantization_bound_rb_s": 0.000714,
+        "points": [
+          {
+            "fraction": 0.0,
+            "wall_clock_unix": 1502350201.0,
+            "e4_sample_n": 4580,
+            "rb_sample_n": 0,
+            "e4_reconstructed_unix": 1502350201.0,
+            "rb_reconstructed_unix": 1502350201.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.25,
+            "wall_clock_unix": 1502351575.5,
+            "e4_sample_n": 10078,
+            "rb_sample_n": 962150,
+            "e4_reconstructed_unix": 1502351575.5,
+            "rb_reconstructed_unix": 1502351575.5,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.5,
+            "wall_clock_unix": 1502352950.0,
+            "e4_sample_n": 15576,
+            "rb_sample_n": 1924300,
+            "e4_reconstructed_unix": 1502352950.0,
+            "rb_reconstructed_unix": 1502352950.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.75,
+            "wall_clock_unix": 1502354324.5,
+            "e4_sample_n": 21074,
+            "rb_sample_n": 2886450,
+            "e4_reconstructed_unix": 1502354324.5,
+            "rb_reconstructed_unix": 1502354324.5,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 1.0,
+            "wall_clock_unix": 1502355699.0,
+            "e4_sample_n": 26572,
+            "rb_sample_n": 3848600,
+            "e4_reconstructed_unix": 1502355699.0,
+            "rb_reconstructed_unix": 1502355699.0,
+            "offset_s": 0.0
+          }
+        ],
+        "max_abs_offset_s": 0.0,
+        "drift_indicator_s": 0.0,
+        "note": "offset_s = E4_reconstructed_T minus RespiBAN_reconstructed_T. A constant non-zero value at all five points signals a systematic start-time error; a growing value indicates inter-device clock drift."
       },
       "offset_after_s": 0.0,
       "passes_threshold": true
@@ -450,6 +734,62 @@
         "duration_s": 125.167,
         "note": "RespiBAN continued after E4 stopped"
       },
+      "within_overlap_offsets": {
+        "e4_reference_modality": "EDA",
+        "e4_reference_hz": 4.0,
+        "quantization_bound_e4_s": 0.125,
+        "quantization_bound_rb_s": 0.000714,
+        "points": [
+          {
+            "fraction": 0.0,
+            "wall_clock_unix": 1502367661.0,
+            "e4_sample_n": 5184,
+            "rb_sample_n": 0,
+            "e4_reconstructed_unix": 1502367661.0,
+            "rb_reconstructed_unix": 1502367661.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.25,
+            "wall_clock_unix": 1502369114.0,
+            "e4_sample_n": 10996,
+            "rb_sample_n": 1017100,
+            "e4_reconstructed_unix": 1502369114.0,
+            "rb_reconstructed_unix": 1502369114.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.5,
+            "wall_clock_unix": 1502370567.0,
+            "e4_sample_n": 16808,
+            "rb_sample_n": 2034200,
+            "e4_reconstructed_unix": 1502370567.0,
+            "rb_reconstructed_unix": 1502370567.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.75,
+            "wall_clock_unix": 1502372020.0,
+            "e4_sample_n": 22620,
+            "rb_sample_n": 3051300,
+            "e4_reconstructed_unix": 1502372020.0,
+            "rb_reconstructed_unix": 1502372020.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 1.0,
+            "wall_clock_unix": 1502373473.0,
+            "e4_sample_n": 28432,
+            "rb_sample_n": 4068400,
+            "e4_reconstructed_unix": 1502373473.0,
+            "rb_reconstructed_unix": 1502373473.0,
+            "offset_s": 0.0
+          }
+        ],
+        "max_abs_offset_s": 0.0,
+        "drift_indicator_s": 0.0,
+        "note": "offset_s = E4_reconstructed_T minus RespiBAN_reconstructed_T. A constant non-zero value at all five points signals a systematic start-time error; a growing value indicates inter-device clock drift."
+      },
       "offset_after_s": 0.0,
       "passes_threshold": true
     },
@@ -522,6 +862,62 @@
         "end_unix": 1502443265.454,
         "duration_s": 71.454,
         "note": "RespiBAN continued after E4 stopped"
+      },
+      "within_overlap_offsets": {
+        "e4_reference_modality": "EDA",
+        "e4_reference_hz": 4.0,
+        "quantization_bound_e4_s": 0.125,
+        "quantization_bound_rb_s": 0.000714,
+        "points": [
+          {
+            "fraction": 0.0,
+            "wall_clock_unix": 1502437141.0,
+            "e4_sample_n": 4716,
+            "rb_sample_n": 0,
+            "e4_reconstructed_unix": 1502437141.0,
+            "rb_reconstructed_unix": 1502437141.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.25,
+            "wall_clock_unix": 1502438654.25,
+            "e4_sample_n": 10769,
+            "rb_sample_n": 1059275,
+            "e4_reconstructed_unix": 1502438654.25,
+            "rb_reconstructed_unix": 1502438654.25,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.5,
+            "wall_clock_unix": 1502440167.5,
+            "e4_sample_n": 16822,
+            "rb_sample_n": 2118550,
+            "e4_reconstructed_unix": 1502440167.5,
+            "rb_reconstructed_unix": 1502440167.5,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.75,
+            "wall_clock_unix": 1502441680.75,
+            "e4_sample_n": 22875,
+            "rb_sample_n": 3177825,
+            "e4_reconstructed_unix": 1502441680.75,
+            "rb_reconstructed_unix": 1502441680.75,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 1.0,
+            "wall_clock_unix": 1502443194.0,
+            "e4_sample_n": 28928,
+            "rb_sample_n": 4237100,
+            "e4_reconstructed_unix": 1502443194.0,
+            "rb_reconstructed_unix": 1502443194.0,
+            "offset_s": 0.0
+          }
+        ],
+        "max_abs_offset_s": 0.0,
+        "drift_indicator_s": 0.0,
+        "note": "offset_s = E4_reconstructed_T minus RespiBAN_reconstructed_T. A constant non-zero value at all five points signals a systematic start-time error; a growing value indicates inter-device clock drift."
       },
       "offset_after_s": 0.0,
       "passes_threshold": true
@@ -596,7 +992,63 @@
         "duration_s": 113.19,
         "note": "E4 continued after RespiBAN stopped"
       },
-      "offset_after_s": 0.0,
+      "within_overlap_offsets": {
+        "e4_reference_modality": "EDA",
+        "e4_reference_hz": 4.0,
+        "quantization_bound_e4_s": 0.125,
+        "quantization_bound_rb_s": 0.000714,
+        "points": [
+          {
+            "fraction": 0.0,
+            "wall_clock_unix": 1495438741.0,
+            "e4_sample_n": 5664,
+            "rb_sample_n": 0,
+            "e4_reconstructed_unix": 1495438741.0,
+            "rb_reconstructed_unix": 1495438741.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.25,
+            "wall_clock_unix": 1495440327.453,
+            "e4_sample_n": 12010,
+            "rb_sample_n": 1110517,
+            "e4_reconstructed_unix": 1495440327.5,
+            "rb_reconstructed_unix": 1495440327.452857,
+            "offset_s": 0.047143
+          },
+          {
+            "fraction": 0.5,
+            "wall_clock_unix": 1495441913.905,
+            "e4_sample_n": 18356,
+            "rb_sample_n": 2221033,
+            "e4_reconstructed_unix": 1495441914.0,
+            "rb_reconstructed_unix": 1495441913.904286,
+            "offset_s": 0.095714
+          },
+          {
+            "fraction": 0.75,
+            "wall_clock_unix": 1495443500.358,
+            "e4_sample_n": 24701,
+            "rb_sample_n": 3331550,
+            "e4_reconstructed_unix": 1495443500.25,
+            "rb_reconstructed_unix": 1495443500.357143,
+            "offset_s": -0.107143
+          },
+          {
+            "fraction": 1.0,
+            "wall_clock_unix": 1495445086.81,
+            "e4_sample_n": 31047,
+            "rb_sample_n": 4442067,
+            "e4_reconstructed_unix": 1495445086.75,
+            "rb_reconstructed_unix": 1495445086.81,
+            "offset_s": -0.06
+          }
+        ],
+        "max_abs_offset_s": 0.107143,
+        "drift_indicator_s": -0.06,
+        "note": "offset_s = E4_reconstructed_T minus RespiBAN_reconstructed_T. A constant non-zero value at all five points signals a systematic start-time error; a growing value indicates inter-device clock drift."
+      },
+      "offset_after_s": 0.107143,
       "passes_threshold": true
     },
     "S3": {
@@ -669,7 +1121,63 @@
         "duration_s": 57.647,
         "note": "E4 continued after RespiBAN stopped"
       },
-      "offset_after_s": 0.0,
+      "within_overlap_offsets": {
+        "e4_reference_modality": "EDA",
+        "e4_reference_hz": 4.0,
+        "quantization_bound_e4_s": 0.125,
+        "quantization_bound_rb_s": 0.000714,
+        "points": [
+          {
+            "fraction": 0.0,
+            "wall_clock_unix": 1495625161.0,
+            "e4_sample_n": 4132,
+            "rb_sample_n": 0,
+            "e4_reconstructed_unix": 1495625161.0,
+            "rb_reconstructed_unix": 1495625161.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.25,
+            "wall_clock_unix": 1495626819.338,
+            "e4_sample_n": 10765,
+            "rb_sample_n": 1160837,
+            "e4_reconstructed_unix": 1495626819.25,
+            "rb_reconstructed_unix": 1495626819.338571,
+            "offset_s": -0.088571
+          },
+          {
+            "fraction": 0.5,
+            "wall_clock_unix": 1495628477.677,
+            "e4_sample_n": 17399,
+            "rb_sample_n": 2321674,
+            "e4_reconstructed_unix": 1495628477.75,
+            "rb_reconstructed_unix": 1495628477.677143,
+            "offset_s": 0.072857
+          },
+          {
+            "fraction": 0.75,
+            "wall_clock_unix": 1495630136.015,
+            "e4_sample_n": 24032,
+            "rb_sample_n": 3482510,
+            "e4_reconstructed_unix": 1495630136.0,
+            "rb_reconstructed_unix": 1495630136.014286,
+            "offset_s": -0.014286
+          },
+          {
+            "fraction": 1.0,
+            "wall_clock_unix": 1495631794.353,
+            "e4_sample_n": 30665,
+            "rb_sample_n": 4643347,
+            "e4_reconstructed_unix": 1495631794.25,
+            "rb_reconstructed_unix": 1495631794.352857,
+            "offset_s": -0.102857
+          }
+        ],
+        "max_abs_offset_s": 0.102857,
+        "drift_indicator_s": -0.102857,
+        "note": "offset_s = E4_reconstructed_T minus RespiBAN_reconstructed_T. A constant non-zero value at all five points signals a systematic start-time error; a growing value indicates inter-device clock drift."
+      },
+      "offset_after_s": 0.102857,
       "passes_threshold": true
     },
     "S4": {
@@ -742,7 +1250,63 @@
         "duration_s": 43.924,
         "note": "E4 continued after RespiBAN stopped"
       },
-      "offset_after_s": 0.0,
+      "within_overlap_offsets": {
+        "e4_reference_modality": "EDA",
+        "e4_reference_hz": 4.0,
+        "quantization_bound_e4_s": 0.125,
+        "quantization_bound_rb_s": 0.000714,
+        "points": [
+          {
+            "fraction": 0.0,
+            "wall_clock_unix": 1497344221.0,
+            "e4_sample_n": 5604,
+            "rb_sample_n": 0,
+            "e4_reconstructed_unix": 1497344221.0,
+            "rb_reconstructed_unix": 1497344221.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.25,
+            "wall_clock_unix": 1497345859.769,
+            "e4_sample_n": 12159,
+            "rb_sample_n": 1147138,
+            "e4_reconstructed_unix": 1497345859.75,
+            "rb_reconstructed_unix": 1497345859.768571,
+            "offset_s": -0.018571
+          },
+          {
+            "fraction": 0.5,
+            "wall_clock_unix": 1497347498.538,
+            "e4_sample_n": 18714,
+            "rb_sample_n": 2294277,
+            "e4_reconstructed_unix": 1497347498.5,
+            "rb_reconstructed_unix": 1497347498.538571,
+            "offset_s": -0.038571
+          },
+          {
+            "fraction": 0.75,
+            "wall_clock_unix": 1497349137.307,
+            "e4_sample_n": 25269,
+            "rb_sample_n": 3441415,
+            "e4_reconstructed_unix": 1497349137.25,
+            "rb_reconstructed_unix": 1497349137.307143,
+            "offset_s": -0.057143
+          },
+          {
+            "fraction": 1.0,
+            "wall_clock_unix": 1497350776.076,
+            "e4_sample_n": 31824,
+            "rb_sample_n": 4588553,
+            "e4_reconstructed_unix": 1497350776.0,
+            "rb_reconstructed_unix": 1497350776.075714,
+            "offset_s": -0.075714
+          }
+        ],
+        "max_abs_offset_s": 0.075714,
+        "drift_indicator_s": -0.075714,
+        "note": "offset_s = E4_reconstructed_T minus RespiBAN_reconstructed_T. A constant non-zero value at all five points signals a systematic start-time error; a growing value indicates inter-device clock drift."
+      },
+      "offset_after_s": 0.075714,
       "passes_threshold": true
     },
     "S5": {
@@ -814,6 +1378,62 @@
         "end_unix": 1497364147.311,
         "duration_s": 63.311,
         "note": "RespiBAN continued after E4 stopped"
+      },
+      "within_overlap_offsets": {
+        "e4_reference_modality": "EDA",
+        "e4_reference_hz": 4.0,
+        "quantization_bound_e4_s": 0.125,
+        "quantization_bound_rb_s": 0.000714,
+        "points": [
+          {
+            "fraction": 0.0,
+            "wall_clock_unix": 1497357721.0,
+            "e4_sample_n": 4752,
+            "rb_sample_n": 0,
+            "e4_reconstructed_unix": 1497357721.0,
+            "rb_reconstructed_unix": 1497357721.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.25,
+            "wall_clock_unix": 1497359311.75,
+            "e4_sample_n": 11115,
+            "rb_sample_n": 1113525,
+            "e4_reconstructed_unix": 1497359311.75,
+            "rb_reconstructed_unix": 1497359311.75,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.5,
+            "wall_clock_unix": 1497360902.5,
+            "e4_sample_n": 17478,
+            "rb_sample_n": 2227050,
+            "e4_reconstructed_unix": 1497360902.5,
+            "rb_reconstructed_unix": 1497360902.5,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.75,
+            "wall_clock_unix": 1497362493.25,
+            "e4_sample_n": 23841,
+            "rb_sample_n": 3340575,
+            "e4_reconstructed_unix": 1497362493.25,
+            "rb_reconstructed_unix": 1497362493.25,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 1.0,
+            "wall_clock_unix": 1497364084.0,
+            "e4_sample_n": 30204,
+            "rb_sample_n": 4454100,
+            "e4_reconstructed_unix": 1497364084.0,
+            "rb_reconstructed_unix": 1497364084.0,
+            "offset_s": 0.0
+          }
+        ],
+        "max_abs_offset_s": 0.0,
+        "drift_indicator_s": 0.0,
+        "note": "offset_s = E4_reconstructed_T minus RespiBAN_reconstructed_T. A constant non-zero value at all five points signals a systematic start-time error; a growing value indicates inter-device clock drift."
       },
       "offset_after_s": 0.0,
       "passes_threshold": true
@@ -888,6 +1508,62 @@
         "duration_s": 61.029,
         "note": "RespiBAN continued after E4 stopped"
       },
+      "within_overlap_offsets": {
+        "e4_reference_modality": "EDA",
+        "e4_reference_hz": 4.0,
+        "quantization_bound_e4_s": 0.125,
+        "quantization_bound_rb_s": 0.000714,
+        "points": [
+          {
+            "fraction": 0.0,
+            "wall_clock_unix": 1497440401.0,
+            "e4_sample_n": 4652,
+            "rb_sample_n": 0,
+            "e4_reconstructed_unix": 1497440401.0,
+            "rb_reconstructed_unix": 1497440401.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.25,
+            "wall_clock_unix": 1497442191.25,
+            "e4_sample_n": 11813,
+            "rb_sample_n": 1253175,
+            "e4_reconstructed_unix": 1497442191.25,
+            "rb_reconstructed_unix": 1497442191.25,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.5,
+            "wall_clock_unix": 1497443981.5,
+            "e4_sample_n": 18974,
+            "rb_sample_n": 2506350,
+            "e4_reconstructed_unix": 1497443981.5,
+            "rb_reconstructed_unix": 1497443981.5,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.75,
+            "wall_clock_unix": 1497445771.75,
+            "e4_sample_n": 26135,
+            "rb_sample_n": 3759525,
+            "e4_reconstructed_unix": 1497445771.75,
+            "rb_reconstructed_unix": 1497445771.75,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 1.0,
+            "wall_clock_unix": 1497447562.0,
+            "e4_sample_n": 33296,
+            "rb_sample_n": 5012700,
+            "e4_reconstructed_unix": 1497447562.0,
+            "rb_reconstructed_unix": 1497447562.0,
+            "offset_s": 0.0
+          }
+        ],
+        "max_abs_offset_s": 0.0,
+        "drift_indicator_s": 0.0,
+        "note": "offset_s = E4_reconstructed_T minus RespiBAN_reconstructed_T. A constant non-zero value at all five points signals a systematic start-time error; a growing value indicates inter-device clock drift."
+      },
       "offset_after_s": 0.0,
       "passes_threshold": true
     },
@@ -960,6 +1636,62 @@
         "end_unix": 1499346009.25,
         "duration_s": 50.25,
         "note": "RespiBAN continued after E4 stopped"
+      },
+      "within_overlap_offsets": {
+        "e4_reference_modality": "EDA",
+        "e4_reference_hz": 4.0,
+        "quantization_bound_e4_s": 0.125,
+        "quantization_bound_rb_s": 0.000714,
+        "points": [
+          {
+            "fraction": 0.0,
+            "wall_clock_unix": 1499340601.0,
+            "e4_sample_n": 4548,
+            "rb_sample_n": 0,
+            "e4_reconstructed_unix": 1499340601.0,
+            "rb_reconstructed_unix": 1499340601.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.25,
+            "wall_clock_unix": 1499341940.5,
+            "e4_sample_n": 9906,
+            "rb_sample_n": 937650,
+            "e4_reconstructed_unix": 1499341940.5,
+            "rb_reconstructed_unix": 1499341940.5,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.5,
+            "wall_clock_unix": 1499343280.0,
+            "e4_sample_n": 15264,
+            "rb_sample_n": 1875300,
+            "e4_reconstructed_unix": 1499343280.0,
+            "rb_reconstructed_unix": 1499343280.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.75,
+            "wall_clock_unix": 1499344619.5,
+            "e4_sample_n": 20622,
+            "rb_sample_n": 2812950,
+            "e4_reconstructed_unix": 1499344619.5,
+            "rb_reconstructed_unix": 1499344619.5,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 1.0,
+            "wall_clock_unix": 1499345959.0,
+            "e4_sample_n": 25980,
+            "rb_sample_n": 3750600,
+            "e4_reconstructed_unix": 1499345959.0,
+            "rb_reconstructed_unix": 1499345959.0,
+            "offset_s": 0.0
+          }
+        ],
+        "max_abs_offset_s": 0.0,
+        "drift_indicator_s": 0.0,
+        "note": "offset_s = E4_reconstructed_T minus RespiBAN_reconstructed_T. A constant non-zero value at all five points signals a systematic start-time error; a growing value indicates inter-device clock drift."
       },
       "offset_after_s": 0.0,
       "passes_threshold": true
@@ -1034,6 +1766,62 @@
         "duration_s": 59.016,
         "note": "RespiBAN continued after E4 stopped"
       },
+      "within_overlap_offsets": {
+        "e4_reference_modality": "EDA",
+        "e4_reference_hz": 4.0,
+        "quantization_bound_e4_s": 0.125,
+        "quantization_bound_rb_s": 0.000714,
+        "points": [
+          {
+            "fraction": 0.0,
+            "wall_clock_unix": 1499686081.0,
+            "e4_sample_n": 4164,
+            "rb_sample_n": 0,
+            "e4_reconstructed_unix": 1499686081.0,
+            "rb_reconstructed_unix": 1499686081.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.25,
+            "wall_clock_unix": 1499687480.5,
+            "e4_sample_n": 9762,
+            "rb_sample_n": 979650,
+            "e4_reconstructed_unix": 1499687480.5,
+            "rb_reconstructed_unix": 1499687480.5,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.5,
+            "wall_clock_unix": 1499688880.0,
+            "e4_sample_n": 15360,
+            "rb_sample_n": 1959300,
+            "e4_reconstructed_unix": 1499688880.0,
+            "rb_reconstructed_unix": 1499688880.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.75,
+            "wall_clock_unix": 1499690279.5,
+            "e4_sample_n": 20958,
+            "rb_sample_n": 2938950,
+            "e4_reconstructed_unix": 1499690279.5,
+            "rb_reconstructed_unix": 1499690279.5,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 1.0,
+            "wall_clock_unix": 1499691679.0,
+            "e4_sample_n": 26556,
+            "rb_sample_n": 3918600,
+            "e4_reconstructed_unix": 1499691679.0,
+            "rb_reconstructed_unix": 1499691679.0,
+            "offset_s": 0.0
+          }
+        ],
+        "max_abs_offset_s": 0.0,
+        "drift_indicator_s": 0.0,
+        "note": "offset_s = E4_reconstructed_T minus RespiBAN_reconstructed_T. A constant non-zero value at all five points signals a systematic start-time error; a growing value indicates inter-device clock drift."
+      },
       "offset_after_s": 0.0,
       "passes_threshold": true
     },
@@ -1106,6 +1894,62 @@
         "end_unix": 1499777717.8,
         "duration_s": 47.8,
         "note": "RespiBAN continued after E4 stopped"
+      },
+      "within_overlap_offsets": {
+        "e4_reference_modality": "EDA",
+        "e4_reference_hz": 4.0,
+        "quantization_bound_e4_s": 0.125,
+        "quantization_bound_rb_s": 0.000714,
+        "points": [
+          {
+            "fraction": 0.0,
+            "wall_clock_unix": 1499772361.0,
+            "e4_sample_n": 3680,
+            "rb_sample_n": 0,
+            "e4_reconstructed_unix": 1499772361.0,
+            "rb_reconstructed_unix": 1499772361.0,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.25,
+            "wall_clock_unix": 1499773688.25,
+            "e4_sample_n": 8989,
+            "rb_sample_n": 929075,
+            "e4_reconstructed_unix": 1499773688.25,
+            "rb_reconstructed_unix": 1499773688.25,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.5,
+            "wall_clock_unix": 1499775015.5,
+            "e4_sample_n": 14298,
+            "rb_sample_n": 1858150,
+            "e4_reconstructed_unix": 1499775015.5,
+            "rb_reconstructed_unix": 1499775015.5,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 0.75,
+            "wall_clock_unix": 1499776342.75,
+            "e4_sample_n": 19607,
+            "rb_sample_n": 2787225,
+            "e4_reconstructed_unix": 1499776342.75,
+            "rb_reconstructed_unix": 1499776342.75,
+            "offset_s": 0.0
+          },
+          {
+            "fraction": 1.0,
+            "wall_clock_unix": 1499777670.0,
+            "e4_sample_n": 24916,
+            "rb_sample_n": 3716300,
+            "e4_reconstructed_unix": 1499777670.0,
+            "rb_reconstructed_unix": 1499777670.0,
+            "offset_s": 0.0
+          }
+        ],
+        "max_abs_offset_s": 0.0,
+        "drift_indicator_s": 0.0,
+        "note": "offset_s = E4_reconstructed_T minus RespiBAN_reconstructed_T. A constant non-zero value at all five points signals a systematic start-time error; a growing value indicates inter-device clock drift."
       },
       "offset_after_s": 0.0,
       "passes_threshold": true
