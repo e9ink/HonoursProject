@@ -5,7 +5,7 @@
     "e4_temp_warmup_strip"
   ],
   "note_flag_and_retain": "Out-of-range values in all other signals are flag-and-retain: recorded in reports/wesad_conformance.json and reports/wesad_plausibility.json, NOT removed or altered here.",
-  "note_nan_and_completeness": "The 4 replaced warm-up samples per participant are stored as space-only rows in the silver TEMP.csv (NaN encoding). When read with skip_blank_lines=False (required for full fidelity), they appear as 4 NaN values per participant (60 total). The conformance check reads with skip_blank_lines=True (default), which drops the space rows, so n_samples appears 4 shorter but n_violations stays 0. Either way, the warm-up artefact is honestly marked missing, not silently fabricated. See conformance_completeness_impact below.",
+  "note_nan_and_completeness": "The 4 replaced warm-up samples per participant are stored as the literal text 'NaN' in the silver TEMP.csv. Pandas default NA detection converts this to numpy.nan; the row is never blank-skipped. Channel length is therefore identical to bronze under any read settings. Completeness sees 4 NaN values per participant (60 total). This is expected and correct: a known artefact was removed and honestly marked missing rather than silently fabricated. See conformance_completeness_impact below.",
   "conformance_completeness_impact": {
     "completeness_before_cleaning": "0 NaN TEMP samples across all participants",
     "completeness_after_cleaning": "60 NaN TEMP samples across 15 participants (4 per participant)",
@@ -42,7 +42,7 @@
           2,
           3
         ],
-        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "replacement": "NaN (literal text 'NaN' in CSV cell; pandas default NA detection reads as numpy.nan, row preserved)",
         "original_values": [
           382.21,
           382.21,
@@ -73,7 +73,7 @@
           2,
           3
         ],
-        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "replacement": "NaN (literal text 'NaN' in CSV cell; pandas default NA detection reads as numpy.nan, row preserved)",
         "original_values": [
           382.21,
           382.21,
@@ -104,7 +104,7 @@
           2,
           3
         ],
-        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "replacement": "NaN (literal text 'NaN' in CSV cell; pandas default NA detection reads as numpy.nan, row preserved)",
         "original_values": [
           382.21,
           382.21,
@@ -135,7 +135,7 @@
           2,
           3
         ],
-        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "replacement": "NaN (literal text 'NaN' in CSV cell; pandas default NA detection reads as numpy.nan, row preserved)",
         "original_values": [
           382.21,
           382.21,
@@ -166,7 +166,7 @@
           2,
           3
         ],
-        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "replacement": "NaN (literal text 'NaN' in CSV cell; pandas default NA detection reads as numpy.nan, row preserved)",
         "original_values": [
           382.21,
           382.21,
@@ -197,7 +197,7 @@
           2,
           3
         ],
-        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "replacement": "NaN (literal text 'NaN' in CSV cell; pandas default NA detection reads as numpy.nan, row preserved)",
         "original_values": [
           382.21,
           382.21,
@@ -228,7 +228,7 @@
           2,
           3
         ],
-        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "replacement": "NaN (literal text 'NaN' in CSV cell; pandas default NA detection reads as numpy.nan, row preserved)",
         "original_values": [
           382.21,
           382.21,
@@ -259,7 +259,7 @@
           2,
           3
         ],
-        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "replacement": "NaN (literal text 'NaN' in CSV cell; pandas default NA detection reads as numpy.nan, row preserved)",
         "original_values": [
           382.18,
           382.18,
@@ -290,7 +290,7 @@
           2,
           3
         ],
-        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "replacement": "NaN (literal text 'NaN' in CSV cell; pandas default NA detection reads as numpy.nan, row preserved)",
         "original_values": [
           382.18,
           382.18,
@@ -321,7 +321,7 @@
           2,
           3
         ],
-        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "replacement": "NaN (literal text 'NaN' in CSV cell; pandas default NA detection reads as numpy.nan, row preserved)",
         "original_values": [
           382.21,
           382.21,
@@ -352,7 +352,7 @@
           2,
           3
         ],
-        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "replacement": "NaN (literal text 'NaN' in CSV cell; pandas default NA detection reads as numpy.nan, row preserved)",
         "original_values": [
           382.21,
           382.21,
@@ -383,7 +383,7 @@
           2,
           3
         ],
-        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "replacement": "NaN (literal text 'NaN' in CSV cell; pandas default NA detection reads as numpy.nan, row preserved)",
         "original_values": [
           382.21,
           382.21,
@@ -414,7 +414,7 @@
           2,
           3
         ],
-        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "replacement": "NaN (literal text 'NaN' in CSV cell; pandas default NA detection reads as numpy.nan, row preserved)",
         "original_values": [
           382.21,
           382.21,
@@ -445,7 +445,7 @@
           2,
           3
         ],
-        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "replacement": "NaN (literal text 'NaN' in CSV cell; pandas default NA detection reads as numpy.nan, row preserved)",
         "original_values": [
           382.21,
           382.21,
@@ -476,7 +476,7 @@
           2,
           3
         ],
-        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "replacement": "NaN (literal text 'NaN' in CSV cell; pandas default NA detection reads as numpy.nan, row preserved)",
         "original_values": [
           382.21,
           382.21,

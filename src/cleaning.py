@@ -89,14 +89,14 @@ def _clean_participant(pid: str) -> dict:
 
     n_samples = len(data_lines)
 
-    # Build output lines: replace warm-up indices with a single space.
-    # A space is read as a non-blank line (row count preserved), converts to NaN
-    # via pd.to_numeric(errors="coerce"), and passes the conformance check's
-    # genuinely_empty test (v.strip() == "") so it is not flagged non-numeric.
+    # Build output lines: replace warm-up indices with the literal text "NaN".
+    # Pandas parses "NaN" as numpy.nan by default (keep_default_na=True), treating
+    # the row as genuinely missing. The row is NOT blank, so skip_blank_lines never
+    # drops it — channel length is preserved regardless of read settings.
     out_lines = list(data_lines)
     for idx in TEMP_WARMUP_INDICES:
         if idx < len(out_lines):
-            out_lines[idx] = " "  # single space → NaN when parsed, not a blank line
+            out_lines[idx] = "NaN"
 
     # Write silver TEMP.csv
     with open(silver_temp, "w", encoding="utf-8", newline="\n") as fh:
@@ -110,7 +110,7 @@ def _clean_participant(pid: str) -> dict:
         "bronze_path": str(bronze_temp.relative_to(ROOT)),
         "silver_path": str(silver_temp.relative_to(ROOT)),
         "indices_replaced": TEMP_WARMUP_INDICES,
-        "replacement": "NaN (single-space CSV cell; pd.to_numeric coerces to NaN, row count preserved)",
+        "replacement": "NaN (literal text 'NaN' in CSV cell; pandas default NA detection reads as numpy.nan, row preserved)",
         "original_values": original_values,
         "channel_length_before": n_samples,
         "channel_length_after": n_samples,
@@ -122,16 +122,13 @@ def _verify_silver_temp(pid: str, temp_min: float, temp_max: float) -> dict:
     """
     Read the silver TEMP.csv and count range violations and NaN values.
 
-    Must use skip_blank_lines=False so that the space-encoded warm-up rows are
-    preserved as NaN rather than silently dropped. With the default
-    skip_blank_lines=True (used by the conformance check), those rows are dropped
-    and n_samples appears 4 shorter — but violations still count as 0, satisfying
-    the conformance requirement. This function uses skip_blank_lines=False to
-    capture the completeness impact (4 NaN per participant) as the user requested.
+    Uses default pandas settings (skip_blank_lines=True, keep_default_na=True).
+    The 'NaN'-text encoding means warm-up rows are never blank-skipped;
+    channel length is consistent with bronze regardless of read flags.
     """
     silver_temp = SILVER_WESAD / pid / f"{pid}_E4_Data" / "TEMP.csv"
 
-    raw = pd.read_csv(silver_temp, header=None, dtype=str, skip_blank_lines=False)
+    raw = pd.read_csv(silver_temp, header=None, dtype=str)
     data_col = raw.iloc[2:, 0].reset_index(drop=True)
     numeric = pd.to_numeric(data_col, errors="coerce")
 
@@ -204,13 +201,13 @@ def main() -> dict:
             "reports/wesad_plausibility.json, NOT removed or altered here."
         ),
         "note_nan_and_completeness": (
-            "The 4 replaced warm-up samples per participant are stored as space-only "
-            "rows in the silver TEMP.csv (NaN encoding). When read with "
-            "skip_blank_lines=False (required for full fidelity), they appear as "
-            "4 NaN values per participant (60 total). The conformance check reads "
-            "with skip_blank_lines=True (default), which drops the space rows, so "
-            "n_samples appears 4 shorter but n_violations stays 0. Either way, "
-            "the warm-up artefact is honestly marked missing, not silently fabricated. "
+            "The 4 replaced warm-up samples per participant are stored as the literal "
+            "text 'NaN' in the silver TEMP.csv. Pandas default NA detection converts "
+            "this to numpy.nan; the row is never blank-skipped. Channel length is "
+            "therefore identical to bronze under any read settings. "
+            "Completeness sees 4 NaN values per participant (60 total). "
+            "This is expected and correct: a known artefact was removed and honestly "
+            "marked missing rather than silently fabricated. "
             "See conformance_completeness_impact below."
         ),
         "conformance_completeness_impact": {
