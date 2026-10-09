@@ -1,0 +1,113 @@
+{
+  "task": "gold_governance",
+  "dataset": "WESAD",
+  "grounding": {
+    "framework": "Tallon et al. (2013) information governance / accountability",
+    "citation": "Tallon, P., Ramirez, R., & Short, J. (2013). The information artifact in IT governance: toward a theory of information governance. Journal of Management Information Systems, 30(3), 141-177. https://doi.org/10.2753/MIS0742-1222300306",
+    "note": "The audit trail provides an accountability record: what pipeline stages ran, in order, what each produced, and what transformations were applied. Sufficient to reconstruct the complete history of what happened to the data."
+  },
+  "run_context": {
+    "note": "This field is non-deterministic. Strip it for diffing.",
+    "generated_at": "2026-10-09T07:18:50.592774+00:00",
+    "generator": "src/governance.py"
+  },
+  "lineage_document": "gold/WESAD/wesad_lineage.json",
+  "bronze_integrity": {
+    "status": "untouched",
+    "note": "bronze/ is read-only throughout the pipeline. No stage writes to bronze/."
+  },
+  "silver_scope": {
+    "note": "silver/ contains only the one signal that required cleaning (E4 TEMP). All other signals are used directly from bronze/.",
+    "silver_files_written": 15
+  },
+  "audit_trail": [
+    {
+      "order": 1,
+      "stage_id": "profiling",
+      "display_name": "Profiling (Task 2)",
+      "report": "reports/wesad_baseline.json",
+      "outcome": "Baseline established for 15 participants."
+    },
+    {
+      "order": 2,
+      "stage_id": "conformance",
+      "display_name": "Conformance check (Task 3)",
+      "report": "reports/wesad_conformance.json",
+      "outcome": "60 range violations found (E4 TEMP warm-up artefact, indices 0-3, all 15 participants). All other signals: zero violations."
+    },
+    {
+      "order": 3,
+      "stage_id": "completeness",
+      "display_name": "Completeness check (Task 4)",
+      "report": "reports/wesad_completeness.json",
+      "outcome": "Zero missingness. Cross-check against baseline passed."
+    },
+    {
+      "order": 4,
+      "stage_id": "plausibility",
+      "display_name": "Plausibility check (Task 5)",
+      "report": "reports/wesad_plausibility.json",
+      "outcome": "60 physiologically-implausible samples (same E4 TEMP warm-up artefact). Overall failure rate 1.5e-07. Dataset passes threshold."
+    },
+    {
+      "order": 5,
+      "stage_id": "alignment",
+      "display_name": "Cross-modal alignment (Task 7)",
+      "report": "reports/wesad_alignment.json",
+      "outcome": "15/15 participants pass 1.0 s threshold. 12/15 zero residual. S2/S3/S4 have small residuals (max 0.107 s, within E4 EDA quantisation bound of 0.125 s). Mean start-time gap: 1181.2 s."
+    },
+    {
+      "order": 6,
+      "stage_id": "cleaning",
+      "display_name": "Silver cleaning (Task 8)",
+      "report": "reports/wesad_cleaning.json",
+      "outcome": "60 TEMP warm-up samples replaced with NaN across 15 participants (4 per participant, indices 0-3). Conformance violations 60 \u2192 0. Channel lengths preserved. Silver TEMP.csv files written for all 15 participants. Bronze untouched."
+    }
+  ],
+  "transformations_applied": [
+    {
+      "action": "e4_temp_warmup_strip",
+      "signal": "E4/TEMP",
+      "scope": "all 15 participants",
+      "indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "replacement": "NaN",
+      "bronze_modified": false,
+      "silver_files_written": [
+        "silver/WESAD/S10/S10_E4_Data/TEMP.csv",
+        "silver/WESAD/S11/S11_E4_Data/TEMP.csv",
+        "silver/WESAD/S13/S13_E4_Data/TEMP.csv",
+        "silver/WESAD/S14/S14_E4_Data/TEMP.csv",
+        "silver/WESAD/S15/S15_E4_Data/TEMP.csv",
+        "silver/WESAD/S16/S16_E4_Data/TEMP.csv",
+        "silver/WESAD/S17/S17_E4_Data/TEMP.csv",
+        "silver/WESAD/S2/S2_E4_Data/TEMP.csv",
+        "silver/WESAD/S3/S3_E4_Data/TEMP.csv",
+        "silver/WESAD/S4/S4_E4_Data/TEMP.csv",
+        "silver/WESAD/S5/S5_E4_Data/TEMP.csv",
+        "silver/WESAD/S6/S6_E4_Data/TEMP.csv",
+        "silver/WESAD/S7/S7_E4_Data/TEMP.csv",
+        "silver/WESAD/S8/S8_E4_Data/TEMP.csv",
+        "silver/WESAD/S9/S9_E4_Data/TEMP.csv"
+      ],
+      "report_ref": "reports/wesad_cleaning.json",
+      "rationale": "NTC thermistor warm-up artefact: sensor reads ~382 degrees C during the first second before reaching equilibrium. Samples flagged as conformance and plausibility violations before cleaning. Replaced in-place with NaN to preserve channel length."
+    }
+  ],
+  "governance_summary": {
+    "n_participants": 15,
+    "n_e4_signals_tracked": 5,
+    "n_respiban_channels_tracked": 8,
+    "n_transformations_applied": 1,
+    "total_samples_replaced": 60,
+    "pipeline_stages_completed": 6,
+    "all_ccp_checks_run": true,
+    "alignment_run": true,
+    "cleaning_run": true,
+    "pipeline_complete": true
+  }
+}

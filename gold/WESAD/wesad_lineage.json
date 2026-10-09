@@ -1,0 +1,3030 @@
+{
+  "schema": "wesad_lineage_v1",
+  "dataset": "WESAD",
+  "grounding": {
+    "framework": "Abraham et al. (2019) metadata management",
+    "citation": "Abraham, R., John, D., & Pollock, E. (2019). A comprehensive survey of metadata management. Information Processing & Management, 56(6), 102069. https://doi.org/10.1016/j.ipm.2019.102069",
+    "note": "Lineage records the provenance chain for each signal: bronze source, any Silver intermediate, pipeline stages applied, and transformations. Non-transformed signals are traceable to their bronze source file with a full stage history."
+  },
+  "run_context": {
+    "note": "This field is non-deterministic. Strip it for diffing.",
+    "generated_at": "2026-10-09T07:18:50.592774+00:00",
+    "generator": "src/governance.py"
+  },
+  "pipeline_stages": [
+    {
+      "stage_id": "profiling",
+      "display_name": "Profiling (Task 2)",
+      "module": "src/profiling.py",
+      "report": "reports/wesad_baseline.json",
+      "description": "Dataset profiling: per-participant, per-signal sample counts, sampling rates, and value ranges. Establishes the baseline against which later checks are cross-validated."
+    },
+    {
+      "stage_id": "conformance",
+      "display_name": "Conformance check (Task 3)",
+      "module": "src/checks/conformance.py",
+      "report": "reports/wesad_conformance.json",
+      "description": "Format, numeric type, and physiological range conformance checks across all signals and participants."
+    },
+    {
+      "stage_id": "completeness",
+      "display_name": "Completeness check (Task 4)",
+      "module": "src/checks/completeness.py",
+      "report": "reports/wesad_completeness.json",
+      "description": "Missingness and sequence-gap checks across all signals. Cross-validated against Task 2 baseline."
+    },
+    {
+      "stage_id": "plausibility",
+      "display_name": "Plausibility check (Task 5)",
+      "module": "src/checks/plausibility.py",
+      "report": "reports/wesad_plausibility.json",
+      "description": "Physiological plausibility checks against supervisor-signed-off bounds (config/physiological_ranges.yaml, signed off Dr. Tobias Cibis 2026-09-09). RespiBAN chest EDA (CH2) and TEMP (CH4) are explicitly excluded from plausibility checking: they are stored as raw sensor values, not physical units, and their physiology is already verified on the E4 wrist channels (duplicate coverage). Deliberate scope decision, documented in docs/progress_log.md."
+    },
+    {
+      "stage_id": "alignment",
+      "display_name": "Cross-modal alignment (Task 7)",
+      "module": "src/alignment.py",
+      "report": "reports/wesad_alignment.json",
+      "description": "Cross-modal temporal alignment between E4 wristband and RespiBAN chest sensor. Five-point nearest-sample reconstruction measures the maximum absolute timestamp offset within the recording overlap window."
+    },
+    {
+      "stage_id": "cleaning",
+      "display_name": "Silver cleaning (Task 8)",
+      "module": "src/cleaning.py",
+      "report": "reports/wesad_cleaning.json",
+      "description": "E4 TEMP warm-up artefact removal. Indices 0-3 of each participant's E4 TEMP channel replaced with NaN in the Silver layer (bronze untouched). Literal 'NaN' text preserves channel length regardless of pandas read settings. 60 samples replaced across 15 participants (4 per participant)."
+    }
+  ],
+  "participants": {
+    "S10": {
+      "e4": {
+        "ACC": {
+          "bronze_source": "bronze/WESAD/S10/S10_E4_Data/ACC.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "BVP": {
+          "bronze_source": "bronze/WESAD/S10/S10_E4_Data/BVP.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S10/S10_E4_Data/EDA.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "HR": {
+          "bronze_source": "bronze/WESAD/S10/S10_E4_Data/HR.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S10/S10_E4_Data/TEMP.csv",
+          "silver_intermediate": "silver/WESAD/S10/S10_E4_Data/TEMP.csv",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "cleaning"
+          ],
+          "transformations": [
+            {
+              "stage": "cleaning",
+              "action": "e4_temp_warmup_strip",
+              "description": "NTC thermistor warm-up artefact: sensor reads ~382 degrees C during the first second before reaching thermal equilibrium. Indices 0-3 replaced with NaN; channel length preserved.",
+              "indices_replaced": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "original_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "replacement": "NaN",
+              "channel_length_before": 27288,
+              "channel_length_after": 27288,
+              "length_preserved": true,
+              "silver_output": "silver/WESAD/S10/S10_E4_Data/TEMP.csv",
+              "cleaning_report_ref": "reports/wesad_cleaning.json"
+            }
+          ]
+        }
+      },
+      "respiban": {
+        "ACC_X": {
+          "bronze_source": "bronze/WESAD/S10/S10_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Y": {
+          "bronze_source": "bronze/WESAD/S10/S10_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Z": {
+          "bronze_source": "bronze/WESAD/S10/S10_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ECG": {
+          "bronze_source": "bronze/WESAD/S10/S10_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S10/S10_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        },
+        "EMG": {
+          "bronze_source": "bronze/WESAD/S10/S10_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "RESP": {
+          "bronze_source": "bronze/WESAD/S10/S10_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S10/S10_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        }
+      }
+    },
+    "S11": {
+      "e4": {
+        "ACC": {
+          "bronze_source": "bronze/WESAD/S11/S11_E4_Data/ACC.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "BVP": {
+          "bronze_source": "bronze/WESAD/S11/S11_E4_Data/BVP.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S11/S11_E4_Data/EDA.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "HR": {
+          "bronze_source": "bronze/WESAD/S11/S11_E4_Data/HR.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S11/S11_E4_Data/TEMP.csv",
+          "silver_intermediate": "silver/WESAD/S11/S11_E4_Data/TEMP.csv",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "cleaning"
+          ],
+          "transformations": [
+            {
+              "stage": "cleaning",
+              "action": "e4_temp_warmup_strip",
+              "description": "NTC thermistor warm-up artefact: sensor reads ~382 degrees C during the first second before reaching thermal equilibrium. Indices 0-3 replaced with NaN; channel length preserved.",
+              "indices_replaced": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "original_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "replacement": "NaN",
+              "channel_length_before": 25840,
+              "channel_length_after": 25840,
+              "length_preserved": true,
+              "silver_output": "silver/WESAD/S11/S11_E4_Data/TEMP.csv",
+              "cleaning_report_ref": "reports/wesad_cleaning.json"
+            }
+          ]
+        }
+      },
+      "respiban": {
+        "ACC_X": {
+          "bronze_source": "bronze/WESAD/S11/S11_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Y": {
+          "bronze_source": "bronze/WESAD/S11/S11_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Z": {
+          "bronze_source": "bronze/WESAD/S11/S11_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ECG": {
+          "bronze_source": "bronze/WESAD/S11/S11_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S11/S11_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        },
+        "EMG": {
+          "bronze_source": "bronze/WESAD/S11/S11_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "RESP": {
+          "bronze_source": "bronze/WESAD/S11/S11_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S11/S11_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        }
+      }
+    },
+    "S13": {
+      "e4": {
+        "ACC": {
+          "bronze_source": "bronze/WESAD/S13/S13_E4_Data/ACC.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "BVP": {
+          "bronze_source": "bronze/WESAD/S13/S13_E4_Data/BVP.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S13/S13_E4_Data/EDA.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "HR": {
+          "bronze_source": "bronze/WESAD/S13/S13_E4_Data/HR.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S13/S13_E4_Data/TEMP.csv",
+          "silver_intermediate": "silver/WESAD/S13/S13_E4_Data/TEMP.csv",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "cleaning"
+          ],
+          "transformations": [
+            {
+              "stage": "cleaning",
+              "action": "e4_temp_warmup_strip",
+              "description": "NTC thermistor warm-up artefact: sensor reads ~382 degrees C during the first second before reaching thermal equilibrium. Indices 0-3 replaced with NaN; channel length preserved.",
+              "indices_replaced": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "original_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "replacement": "NaN",
+              "channel_length_before": 27448,
+              "channel_length_after": 27448,
+              "length_preserved": true,
+              "silver_output": "silver/WESAD/S13/S13_E4_Data/TEMP.csv",
+              "cleaning_report_ref": "reports/wesad_cleaning.json"
+            }
+          ]
+        }
+      },
+      "respiban": {
+        "ACC_X": {
+          "bronze_source": "bronze/WESAD/S13/S13_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Y": {
+          "bronze_source": "bronze/WESAD/S13/S13_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Z": {
+          "bronze_source": "bronze/WESAD/S13/S13_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ECG": {
+          "bronze_source": "bronze/WESAD/S13/S13_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S13/S13_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        },
+        "EMG": {
+          "bronze_source": "bronze/WESAD/S13/S13_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "RESP": {
+          "bronze_source": "bronze/WESAD/S13/S13_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S13/S13_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        }
+      }
+    },
+    "S14": {
+      "e4": {
+        "ACC": {
+          "bronze_source": "bronze/WESAD/S14/S14_E4_Data/ACC.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "BVP": {
+          "bronze_source": "bronze/WESAD/S14/S14_E4_Data/BVP.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S14/S14_E4_Data/EDA.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "HR": {
+          "bronze_source": "bronze/WESAD/S14/S14_E4_Data/HR.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S14/S14_E4_Data/TEMP.csv",
+          "silver_intermediate": "silver/WESAD/S14/S14_E4_Data/TEMP.csv",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "cleaning"
+          ],
+          "transformations": [
+            {
+              "stage": "cleaning",
+              "action": "e4_temp_warmup_strip",
+              "description": "NTC thermistor warm-up artefact: sensor reads ~382 degrees C during the first second before reaching thermal equilibrium. Indices 0-3 replaced with NaN; channel length preserved.",
+              "indices_replaced": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "original_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "replacement": "NaN",
+              "channel_length_before": 27944,
+              "channel_length_after": 27944,
+              "length_preserved": true,
+              "silver_output": "silver/WESAD/S14/S14_E4_Data/TEMP.csv",
+              "cleaning_report_ref": "reports/wesad_cleaning.json"
+            }
+          ]
+        }
+      },
+      "respiban": {
+        "ACC_X": {
+          "bronze_source": "bronze/WESAD/S14/S14_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Y": {
+          "bronze_source": "bronze/WESAD/S14/S14_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Z": {
+          "bronze_source": "bronze/WESAD/S14/S14_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ECG": {
+          "bronze_source": "bronze/WESAD/S14/S14_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S14/S14_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        },
+        "EMG": {
+          "bronze_source": "bronze/WESAD/S14/S14_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "RESP": {
+          "bronze_source": "bronze/WESAD/S14/S14_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S14/S14_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        }
+      }
+    },
+    "S15": {
+      "e4": {
+        "ACC": {
+          "bronze_source": "bronze/WESAD/S15/S15_E4_Data/ACC.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "BVP": {
+          "bronze_source": "bronze/WESAD/S15/S15_E4_Data/BVP.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S15/S15_E4_Data/EDA.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "HR": {
+          "bronze_source": "bronze/WESAD/S15/S15_E4_Data/HR.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S15/S15_E4_Data/TEMP.csv",
+          "silver_intermediate": "silver/WESAD/S15/S15_E4_Data/TEMP.csv",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "cleaning"
+          ],
+          "transformations": [
+            {
+              "stage": "cleaning",
+              "action": "e4_temp_warmup_strip",
+              "description": "NTC thermistor warm-up artefact: sensor reads ~382 degrees C during the first second before reaching thermal equilibrium. Indices 0-3 replaced with NaN; channel length preserved.",
+              "indices_replaced": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "original_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "replacement": "NaN",
+              "channel_length_before": 26568,
+              "channel_length_after": 26568,
+              "length_preserved": true,
+              "silver_output": "silver/WESAD/S15/S15_E4_Data/TEMP.csv",
+              "cleaning_report_ref": "reports/wesad_cleaning.json"
+            }
+          ]
+        }
+      },
+      "respiban": {
+        "ACC_X": {
+          "bronze_source": "bronze/WESAD/S15/S15_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Y": {
+          "bronze_source": "bronze/WESAD/S15/S15_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Z": {
+          "bronze_source": "bronze/WESAD/S15/S15_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ECG": {
+          "bronze_source": "bronze/WESAD/S15/S15_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S15/S15_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        },
+        "EMG": {
+          "bronze_source": "bronze/WESAD/S15/S15_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "RESP": {
+          "bronze_source": "bronze/WESAD/S15/S15_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S15/S15_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        }
+      }
+    },
+    "S16": {
+      "e4": {
+        "ACC": {
+          "bronze_source": "bronze/WESAD/S16/S16_E4_Data/ACC.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "BVP": {
+          "bronze_source": "bronze/WESAD/S16/S16_E4_Data/BVP.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S16/S16_E4_Data/EDA.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "HR": {
+          "bronze_source": "bronze/WESAD/S16/S16_E4_Data/HR.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S16/S16_E4_Data/TEMP.csv",
+          "silver_intermediate": "silver/WESAD/S16/S16_E4_Data/TEMP.csv",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "cleaning"
+          ],
+          "transformations": [
+            {
+              "stage": "cleaning",
+              "action": "e4_temp_warmup_strip",
+              "description": "NTC thermistor warm-up artefact: sensor reads ~382 degrees C during the first second before reaching thermal equilibrium. Indices 0-3 replaced with NaN; channel length preserved.",
+              "indices_replaced": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "original_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "replacement": "NaN",
+              "channel_length_before": 28424,
+              "channel_length_after": 28424,
+              "length_preserved": true,
+              "silver_output": "silver/WESAD/S16/S16_E4_Data/TEMP.csv",
+              "cleaning_report_ref": "reports/wesad_cleaning.json"
+            }
+          ]
+        }
+      },
+      "respiban": {
+        "ACC_X": {
+          "bronze_source": "bronze/WESAD/S16/S16_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Y": {
+          "bronze_source": "bronze/WESAD/S16/S16_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Z": {
+          "bronze_source": "bronze/WESAD/S16/S16_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ECG": {
+          "bronze_source": "bronze/WESAD/S16/S16_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S16/S16_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        },
+        "EMG": {
+          "bronze_source": "bronze/WESAD/S16/S16_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "RESP": {
+          "bronze_source": "bronze/WESAD/S16/S16_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S16/S16_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        }
+      }
+    },
+    "S17": {
+      "e4": {
+        "ACC": {
+          "bronze_source": "bronze/WESAD/S17/S17_E4_Data/ACC.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "BVP": {
+          "bronze_source": "bronze/WESAD/S17/S17_E4_Data/BVP.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S17/S17_E4_Data/EDA.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "HR": {
+          "bronze_source": "bronze/WESAD/S17/S17_E4_Data/HR.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S17/S17_E4_Data/TEMP.csv",
+          "silver_intermediate": "silver/WESAD/S17/S17_E4_Data/TEMP.csv",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "cleaning"
+          ],
+          "transformations": [
+            {
+              "stage": "cleaning",
+              "action": "e4_temp_warmup_strip",
+              "description": "NTC thermistor warm-up artefact: sensor reads ~382 degrees C during the first second before reaching thermal equilibrium. Indices 0-3 replaced with NaN; channel length preserved.",
+              "indices_replaced": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "original_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "replacement": "NaN",
+              "channel_length_before": 28920,
+              "channel_length_after": 28920,
+              "length_preserved": true,
+              "silver_output": "silver/WESAD/S17/S17_E4_Data/TEMP.csv",
+              "cleaning_report_ref": "reports/wesad_cleaning.json"
+            }
+          ]
+        }
+      },
+      "respiban": {
+        "ACC_X": {
+          "bronze_source": "bronze/WESAD/S17/S17_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Y": {
+          "bronze_source": "bronze/WESAD/S17/S17_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Z": {
+          "bronze_source": "bronze/WESAD/S17/S17_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ECG": {
+          "bronze_source": "bronze/WESAD/S17/S17_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S17/S17_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        },
+        "EMG": {
+          "bronze_source": "bronze/WESAD/S17/S17_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "RESP": {
+          "bronze_source": "bronze/WESAD/S17/S17_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S17/S17_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        }
+      }
+    },
+    "S2": {
+      "e4": {
+        "ACC": {
+          "bronze_source": "bronze/WESAD/S2/S2_E4_Data/ACC.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "BVP": {
+          "bronze_source": "bronze/WESAD/S2/S2_E4_Data/BVP.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S2/S2_E4_Data/EDA.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "HR": {
+          "bronze_source": "bronze/WESAD/S2/S2_E4_Data/HR.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S2/S2_E4_Data/TEMP.csv",
+          "silver_intermediate": "silver/WESAD/S2/S2_E4_Data/TEMP.csv",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "cleaning"
+          ],
+          "transformations": [
+            {
+              "stage": "cleaning",
+              "action": "e4_temp_warmup_strip",
+              "description": "NTC thermistor warm-up artefact: sensor reads ~382 degrees C during the first second before reaching thermal equilibrium. Indices 0-3 replaced with NaN; channel length preserved.",
+              "indices_replaced": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "original_values": [
+                382.18,
+                382.18,
+                382.18,
+                382.18
+              ],
+              "replacement": "NaN",
+              "channel_length_before": 31496,
+              "channel_length_after": 31496,
+              "length_preserved": true,
+              "silver_output": "silver/WESAD/S2/S2_E4_Data/TEMP.csv",
+              "cleaning_report_ref": "reports/wesad_cleaning.json"
+            }
+          ]
+        }
+      },
+      "respiban": {
+        "ACC_X": {
+          "bronze_source": "bronze/WESAD/S2/S2_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Y": {
+          "bronze_source": "bronze/WESAD/S2/S2_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Z": {
+          "bronze_source": "bronze/WESAD/S2/S2_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ECG": {
+          "bronze_source": "bronze/WESAD/S2/S2_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S2/S2_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        },
+        "EMG": {
+          "bronze_source": "bronze/WESAD/S2/S2_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "RESP": {
+          "bronze_source": "bronze/WESAD/S2/S2_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S2/S2_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        }
+      }
+    },
+    "S3": {
+      "e4": {
+        "ACC": {
+          "bronze_source": "bronze/WESAD/S3/S3_E4_Data/ACC.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "BVP": {
+          "bronze_source": "bronze/WESAD/S3/S3_E4_Data/BVP.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S3/S3_E4_Data/EDA.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "HR": {
+          "bronze_source": "bronze/WESAD/S3/S3_E4_Data/HR.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S3/S3_E4_Data/TEMP.csv",
+          "silver_intermediate": "silver/WESAD/S3/S3_E4_Data/TEMP.csv",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "cleaning"
+          ],
+          "transformations": [
+            {
+              "stage": "cleaning",
+              "action": "e4_temp_warmup_strip",
+              "description": "NTC thermistor warm-up artefact: sensor reads ~382 degrees C during the first second before reaching thermal equilibrium. Indices 0-3 replaced with NaN; channel length preserved.",
+              "indices_replaced": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "original_values": [
+                382.18,
+                382.18,
+                382.18,
+                382.18
+              ],
+              "replacement": "NaN",
+              "channel_length_before": 30888,
+              "channel_length_after": 30888,
+              "length_preserved": true,
+              "silver_output": "silver/WESAD/S3/S3_E4_Data/TEMP.csv",
+              "cleaning_report_ref": "reports/wesad_cleaning.json"
+            }
+          ]
+        }
+      },
+      "respiban": {
+        "ACC_X": {
+          "bronze_source": "bronze/WESAD/S3/S3_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Y": {
+          "bronze_source": "bronze/WESAD/S3/S3_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Z": {
+          "bronze_source": "bronze/WESAD/S3/S3_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ECG": {
+          "bronze_source": "bronze/WESAD/S3/S3_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S3/S3_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        },
+        "EMG": {
+          "bronze_source": "bronze/WESAD/S3/S3_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "RESP": {
+          "bronze_source": "bronze/WESAD/S3/S3_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S3/S3_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        }
+      }
+    },
+    "S4": {
+      "e4": {
+        "ACC": {
+          "bronze_source": "bronze/WESAD/S4/S4_E4_Data/ACC.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "BVP": {
+          "bronze_source": "bronze/WESAD/S4/S4_E4_Data/BVP.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S4/S4_E4_Data/EDA.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "HR": {
+          "bronze_source": "bronze/WESAD/S4/S4_E4_Data/HR.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S4/S4_E4_Data/TEMP.csv",
+          "silver_intermediate": "silver/WESAD/S4/S4_E4_Data/TEMP.csv",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "cleaning"
+          ],
+          "transformations": [
+            {
+              "stage": "cleaning",
+              "action": "e4_temp_warmup_strip",
+              "description": "NTC thermistor warm-up artefact: sensor reads ~382 degrees C during the first second before reaching thermal equilibrium. Indices 0-3 replaced with NaN; channel length preserved.",
+              "indices_replaced": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "original_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "replacement": "NaN",
+              "channel_length_before": 31992,
+              "channel_length_after": 31992,
+              "length_preserved": true,
+              "silver_output": "silver/WESAD/S4/S4_E4_Data/TEMP.csv",
+              "cleaning_report_ref": "reports/wesad_cleaning.json"
+            }
+          ]
+        }
+      },
+      "respiban": {
+        "ACC_X": {
+          "bronze_source": "bronze/WESAD/S4/S4_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Y": {
+          "bronze_source": "bronze/WESAD/S4/S4_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Z": {
+          "bronze_source": "bronze/WESAD/S4/S4_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ECG": {
+          "bronze_source": "bronze/WESAD/S4/S4_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S4/S4_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        },
+        "EMG": {
+          "bronze_source": "bronze/WESAD/S4/S4_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "RESP": {
+          "bronze_source": "bronze/WESAD/S4/S4_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S4/S4_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        }
+      }
+    },
+    "S5": {
+      "e4": {
+        "ACC": {
+          "bronze_source": "bronze/WESAD/S5/S5_E4_Data/ACC.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "BVP": {
+          "bronze_source": "bronze/WESAD/S5/S5_E4_Data/BVP.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S5/S5_E4_Data/EDA.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "HR": {
+          "bronze_source": "bronze/WESAD/S5/S5_E4_Data/HR.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S5/S5_E4_Data/TEMP.csv",
+          "silver_intermediate": "silver/WESAD/S5/S5_E4_Data/TEMP.csv",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "cleaning"
+          ],
+          "transformations": [
+            {
+              "stage": "cleaning",
+              "action": "e4_temp_warmup_strip",
+              "description": "NTC thermistor warm-up artefact: sensor reads ~382 degrees C during the first second before reaching thermal equilibrium. Indices 0-3 replaced with NaN; channel length preserved.",
+              "indices_replaced": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "original_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "replacement": "NaN",
+              "channel_length_before": 30200,
+              "channel_length_after": 30200,
+              "length_preserved": true,
+              "silver_output": "silver/WESAD/S5/S5_E4_Data/TEMP.csv",
+              "cleaning_report_ref": "reports/wesad_cleaning.json"
+            }
+          ]
+        }
+      },
+      "respiban": {
+        "ACC_X": {
+          "bronze_source": "bronze/WESAD/S5/S5_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Y": {
+          "bronze_source": "bronze/WESAD/S5/S5_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Z": {
+          "bronze_source": "bronze/WESAD/S5/S5_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ECG": {
+          "bronze_source": "bronze/WESAD/S5/S5_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S5/S5_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        },
+        "EMG": {
+          "bronze_source": "bronze/WESAD/S5/S5_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "RESP": {
+          "bronze_source": "bronze/WESAD/S5/S5_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S5/S5_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        }
+      }
+    },
+    "S6": {
+      "e4": {
+        "ACC": {
+          "bronze_source": "bronze/WESAD/S6/S6_E4_Data/ACC.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "BVP": {
+          "bronze_source": "bronze/WESAD/S6/S6_E4_Data/BVP.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S6/S6_E4_Data/EDA.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "HR": {
+          "bronze_source": "bronze/WESAD/S6/S6_E4_Data/HR.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S6/S6_E4_Data/TEMP.csv",
+          "silver_intermediate": "silver/WESAD/S6/S6_E4_Data/TEMP.csv",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "cleaning"
+          ],
+          "transformations": [
+            {
+              "stage": "cleaning",
+              "action": "e4_temp_warmup_strip",
+              "description": "NTC thermistor warm-up artefact: sensor reads ~382 degrees C during the first second before reaching thermal equilibrium. Indices 0-3 replaced with NaN; channel length preserved.",
+              "indices_replaced": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "original_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "replacement": "NaN",
+              "channel_length_before": 33288,
+              "channel_length_after": 33288,
+              "length_preserved": true,
+              "silver_output": "silver/WESAD/S6/S6_E4_Data/TEMP.csv",
+              "cleaning_report_ref": "reports/wesad_cleaning.json"
+            }
+          ]
+        }
+      },
+      "respiban": {
+        "ACC_X": {
+          "bronze_source": "bronze/WESAD/S6/S6_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Y": {
+          "bronze_source": "bronze/WESAD/S6/S6_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Z": {
+          "bronze_source": "bronze/WESAD/S6/S6_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ECG": {
+          "bronze_source": "bronze/WESAD/S6/S6_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S6/S6_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        },
+        "EMG": {
+          "bronze_source": "bronze/WESAD/S6/S6_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "RESP": {
+          "bronze_source": "bronze/WESAD/S6/S6_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S6/S6_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        }
+      }
+    },
+    "S7": {
+      "e4": {
+        "ACC": {
+          "bronze_source": "bronze/WESAD/S7/S7_E4_Data/ACC.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "BVP": {
+          "bronze_source": "bronze/WESAD/S7/S7_E4_Data/BVP.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S7/S7_E4_Data/EDA.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "HR": {
+          "bronze_source": "bronze/WESAD/S7/S7_E4_Data/HR.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S7/S7_E4_Data/TEMP.csv",
+          "silver_intermediate": "silver/WESAD/S7/S7_E4_Data/TEMP.csv",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "cleaning"
+          ],
+          "transformations": [
+            {
+              "stage": "cleaning",
+              "action": "e4_temp_warmup_strip",
+              "description": "NTC thermistor warm-up artefact: sensor reads ~382 degrees C during the first second before reaching thermal equilibrium. Indices 0-3 replaced with NaN; channel length preserved.",
+              "indices_replaced": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "original_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "replacement": "NaN",
+              "channel_length_before": 25976,
+              "channel_length_after": 25976,
+              "length_preserved": true,
+              "silver_output": "silver/WESAD/S7/S7_E4_Data/TEMP.csv",
+              "cleaning_report_ref": "reports/wesad_cleaning.json"
+            }
+          ]
+        }
+      },
+      "respiban": {
+        "ACC_X": {
+          "bronze_source": "bronze/WESAD/S7/S7_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Y": {
+          "bronze_source": "bronze/WESAD/S7/S7_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Z": {
+          "bronze_source": "bronze/WESAD/S7/S7_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ECG": {
+          "bronze_source": "bronze/WESAD/S7/S7_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S7/S7_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        },
+        "EMG": {
+          "bronze_source": "bronze/WESAD/S7/S7_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "RESP": {
+          "bronze_source": "bronze/WESAD/S7/S7_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S7/S7_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        }
+      }
+    },
+    "S8": {
+      "e4": {
+        "ACC": {
+          "bronze_source": "bronze/WESAD/S8/S8_E4_Data/ACC.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "BVP": {
+          "bronze_source": "bronze/WESAD/S8/S8_E4_Data/BVP.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S8/S8_E4_Data/EDA.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "HR": {
+          "bronze_source": "bronze/WESAD/S8/S8_E4_Data/HR.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S8/S8_E4_Data/TEMP.csv",
+          "silver_intermediate": "silver/WESAD/S8/S8_E4_Data/TEMP.csv",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "cleaning"
+          ],
+          "transformations": [
+            {
+              "stage": "cleaning",
+              "action": "e4_temp_warmup_strip",
+              "description": "NTC thermistor warm-up artefact: sensor reads ~382 degrees C during the first second before reaching thermal equilibrium. Indices 0-3 replaced with NaN; channel length preserved.",
+              "indices_replaced": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "original_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "replacement": "NaN",
+              "channel_length_before": 26552,
+              "channel_length_after": 26552,
+              "length_preserved": true,
+              "silver_output": "silver/WESAD/S8/S8_E4_Data/TEMP.csv",
+              "cleaning_report_ref": "reports/wesad_cleaning.json"
+            }
+          ]
+        }
+      },
+      "respiban": {
+        "ACC_X": {
+          "bronze_source": "bronze/WESAD/S8/S8_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Y": {
+          "bronze_source": "bronze/WESAD/S8/S8_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Z": {
+          "bronze_source": "bronze/WESAD/S8/S8_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ECG": {
+          "bronze_source": "bronze/WESAD/S8/S8_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S8/S8_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        },
+        "EMG": {
+          "bronze_source": "bronze/WESAD/S8/S8_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "RESP": {
+          "bronze_source": "bronze/WESAD/S8/S8_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S8/S8_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        }
+      }
+    },
+    "S9": {
+      "e4": {
+        "ACC": {
+          "bronze_source": "bronze/WESAD/S9/S9_E4_Data/ACC.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "BVP": {
+          "bronze_source": "bronze/WESAD/S9/S9_E4_Data/BVP.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S9/S9_E4_Data/EDA.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "HR": {
+          "bronze_source": "bronze/WESAD/S9/S9_E4_Data/HR.csv",
+          "silver_intermediate": null,
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility"
+          ],
+          "transformations": []
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S9/S9_E4_Data/TEMP.csv",
+          "silver_intermediate": "silver/WESAD/S9/S9_E4_Data/TEMP.csv",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "cleaning"
+          ],
+          "transformations": [
+            {
+              "stage": "cleaning",
+              "action": "e4_temp_warmup_strip",
+              "description": "NTC thermistor warm-up artefact: sensor reads ~382 degrees C during the first second before reaching thermal equilibrium. Indices 0-3 replaced with NaN; channel length preserved.",
+              "indices_replaced": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "original_values": [
+                382.21,
+                382.21,
+                382.21,
+                382.21
+              ],
+              "replacement": "NaN",
+              "channel_length_before": 24912,
+              "channel_length_after": 24912,
+              "length_preserved": true,
+              "silver_output": "silver/WESAD/S9/S9_E4_Data/TEMP.csv",
+              "cleaning_report_ref": "reports/wesad_cleaning.json"
+            }
+          ]
+        }
+      },
+      "respiban": {
+        "ACC_X": {
+          "bronze_source": "bronze/WESAD/S9/S9_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Y": {
+          "bronze_source": "bronze/WESAD/S9/S9_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ACC_Z": {
+          "bronze_source": "bronze/WESAD/S9/S9_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "ECG": {
+          "bronze_source": "bronze/WESAD/S9/S9_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "EDA": {
+          "bronze_source": "bronze/WESAD/S9/S9_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        },
+        "EMG": {
+          "bronze_source": "bronze/WESAD/S9/S9_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "RESP": {
+          "bronze_source": "bronze/WESAD/S9/S9_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": null
+        },
+        "TEMP": {
+          "bronze_source": "bronze/WESAD/S9/S9_respiban.txt",
+          "silver_intermediate": null,
+          "note": "RespiBAN channels are stored as columns in a single flat file; the bronze_source refers to the whole participant data file.",
+          "stages_applied": [
+            "profiling",
+            "conformance",
+            "completeness",
+            "plausibility",
+            "alignment"
+          ],
+          "transformations": [],
+          "plausibility_note": "EDA (CH2) and TEMP (CH4) excluded from plausibility checks (raw sensor values, duplicate physiological coverage from E4 wrist). See docs/progress_log.md."
+        }
+      }
+    }
+  }
+}

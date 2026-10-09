@@ -377,6 +377,20 @@ Per the supervisor decision recorded in the 9 Sept meeting (Meeting 4), fully re
 
 ---
 
+## Completeness picture after TEMP cleaning
+
+*Date: 2026-09-24. Commit: `e76ea15`.*
+
+Before Task 8 cleaning, WESAD showed zero missingness across all signals and all 15 participants.
+
+After the TEMP warm-up cleaning (commit `e76ea15`), the E4 TEMP channel now contains 4 NaN values per participant (60 total across 15 participants) at indices 0–3, where the ~382°C NTC thermistor warm-up artefact was replaced with the literal text `NaN`. Channel length is unchanged — the rows are present, the values are marked missing.
+
+This is an **intended cleaning outcome, not a data defect**. A known sensor artefact was removed and honestly marked missing rather than left in place (where it would inflate conformance violation counts) or replaced with a fabricated value (which would corrupt the signal). The completeness check will correctly report these 60 NaN samples as missing going forward.
+
+Net effect: the honest completeness statement for cleaned WESAD is *"zero missingness except 60 intentionally-removed TEMP warm-up samples."* This is a stronger and more transparent result than the pre-cleaning *"zero missingness,"* because the pre-cleaning zeros included four invalid sentinel values per participant that were never real temperature readings.
+
+---
+
 ## Plausibility check open issues (Task 5)
 
 *Date: 2026-09-09. Status: both issues are OPEN, pending supervisor conversation. No config value or bound has been changed.*
@@ -623,5 +637,38 @@ The supervisor's frequency-escalation principle is **deferred, not dropped**. It
 ### Status
 
 **DEFERRED — to be revisited at Task 14 (DEAP).**
+
+---
+
+## Chest EDA/TEMP channels scoped out of plausibility checking (decision)
+
+**Date:** 9 Oct 2026  
+**Decision maker:** Kevin Hudoyo (delegated authority; to be confirmed with supervisor on return)
+
+### Context
+
+At the 9 Sept 2026 Meeting 4, Dr. Tobias Cibis suggested adding plausibility bounds for the RespiBAN chest EDA (CH2) and TEMP (CH4) channels, reusing the same physiological ranges already applied to their E4 wrist equivalents (EDA 0–100 µS; skin surface temperature 15–42°C), on the principle that physiological plausibility applies body-wide.
+
+### Complication found during implementation
+
+These chest channels are stored as raw sensor values, not physical units. Checking them against physiological bounds would require implementing two raw-to-unit transfer functions: a linear scaling for EDA (CH2) and a non-linear thermistor conversion for TEMP (CH4). The thermistor conversion is non-trivial. This implementation cost was not known at the time of the supervisor's suggestion.
+
+### Decision
+
+**Scope the RespiBAN chest EDA (CH2) and TEMP (CH4) channels OUT of plausibility checking.**
+
+Reasoning:
+
+- These two channels measure the same physiological quantities — skin conductance and skin temperature — that are already plausibility-checked on the E4 wrist channels. They are duplicate coverage of the same physiology, not additional coverage of new physiology.
+- Implementing two transfer functions, including a non-linear thermistor conversion, for signals whose physiological plausibility is already verified on the wrist was judged disproportionate to the value added.
+- The E4 wrist EDA and TEMP checks provide complete coverage of these physiological quantities.
+
+### Governance note
+
+This is a deliberate, documented scope decision, not a silent omission. The channels are consciously excluded with stated reasoning, consistent with the project's documented-governance principle. The existing `plausibility.py` code already records a hardcoded exclusion comment for CH2 and CH4; this entry provides the formal rationale behind that exclusion.
+
+### Status
+
+**Decided under delegated authority. Reversible.** To be confirmed with Dr. Tobias Cibis on his return from overseas. He may request that the transfer functions be added, in which case this decision is revisited. Low priority given the duplicate-coverage rationale.
 
 ---
