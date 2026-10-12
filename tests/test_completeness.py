@@ -9,7 +9,7 @@ from pathlib import Path
 
 import pytest
 
-from src.checks.completeness import _check_e4_fixed, _check_e4_ibi, check_chest
+from src.checks.completeness import _check_e4_fixed, _check_e4_ibi, check_chest, _find_nan_runs
 from tests.conftest import make_e4_csv, make_respiban_txt, neutral_respiban_row
 
 THRESHOLD = 0.0
@@ -166,3 +166,92 @@ class TestChestCompleteness:
         r1 = json.dumps(check_chest(f, THRESHOLD), sort_keys=True)
         r2 = json.dumps(check_chest(f, THRESHOLD), sort_keys=True)
         assert r1 == r2
+
+
+# ── Intentional-removal handling ─────────────────────────────────────────────
+
+class TestIntentionalRemovals:
+    """
+    Validates the intentional_removal_indices parameter added in the
+    'exclude documented intentional removals from missingness' change.
+    All inputs are synthetic; no real WESAD data is read.
+    """
+
+    def test_documented_nan_excluded_from_rate(self, tmp_path):
+        """
+        A NaN at a documented removal index is excluded from missingness_rate
+        and counted in intentional_removals.
+
+        File: 5 samples, index 0 is NaN (documented removal).
+        Without exclusion: n_nan=1, rate=0.2.
+        With exclusion: n_unintentional_nan=0, rate=0.0, passes threshold=0.0.
+        """
+        f = tmp_path / "TEMP.csv"
+        make_e4_csv(f, ["nan", 2.0, 3.0, 4.0, 5.0])
+        result = _check_e4_fixed(f, THRESHOLD, intentional_removal_indices=[0])
+
+        assert result["n_nan"] == 1                          # total NaN (unchanged)
+        assert result["n_intentional_nan"] == 1              # excluded from rate
+        assert result["n_unintentional_nan"] == 0            # contributes to rate
+        assert result["missingness_rate"] == 0.0             # rate based on unintentional only
+        assert result["passes_threshold"] is True
+        ri = result["intentional_removals"]
+        assert ri["count"] == 1
+        assert ri["indices"] == [0]
+
+    def test_undocumented_nan_still_counts_as_missing(self, tmp_path):
+        """
+        A NaN at an undocumented index in the same file is still counted as
+        missing, so missingness_rate is non-zero and the file fails the threshold.
+
+        File: 5 samples.  Index 0 is a documented removal (NaN); index 2 is
+        an undocumented NaN (unexpected missingness).
+        Expected: n_intentional_nan=1, n_unintentional_nan=1, rate=0.2.
+        """
+        f = tmp_path / "TEMP.csv"
+        make_e4_csv(f, ["nan", 2.0, "nan", 4.0, 5.0])
+        result = _check_e4_fixed(f, THRESHOLD, intentional_removal_indices=[0])
+
+        assert result["n_nan"] == 2
+        assert result["n_intentional_nan"] == 1
+        assert result["n_unintentional_nan"] == 1
+        assert result["missingness_rate"] == pytest.approx(0.2)
+        assert result["passes_threshold"] is False
+
+    def test_documented_index_not_nan_not_subtracted(self, tmp_path):
+        """
+        A documented removal index whose value is NOT NaN does not reduce
+        n_intentional_nan — no negative or understated count.
+
+        File: 5 clean samples (no NaN).  Index 0 is listed as a removal index
+        but the value is a normal float.  The file has no NaN, so both
+        n_intentional_nan and n_unintentional_nan should be 0.
+        """
+        f = tmp_path / "TEMP.csv"
+        make_e4_csv(f, [1.0, 2.0, 3.0, 4.0, 5.0])
+        result = _check_e4_fixed(f, THRESHOLD, intentional_removal_indices=[0])
+
+        assert result["n_nan"] == 0
+        assert result.get("n_intentional_nan", 0) == 0
+        assert result.get("n_unintentional_nan", 0) == 0
+        assert result["missingness_rate"] == 0.0
+        assert result["passes_threshold"] is True
+        # intentional_removals block should not appear when count is 0
+        assert "intentional_removals" not in result
+
+    def test_no_removal_list_reproduces_original_behaviour(self, tmp_path):
+        """
+        Calling with no removal list (default None) produces the same result
+        as the original function: n_nan==1, rate==0.2, passes_threshold=False.
+        The new fields n_intentional_nan / n_unintentional_nan must not appear.
+        """
+        f = tmp_path / "EDA.csv"
+        make_e4_csv(f, [1.0, "nan", 3.0, 4.0, 5.0])
+        result = _check_e4_fixed(f, THRESHOLD)
+
+        assert result["n_nan"] == 1
+        assert result["missingness_rate"] == pytest.approx(0.2)
+        assert result["passes_threshold"] is False
+        assert "n_intentional_nan" not in result
+        assert "n_unintentional_nan" not in result
+        assert "intentional_removals" not in result
