@@ -291,20 +291,31 @@ def _check_e4_signal(
     return findings
 
 
-def check_e4(participant_dir: Path, wesad_cfg: dict, threshold: float) -> dict:
+def check_e4(
+    participant_dir: Path,
+    wesad_cfg: dict,
+    threshold: float,
+    e4_path_overrides: "dict[str, Path] | None" = None,
+) -> dict:
+    """
+    e4_path_overrides: optional dict {modality: Path} — when provided, the
+    override path is used instead of the default bronze path for that modality.
+    Used by post-cleaning checks to read Silver TEMP while keeping all other
+    signals on bronze.
+    """
     pid = participant_dir.name
     e4_dir = participant_dir / f"{pid}_E4_Data"
     result: dict = {}
 
     # EDA: stored in µS; check directly against config bounds.
-    eda_path = e4_dir / "EDA.csv"
+    eda_path = (e4_path_overrides or {}).get("EDA") or e4_dir / "EDA.csv"
     if eda_path.exists():
         result["EDA"] = _check_e4_signal(eda_path, "EDA", wesad_cfg, threshold)
     else:
         result["EDA"] = {"excluded": False, "error": "file_not_found"}
 
     # TEMP: stored in °C.
-    temp_path = e4_dir / "TEMP.csv"
+    temp_path = (e4_path_overrides or {}).get("TEMP") or e4_dir / "TEMP.csv"
     if temp_path.exists():
         result["TEMP"] = _check_e4_signal(
             temp_path, "skin_temperature", wesad_cfg, threshold
@@ -313,7 +324,7 @@ def check_e4(participant_dir: Path, wesad_cfg: dict, threshold: float) -> dict:
         result["TEMP"] = {"excluded": False, "error": "file_not_found"}
 
     # HR: stored in bpm.
-    hr_path = e4_dir / "HR.csv"
+    hr_path = (e4_path_overrides or {}).get("HR") or e4_dir / "HR.csv"
     if hr_path.exists():
         result["HR"] = _check_e4_signal(
             hr_path, "heart_rate", wesad_cfg, threshold
@@ -322,7 +333,7 @@ def check_e4(participant_dir: Path, wesad_cfg: dict, threshold: float) -> dict:
         result["HR"] = {"excluded": False, "error": "file_not_found"}
 
     # ACC: stored in 1/64 g; config bounds are in g → multiply by 64.
-    acc_path = e4_dir / "ACC.csv"
+    acc_path = (e4_path_overrides or {}).get("ACC") or e4_dir / "ACC.csv"
     if acc_path.exists():
         result["ACC"] = _check_e4_signal(
             acc_path, "accelerometry_e4", wesad_cfg, threshold,

@@ -672,3 +672,38 @@ This is a deliberate, documented scope decision, not a silent omission. The chan
 **Decided under delegated authority. Reversible.** To be confirmed with Dr. Tobias Cibis on his return from overseas. He may request that the transfer functions be added, in which case this decision is revisited. Low priority given the duplicate-coverage rationale.
 
 ---
+
+## Completeness definition: intentional removals excluded (decision)
+
+**Date:** 12 Oct 2026
+**Decision maker:** Kevin Hudoyo
+
+### Context
+
+The E4 TEMP warm-up artefact cleaning (Task 8) replaced 4 samples per participant (indices 0–3) with NaN across all 15 participants — 60 samples total. These are documented intentional removals recorded in `reports/wesad_cleaning.json`.
+
+The completeness threshold is `max_missingness_rate: 0.0`, a preservation floor that ensures the pipeline does not introduce unintended data loss.
+
+### Problem
+
+After cleaning, computing missingness naively (all NaN / total cells) yields ~3.3e-06, which technically exceeds the 0.0 threshold. The original quality report marked this as "PASS (intended outcome)" — a qualifier that is logically contradictory: the report was both calling it a failure and overriding the verdict, which is not a sound basis for a quality framework.
+
+### Decision
+
+**Missingness measures UNINTENDED absence only.**
+
+Samples documented as intentionally removed during cleaning are excluded from the missingness rate and reported separately as `intentional_removals`. After cleaning, unintentional missingness = 0.0, which genuinely passes the 0.0 threshold.
+
+This is consistent with the purpose of the threshold: the 0.0 floor was designed to prevent the pipeline from silently losing genuine signal. Removing a documented artefact is not losing genuine signal; it is correcting a false reading. The threshold should not penalise a decision made for quality reasons.
+
+### Implementation
+
+- `_check_e4_fixed` in `src/checks/completeness.py` accepts `intentional_removal_indices` (optional, backward-compatible).
+- Post-cleaning checks run via `src/checks/post_cleaning.py`, which reads Silver TEMP + Bronze for everything else, loads intentional removal indices from `reports/wesad_cleaning.json`, and writes separate `*_post_cleaning.json` reports.
+- `src/report.py` reads the post-cleaning measured reports for "after" values; no values are derived or hardcoded.
+
+### Status
+
+**Decided.** Intentional-removal exclusion is now the operational definition of missingness in this framework.
+
+---

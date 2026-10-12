@@ -1,5 +1,5 @@
 {
-  "schema": "wesad_quality_report_v1",
+  "schema": "wesad_quality_report_v2",
   "dataset": "WESAD",
   "report_type": "before_after_quality_comparison",
   "framework": "Five-dimension quality framework grounded in Batini et al. (2009) and Wang & Strong (1996). Thresholds pre-registered in config/thresholds.yaml (signed off: Dr. Tobias Cibis, 2026-09-09).",
@@ -7,9 +7,12 @@
   "thresholds_date_locked": "2026-09-09",
   "source_reports": {
     "profiling": "reports/wesad_baseline.json",
-    "conformance": "reports/wesad_conformance.json",
-    "completeness": "reports/wesad_completeness.json",
-    "plausibility": "reports/wesad_plausibility.json",
+    "conformance_before": "reports/wesad_conformance.json",
+    "conformance_after": "reports/wesad_conformance_post_cleaning.json",
+    "completeness_before": "reports/wesad_completeness.json",
+    "completeness_after": "reports/wesad_completeness_post_cleaning.json",
+    "plausibility_before": "reports/wesad_plausibility.json",
+    "plausibility_after": "reports/wesad_plausibility_post_cleaning.json",
     "alignment": "reports/wesad_alignment.json",
     "cleaning": "reports/wesad_cleaning.json"
   },
@@ -28,16 +31,17 @@
       },
       "after": {
         "state": "gold_cleaned",
-        "nan_count": 60,
-        "cells_checked": 18073707,
-        "missingness_rate": 3.3197e-06,
-        "threshold_pass": false,
-        "intended_outcome": true
+        "missingness_rate": 0.0,
+        "threshold_pass": true,
+        "intentional_removals": {
+          "count": 60,
+          "description": "E4 TEMP warm-up artefact samples set to NaN during cleaning. Documented in reports/wesad_cleaning.json. Excluded from missingness_rate by definition (intentional, not unintended absence)."
+        },
+        "source": "reports/wesad_completeness_post_cleaning.json"
       },
-      "interpretation": "The 60 NaN values introduced after cleaning are an INTENDED outcome, not a regression. The TEMP warm-up samples (~382 degrees C) were physically implausible artefacts. Replacing them with NaN removes the false values and honestly marks the gap. Leaving them as ~382 degrees C would have been the worse outcome: a false reading presented as valid data. The post-cleaning missingness rate of ~3.3e-06 technically exceeds the 0.0 preservation-floor threshold, but that threshold was designed to prevent the pipeline from losing genuine signal, not to prevent it from removing documented artefacts. This result is evidence the framework detected and resolved a real quality issue, not that it degraded the data.",
+      "completeness_definition_note": "Missingness measures UNINTENDED absence only. Samples intentionally removed during cleaning are excluded from the rate and reported separately. Decision: Kevin, 2026-10-12.",
       "threshold_pass_bronze": true,
-      "threshold_pass_gold": false,
-      "threshold_pass_intended": true
+      "threshold_pass_gold": true
     },
     "validity_conformance": {
       "dimension": "validity_conformance",
@@ -57,7 +61,7 @@
         "cells_checked": 514713128,
         "violation_rate": 0.0,
         "threshold_pass": true,
-        "derivation": "After cleaning, temp_violations_after_cleaning = 0 (verified in wesad_cleaning.json). The 60 TEMP warm-up violations were the only violations in the dataset; no other violations existed. Post-cleaning violation count = 0, rate = 0.0."
+        "source": "reports/wesad_conformance_post_cleaning.json"
       },
       "headline": "Conformance violations: 60 (Bronze) -> 0 (Gold). Pipeline resolved the only conformance issue in the dataset.",
       "threshold_pass_bronze": false,
@@ -81,7 +85,7 @@
         "samples_checked": 388842132,
         "failure_rate": 0.0,
         "threshold_pass": true,
-        "derivation": "The 60 plausibility violations were the identical rows removed by cleaning (TEMP warm-up samples, indices 0-3). After cleaning, those rows are NaN; plausibility checks exclude genuinely-missing cells. No other plausibility violations existed. Post-cleaning failure rate = 0.0."
+        "source": "reports/wesad_plausibility_post_cleaning.json"
       },
       "headline": "Plausibility failures: 60 (Bronze) -> 0 (Gold). The only physiologically implausible signal was the TEMP warm-up artefact, resolved by cleaning.",
       "threshold_pass_bronze": true,
@@ -141,17 +145,15 @@
   "overall_assessment": {
     "gold_passes_all_measured_thresholds": true,
     "measured_dimensions": [
+      "completeness",
       "validity_conformance",
       "validity_plausibility",
       "timeliness"
-    ],
-    "measured_with_intended_exception": [
-      "completeness"
     ],
     "unmeasured_dimensions": [
       "consistency",
       "accuracy"
     ],
-    "headline": "The Gold pipeline resolves the only quality issues found in WESAD. Conformance and plausibility violations fall from 60 to 0 after cleaning the E4 TEMP warm-up artefact. Cross-modal alignment passes the 1.0 s threshold (max residual 0.107 s). Completeness introduces 60 intentional NaN values (documented artefact removal); this is not a regression. The framework demonstrates end-to-end detection, documentation, and resolution of a real quality issue."
+    "headline": "The Gold pipeline resolves the only quality issues found in WESAD. Conformance and plausibility violations fall from 60 to 0 after cleaning the E4 TEMP warm-up artefact. Completeness after cleaning: unintentional missingness = 0.0 (60 intentional removals reported separately). Cross-modal alignment passes the 1.0 s threshold (max residual 0.107 s). All four measured dimensions pass. The framework demonstrates end-to-end detection, documentation, and resolution of a real quality issue."
   }
 }

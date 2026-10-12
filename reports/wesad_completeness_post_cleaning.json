@@ -1,0 +1,2323 @@
+{
+  "check": "completeness_post_cleaning",
+  "dataset": "WESAD",
+  "n_participants": 15,
+  "note": "Effective cleaned dataset: Silver TEMP + Bronze for all other signals. Intentional removals (E4 TEMP warm-up, 60 samples) are excluded from missingness_rate and reported separately. Original Bronze-baseline report (wesad_completeness.json) is unchanged.",
+  "participant_ids": [
+    "S10",
+    "S11",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9"
+  ],
+  "participants": {
+    "S10": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 3992284,
+        "n_samples": 3992284,
+        "n_sequence_gaps": 0,
+        "nseq_end": 3992283,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          }
+        },
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "sequence_gap_passes_threshold": true,
+        "threshold": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 218328,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1500966308.0,
+          "threshold": 0.0,
+          "total_cells": 654984
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 436645,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1500966308.0,
+          "threshold": 0.0,
+          "total_cells": 436645
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 27288,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1500966308.0,
+          "threshold": 0.0,
+          "total_cells": 27288
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 6813,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1500966318.0,
+          "threshold": 0.0,
+          "total_cells": 6813
+        },
+        "IBI": {
+          "n_events": 5176,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate; missingness rate is undefined and not compared against threshold.",
+          "start_time_unix": 1500966308.0,
+          "threshold_applied": false
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "intentional_removals": {
+            "count": 4,
+            "indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "note": "Samples intentionally removed during cleaning; excluded from missingness_rate. Source: reports/wesad_cleaning.json."
+          },
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_intentional_nan": 4,
+          "n_nan": 4,
+          "n_samples": 27288,
+          "n_unintentional_nan": 0,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1500966308.0,
+          "threshold": 0.0,
+          "total_cells": 27288
+        }
+      }
+    },
+    "S11": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 3788875,
+        "n_samples": 3788875,
+        "n_sequence_gaps": 0,
+        "nseq_end": 3788874,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          }
+        },
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "sequence_gap_passes_threshold": true,
+        "threshold": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 206736,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1500981259.0,
+          "threshold": 0.0,
+          "total_cells": 620208
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 413468,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1500981259.0,
+          "threshold": 0.0,
+          "total_cells": 413468
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 25842,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1500981259.0,
+          "threshold": 0.0,
+          "total_cells": 25842
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 6451,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1500981269.0,
+          "threshold": 0.0,
+          "total_cells": 6451
+        },
+        "IBI": {
+          "n_events": 3278,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate; missingness rate is undefined and not compared against threshold.",
+          "start_time_unix": 1500981259.0,
+          "threshold_applied": false
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "intentional_removals": {
+            "count": 4,
+            "indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "note": "Samples intentionally removed during cleaning; excluded from missingness_rate. Source: reports/wesad_cleaning.json."
+          },
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_intentional_nan": 4,
+          "n_nan": 4,
+          "n_samples": 25840,
+          "n_unintentional_nan": 0,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1500981259.0,
+          "threshold": 0.0,
+          "total_cells": 25840
+        }
+      }
+    },
+    "S13": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 4016515,
+        "n_samples": 4016515,
+        "n_sequence_gaps": 0,
+        "nseq_end": 4016514,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          }
+        },
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "sequence_gap_passes_threshold": true,
+        "threshold": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 219606,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502190787.0,
+          "threshold": 0.0,
+          "total_cells": 658818
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 439208,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502190787.0,
+          "threshold": 0.0,
+          "total_cells": 439208
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 27450,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502190787.0,
+          "threshold": 0.0,
+          "total_cells": 27450
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 6853,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502190797.0,
+          "threshold": 0.0,
+          "total_cells": 6853
+        },
+        "IBI": {
+          "n_events": 2858,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate; missingness rate is undefined and not compared against threshold.",
+          "start_time_unix": 1502190787.0,
+          "threshold_applied": false
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "intentional_removals": {
+            "count": 4,
+            "indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "note": "Samples intentionally removed during cleaning; excluded from missingness_rate. Source: reports/wesad_cleaning.json."
+          },
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_intentional_nan": 4,
+          "n_nan": 4,
+          "n_samples": 27448,
+          "n_unintentional_nan": 0,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502190787.0,
+          "threshold": 0.0,
+          "total_cells": 27448
+        }
+      }
+    },
+    "S14": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 4034461,
+        "n_samples": 4034461,
+        "n_sequence_gaps": 0,
+        "nseq_end": 4034460,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          }
+        },
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "sequence_gap_passes_threshold": true,
+        "threshold": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 223560,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502262571.0,
+          "threshold": 0.0,
+          "total_cells": 670680
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 447128,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502262571.0,
+          "threshold": 0.0,
+          "total_cells": 447128
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 27942,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502262571.0,
+          "threshold": 0.0,
+          "total_cells": 27942
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 6977,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502262581.0,
+          "threshold": 0.0,
+          "total_cells": 6977
+        },
+        "IBI": {
+          "n_events": 4996,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate; missingness rate is undefined and not compared against threshold.",
+          "start_time_unix": 1502262571.0,
+          "threshold_applied": false
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "intentional_removals": {
+            "count": 4,
+            "indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "note": "Samples intentionally removed during cleaning; excluded from missingness_rate. Source: reports/wesad_cleaning.json."
+          },
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_intentional_nan": 4,
+          "n_nan": 4,
+          "n_samples": 27944,
+          "n_unintentional_nan": 0,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502262571.0,
+          "threshold": 0.0,
+          "total_cells": 27944
+        }
+      }
+    },
+    "S15": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 3936977,
+        "n_samples": 3936977,
+        "n_sequence_gaps": 0,
+        "nseq_end": 3936976,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          }
+        },
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "sequence_gap_passes_threshold": true,
+        "threshold": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 212568,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502349056.0,
+          "threshold": 0.0,
+          "total_cells": 637704
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 425139,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502349056.0,
+          "threshold": 0.0,
+          "total_cells": 425139
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 26568,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502349056.0,
+          "threshold": 0.0,
+          "total_cells": 26568
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 6633,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502349066.0,
+          "threshold": 0.0,
+          "total_cells": 6633
+        },
+        "IBI": {
+          "n_events": 3398,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate; missingness rate is undefined and not compared against threshold.",
+          "start_time_unix": 1502349056.0,
+          "threshold_applied": false
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "intentional_removals": {
+            "count": 4,
+            "indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "note": "Samples intentionally removed during cleaning; excluded from missingness_rate. Source: reports/wesad_cleaning.json."
+          },
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_intentional_nan": 4,
+          "n_nan": 4,
+          "n_samples": 26568,
+          "n_unintentional_nan": 0,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502349056.0,
+          "threshold": 0.0,
+          "total_cells": 26568
+        }
+      }
+    },
+    "S16": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 4156017,
+        "n_samples": 4156017,
+        "n_sequence_gaps": 0,
+        "nseq_end": 4156016,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          }
+        },
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "sequence_gap_passes_threshold": true,
+        "threshold": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 227430,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502366365.0,
+          "threshold": 0.0,
+          "total_cells": 682290
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 454850,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502366365.0,
+          "threshold": 0.0,
+          "total_cells": 454850
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 28428,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502366365.0,
+          "threshold": 0.0,
+          "total_cells": 28428
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 7098,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502366375.0,
+          "threshold": 0.0,
+          "total_cells": 7098
+        },
+        "IBI": {
+          "n_events": 3938,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate; missingness rate is undefined and not compared against threshold.",
+          "start_time_unix": 1502366365.0,
+          "threshold_applied": false
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "intentional_removals": {
+            "count": 4,
+            "indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "note": "Samples intentionally removed during cleaning; excluded from missingness_rate. Source: reports/wesad_cleaning.json."
+          },
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_intentional_nan": 4,
+          "n_nan": 4,
+          "n_samples": 28424,
+          "n_unintentional_nan": 0,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502366365.0,
+          "threshold": 0.0,
+          "total_cells": 28424
+        }
+      }
+    },
+    "S17": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 4287118,
+        "n_samples": 4287118,
+        "n_sequence_gaps": 0,
+        "nseq_end": 4287117,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          }
+        },
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "sequence_gap_passes_threshold": true,
+        "threshold": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 231414,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502435962.0,
+          "threshold": 0.0,
+          "total_cells": 694242
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 462825,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502435962.0,
+          "threshold": 0.0,
+          "total_cells": 462825
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 28926,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502435962.0,
+          "threshold": 0.0,
+          "total_cells": 28926
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 7222,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502435972.0,
+          "threshold": 0.0,
+          "total_cells": 7222
+        },
+        "IBI": {
+          "n_events": 2138,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate; missingness rate is undefined and not compared against threshold.",
+          "start_time_unix": 1502435962.0,
+          "threshold_applied": false
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "intentional_removals": {
+            "count": 4,
+            "indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "note": "Samples intentionally removed during cleaning; excluded from missingness_rate. Source: reports/wesad_cleaning.json."
+          },
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_intentional_nan": 4,
+          "n_nan": 4,
+          "n_samples": 28920,
+          "n_unintentional_nan": 0,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1502435962.0,
+          "threshold": 0.0,
+          "total_cells": 28920
+        }
+      }
+    },
+    "S2": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 4442067,
+        "n_samples": 4442067,
+        "n_sequence_gaps": 0,
+        "nseq_end": 4442066,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          }
+        },
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "sequence_gap_passes_threshold": true,
+        "threshold": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 251970,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1495437325.0,
+          "threshold": 0.0,
+          "total_cells": 755910
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 503943,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1495437325.0,
+          "threshold": 0.0,
+          "total_cells": 503943
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 31494,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1495437325.0,
+          "threshold": 0.0,
+          "total_cells": 31494
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 7865,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1495437335.0,
+          "threshold": 0.0,
+          "total_cells": 7865
+        },
+        "IBI": {
+          "n_events": 3458,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate; missingness rate is undefined and not compared against threshold.",
+          "start_time_unix": 1495437325.0,
+          "threshold_applied": false
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "intentional_removals": {
+            "count": 4,
+            "indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "note": "Samples intentionally removed during cleaning; excluded from missingness_rate. Source: reports/wesad_cleaning.json."
+          },
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_intentional_nan": 4,
+          "n_nan": 4,
+          "n_samples": 31496,
+          "n_unintentional_nan": 0,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1495437325.0,
+          "threshold": 0.0,
+          "total_cells": 31496
+        }
+      }
+    },
+    "S3": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 4643347,
+        "n_samples": 4643347,
+        "n_sequence_gaps": 0,
+        "nseq_end": 4643346,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          }
+        },
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "sequence_gap_passes_threshold": true,
+        "threshold": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 247152,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1495624128.0,
+          "threshold": 0.0,
+          "total_cells": 741456
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 494307,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1495624128.0,
+          "threshold": 0.0,
+          "total_cells": 494307
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 30894,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1495624128.0,
+          "threshold": 0.0,
+          "total_cells": 30894
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 7714,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1495624138.0,
+          "threshold": 0.0,
+          "total_cells": 7714
+        },
+        "IBI": {
+          "n_events": 1920,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate; missingness rate is undefined and not compared against threshold.",
+          "start_time_unix": 1495624128.0,
+          "threshold_applied": false
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "intentional_removals": {
+            "count": 4,
+            "indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "note": "Samples intentionally removed during cleaning; excluded from missingness_rate. Source: reports/wesad_cleaning.json."
+          },
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_intentional_nan": 4,
+          "n_nan": 4,
+          "n_samples": 30888,
+          "n_unintentional_nan": 0,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1495624128.0,
+          "threshold": 0.0,
+          "total_cells": 30888
+        }
+      }
+    },
+    "S4": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 4588553,
+        "n_samples": 4588553,
+        "n_sequence_gaps": 0,
+        "nseq_end": 4588552,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          }
+        },
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "sequence_gap_passes_threshold": true,
+        "threshold": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 255978,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1497342820.0,
+          "threshold": 0.0,
+          "total_cells": 767934
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 511962,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1497342820.0,
+          "threshold": 0.0,
+          "total_cells": 511962
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 31998,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1497342820.0,
+          "threshold": 0.0,
+          "total_cells": 31998
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 7990,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1497342830.0,
+          "threshold": 0.0,
+          "total_cells": 7990
+        },
+        "IBI": {
+          "n_events": 3278,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate; missingness rate is undefined and not compared against threshold.",
+          "start_time_unix": 1497342820.0,
+          "threshold_applied": false
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "intentional_removals": {
+            "count": 4,
+            "indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "note": "Samples intentionally removed during cleaning; excluded from missingness_rate. Source: reports/wesad_cleaning.json."
+          },
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_intentional_nan": 4,
+          "n_nan": 4,
+          "n_samples": 31992,
+          "n_unintentional_nan": 0,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1497342820.0,
+          "threshold": 0.0,
+          "total_cells": 31992
+        }
+      }
+    },
+    "S5": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 4498418,
+        "n_samples": 4498418,
+        "n_sequence_gaps": 0,
+        "nseq_end": 4498417,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          }
+        },
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "sequence_gap_passes_threshold": true,
+        "threshold": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 241620,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1497356533.0,
+          "threshold": 0.0,
+          "total_cells": 724860
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 483241,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1497356533.0,
+          "threshold": 0.0,
+          "total_cells": 483241
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 30204,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1497356533.0,
+          "threshold": 0.0,
+          "total_cells": 30204
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 7541,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1497356543.0,
+          "threshold": 0.0,
+          "total_cells": 7541
+        },
+        "IBI": {
+          "n_events": 1230,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate; missingness rate is undefined and not compared against threshold.",
+          "start_time_unix": 1497356533.0,
+          "threshold_applied": false
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "intentional_removals": {
+            "count": 4,
+            "indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "note": "Samples intentionally removed during cleaning; excluded from missingness_rate. Source: reports/wesad_cleaning.json."
+          },
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_intentional_nan": 4,
+          "n_nan": 4,
+          "n_samples": 30200,
+          "n_unintentional_nan": 0,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1497356533.0,
+          "threshold": 0.0,
+          "total_cells": 30200
+        }
+      }
+    },
+    "S6": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 5055420,
+        "n_samples": 5055420,
+        "n_sequence_gaps": 0,
+        "nseq_end": 5055419,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          }
+        },
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "sequence_gap_passes_threshold": true,
+        "threshold": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 266352,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1497439238.0,
+          "threshold": 0.0,
+          "total_cells": 799056
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 532708,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1497439238.0,
+          "threshold": 0.0,
+          "total_cells": 532708
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 33294,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1497439238.0,
+          "threshold": 0.0,
+          "total_cells": 33294
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 8314,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1497439248.0,
+          "threshold": 0.0,
+          "total_cells": 8314
+        },
+        "IBI": {
+          "n_events": 2828,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate; missingness rate is undefined and not compared against threshold.",
+          "start_time_unix": 1497439238.0,
+          "threshold_applied": false
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "intentional_removals": {
+            "count": 4,
+            "indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "note": "Samples intentionally removed during cleaning; excluded from missingness_rate. Source: reports/wesad_cleaning.json."
+          },
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_intentional_nan": 4,
+          "n_nan": 4,
+          "n_samples": 33288,
+          "n_unintentional_nan": 0,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1497439238.0,
+          "threshold": 0.0,
+          "total_cells": 33288
+        }
+      }
+    },
+    "S7": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 3785775,
+        "n_samples": 3785775,
+        "n_sequence_gaps": 0,
+        "nseq_end": 3785774,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          }
+        },
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "sequence_gap_passes_threshold": true,
+        "threshold": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 207822,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1499339464.0,
+          "threshold": 0.0,
+          "total_cells": 623466
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 415646,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1499339464.0,
+          "threshold": 0.0,
+          "total_cells": 415646
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 25974,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1499339464.0,
+          "threshold": 0.0,
+          "total_cells": 25974
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 6485,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1499339474.0,
+          "threshold": 0.0,
+          "total_cells": 6485
+        },
+        "IBI": {
+          "n_events": 2948,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate; missingness rate is undefined and not compared against threshold.",
+          "start_time_unix": 1499339464.0,
+          "threshold_applied": false
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "intentional_removals": {
+            "count": 4,
+            "indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "note": "Samples intentionally removed during cleaning; excluded from missingness_rate. Source: reports/wesad_cleaning.json."
+          },
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_intentional_nan": 4,
+          "n_nan": 4,
+          "n_samples": 25976,
+          "n_unintentional_nan": 0,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1499339464.0,
+          "threshold": 0.0,
+          "total_cells": 25976
+        }
+      }
+    },
+    "S8": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 3959911,
+        "n_samples": 3959911,
+        "n_sequence_gaps": 0,
+        "nseq_end": 3959910,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          }
+        },
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "sequence_gap_passes_threshold": true,
+        "threshold": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 212430,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1499685040.0,
+          "threshold": 0.0,
+          "total_cells": 637290
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 424864,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1499685040.0,
+          "threshold": 0.0,
+          "total_cells": 424864
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 26550,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1499685040.0,
+          "threshold": 0.0,
+          "total_cells": 26550
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 6629,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1499685050.0,
+          "threshold": 0.0,
+          "total_cells": 6629
+        },
+        "IBI": {
+          "n_events": 2378,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate; missingness rate is undefined and not compared against threshold.",
+          "start_time_unix": 1499685040.0,
+          "threshold_applied": false
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "intentional_removals": {
+            "count": 4,
+            "indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "note": "Samples intentionally removed during cleaning; excluded from missingness_rate. Source: reports/wesad_cleaning.json."
+          },
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_intentional_nan": 4,
+          "n_nan": 4,
+          "n_samples": 26552,
+          "n_unintentional_nan": 0,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1499685040.0,
+          "threshold": 0.0,
+          "total_cells": 26552
+        }
+      }
+    },
+    "S9": {
+      "chest": {
+        "declared_hz": 700,
+        "expected_n_from_nseq": 3749760,
+        "n_samples": 3749760,
+        "n_sequence_gaps": 0,
+        "nseq_end": 3749759,
+        "nseq_start": 0,
+        "per_channel": {
+          "ACC_x": {
+            "column": "CH5",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_y": {
+            "column": "CH6",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ACC_z": {
+            "column": "CH7",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "ECG": {
+            "column": "CH1",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EDA": {
+            "column": "CH2",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "EMG": {
+            "column": "CH3",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "RESP": {
+            "column": "CH8",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          },
+          "TEMP": {
+            "column": "CH4",
+            "n_nan": 0,
+            "nan_rate": 0.0,
+            "passes_threshold": true
+          }
+        },
+        "sequence_gap_locations": [],
+        "sequence_gap_missingness_rate": 0.0,
+        "sequence_gap_passes_threshold": true,
+        "threshold": 0.0,
+        "total_dropped_samples_in_gaps": 0
+      },
+      "e4": {
+        "ACC": {
+          "declared_hz": 32.0,
+          "missingness_rate": 0.0,
+          "n_columns": 3,
+          "n_nan": 0,
+          "n_samples": 199314,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1499771441.0,
+          "threshold": 0.0,
+          "total_cells": 597942
+        },
+        "BVP": {
+          "declared_hz": 64.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 398629,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1499771441.0,
+          "threshold": 0.0,
+          "total_cells": 398629
+        },
+        "EDA": {
+          "declared_hz": 4.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 24912,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1499771441.0,
+          "threshold": 0.0,
+          "total_cells": 24912
+        },
+        "HR": {
+          "declared_hz": 1.0,
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_nan": 0,
+          "n_samples": 6219,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1499771451.0,
+          "threshold": 0.0,
+          "total_cells": 6219
+        },
+        "IBI": {
+          "n_events": 3278,
+          "n_nan": 0,
+          "note": "Event-based (inter-beat intervals). No fixed sample rate; missingness rate is undefined and not compared against threshold.",
+          "start_time_unix": 1499771441.0,
+          "threshold_applied": false
+        },
+        "TEMP": {
+          "declared_hz": 4.0,
+          "intentional_removals": {
+            "count": 4,
+            "indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "note": "Samples intentionally removed during cleaning; excluded from missingness_rate. Source: reports/wesad_cleaning.json."
+          },
+          "missingness_rate": 0.0,
+          "n_columns": 1,
+          "n_intentional_nan": 4,
+          "n_nan": 4,
+          "n_samples": 24912,
+          "n_unintentional_nan": 0,
+          "nan_gap_count": 0,
+          "nan_gap_locations": [],
+          "passes_threshold": true,
+          "start_time_unix": 1499771441.0,
+          "threshold": 0.0,
+          "total_cells": 24912
+        }
+      }
+    }
+  },
+  "summary": {
+    "chest_nan_rate": 0.0,
+    "chest_sequence_gap_rate": 0.0,
+    "chest_total_dropped_samples": 0,
+    "chest_total_expected_samples": 62935498,
+    "chest_total_nan_cells": 0,
+    "dataset_passes_threshold": true,
+    "e4_intentional_removals": 60,
+    "e4_overall_missingness_rate": 0.0,
+    "e4_total_cells_checked": 18073707,
+    "e4_total_nan_cells": 60,
+    "e4_unintentional_nan_cells": 0,
+    "intentional_removals_note": "e4_overall_missingness_rate is based on unintentional NaN only. 60 samples were intentionally removed during cleaning (documented in reports/wesad_cleaning.json) and are excluded from the missingness rate.",
+    "note_ibi": "IBI is event-based; no missingness rate is defined for it and it is excluded from the threshold comparison. See per-participant e4.IBI entries for event and NaN counts.",
+    "per_participant_passes": {
+      "S10": true,
+      "S11": true,
+      "S13": true,
+      "S14": true,
+      "S15": true,
+      "S16": true,
+      "S17": true,
+      "S2": true,
+      "S3": true,
+      "S4": true,
+      "S5": true,
+      "S6": true,
+      "S7": true,
+      "S8": true,
+      "S9": true
+    },
+    "threshold_max_missingness_rate": 0.0
+  }
+}

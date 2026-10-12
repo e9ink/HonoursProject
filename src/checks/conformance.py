@@ -244,12 +244,27 @@ def _check_e4_modality(csv_path: Path, modality: str, ranges: dict) -> dict:
     return findings
 
 
-def check_e4(participant_dir: Path, ranges: dict) -> dict:
+def check_e4(
+    participant_dir: Path,
+    ranges: dict,
+    e4_path_overrides: "dict[str, Path] | None" = None,
+) -> dict:
+    """
+    Check all E4 modalities for one participant.
+
+    e4_path_overrides: optional dict {modality: Path} — when provided,
+    the override path is used instead of the default bronze path for that
+    modality.  Used by post-cleaning checks to read Silver TEMP while
+    keeping all other signals on bronze.
+    """
     pid = participant_dir.name
     e4_dir = participant_dir / f"{pid}_E4_Data"
     result: dict = {}
     for modality in sorted(E4_EXPECTED_HZ.keys()):
-        csv_path = e4_dir / f"{modality}.csv"
+        csv_path = (
+            (e4_path_overrides or {}).get(modality)
+            or e4_dir / f"{modality}.csv"
+        )
         if not csv_path.exists():
             result[modality] = {"format": {"ok": False, "error": "file_not_found"}}
             continue
@@ -401,11 +416,15 @@ def check_respiban(txt_path: Path) -> dict:
 # Per-participant coordinator
 # ---------------------------------------------------------------------------
 
-def check_participant(participant_dir: Path, ranges: dict) -> dict:
+def check_participant(
+    participant_dir: Path,
+    ranges: dict,
+    e4_path_overrides: "dict[str, Path] | None" = None,
+) -> dict:
     pid = participant_dir.name
     txt_path = participant_dir / f"{pid}_respiban.txt"
 
-    e4_findings = check_e4(participant_dir, ranges)
+    e4_findings = check_e4(participant_dir, ranges, e4_path_overrides)
     chest_findings = (
         check_respiban(txt_path)
         if txt_path.exists()

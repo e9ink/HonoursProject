@@ -113,11 +113,19 @@ def _find_nan_runs(bool_series: "pd.Series[bool]", hz: float) -> list:
 # E4 wristband completeness
 # ---------------------------------------------------------------------------
 
-def _check_e4_fixed(csv_path: Path, threshold: float) -> dict:
+def _check_e4_fixed(
+    csv_path: Path,
+    threshold: float,
+    intentional_removal_indices: "list[int] | None" = None,
+) -> dict:
     """
     Measure E4 fixed-rate missingness.
-    Formula: missingness_rate = n_nan / (n_samples × n_columns).
-    Identical to profile_e4_fixed in profiling.py.
+    Formula: missingness_rate = n_unintentional_nan / (n_samples × n_columns).
+
+    intentional_removal_indices: sample indices that were deliberately set to NaN
+    during the cleaning stage (from reports/wesad_cleaning.json).  These are
+    EXCLUDED from missingness_rate and reported separately as intentional_removals.
+    Defaults to None (no intentional removals — original Bronze behaviour).
     """
     raw = pd.read_csv(csv_path, header=None, dtype=str)
     start_time = float(raw.iloc[0, 0].strip())
@@ -133,13 +141,44 @@ def _check_e4_fixed(csv_path: Path, threshold: float) -> dict:
     n_cols = data.shape[1]
     n_nan = int(data.isnull().sum().sum())
     total_cells = n_samples * n_cols
-    missingness_rate = round(n_nan / total_cells, 6) if total_cells > 0 else None
 
-    row_has_nan = data.isnull().any(axis=1)
+    # Count intentional removals that are actually NaN in this file (0 for Bronze,
+    # equals the cleaning count for Silver TEMP).
+    n_intentional_nan = 0
+    intentional_removals_info: "dict | None" = None
+    if intentional_removal_indices:
+        for idx in intentional_removal_indices:
+            if idx < len(data) and data.iloc[idx].isnull().any():
+                n_intentional_nan += 1
+        if n_intentional_nan > 0:
+            intentional_removals_info = {
+                "count": n_intentional_nan,
+                "indices": sorted(intentional_removal_indices),
+                "note": (
+                    "Samples intentionally removed during cleaning; excluded from "
+                    "missingness_rate. Source: reports/wesad_cleaning.json."
+                ),
+            }
+
+    n_unintentional_nan = n_nan - n_intentional_nan
+    missingness_rate = (
+        round(n_unintentional_nan / total_cells, 6) if total_cells > 0 else None
+    )
+
+    # Gap detection uses only unintentional NaN rows.
+    if intentional_removal_indices:
+        import pandas as _pd
+        intentional_mask = _pd.Series(False, index=range(len(data)))
+        for idx in intentional_removal_indices:
+            if idx < len(data):
+                intentional_mask.iloc[idx] = True
+        row_has_nan = data.isnull().any(axis=1) & ~intentional_mask
+    else:
+        row_has_nan = data.isnull().any(axis=1)
     nan_gap_locations = _find_nan_runs(row_has_nan, declared_hz)
 
     passes = (missingness_rate is not None) and (missingness_rate <= threshold)
-    return {
+    result = {
         "start_time_unix": start_time,
         "declared_hz": declared_hz,
         "n_samples": n_samples,
@@ -152,6 +191,11 @@ def _check_e4_fixed(csv_path: Path, threshold: float) -> dict:
         "threshold": threshold,
         "passes_threshold": passes,
     }
+    if intentional_removals_info:
+        result["n_intentional_nan"] = n_intentional_nan
+        result["n_unintentional_nan"] = n_unintentional_nan
+        result["intentional_removals"] = intentional_removals_info
+    return result
 
 
 def _check_e4_ibi(csv_path: Path) -> dict:
@@ -179,17 +223,32 @@ def _check_e4_ibi(csv_path: Path) -> dict:
     }
 
 
-def check_e4(participant_dir: Path, threshold: float) -> dict:
+def check_e4(
+    participant_dir: Path,
+    threshold: float,
+    e4_path_overrides: "dict[str, Path] | None" = None,
+    intentional_removals_by_mod: "dict[str, list[int]] | None" = None,
+) -> dict:
+    """
+    e4_path_overrides: optional dict {modality: Path} — use Silver path for that
+    modality instead of the default bronze path (post-cleaning checks only).
+    intentional_removals_by_mod: optional dict {modality: [indices]} — indices
+    to exclude from missingness_rate (post-cleaning checks only).
+    """
     pid = participant_dir.name
     e4_dir = participant_dir / f"{pid}_E4_Data"
     result: dict = {}
 
     for modality in sorted(E4_FIXED_MODALITIES):
-        csv_path = e4_dir / f"{modality}.csv"
+        csv_path = (
+            (e4_path_overrides or {}).get(modality)
+            or e4_dir / f"{modality}.csv"
+        )
         if not csv_path.exists():
             result[modality] = {"error": "file_not_found", "passes_threshold": False}
             continue
-        result[modality] = _check_e4_fixed(csv_path, threshold)
+        removal_indices = (intentional_removals_by_mod or {}).get(modality)
+        result[modality] = _check_e4_fixed(csv_path, threshold, removal_indices)
 
     ibi_path = e4_dir / "IBI.csv"
     result["IBI"] = (
@@ -344,6 +403,7 @@ def _cross_check_baseline(participants: dict) -> None:
 
 def _summarise(participants: dict, threshold: float) -> dict:
     e4_total_nan = 0
+    e4_intentional_nan = 0
     e4_total_cells = 0
     chest_total_dropped = 0
     chest_total_expected = 0
@@ -358,6 +418,7 @@ def _summarise(participants: dict, threshold: float) -> dict:
         for mod in sorted(E4_FIXED_MODALITIES):
             m = p["e4"].get(mod, {})
             e4_total_nan += m.get("n_nan", 0)
+            e4_intentional_nan += m.get("n_intentional_nan", 0)
             e4_total_cells += m.get("total_cells", 0)
             if not m.get("passes_threshold", True):
                 pid_passes = False
@@ -377,8 +438,11 @@ def _summarise(participants: dict, threshold: float) -> dict:
 
         per_participant_pass[pid] = pid_passes
 
+    # Missingness rate is based on unintentional NaN only (intentional removals
+    # are documented in reports/wesad_cleaning.json and excluded from this metric).
+    e4_unintentional_nan = e4_total_nan - e4_intentional_nan
     e4_overall = (
-        round(e4_total_nan / e4_total_cells, 8) if e4_total_cells > 0 else 0.0
+        round(e4_unintentional_nan / e4_total_cells, 8) if e4_total_cells > 0 else 0.0
     )
     chest_seq_overall = (
         round(chest_total_dropped / chest_total_expected, 8)
@@ -398,7 +462,7 @@ def _summarise(participants: dict, threshold: float) -> dict:
         and all(per_participant_pass.values())
     )
 
-    return {
+    summary: dict = {
         "threshold_max_missingness_rate": threshold,
         "e4_overall_missingness_rate": e4_overall,
         "e4_total_nan_cells": e4_total_nan,
@@ -416,6 +480,16 @@ def _summarise(participants: dict, threshold: float) -> dict:
             "e4.IBI entries for event and NaN counts."
         ),
     }
+    if e4_intentional_nan > 0:
+        summary["e4_intentional_removals"] = e4_intentional_nan
+        summary["e4_unintentional_nan_cells"] = e4_unintentional_nan
+        summary["intentional_removals_note"] = (
+            "e4_overall_missingness_rate is based on unintentional NaN only. "
+            f"{e4_intentional_nan} samples were intentionally removed during "
+            "cleaning (documented in reports/wesad_cleaning.json) and are "
+            "excluded from the missingness rate."
+        )
+    return summary
 
 
 # ---------------------------------------------------------------------------

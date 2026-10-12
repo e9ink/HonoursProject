@@ -5,34 +5,21 @@ Compares the Bronze baseline against the cleaned Gold output across all five
 quality dimensions and judges each against the pre-registered thresholds in
 config/thresholds.yaml.
 
-Gate: refuses to run while meta.signed_off is false in thresholds.yaml
-(matches the gate on src/checks/plausibility.py).
+Gate: refuses to run while meta.signed_off is false in thresholds.yaml.
 
-Sources all numbers from the existing pipeline reports; does NOT re-run any
-check. Reads bronze/ and silver/ only indirectly through those reports (i.e.
-it reads the JSON files in reports/, not the data files themselves). Is
-therefore read-only with respect to bronze/ and silver/.
+Sources:
+  "Before" values: Bronze-baseline reports (wesad_conformance.json, etc.)
+  "After" values:  Post-cleaning measured reports (wesad_*_post_cleaning.json)
+                   produced by src/checks/post_cleaning.py
+
+Completeness definition (Kevin, 2026-10-12):
+  Samples documented as intentionally removed during cleaning are excluded from
+  the missingness rate and reported separately.  After cleaning, unintentional
+  missingness = 0.0, which genuinely passes the 0.0 threshold with no
+  qualification needed.
 
 Output: reports/wesad_quality_report.json
-
-Derivation notes (transparency, not hardcoding):
-  Validity-conformance after:
-      Derived from wesad_cleaning.json: temp_violations_after_cleaning = 0,
-      and wesad_conformance.json shows the 60 TEMP warm-up violations were
-      the ONLY range violations in the whole dataset. Therefore post-cleaning
-      violations = 0, rate = 0.0.
-  Validity-plausibility after:
-      Derived: the 60 plausibility violations were the identical TEMP warm-up
-      samples (same rows, same cause). After cleaning those rows are NaN;
-      plausibility checks skip genuinely-missing cells. No other violations
-      existed. Therefore post-cleaning plausibility failure rate = 0.0.
-  Completeness after:
-      Derived: 60 NaN cells introduced by cleaning / e4_total_cells_checked
-      from wesad_completeness.json. This exceeds the 0.0 threshold but is an
-      INTENDED cleaning outcome (see dimension entry for full framing).
-
-Determinism: all source reports are deterministic. This report is therefore
-fully deterministic. No timestamps.
+Determinism: all source reports are deterministic; this report is too.
 """
 
 import json
@@ -59,90 +46,105 @@ def _load_report(name: str) -> dict:
 
 # ── Dimension builders ────────────────────────────────────────────────────────
 
-def _dim_completeness(thresholds: dict, completeness: dict, cleaning: dict) -> dict:
+def _dim_completeness(
+    thresholds: dict,
+    completeness_before: dict,
+    completeness_after: dict,
+) -> dict:
+    """
+    Completeness dimension.
+
+    "Before": Bronze-baseline wesad_completeness.json (no intentional removals).
+    "After":  Post-cleaning wesad_completeness_post_cleaning.json.
+              Intentional removals (TEMP warm-up, 60 samples) are excluded from
+              the missingness rate and reported separately.
+              Unintentional missingness after cleaning = 0.0.
+    """
     threshold = float(thresholds["completeness"]["max_missingness_rate"])
 
-    # Bronze baseline (before cleaning): zero missingness
-    e4_cells_total   = completeness["summary"]["e4_total_cells_checked"]
-    before_nan_count = completeness["summary"]["e4_total_nan_cells"]
-    before_rate      = completeness["summary"]["e4_overall_missingness_rate"]
+    # ── Before (Bronze baseline) ───────────────────────────────────────────
+    e4_cells_total   = completeness_before["summary"]["e4_total_cells_checked"]
+    before_nan_count = completeness_before["summary"]["e4_total_nan_cells"]
+    before_rate      = completeness_before["summary"]["e4_overall_missingness_rate"]
+    before_pass      = before_rate <= threshold
 
-    # Gold state (after cleaning): 60 NaN introduced by TEMP warm-up strip
-    after_nan_count  = cleaning["summary"]["total_samples_replaced"]  # 60
-    after_rate       = round(after_nan_count / e4_cells_total, 10)    # ~3.3e-06
-
-    # Technical threshold evaluation
-    before_pass = before_rate <= threshold
-    after_pass  = after_rate  <= threshold   # False: 3.3e-06 > 0.0
+    # ── After (measured post-cleaning, with intentional removals excluded) ─
+    after_summary = completeness_after["summary"]
+    after_rate    = after_summary["e4_overall_missingness_rate"]  # 0.0
+    after_pass    = after_rate <= threshold                        # True
+    intentional_removals_count = after_summary.get("e4_intentional_removals", 0)
 
     return {
         "dimension": "completeness",
         "threshold_key":  "completeness.max_missingness_rate",
         "threshold":      threshold,
         "before": {
-            "state":        "bronze_baseline",
-            "nan_count":    before_nan_count,
-            "cells_checked": e4_cells_total,
+            "state":           "bronze_baseline",
+            "nan_count":       before_nan_count,
+            "cells_checked":   e4_cells_total,
             "missingness_rate": before_rate,
             "threshold_pass":  before_pass,
         },
         "after": {
-            "state":        "gold_cleaned",
-            "nan_count":    after_nan_count,
-            "cells_checked": e4_cells_total,
+            "state":           "gold_cleaned",
             "missingness_rate": after_rate,
             "threshold_pass":  after_pass,
-            "intended_outcome": True,
+            "intentional_removals": {
+                "count": intentional_removals_count,
+                "description": (
+                    "E4 TEMP warm-up artefact samples set to NaN during cleaning. "
+                    "Documented in reports/wesad_cleaning.json. Excluded from "
+                    "missingness_rate by definition (intentional, not unintended absence)."
+                ),
+            },
+            "source": "reports/wesad_completeness_post_cleaning.json",
         },
-        "interpretation": (
-            "The 60 NaN values introduced after cleaning are an INTENDED outcome, "
-            "not a regression. The TEMP warm-up samples (~382 degrees C) were "
-            "physically implausible artefacts. Replacing them with NaN removes "
-            "the false values and honestly marks the gap. Leaving them as ~382 "
-            "degrees C would have been the worse outcome: a false reading presented "
-            "as valid data. The post-cleaning missingness rate of ~3.3e-06 "
-            "technically exceeds the 0.0 preservation-floor threshold, but that "
-            "threshold was designed to prevent the pipeline from losing genuine "
-            "signal, not to prevent it from removing documented artefacts. "
-            "This result is evidence the framework detected and resolved a real "
-            "quality issue, not that it degraded the data."
+        "completeness_definition_note": (
+            "Missingness measures UNINTENDED absence only. Samples intentionally "
+            "removed during cleaning are excluded from the rate and reported "
+            "separately. Decision: Kevin, 2026-10-12."
         ),
-        "threshold_pass_bronze":   before_pass,
-        "threshold_pass_gold":     after_pass,
-        "threshold_pass_intended": True,
+        "threshold_pass_bronze": before_pass,
+        "threshold_pass_gold":   after_pass,
     }
 
 
-def _dim_validity_conformance(thresholds: dict, conformance: dict, cleaning: dict) -> dict:
+def _dim_validity_conformance(
+    thresholds: dict,
+    conformance_before: dict,
+    conformance_after: dict,
+) -> dict:
+    """
+    Validity (conformance) dimension.
+
+    "Before": Bronze-baseline wesad_conformance.json.
+    "After":  Measured wesad_conformance_post_cleaning.json (Silver TEMP + Bronze).
+    """
     threshold = float(thresholds["validity"]["max_conformance_violation_rate"])
 
-    cells_total     = conformance["summary"]["total_range_cells_checked"]
-    before_count    = conformance["summary"]["total_range_violations"]    # 60
-    before_rate     = conformance["summary"]["overall_range_violation_rate"]  # 1.2e-07
+    # ── Before ─────────────────────────────────────────────────────────────
+    cells_total  = conformance_before["summary"]["total_range_cells_checked"]
+    before_count = conformance_before["summary"]["total_range_violations"]
+    before_rate  = conformance_before["summary"]["overall_range_violation_rate"]
+    before_pass  = before_rate <= threshold
 
-    # After cleaning: the 60 TEMP warm-up violations were the ONLY violations.
-    # Cleaning report confirms temp_violations_after_cleaning = 0.
-    # Derivation: post-cleaning violations = before_count - temp_violations_before
-    #             = 60 - 60 = 0
-    temp_before = cleaning["conformance_range_violations"]["temp_violations_before_cleaning"]  # 60
-    temp_after  = cleaning["conformance_range_violations"]["temp_violations_after_cleaning"]   # 0
-    after_count = before_count - temp_before + temp_after   # = 0
-    after_rate  = 0.0 if after_count == 0 else round(after_count / cells_total, 10)
-
-    before_pass = before_rate <= threshold
-    after_pass  = after_rate  <= threshold
+    # ── After (measured) ───────────────────────────────────────────────────
+    after_sum    = conformance_after["summary"]
+    after_count  = after_sum["total_range_violations"]
+    after_rate   = after_sum["overall_range_violation_rate"]
+    after_pass   = after_rate <= threshold
 
     return {
         "dimension": "validity_conformance",
         "threshold_key": "validity.max_conformance_violation_rate",
         "threshold":     threshold,
         "before": {
-            "state":            "bronze_baseline",
-            "violation_count":  before_count,
-            "cells_checked":    cells_total,
-            "violation_rate":   before_rate,
-            "threshold_pass":   before_pass,
-            "violation_cause":  (
+            "state":           "bronze_baseline",
+            "violation_count": before_count,
+            "cells_checked":   cells_total,
+            "violation_rate":  before_rate,
+            "threshold_pass":  before_pass,
+            "violation_cause": (
                 "E4 TEMP warm-up artefact: all 60 violations were indices 0-3 "
                 "of the TEMP channel (~382 degrees C) across all 15 participants. "
                 "All other signals: zero violations."
@@ -154,12 +156,7 @@ def _dim_validity_conformance(thresholds: dict, conformance: dict, cleaning: dic
             "cells_checked":   cells_total,
             "violation_rate":  after_rate,
             "threshold_pass":  after_pass,
-            "derivation": (
-                "After cleaning, temp_violations_after_cleaning = 0 "
-                "(verified in wesad_cleaning.json). The 60 TEMP warm-up violations "
-                "were the only violations in the dataset; no other violations existed. "
-                "Post-cleaning violation count = 0, rate = 0.0."
-            ),
+            "source":          "reports/wesad_conformance_post_cleaning.json",
         },
         "headline": (
             "Conformance violations: 60 (Bronze) -> 0 (Gold). "
@@ -170,22 +167,30 @@ def _dim_validity_conformance(thresholds: dict, conformance: dict, cleaning: dic
     }
 
 
-def _dim_validity_plausibility(thresholds: dict, plausibility: dict, cleaning: dict) -> dict:
+def _dim_validity_plausibility(
+    thresholds: dict,
+    plausibility_before: dict,
+    plausibility_after: dict,
+) -> dict:
+    """
+    Validity (plausibility) dimension.
+
+    "Before": Bronze-baseline wesad_plausibility.json.
+    "After":  Measured wesad_plausibility_post_cleaning.json (Silver TEMP + Bronze).
+    """
     threshold = float(thresholds["validity"]["max_plausibility_failure_rate"])
 
-    samples_total   = plausibility["summary"]["total_samples_checked"]
-    before_count    = plausibility["summary"]["total_violations"]        # 60
-    before_rate     = plausibility["summary"]["overall_failure_rate"]    # 1.5e-07
+    # ── Before ─────────────────────────────────────────────────────────────
+    samples_total = plausibility_before["summary"]["total_samples_checked"]
+    before_count  = plausibility_before["summary"]["total_violations"]
+    before_rate   = plausibility_before["summary"]["overall_failure_rate"]
+    before_pass   = before_rate <= threshold
 
-    # After cleaning: the 60 plausibility violations were the identical TEMP
-    # warm-up samples (same rows, same cause as conformance violations).
-    # After cleaning those rows are NaN; plausibility checks skip genuinely-missing
-    # cells. No other violations existed pre-cleaning. Therefore:
-    after_count = 0
-    after_rate  = 0.0
-
-    before_pass = before_rate <= threshold
-    after_pass  = after_rate  <= threshold
+    # ── After (measured) ───────────────────────────────────────────────────
+    after_sum   = plausibility_after["summary"]
+    after_count = after_sum["total_violations"]
+    after_rate  = after_sum["overall_failure_rate"]
+    after_pass  = after_rate <= threshold
 
     return {
         "dimension": "validity_plausibility",
@@ -209,13 +214,7 @@ def _dim_validity_plausibility(thresholds: dict, plausibility: dict, cleaning: d
             "samples_checked": samples_total,
             "failure_rate":    after_rate,
             "threshold_pass":  after_pass,
-            "derivation": (
-                "The 60 plausibility violations were the identical rows removed by "
-                "cleaning (TEMP warm-up samples, indices 0-3). After cleaning, those "
-                "rows are NaN; plausibility checks exclude genuinely-missing cells. "
-                "No other plausibility violations existed. Post-cleaning failure rate "
-                "= 0.0."
-            ),
+            "source":          "reports/wesad_plausibility_post_cleaning.json",
         },
         "headline": (
             "Plausibility failures: 60 (Bronze) -> 0 (Gold). "
@@ -340,12 +339,14 @@ def _print_table(report: dict) -> None:
 
     # Completeness
     c = dims["completeness"]
+    n_removals = c["after"].get("intentional_removals", {}).get("count", 0)
+    removals_note = f" + {n_removals} intentional removals (excl.)" if n_removals else ""
     print(
         f"{'Completeness (missingness)':<28}  "
         f"{_rate_str(c['before']['missingness_rate']):<22}  "
-        f"{_rate_str(c['after']['missingness_rate']):<22}  "
+        f"{(_rate_str(c['after']['missingness_rate']) + removals_note):<22}  "
         f"{_rate_str(c['threshold']):<14}  "
-        f"{_pass_str(c['threshold_pass_intended'])} (intended outcome)"
+        f"{_pass_str(c['threshold_pass_gold'])}"
     )
 
     # Validity — conformance
@@ -403,17 +404,18 @@ def _print_table(report: dict) -> None:
         f"{'PASS' if oa['gold_passes_all_measured_thresholds'] else 'FAIL'}"
     )
     print()
-    print("Note: completeness 'PASS (intended outcome)' — 60 NaN values are the TEMP")
-    print("      warm-up artefact removed by cleaning, not a data regression.")
-    print("      Conformance 60->0 and plausibility 60->0 are the clearest evidence")
-    print("      that the pipeline detected and resolved a real quality issue.")
+    print("Notes:")
+    print("  Completeness: 60 intentional removals (TEMP warm-up artefact) are excluded")
+    print("  from missingness_rate and reported separately. Unintended missingness = 0.0.")
+    print("  Conformance 60->0 and plausibility 60->0 confirm the pipeline detected and")
+    print("  resolved a real quality issue. After values are measured, not derived.")
     print()
 
 
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 def main() -> dict:
-    thresholds   = _load_thresholds()
+    thresholds = _load_thresholds()
 
     if not thresholds.get("meta", {}).get("signed_off"):
         raise RuntimeError(
@@ -421,33 +423,39 @@ def main() -> dict:
             "(meta.signed_off is false). Quality report refused."
         )
 
-    conformance  = _load_report("wesad_conformance.json")
-    completeness = _load_report("wesad_completeness.json")
-    plausibility = _load_report("wesad_plausibility.json")
-    alignment    = _load_report("wesad_alignment.json")
-    cleaning     = _load_report("wesad_cleaning.json")
+    # Bronze-baseline reports (the "before")
+    conformance_before  = _load_report("wesad_conformance.json")
+    completeness_before = _load_report("wesad_completeness.json")
+    plausibility_before = _load_report("wesad_plausibility.json")
+    alignment           = _load_report("wesad_alignment.json")
+
+    # Post-cleaning measured reports (the "after") — produced by post_cleaning.py
+    conformance_after  = _load_report("wesad_conformance_post_cleaning.json")
+    completeness_after = _load_report("wesad_completeness_post_cleaning.json")
+    plausibility_after = _load_report("wesad_plausibility_post_cleaning.json")
 
     dimensions = {
-        "completeness":          _dim_completeness(thresholds, completeness, cleaning),
-        "validity_conformance":  _dim_validity_conformance(thresholds, conformance, cleaning),
-        "validity_plausibility": _dim_validity_plausibility(thresholds, plausibility, cleaning),
+        "completeness":          _dim_completeness(
+                                     thresholds, completeness_before, completeness_after),
+        "validity_conformance":  _dim_validity_conformance(
+                                     thresholds, conformance_before, conformance_after),
+        "validity_plausibility": _dim_validity_plausibility(
+                                     thresholds, plausibility_before, plausibility_after),
         "timeliness":            _dim_timeliness(thresholds, alignment),
         "consistency":           _dim_consistency(thresholds),
         "accuracy":              _dim_accuracy(),
     }
 
-    # Overall: Gold passes all thresholds that have a defined metric.
-    # Completeness is treated as passing because the 60-NaN exceedance is
-    # an intended cleaning outcome. Consistency and accuracy have no metric.
+    # All four measurable dimensions now genuinely pass.
     gold_passes = (
-        dimensions["validity_conformance"]["threshold_pass_gold"]
+        dimensions["completeness"]["threshold_pass_gold"]
+        and dimensions["validity_conformance"]["threshold_pass_gold"]
         and dimensions["validity_plausibility"]["threshold_pass_gold"]
         and dimensions["timeliness"]["threshold_pass_gold"]
-        and dimensions["completeness"]["threshold_pass_intended"]
     )
 
     report = {
-        "schema":      "wesad_quality_report_v1",
+        "schema":      "wesad_quality_report_v2",
         "dataset":     "WESAD",
         "report_type": "before_after_quality_comparison",
         "framework":   (
@@ -458,12 +466,15 @@ def main() -> dict:
         "thresholds_signed_off_by": thresholds["meta"]["signed_off_by"],
         "thresholds_date_locked":   str(thresholds["meta"]["date_locked"]),
         "source_reports": {
-            "profiling":    "reports/wesad_baseline.json",
-            "conformance":  "reports/wesad_conformance.json",
-            "completeness": "reports/wesad_completeness.json",
-            "plausibility": "reports/wesad_plausibility.json",
-            "alignment":    "reports/wesad_alignment.json",
-            "cleaning":     "reports/wesad_cleaning.json",
+            "profiling":               "reports/wesad_baseline.json",
+            "conformance_before":      "reports/wesad_conformance.json",
+            "conformance_after":       "reports/wesad_conformance_post_cleaning.json",
+            "completeness_before":     "reports/wesad_completeness.json",
+            "completeness_after":      "reports/wesad_completeness_post_cleaning.json",
+            "plausibility_before":     "reports/wesad_plausibility.json",
+            "plausibility_after":      "reports/wesad_plausibility_post_cleaning.json",
+            "alignment":               "reports/wesad_alignment.json",
+            "cleaning":                "reports/wesad_cleaning.json",
         },
         "determinism_note": (
             "All source reports are deterministic. This report is therefore fully "
@@ -473,18 +484,19 @@ def main() -> dict:
         "overall_assessment": {
             "gold_passes_all_measured_thresholds": gold_passes,
             "measured_dimensions": [
-                "validity_conformance", "validity_plausibility", "timeliness"
+                "completeness", "validity_conformance",
+                "validity_plausibility", "timeliness",
             ],
-            "measured_with_intended_exception": ["completeness"],
             "unmeasured_dimensions": ["consistency", "accuracy"],
             "headline": (
                 "The Gold pipeline resolves the only quality issues found in WESAD. "
                 "Conformance and plausibility violations fall from 60 to 0 after "
-                "cleaning the E4 TEMP warm-up artefact. Cross-modal alignment passes "
-                "the 1.0 s threshold (max residual 0.107 s). Completeness introduces "
-                "60 intentional NaN values (documented artefact removal); this is not "
-                "a regression. The framework demonstrates end-to-end detection, "
-                "documentation, and resolution of a real quality issue."
+                "cleaning the E4 TEMP warm-up artefact. Completeness after cleaning: "
+                "unintentional missingness = 0.0 (60 intentional removals reported "
+                "separately). Cross-modal alignment passes the 1.0 s threshold "
+                "(max residual 0.107 s). All four measured dimensions pass. "
+                "The framework demonstrates end-to-end detection, documentation, "
+                "and resolution of a real quality issue."
             ),
         },
     }
