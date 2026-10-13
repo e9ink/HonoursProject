@@ -8,7 +8,7 @@
   },
   "run_context": {
     "note": "This field is non-deterministic. Strip it for diffing.",
-    "generated_at": "2026-10-09T07:18:50.592774+00:00",
+    "generated_at": "2026-10-13T03:40:20.923697+00:00",
     "generator": "src/governance.py"
   },
   "lineage_document": "gold/WESAD/wesad_lineage.json",
