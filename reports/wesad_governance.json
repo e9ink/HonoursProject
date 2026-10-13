@@ -3,7 +3,7 @@
   "dataset": "WESAD",
   "grounding": {
     "framework": "Tallon et al. (2013) information governance / accountability",
-    "citation": "Tallon, P., Ramirez, R., & Short, J. (2013). The information artifact in IT governance: toward a theory of information governance. Journal of Management Information Systems, 30(3), 141-177. https://doi.org/10.2753/MIS0742-1222300306",
+    "citation": "Tallon, P. P., Ramirez, R. V., & Short, J. E. (2013). The information artifact in IT governance: Toward a theory of information governance. Journal of Management Information Systems, 30(3), 141-178. https://doi.org/10.2753/MIS0742-1222300306",
     "note": "The audit trail provides an accountability record: what pipeline stages ran, in order, what each produced, and what transformations were applied. Sufficient to reconstruct the complete history of what happened to the data."
   },
   "run_context": {

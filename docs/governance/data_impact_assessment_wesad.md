@@ -27,7 +27,7 @@ Data was collected in a controlled laboratory setting using induced stress proto
 
 3. *Cross-modal start-time gap:* The E4 wristband activates 15-24 minutes before the RespiBAN chest device in every participant (mean gap: 1181.2 s, source: `reports/wesad_alignment.json`, `summary.mean_offset_before_s`). After aligning to the shared overlap window, the within-overlap residual is small (max 0.107 s, all 15 participants pass the 1.0 s threshold). Analyses that do not account for this gap risk including E4 data that has no RespiBAN counterpart.
 
-4. *Individual participant anomalies:* Per-participant readme notes document individual confounders: one participant may have fallen asleep during meditation (S5), another was not stressed during the TSST due to prior interview experience (S6), one had a stressful week prior to the study (S9). These are field notes, not quality violations, but they affect the validity of condition labels for those participants. [KEVIN TO REVIEW: whether affected participants should be flagged or excluded for specific analyses.]
+4. *Individual participant anomalies:* Per-participant readme notes document individual confounders: one participant may have fallen asleep during meditation (S5), another was not stressed during the TSST due to prior interview experience and had a stressful week prior to the study (S6), and one had a stressful day prior to the study (S8). These are field notes, not quality violations, but they affect the validity of condition labels for those participants. [KEVIN TO REVIEW: whether affected participants should be flagged or excluded for specific analyses.]
 
 ---
 

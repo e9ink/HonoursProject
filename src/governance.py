@@ -5,17 +5,18 @@ Produces two outputs (read-only on bronze/ and silver/):
 
   gold/WESAD/wesad_lineage.json
       Per-participant, per-signal provenance document.
-      Grounded in Abraham et al. (2019) metadata management:
-        Abraham, R., John, D., & Pollock, E. (2019). A comprehensive survey of
-        metadata management. Information Processing & Management, 56(6), 102069.
-        https://doi.org/10.1016/j.ipm.2019.102069
+      Grounded in Abraham et al. (2019) data governance framework:
+        Abraham, R., Schneider, J., & vom Brocke, J. (2019). Data governance:
+        A conceptual framework, structured review, and research agenda.
+        International Journal of Information Management, 49, 424-438.
+        https://doi.org/10.1016/j.ijinfomgt.2019.07.008
 
   reports/wesad_governance.json
       Chronological audit trail and governance summary.
       Grounded in Tallon et al. (2013) accountability/stewardship:
-        Tallon, P., Ramirez, R., & Short, J. (2013). The information artifact in
-        IT governance: toward a theory of information governance. Journal of
-        Management Information Systems, 30(3), 141-177.
+        Tallon, P. P., Ramirez, R. V., & Short, J. E. (2013). The information
+        artifact in IT governance: Toward a theory of information governance.
+        Journal of Management Information Systems, 30(3), 141-178.
         https://doi.org/10.2753/MIS0742-1222300306
 
 Determinism:
@@ -53,15 +54,16 @@ RESPIBAN_CHANNELS = [
 # ── References ────────────────────────────────────────────────────────────────
 
 LINEAGE_REFERENCE = (
-    "Abraham, R., John, D., & Pollock, E. (2019). A comprehensive survey of "
-    "metadata management. Information Processing & Management, 56(6), 102069. "
-    "https://doi.org/10.1016/j.ipm.2019.102069"
+    "Abraham, R., Schneider, J., & vom Brocke, J. (2019). Data governance: "
+    "A conceptual framework, structured review, and research agenda. "
+    "International Journal of Information Management, 49, 424-438. "
+    "https://doi.org/10.1016/j.ijinfomgt.2019.07.008"
 )
 
 AUDIT_REFERENCE = (
-    "Tallon, P., Ramirez, R., & Short, J. (2013). The information artifact in "
-    "IT governance: toward a theory of information governance. Journal of "
-    "Management Information Systems, 30(3), 141-177. "
+    "Tallon, P. P., Ramirez, R. V., & Short, J. E. (2013). The information "
+    "artifact in IT governance: Toward a theory of information governance. "
+    "Journal of Management Information Systems, 30(3), 141-178. "
     "https://doi.org/10.2753/MIS0742-1222300306"
 )
 
@@ -241,7 +243,7 @@ def _build_lineage(cleaning_report: dict) -> dict:
         "schema":  "wesad_lineage_v1",
         "dataset": "WESAD",
         "grounding": {
-            "framework":   "Abraham et al. (2019) metadata management",
+            "framework":   "Abraham et al. (2019) data governance framework",
             "citation":    LINEAGE_REFERENCE,
             "note": (
                 "Lineage records the provenance chain for each signal: "

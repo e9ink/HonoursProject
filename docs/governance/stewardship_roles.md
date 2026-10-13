@@ -3,7 +3,7 @@
 **Dataset:** WESAD pipeline (this repository)
 **Prepared by:** Kevin Hudoyo, UTS Honours
 **Grounding:** Tallon, Ramirez, and Short (2013) information governance / accountability framework
-**Citation:** Tallon, P., Ramirez, R., and Short, J. (2013). The information artifact in IT governance: toward a theory of information governance. Journal of Management Information Systems, 30(3), 141-177.
+**Citation:** Tallon, P. P., Ramirez, R. V., & Short, J. E. (2013). The information artifact in IT governance: Toward a theory of information governance. Journal of Management Information Systems, 30(3), 141-178. https://doi.org/10.2753/MIS0742-1222300306
 
 ---
 

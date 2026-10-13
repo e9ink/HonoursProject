@@ -2,8 +2,8 @@
 
 **Dataset:** WESAD pipeline (this repository)
 **Prepared by:** Kevin Hudoyo, UTS Honours
-**Grounding:** Abraham, Annette, Bhatt, and Bhattacharjee (2019) metadata management / data governance framework
-**Citation:** Abraham, R., Annette, J., Bhatt, N., and Bhattacharjee, S. (2019). [KEVIN TO COMPLETE: full citation for Abraham et al. (2019).]
+**Grounding:** Abraham, Schneider, and vom Brocke (2019) data governance framework
+**Citation:** Abraham, R., Schneider, J., & vom Brocke, J. (2019). Data governance: A conceptual framework, structured review, and research agenda. International Journal of Information Management, 49, 424-438. https://doi.org/10.1016/j.ijinfomgt.2019.07.008
 
 ---
 
@@ -105,7 +105,7 @@ These policies govern how quality is measured and assured. They translate the Ti
 
 ## Tier 3: Metadata Management Policies
 
-These policies govern how the pipeline documents its own provenance, lineage, and decision history. Grounded in Abraham et al. (2019), which provides the framework for managing metadata as a first-class governance artefact.
+These policies govern how the pipeline documents its own provenance, lineage, and decision history. Grounded in Abraham et al. (2019), which provides a data governance framework identifying three domains: data principles, data quality, and metadata management.
 
 ### Policy 3.1 -- Lineage Documentation
 

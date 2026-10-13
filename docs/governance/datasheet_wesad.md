@@ -157,7 +157,7 @@ The 15-participant sample size limits generalisation. Lab-induced stress may not
 ## 6. Distribution
 
 **How is the dataset distributed?**
-[KEVIN TO COMPLETE: official repository URL, access request process, and whether the full 21-participant dataset is available elsewhere.]
+[KEVIN TO COMPLETE: official repository URL, access request process, and whether a larger dataset beyond the 15 participants in this release is available elsewhere; verify total recorded vs released participant count from Schmidt et al., 2018.]
 
 **Under what license?**
 [KEVIN TO COMPLETE: license or access agreement terms.]
