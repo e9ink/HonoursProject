@@ -14,10 +14,10 @@
 Implication: models trained solely on this dataset will have high variance and limited generalisability. Statistical estimates derived from this sample carry wide confidence intervals. [KEVIN TO REVIEW: minimum sample size requirements for the intended downstream application.]
 
 **Population representativeness:**
-The 15 participants range in age from 24 to 35 years, with 12 male and 3 female participants (source: per-participant readme files, `bronze/WESAD/<pid>/<pid>_readme.txt`). [KEVIN TO COMPLETE: ethnic and cultural composition; whether the sample was drawn from a specific institution or country.] Any model trained on this data may not generalise to populations with different demographic compositions, including children, older adults, or populations with different physiological baselines.
+The 15 participants range in age from 24 to 35 years, with 12 male and 3 female participants (source: per-participant readme files, `bronze/WESAD/<pid>/<pid>_readme.txt`; Schmidt et al., 2018, p. 3). Ethnic and cultural composition: not documented in the available sources. The study was conducted by researchers affiliated with Robert Bosch GmbH (Renningen, Germany) and the University of Siegen, Germany (Schmidt et al., 2018, p. 1). Any model trained on this data may not generalise to populations with different demographic compositions, including children, older adults, or populations with different physiological baselines.
 
 **Lab conditions:**
-Data was collected in a controlled laboratory setting using induced stress protocols. Lab-induced stress (e.g. the TSST interview task, referenced in S6 and S14 readme notes) may not represent the range, intensity, or phenomenology of naturalistic stress experienced in everyday environments. Participants were instructed to abstain from sports, smoking within the last hour, and feeling ill (source: study pre-requisites in readme files). These pre-conditions constrain ecological validity.
+Data was collected in a controlled laboratory setting using induced stress protocols. Lab-induced stress (e.g. the TSST interview task, referenced in S6 and S14 readme notes) may not represent the range, intensity, or phenomenology of naturalistic stress experienced in everyday environments. Participants were asked to avoid caffeine and tobacco in the hour before the experiment, do no strenuous exercise on the day of the study, and not feel ill (Schmidt et al., 2018, p. 3; confirmed in per-participant readme files). These pre-conditions constrain ecological validity.
 
 **Known quality findings from this pipeline:**
 
@@ -40,7 +40,7 @@ Participants are identified by codes S2-S17. No names or direct identifiers appe
 Each per-participant readme records age, gender, height, weight, and dominant hand. Combined with the study context, these fields could contribute to re-identification for individuals with distinctive profiles. [KEVIN TO REVIEW: whether the combination of demographic fields in the readme files constitutes sufficient risk to warrant additional controls before sharing derived outputs.]
 
 **Access-agreement constraints:**
-Raw physiological data is subject to an access agreement. This pipeline excludes all raw data from version control (`bronze/*` and `archive.zip` in `.gitignore`). The Gold layer governance outputs, quality reports, and pipeline code do not contain participant physiological measurements and are therefore version-controlled (source: `.gitignore`).
+Raw physiological data is subject to an access agreement. This pipeline excludes all raw data from version control (`bronze/*`, `silver/*`, and `archive.zip` in `.gitignore`). The Gold layer governance outputs, quality reports, and pipeline code do not contain participant physiological measurements and are therefore version-controlled (source: `.gitignore`).
 
 **Physiological signal sensitivity:**
 Physiological signals including ECG, EDA, and skin temperature can be used for inference beyond stress detection. [KEVIN TO REVIEW: whether specific derived features (e.g. heart rate variability derived from IBI, or EDA peaks) carry additional privacy risks in the intended deployment context.]
@@ -59,7 +59,7 @@ If the E4 and RespiBAN signals are not aligned to a common time base, samples fr
 If chest TEMP values for S2 and S17 are degraded due to the documented attachment problem and this is not noted, models trained on chest TEMP features may learn artefactual patterns for those participants. This pipeline does not detect or correct the attachment issue; it is flagged here for downstream use.
 
 **Risk 4: Undefined signals used as features**
-BVP and IBI are excluded from plausibility checking in this pipeline because no credible bound could be sourced (BVP has no documented output unit; IBI requires HRV analysis that is out of scope). A downstream user who includes BVP or IBI features in a model without independent validation of their plausibility has no quality assurance backing for those signals from this pipeline.
+BVP is excluded from plausibility checking because the WESAD documentation provides no unit, transfer function, or physiological range for BVP -- no credible bound can be defined from the available sources (source: `config/physiological_ranges.yaml`, BVP comment; `docs/progress_log.md`, physiological range decisions). IBI is excluded by supervisor decision on 2026-08-27: useful analysis of IBI requires HRV computation over windows of approximately three minutes, which is out of scope for this project's frame-level ingestion pipeline. A 0.24-3.0 s bound was considered but not adopted (source: `docs/progress_log.md`, IBI section). A downstream user who includes BVP or IBI features in a model without independent validation of their plausibility has no quality assurance backing for those signals from this pipeline.
 
 ---
 
@@ -68,7 +68,7 @@ BVP and IBI are excluded from plausibility checking in this pipeline because no 
 The following limitations are recorded deliberately. They are not silent omissions.
 
 **No accuracy metric:**
-The framework cannot assess whether physiological values are correct in an absolute sense. Accuracy in the Wang and Strong (1996) sense requires a ground-truth reference (e.g. a calibrated laboratory instrument recorded simultaneously). No such reference is available for WESAD. This is recorded in `reports/wesad_quality_report.json` (dimensions.accuracy) and `config/thresholds.yaml`.
+Accuracy (Wang and Strong, 1996) cannot be assessed because no ground-truth reference instrument was recorded alongside WESAD. This is recorded in `reports/wesad_quality_report.json` (dimensions.accuracy) and `config/thresholds.yaml`.
 
 **Consistency not measured:**
 No dedicated consistency metric is defined for WESAD. The one cross-modal structural issue (start-time gap) is captured by the timeliness dimension. Treating it as both timeliness and consistency would double-count the same phenomenon. Decision documented in `config/thresholds.yaml` and `docs/progress_log.md`.
@@ -77,7 +77,7 @@ No dedicated consistency metric is defined for WESAD. The one cross-modal struct
 The 5-point reconstruction method measures whether E4 and RespiBAN are internally consistent within the overlap window. It cannot detect a uniform timezone-conversion error applied at both ends, which would cancel out in the difference. If the UTC+2 (CEST) timezone assumption for RespiBAN is wrong, the alignment check would not detect it (source: `docs/progress_log.md`, alignment decision section).
 
 **RespiBAN chest EDA and TEMP not plausibility-checked:**
-RespiBAN CH2 (EDA) and CH4 (TEMP) are stored as raw ADC values. Plausibility checking requires physical-unit transfer functions (a linear scaling for EDA; a non-linear thermistor conversion for TEMP). These are not implemented. The exclusion is documented in `docs/progress_log.md` and `config/physiological_ranges.yaml`. E4 wrist EDA and TEMP are checked, providing coverage of the same physiological quantities from a different sensor location.
+RespiBAN CH2 (EDA) and CH4 (TEMP) are stored as raw ADC values. Plausibility checking requires physical-unit transfer functions (a linear scaling for EDA; a non-linear thermistor conversion for TEMP). These are not implemented. The exclusion is documented in `docs/progress_log.md` (Chest EDA/TEMP channels scoped out section). `config/physiological_ranges.yaml` does not define entries for these chest channels. E4 wrist EDA and TEMP are checked, providing coverage of the same physiological quantities from a different sensor location.
 
 **Single-site, single-protocol dataset:**
 Quality conclusions from WESAD (e.g. that E4 TEMP has a warm-up artefact) may not transfer to other datasets collected with different devices or protocols. Each dataset requires its own quality assessment.
