@@ -139,7 +139,7 @@
       "after": null,
       "threshold_pass_bronze": null,
       "threshold_pass_gold": null,
-      "stated_limitation": "No accuracy metric is defined. Accuracy in the sense of 'ground-truth agreement' requires an external reference standard (e.g. a calibrated lab instrument or simultaneous clinical measurement). No such reference is available for WESAD. This is a known limitation of the framework for this dataset, recorded deliberately rather than silently omitted. Absent an accuracy metric, the framework cannot assess whether the physiological values themselves are correct, only that they are internally consistent, complete, and within plausible bounds. See config/thresholds.yaml (accuracy is intentionally absent)."
+      "stated_limitation": "No accuracy metric is defined. Accuracy in the sense of 'ground-truth agreement' requires an external reference standard (e.g. a calibrated lab instrument or simultaneous clinical measurement). No such reference is available for WESAD. This is a known limitation of the framework for this dataset, recorded deliberately rather than silently omitted. Absent an accuracy metric, the framework cannot assess whether the physiological values themselves are correct, only that they are complete, conformant, within plausible bounds, and temporally aligned. See config/thresholds.yaml (accuracy is intentionally absent)."
     }
   },
   "overall_assessment": {

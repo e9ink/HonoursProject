@@ -56,13 +56,13 @@ wesad:
     max: 8
     provenance: >
       Bound set at ±8 g by supervisor (Dr. Tobias Cibis, 9 Sept 2026, Meeting 4).
-      The WESAD study includes driving tasks where genuine high-g motion events
-      (e.g. hard cornering) can exceed lower bounds; ±8 g admits real motion peaks
-      while still flagging sensor-floor artefacts such as the S3 raw-ADC-zero hit
-      (transfer function yields −6.6 g for ADC = 0, which lies within ±8 g and is
-      therefore correctly retained as a device artefact rather than a plausibility
-      violation). Previous bound was ±1 g (calibrated Cmin/Cmax window); revised
-      upward on supervisor instruction.
+      The maximum observed genuine movement across participants was approximately
+      ±4.5 g (S3 raw-ADC-zero floor-hit excluded); ±8 g provides headroom for
+      vigorous movement while flagging physically implausible values. The S3
+      raw-ADC-zero hit (transfer function yields −6.6 g for ADC = 0) lies inside
+      ±8 g and is correctly retained as a device artefact rather than a
+      plausibility violation. Previous bound was ±1 g (calibrated Cmin/Cmax
+      window); revised upward on supervisor instruction.
 
   # ── E4 wristband signals ────────────────────────────────────────────────────
 

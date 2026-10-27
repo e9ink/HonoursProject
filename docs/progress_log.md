@@ -6,6 +6,33 @@ Supervised by: Dr. Tobias Cibis
 
 ---
 
+## Current Status
+
+Summary table of every active decision. Check the referenced section for the full rationale. Superseded entries are marked in their original sections.
+
+| Item | Current value | Date set | Section |
+|---|---|---|---|
+| max_missingness_rate | 0.0 | 2026-09-06 (commit 78b2acb); signed off 2026-09-09 | Threshold decisions: Completeness |
+| max_conformance_violation_rate | 0.0 | 2026-09-06 (commit 78b2acb); signed off 2026-09-09 | Threshold decisions: Validity |
+| max_plausibility_failure_rate | 0.01 | 2026-09-06 (commit 78b2acb); signed off 2026-09-09 | Threshold decisions: Validity |
+| max_cross_modal_offset_seconds | 1.0 s | 2026-09-06 (commit 78b2acb); signed off 2026-09-09 | Threshold decisions: Timeliness |
+| RespiBAN ACC bound | plus-or-minus 8 g | 2026-09-09 Meeting 4; committed 2026-09-18 (fe7d396) | Supervisor decisions Meeting 4, Decision 1 |
+| E4 ACC bound | plus-or-minus 2 g | 2026-08-22 (from hardware spec) | Physiological range decisions |
+| E4 EDA bound | 0-100 uS | 2026-08-27 (supervisor confirmed) | Physiological range decisions: EDA |
+| E4 TEMP bound | 15-42 degrees C | 2026-08-27 | Physiological range decisions: Skin temperature |
+| E4 HR bound | 20-250 bpm | 2026-08-27 (supervisor confirmed) | Physiological range decisions: Heart rate |
+| RespiBAN ECG/EMG bound | plus-or-minus 1.5 mV | 2026-08-22 (device rail) | Physiological range decisions |
+| RespiBAN RESP bound | plus-or-minus 50 % | 2026-08-22 (device rail) | Physiological range decisions |
+| BVP | Excluded from plausibility | 2026-08-27 (supervisor confirmed) | Physiological range decisions: BVP |
+| IBI | Excluded from plausibility | 2026-08-27 (supervisor confirmed) | Physiological range decisions: IBI |
+| RespiBAN CH2 (EDA), CH4 (TEMP) | Excluded from plausibility | 2026-10-09 (Kevin, delegated) | Chest EDA/TEMP channels scoped out |
+| Completeness definition | Unintended absence only; intentional removals excluded | 2026-10-12 (Kevin) | Completeness definition: intentional removals excluded |
+| Alignment approach | Detect and report only; 5-point reconstruction residual | 2026-09-23 (commit c007ad5) | Alignment detection rebuilt |
+| Frequency-based flagging | Deferred to DEAP | 2026-09-23 (Kevin) | Frequency-based flagging: deferred to DEAP |
+| Consistency | Intentionally unmeasured for WESAD | 2026-08-22 (Kevin) | Threshold decisions: Consistency |
+
+---
+
 ## Task 1 — Environment and Repo Scaffold
 
 **Commit:** `chore: scaffold repo, folders, and config templates`
@@ -219,16 +246,37 @@ Consistency is therefore intentionally unmeasured for WESAD. This decision will 
 
 ### Timeliness — `max_cross_modal_offset_seconds` — **not yet set**
 
+> **SUPERSEDED BY:** [Supervisor decisions, 9 Sept meeting (Meeting 4) Decision 5] and commit `78b2acb` (2026-09-06). Value set to 1.0 s; signed off 2026-09-09.
+
 Deliberately unset. The threshold requires a baseline cross-modal offset measurement, which will come from Task 7 (cross-modal temporal alignment). The value will be set from that output before Task 11 runs.
 
 ---
 
 ### Validity — `max_conformance_violation_rate` and `max_plausibility_failure_rate` — **not yet set**
 
+> **SUPERSEDED BY:** commit `78b2acb` (2026-09-06). max_conformance_violation_rate set to 0.0; max_plausibility_failure_rate set to 0.01; signed off 2026-09-09.
+
 Both deliberately unset.
 
 - `max_conformance_violation_rate`: to be set after Task 3 (conformance check) establishes what violation rates the raw data presents.
 - `max_plausibility_failure_rate`: blocked on literature-sourced physiological ranges (`config/physiological_ranges.yaml`), which must be supplied by Tobi before Task 5 can run. The gate (`meta.signed_off: false`) remains in force.
+
+---
+
+## Threshold values set — addendum
+
+*Source: `git log --format="%H %ad %s" --date=short -- config/thresholds.yaml` and commits for each check.*
+
+All four threshold values were first committed in `78b2acb` ("feat: silver conformance check", 2026-09-06). The file's `meta.date_locked: 2026-09-09` reflects the formal supervisor sign-off date.
+
+| Threshold | Value | Committed | First check ran | Set before check? |
+|---|---|---|---|---|
+| max_missingness_rate | 0.0 | 78b2acb, 2026-09-06 | 09e0f30 ("feat: silver completeness check"), 2026-09-08 | Yes |
+| max_conformance_violation_rate | 0.0 | 78b2acb, 2026-09-06 | 78b2acb, 2026-09-06 (same commit) | Same commit |
+| max_plausibility_failure_rate | 0.01 | 78b2acb, 2026-09-06 | 69956d7 ("feat: silver plausibility check"), 2026-09-08 | Yes |
+| max_cross_modal_offset_seconds | 1.0 | 78b2acb, 2026-09-06 | 14e9606 ("feat: cross-modal temporal alignment"), 2026-09-09 | Yes |
+
+Note: max_conformance_violation_rate was committed in the same commit as the conformance check first ran. The threshold value and the check implementation were introduced together. The pre-registration intent (thresholds declared before checks run) is satisfied for max_missingness_rate, max_plausibility_failure_rate, and max_cross_modal_offset_seconds. For max_conformance_violation_rate the threshold and first check run are co-committed.
 
 ---
 
@@ -255,6 +303,8 @@ Both deliberately unset.
 ---
 
 ### RespiBAN accelerometry — **±1 g calibrated range confirmed; data-span check cancelled**
+
+> **SUPERSEDED BY:** [Supervisor decisions, 9 Sept meeting (Meeting 4) Decision 1]. Bound raised to ±8 g; committed 2026-09-18 (commit `fe7d396`).
 
 **Decision:** keep the −1 to +1 g plausibility bound derived from the calibration transfer function. Cancel the previously planned data-span check.
 
@@ -399,6 +449,8 @@ Net effect: the honest completeness statement for cleaned WESAD is *"zero missin
 
 ### Issue 1 — RespiBAN accelerometer bound vs observed motion
 
+> **SUPERSEDED BY:** [Supervisor decisions, 9 Sept meeting (Meeting 4) Decision 1]. Bound set to ±8 g; committed 2026-09-18 (commit `fe7d396`).
+
 **Finding:** the plausibility check flagged 201,687 values on the RespiBAN accelerometer (almost entirely CH5 / x-axis) for exceeding the configured ±1 g calibrated bound. Example: participant S2 alone had ~25,000 above-Cmax violations on CH5. All were classified as `device_rail` (not `physiological_implausible`), so the total failure rate (0.00052) still passed the 0.01 threshold and the genuine physiological finding was not obscured.
 
 **Why this matters:** these are legitimate motion values, not corruption. Normal body movement plus the effect of gravity routinely produces accelerations above 1 g on a chest-worn device. The values are not implausible — they are simply outside the calibration window.
@@ -416,6 +468,8 @@ Options to put to Tobi:
 ---
 
 ### Issue 2 — RespiBAN chest EDA and TEMP channels (CH2, CH4) skipped
+
+> **SUPERSEDED BY:** [Chest EDA/TEMP channels scoped out of plausibility checking (decision)], 2026-10-09.
 
 **Finding:** the plausibility check skipped RespiBAN CH2 (EDA) and CH4 (TEMP) with the note "no config bound defined." The skip happens by default (absence of a bound) rather than by deliberate documented decision.
 
@@ -447,8 +501,7 @@ During Task 6 (internal validation), the test suite revealed that a non-numeric 
 
 - **Conformance path (both E4 and RespiBAN):** pd.to_numeric(..., errors="coerce") silently converted the non-numeric string to NaN. Because NaN < min and NaN > max are both False in pandas, the cell was never counted as a range violation.
 - **Completeness path for RespiBAN:** check_chest reads channel columns without numeric coercion. col.isnull() returns False for a string object, so the non-numeric value was not counted as missing either.
-- **Completeness path for E4:** _check_e4_fixed does apply pd.to_numeric(..., errors="coerce"), so the value became NaN and *was* counted in 
-_nan. The E4 chain therefore worked; only the RespiBAN chest path had a full slip-through.
+- **Completeness path for E4:** _check_e4_fixed does apply pd.to_numeric(..., errors="coerce"), so the value became NaN and *was* counted in n_nan. The E4 chain therefore worked; only the RespiBAN chest path had a full slip-through.
 
 ### Why it matters
 
@@ -460,10 +513,8 @@ A data-quality framework must catch malformed values even where the current data
 
 The fix was applied consistently across both sensor paths in src/checks/conformance.py:
 
-- **E4 path (_check_e4_modality):** After coercing to numeric, cells that became NaN are tested against the original raw string. If the raw cell was non-empty (i.e. not a genuine null or blank), the cell is counted in a new 
-on_numeric.n_non_numeric field in the findings, separate from range violations.
-- **RespiBAN path (check_respiban):** Same logic per channel; each channel entry gains 
-_non_numeric, and the ange_summary gains 	otal_non_numeric. The aggregate _aggregate() tracks 	otal_non_numeric_violations and main() includes it in the passes_threshold gate.
+- **E4 path (_check_e4_modality):** After coercing to numeric, cells that became NaN are tested against the original raw string. If the raw cell was non-empty (i.e. not a genuine null or blank), the cell is counted in a new non_numeric.n_non_numeric field in the findings, separate from range violations.
+- **RespiBAN path (check_respiban):** Same logic per channel; each channel entry gains n_non_numeric, and the range_summary gains total_non_numeric. The aggregate _aggregate() tracks total_non_numeric_violations and main() includes it in the passes_threshold gate.
 
 **Authority:** This is a check-design decision within Kevin's delegated authority over the pipeline implementation. It does not change any physiological bound or threshold, does not affect signed-off config files, and does not require supervisor sign-off.
 
@@ -471,26 +522,24 @@ _non_numeric, and the ange_summary gains 	otal_non_numeric. The aggregate _aggr
 
 After applying the fix, the conformance check was re-run on the full WESAD Bronze dataset (15 participants). Result:
 
-- 	otal_non_numeric_violations: 0 — no false positives introduced.
-- 	otal_range_violations: 60 — unchanged (TEMP warm-up artifact, pre-existing).
-- 
-_format_errors: 0, 
-_sampling_violations: 0 — unchanged.
+- total_non_numeric_violations: 0 — no false positives introduced.
+- total_range_violations: 60 — unchanged (TEMP warm-up artifact, pre-existing).
+- n_format_errors: 0, n_sampling_violations: 0 — unchanged.
 
 The real WESAD data contains no non-numeric channel values. This fix closes a coverage gap rather than correcting observed corruption.
 
 ### Internal validation tests
 
-New test class TestNonNumericConformance in 	ests/test_conformance.py asserts:
-- A "bad" string in an E4 channel is counted in 
-on_numeric.n_non_numeric and NOT in ange.n_violations.
-- A "bad" string in a RespiBAN channel is counted in per_channel_range.n_non_numeric and NOT in 
-_violations.
+New test class TestNonNumericConformance in tests/test_conformance.py asserts:
+- A "bad" string in an E4 channel is counted in non_numeric.n_non_numeric and NOT in range.n_violations.
+- A "bad" string in a RespiBAN channel is counted in per_channel_range.n_non_numeric and NOT in n_violations.
 - A genuinely empty cell (empty string or NaN) is NOT counted as a non-numeric violation on either path — it remains completeness's concern.
 
 ---
 
 ## Task 7 alignment: offset_after_s is not a real measurement (OPEN)
+
+> **SUPERSEDED BY:** [Supervisor decisions, 9 Sept meeting (Meeting 4) Decision 5] and [Alignment detection rebuilt: result and limitation] (commit `c007ad5`, 2026-09-23).
 
 **Date noted:** 2026-09-09
 
@@ -546,11 +595,11 @@ This is a measurement-methodology question in his domain (physiological signal t
 
 **Resolved:** supervisor set the bound at **±8 g**.
 
-Kevin had proposed ±5 g. Tobi raised it to ±8 g. Reasoning: the WESAD study involves driving tasks, and genuine high-g events (e.g. hard cornering) can produce body accelerations that exceed ±5 g. A ±8 g bound admits real motion peaks while still flagging sensor-floor artefacts such as the S3 raw-ADC = 0 event (which produces −6.6 g under the transfer function and lies inside the ±8 g window, consistent with a floor-hit rather than a plausibility violation).
+Kevin had proposed ±5 g. Tobi raised it to ±8 g. Reasoning: the maximum observed genuine movement across participants was approximately ±4.5 g (S3 raw-ADC-zero floor-hit excluded); ±8 g provides headroom for vigorous movement while flagging physically implausible values. Bound correctly retains the S3 raw-ADC = 0 event (which produces −6.6 g under the transfer function and lies inside the ±8 g window, consistent with a device floor-hit rather than a plausibility violation). Bound set by supervisor on 9 Sept 2026.
 
 **Resolves:** the earlier open item "RespiBAN accelerometer bound — ±1g calibrated vs motion — pending Tobi input."
 
-`config/ranges.yaml` and `src/checks/plausibility.py` have not yet been updated; this decision is recorded here until implementation begins.
+`config/physiological_ranges.yaml` and `src/checks/plausibility.py` have not yet been updated; this decision is recorded here until implementation begins.
 
 ---
 
@@ -578,13 +627,15 @@ This is a new design instruction to be incorporated into the flagging and report
 
 ### Decision 4 — Chest EDA and TEMP plausibility bounds: use the same ranges as wrist (RESOLVED)
 
+> **SUPERSEDED BY:** [Chest EDA/TEMP channels scoped out of plausibility checking (decision)], 2026-10-09. Transfer-function complexity made implementation disproportionate; channels are excluded from plausibility checking with documented rationale.
+
 **Resolved:** apply the **same physiologically-reasonable bounds** for EDA and skin temperature to the RespiBAN chest channels (CH2 and CH4) as are already defined for the E4 wrist equivalents.
 
 Reasoning: physiological plausibility is a body-wide property, not specific to measurement site. The same EDA and temperature ranges that are physiologically implausible on the wrist are equally implausible on the chest. Temperature bounds must be specified as **skin surface temperature**, not core body temperature (the sensor is a surface contact sensor on both devices).
 
 **Resolves:** the earlier open item "RespiBAN CH2/CH4 plausibility scope — pending Kevin's decision."
 
-`config/ranges.yaml` has not yet been updated; this decision is recorded here until implementation begins.
+`config/physiological_ranges.yaml` has not yet been updated; this decision is recorded here until implementation begins.
 
 ---
 

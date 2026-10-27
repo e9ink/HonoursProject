@@ -9,7 +9,7 @@
 
 ## Overview
 
-Abraham et al. (2019) organise data governance into a hierarchy: broad data principles at the top, specific quality policies in the middle, and operational metadata-management practices at the bottom. This document maps the policies enforced by this pipeline to that hierarchy, and for each policy cites where in the pipeline it is enforced.
+This document organises the policies enforced by this pipeline into a three-tier structure, built around the three data governance domains Abraham et al. (2019) identify: data principles, data quality, and metadata management. The three-tier structure is this project's design choice; Abraham et al. provide the domain framework that motivates and names it. For each policy this document cites where in the pipeline it is enforced.
 
 ---
 
@@ -92,7 +92,7 @@ These policies govern how quality is measured and assured. They translate the Ti
 
 ### Policy 2.4 -- Deterministic Processing
 
-**Statement:** Given the same input files, every pipeline stage must produce bit-identical output on every run.
+**Statement:** Given the same input files, every pipeline stage must produce deterministic substantive output on every run. Non-deterministic values (run timestamps in governance outputs) are isolated in a clearly labelled `run_context` field and do not affect the substantive content.
 
 **Rationale:** Non-deterministic outputs make audit trails unreliable. If the same input produces different outputs on two runs, it is impossible to know which output the pipeline "really" produced.
 

@@ -309,8 +309,8 @@ def _dim_accuracy() -> dict:
             "of the framework for this dataset, recorded deliberately rather than "
             "silently omitted. Absent an accuracy metric, the framework cannot "
             "assess whether the physiological values themselves are correct, only "
-            "that they are internally consistent, complete, and within plausible "
-            "bounds. See config/thresholds.yaml (accuracy is intentionally absent)."
+            "that they are complete, conformant, within plausible bounds, and "
+            "temporally aligned. See config/thresholds.yaml (accuracy is intentionally absent)."
         ),
     }
 

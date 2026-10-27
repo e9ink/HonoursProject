@@ -2,23 +2,23 @@
 
 **Dataset:** WESAD (Wearable Stress and Affect Detection)
 **Prepared by:** Kevin Hudoyo, UTS Honours
-**Framework:** Gebru et al. (2021) Datasheets for Datasets
+**Framework:** Gebru, T., Morgenstern, J., Vecchione, B., Vaughan, J. W., Wallach, H., Daume, H., III, & Crawford, K. (2021). Datasheets for datasets. Communications of the ACM, 64(12), 86-92. https://doi.org/10.1145/3458723
 
 ---
 
 ## 1. Motivation
 
 **For what purpose was the dataset created?**
-WESAD was created to support research into wearable-based stress and affect detection using multimodal physiological signals. The dataset provides simultaneous recordings from a wrist-worn and a chest-worn sensor device to enable multi-device, multi-signal analysis of stress states (source: `config/physiological_ranges.yaml`, referencing Schmidt et al., 2018).
+WESAD was created to support research into wearable-based stress and affect detection using multimodal physiological signals. The dataset provides simultaneous recordings from a wrist-worn and a chest-worn sensor device to enable multi-device, multi-signal analysis of three affective states (neutral, stress, amusement). A baseline benchmark was also created on the dataset using well-known features and standard machine learning methods (Schmidt et al., 2018, p. 1 abstract).
 
 **Who created the dataset and on whose behalf?**
-[KEVIN TO COMPLETE: institution, research group, and funding source.]
+The dataset was created by Philip Schmidt, Attila Reiss, Robert Duerichen, and Claus Marberger (Robert Bosch GmbH, Renningen, Germany) and Kristof Van Laerhoven (University of Siegen, Germany) (Schmidt et al., 2018, p. 1).
 
 **Who funded the creation of the dataset?**
-[KEVIN TO COMPLETE: funding body.]
+Not documented in the available sources.
 
 **Any other comments?**
-[KEVIN TO COMPLETE: whether WESAD was created to advance a specific benchmark or application.]
+WESAD was created both as a research dataset and as a benchmark: the paper provides baseline classification results on the dataset using well-known features and standard machine learning methods (Schmidt et al., 2018, p. 1 abstract).
 
 ---
 
@@ -57,7 +57,7 @@ Signals and sample rate (source: `reports/wesad_baseline.json`, `config/physiolo
 **File format:**
 - E4 CSV: row 0 = Unix timestamp (UTC); row 1 = sample rate (Hz); rows 2+ = data values. (source: `bronze/WESAD/S2/S2_E4_Data/info.txt`)
 - IBI CSV: row 0 = start timestamp; rows 1+ = (offset_seconds, ibi_duration_seconds). (source: `bronze/WESAD/S2/S2_E4_Data/info.txt`)
-- RespiBAN TXT: 3-line header; line 2 = JSON device metadata (sampling rate, sensor names); rows 3+ = tab-separated numeric data; wall-clock in UTC+2 (CEST). (source: `reports/wesad_alignment.json`, field `timezone_assumption`)
+- RespiBAN TXT: 3-line header; line 2 = JSON device metadata (sampling rate, sensor names); rows 3+ = tab-separated numeric data; wall-clock recorded in UTC+2 (CEST) -- this is this pipeline's timezone assumption, not independently verified (source: `reports/wesad_alignment.json`, field `timezone_assumption`).
 
 **Participant demographics (from per-participant readme files in `bronze/WESAD/`):**
 
@@ -66,12 +66,12 @@ Signals and sample rate (source: `reports/wesad_baseline.json`, `config/physiolo
 | Count | 15 |
 | Age range | 24-35 years |
 | Gender | 12 male, 3 female |
-| Dominant hand | [KEVIN TO COMPLETE: check all 15 readmes] |
+| Dominant hand | 14 right, 1 left (S8) -- tallied from all 15 per-participant readmes; E4 worn on non-dominant hand (Schmidt et al., 2018, p. 3) |
 
 Demographic data is stored per-participant in `bronze/WESAD/<pid>/<pid>_readme.txt`. Each readme also records study pre-requisites (coffee, sports, smoking, illness status).
 
 **Experimental conditions:**
-Per-participant readme notes reference a baseline condition, a stress condition (described as TSST -- Trier Social Stress Test -- in S6 and S14 notes), and a meditation condition (S5 notes). [KEVIN TO COMPLETE: full protocol description and the complete condition/label schema.]
+The study elicited three affective states: neutral (baseline), stress, and amusement. The stress condition used the TSST (Trier Social Stress Test). A guided meditation was used to de-excite participants after the stress and amusement conditions. There were two counterbalanced protocol versions: Version A (Baseline -- Amusement -- Medi I -- Stress -- Rest -- Medi II) and Version B (Baseline -- Stress -- Rest -- Medi I -- Amusement -- Medi II) (Schmidt et al., 2018, p. 3 and Figure 2). Ground truth for the baseline experiments was the study protocol. Subjective self-reports were collected via PANAS, STAI, SAM, and SSSQ questionnaires (Schmidt et al., 2018, p. 3-4).
 
 **Quality annotations:**
 Two participants (S2, S17) have the note "The RespiBAN temperature sensor was not fully attached throughout the entire duration of the study protocol" (source: `bronze/WESAD/S2/S2_readme.txt`, `bronze/WESAD/S17/S17_readme.txt`). S6 notes the participant was not stressed during the TSST due to prior interview experience. S5 notes the participant may have fallen asleep during the first meditation.
@@ -90,13 +90,13 @@ Data was collected in a controlled laboratory setting using two simultaneous wea
 Each participant was asked to confirm: no coffee within the last hour; no sports that day; non-smoker or no smoking within the last hour; not feeling ill. Responses are recorded in per-participant readme files (source: `bronze/WESAD/<pid>/<pid>_readme.txt`).
 
 **Participant recruitment:**
-[KEVIN TO COMPLETE: recruitment method, inclusion and exclusion criteria, ethics approval.]
+In total, 17 subjects participated in the study. Due to sensor malfunction, the data of two participants had to be discarded, leaving 15 subjects (Schmidt et al., 2018, p. 3). Pre-requisites: participants were asked to avoid caffeine within one hour, avoid sports on the study day, not smoke within one hour, and not feel ill (Schmidt et al., 2018, p. 3; confirmed in per-participant readme files). Inclusion/exclusion criteria and ethics approval: not documented in the available sources.
 
 **Was the data collection validated?**
 The E4 does not include per-sample timestamps; declared sampling rates are taken on trust and cannot be independently verified from the exported CSV files (source: profiling note in `reports/wesad_baseline.json`, field `sampling_rate_note`). The RespiBAN records a sequential counter (nSeq) that allows gap detection. Baseline profiling found zero sequence gaps across all 15 participants (source: `reports/wesad_baseline.json`).
 
 **Are there known gaps or issues at collection time?**
-Two participants have documented sensor attachment problems for the RespiBAN chest TEMP channel (S2, S17) (source: readme files). Participant S3 was recorded in a sunny workspace during the baseline condition. The E4 activates 15-24 minutes before the RespiBAN per participant, creating a systematic start-time difference (source: `reports/wesad_alignment.json`, `note_offset_before`).
+Two participants have documented sensor attachment problems for the RespiBAN chest TEMP channel (S2, S17) (source: readme files). S3 readme states: "During the baseline condition, the subject was sitting in a sunny workplace." The E4 activates 15-24 minutes before the RespiBAN per participant, creating a systematic start-time difference (source: `reports/wesad_alignment.json`, `note_offset_before`).
 
 ---
 
@@ -135,14 +135,14 @@ After cleaning, conformance and plausibility were re-measured on the effective c
 | Timeliness (max offset) | n/a (19-min gap) | 0.107 s | 1.0 s | Yes |
 
 **Labels:**
-[KEVIN TO COMPLETE: the label schema (condition labels, valence/arousal ratings, ground-truth stress labels) was not fully documented in the source files available to this pipeline. Per-participant readme notes reference valence ratings (e.g. S3: "valence label of 7 after the stress condition") and condition names (TSST, meditation, baseline).]
+The study protocol (condition assignment) served as ground truth for the baseline experiments in Schmidt et al. (2018). Subjective labels were collected at five self-report points via: PANAS (20 items, 5-point Likert, positive and negative affect); STAI (6 items, 4-point Likert, anxiety); SAM (Self-Assessment Manikins, valence-arousal space); and SSSQ (9 items after TSST, measuring worry, engagement, and distress) (Schmidt et al., 2018, p. 3-4). [KEVIN TO REVIEW: confirm which label format (protocol labels, questionnaire scores, or combined) is appropriate for the intended downstream analysis.]
 
 ---
 
 ## 5. Uses
 
 **Has the dataset been used for any tasks already?**
-[KEVIN TO COMPLETE: published results using WESAD, e.g. Schmidt et al. 2018 baseline experiments.]
+Schmidt et al. (2018) provides the baseline benchmark on WESAD. Using all physiological features, the best classification accuracy reported was 80.34% for the three-class problem (baseline vs. stress vs. amusement) and 93.12% for the binary problem (stress vs. non-stress), both using chest-based modalities (Schmidt et al., 2018, p. 8 and abstract).
 
 **What tasks is the dataset suited for?**
 Wearable-based stress and affect detection; multimodal physiological signal analysis; sensor fusion research. [KEVIN TO REVIEW: suitability for clinical applications.]
@@ -157,7 +157,7 @@ The 15-participant sample size limits generalisation. Lab-induced stress may not
 ## 6. Distribution
 
 **How is the dataset distributed?**
-[KEVIN TO COMPLETE: official repository URL, access request process, and whether a larger dataset beyond the 15 participants in this release is available elsewhere; verify total recorded vs released participant count from Schmidt et al., 2018.]
+Schmidt et al. (2018) describes the dataset as publicly available but does not provide an access URL in the available 9-page paper. Access request process: not documented in the available sources. [KEVIN TO COMPLETE: current repository URL and access request process.] Total recorded: 17 subjects participated; 2 were discarded due to sensor malfunction; 15 remain in this release (Schmidt et al., 2018, p. 3). No larger release is documented in the available sources.
 
 **Under what license?**
 [KEVIN TO COMPLETE: license or access agreement terms.]
@@ -173,13 +173,13 @@ Participants are pseudonymised using codes S2-S17. Per-participant readme files 
 ## 7. Maintenance
 
 **Who maintains the original dataset?**
-[KEVIN TO COMPLETE: original dataset maintainers and contact.]
+The original dataset was created by Philip Schmidt, Attila Reiss, Robert Duerichen, Claus Marberger (Robert Bosch GmbH), and Kristof Van Laerhoven (University of Siegen) (Schmidt et al., 2018, p. 1). Current maintainer contact: not documented in the available sources.
 
 **Who maintains this pipeline and its governance outputs?**
 Kevin Hudoyo (UTS Honours, student ID 24790848), supervised by Dr. Tobias Cibis. Pipeline source: this repository. Quality thresholds and physiological ranges signed off by Dr. Tobias Cibis on 2026-09-09 (source: `config/thresholds.yaml` and `config/physiological_ranges.yaml`, `meta.signed_off_by`).
 
 **Will the dataset be updated?**
-[KEVIN TO COMPLETE: whether new participants or corrected files will be released.]
+Not documented in the available sources.
 
 **Are there mechanisms for error reporting?**
-[KEVIN TO COMPLETE.]
+Not documented in the available sources.

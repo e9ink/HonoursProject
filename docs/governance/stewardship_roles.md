@@ -9,13 +9,13 @@
 
 ## Overview
 
-Tallon et al. (2013) define information governance in terms of accountability structures: who is responsible for what decisions, and how that responsibility is maintained over time. This document applies those structures to the WESAD pipeline, identifying four roles and mapping them to the project where the mapping is factual.
+This document identifies four data governance roles and maps them to the WESAD pipeline where the mapping is factual. The roles follow general data governance practice; Tallon et al. (2013) ground the accountability framing used here. Tallon et al. discuss information governance in terms of structural, procedural, and relational practices and mention data custodians and stewards in passing (p. 153), but do not formally define the four-role model below. The role definitions are general data governance practice informed by Tallon et al.'s accountability framing.
 
 ---
 
 ## Role 1: Data Owner
 
-**Definition (from Tallon et al., 2013):**
+**Definition (general data governance practice, informed by Tallon et al., 2013 accountability framing):**
 The data owner holds ultimate accountability for the data asset. The owner authorises use, sets policy, and bears responsibility for how the data is managed and what decisions are made with it.
 
 **In the context of the original WESAD dataset:**
@@ -34,7 +34,7 @@ The data owner of the pipeline outputs (quality reports, governance artefacts, S
 
 ## Role 2: Data Steward
 
-**Definition (from Tallon et al., 2013):**
+**Definition (general data governance practice, informed by Tallon et al., 2013 accountability framing):**
 The data steward is responsible for data quality standards: defining what "good data" means, ensuring those standards are applied consistently, and documenting deviations and decisions.
 
 **In the context of this pipeline:**
@@ -62,14 +62,14 @@ The stewardship function is shared between Kevin Hudoyo and Dr. Tobias Cibis.
 
 ## Role 3: Data Custodian
 
-**Definition (from Tallon et al., 2013):**
+**Definition (general data governance practice, informed by Tallon et al., 2013 accountability framing):**
 The data custodian is responsible for the physical storage, security, and access control of data. The custodian implements the policies set by the owner and steward but does not set those policies.
 
 **In the context of this pipeline:**
 Kevin Hudoyo acts as data custodian for the local copy of WESAD.
 
 **Responsibilities:**
-- Maintaining the local machine where raw data resides. [KEVIN TO COMPLETE: backup and retention policy.]
+- Maintaining the local machine where raw data resides. The project folder, including bronze/, is stored in a OneDrive-synced directory, which provides cloud backup of all pipeline code and governance outputs. Raw physiological data files in bronze/ are therefore backed up to OneDrive. [KEVIN TO REVIEW: confirm cloud storage is permitted under the WESAD access terms before relying on OneDrive as the backup mechanism for participant data.]
 - Enforcing Bronze immutability: the pipeline is designed so that no code writes to, moves, or modifies anything in `bronze/`. This is a pipeline-design constraint, not a filesystem permission. Bronze immutability was verified during the profiling task (git status confirmed `bronze/WESAD/` was never staged as modified after profiling ran) (source: `docs/progress_log.md`, Task 2 section).
 - Excluding raw data from version control: `bronze/*` and `archive.zip` are listed in `.gitignore` (source: `.gitignore`).
 - Maintaining Silver layer outputs: cleaned TEMP.csv files for all 15 participants in `silver/WESAD/`.
@@ -79,7 +79,7 @@ Kevin Hudoyo acts as data custodian for the local copy of WESAD.
 
 ## Role 4: Data Consumer
 
-**Definition (from Tallon et al., 2013):**
+**Definition (general data governance practice, informed by Tallon et al., 2013 accountability framing):**
 The data consumer uses the data for analysis or model development. The consumer relies on the quality assurances provided by the steward and custodian, and is responsible for using the data within its documented scope.
 
 **In the context of this pipeline:**
