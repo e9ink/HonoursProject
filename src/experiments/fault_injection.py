@@ -10,6 +10,12 @@ Run it only after the design commit has been reviewed.
 Constraint: no check module is modified. The harness calls existing check
 functions on copies of participant data in experiments/scratch/.
 
+Injection state: each participant's scratch directory uses Silver TEMP
+(warm-up indices 0-3 already replaced with NaN) plus Bronze for all other
+signals, matching the state that src/checks/post_cleaning.py operates on.
+Documented intentional removals (from reports/wesad_cleaning.json) are
+excluded from the completeness missingness rate.
+
 Timeliness note: src/alignment._align_participant() hardcodes
 BRONZE = Path("bronze/WESAD") and cannot be redirected to a scratch
 directory. The harness uses _e4_modality_info, _respiban_info, and
@@ -27,6 +33,8 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent.parent
 SCRATCH_DIR = ROOT / "experiments" / "scratch"
 BRONZE_WESAD = ROOT / "bronze" / "WESAD"
+SILVER_WESAD = ROOT / "silver" / "WESAD"
+CLEANING_REPORT = ROOT / "reports" / "wesad_cleaning.json"
 RESULTS_DIR = ROOT / "reports" / "experiments"
 RESULTS_PATH = RESULTS_DIR / "fault_injection_results.json"
 EXPERIMENTS_CONFIG = ROOT / "config" / "experiments.yaml"
@@ -34,8 +42,8 @@ EXPERIMENTS_CONFIG = ROOT / "config" / "experiments.yaml"
 # RespiBAN column order used throughout (from check modules)
 _RESPIBAN_COLS = ["nSeq", "DI", "CH1", "CH2", "CH3", "CH4", "CH5", "CH6", "CH7", "CH8"]
 
-# E4 TEMP warm-up artifact occupies indices 0-3 in every participant's bronze
-# TEMP.csv. Exclude these from injection to keep accounting clean.
+# E4 TEMP warm-up positions (indices 0-3) are already NaN in Silver TEMP.
+# Injecting faults at these positions would overwrite known-clean NaN values.
 _TEMP_EXCLUDE = frozenset({0, 1, 2, 3})
 
 
@@ -48,7 +56,7 @@ _FAULT_TYPES_ORDER = [
     "completeness_scattered_nan",
     "completeness_contiguous_dropout",
     "conformance_non_numeric",
-    "conformance_out_of_device_range",
+    "conformance_sampling_rate_fault",
     "plausibility_physiological_impossible",
     "timeliness_start_shift",
 ]
@@ -62,13 +70,24 @@ def _seed(pid: str, fault_type: str, severity_idx: int) -> int:
     return _BASE_SEED + pid_idx * 1000 + ft_idx * 100 + severity_idx * 10
 
 
+def _load_intentional_removals(pid: str) -> dict:
+    """Return intentional NaN removal indices from the cleaning report as {mod: [indices]}."""
+    with open(CLEANING_REPORT, encoding="utf-8") as fh:
+        cleaning = json.load(fh)
+    indices = cleaning["participants"][pid]["cleaning"]["indices_replaced"]
+    return {"TEMP": indices}
+
+
 # ---------------------------------------------------------------------------
 # File copying
 # ---------------------------------------------------------------------------
 
 def _copy_participant_to_scratch(pid: str) -> Path:
     """
-    Copy one participant's files from bronze to a fresh scratch directory.
+    Copy one participant's files to a fresh scratch directory.
+    Bronze files are used for all signals except E4 TEMP, which is taken from
+    Silver (warm-up indices 0-3 already NaN), matching the state that
+    src/checks/post_cleaning.py operates on.
     Returns the scratch participant directory path.
     """
     src = BRONZE_WESAD / pid
@@ -76,6 +95,9 @@ def _copy_participant_to_scratch(pid: str) -> Path:
     if dst.exists():
         shutil.rmtree(dst)
     shutil.copytree(src, dst)
+    silver_temp = SILVER_WESAD / pid / f"{pid}_E4_Data" / "TEMP.csv"
+    scratch_temp = dst / f"{pid}_E4_Data" / "TEMP.csv"
+    shutil.copy2(silver_temp, scratch_temp)
     return dst
 
 
@@ -237,6 +259,21 @@ def shift_e4_start_time(csv_path: Path, offset_s: float) -> None:
     csv_path.write_text("\n".join(all_lines), encoding="utf-8")
 
 
+def inject_e4_sampling_rate(csv_path: Path, new_hz: float) -> float:
+    """
+    Replace the declared sampling rate in row 1 of an E4 CSV header.
+    Row 1 contains a single number (e.g. "4.0") or padded form ("4.0,,").
+    Returns the original declared rate.
+    """
+    all_lines = csv_path.read_text(encoding="utf-8").splitlines()
+    parts = all_lines[1].split(",")
+    original_hz = float(parts[0])
+    parts[0] = str(float(new_hz))
+    all_lines[1] = ",".join(parts)
+    csv_path.write_text("\n".join(all_lines), encoding="utf-8")
+    return original_hz
+
+
 # ---------------------------------------------------------------------------
 # RespiBAN injection helpers
 # ---------------------------------------------------------------------------
@@ -340,9 +377,14 @@ def inject_respiban_value(
 # Check runners on scratch paths
 # ---------------------------------------------------------------------------
 
-def _run_completeness(scratch_pid_dir: Path, pid: str, threshold: float) -> dict:
+def _run_completeness(
+    scratch_pid_dir: Path,
+    pid: str,
+    threshold: float,
+    intentional_by_mod: "dict | None" = None,
+) -> dict:
     from src.checks.completeness import check_e4, check_chest
-    e4 = check_e4(scratch_pid_dir, threshold)
+    e4 = check_e4(scratch_pid_dir, threshold, intentional_removals_by_mod=intentional_by_mod)
     rb_path = scratch_pid_dir / f"{pid}_respiban.txt"
     chest = check_chest(rb_path, threshold) if rb_path.exists() else {}
     return {"e4": e4, "chest": chest}
@@ -488,6 +530,7 @@ def _run_completeness_experiments(
         scratch = _copy_participant_to_scratch(pid)
         e4_dir = scratch / f"{pid}_E4_Data"
         rb_path = scratch / f"{pid}_respiban.txt"
+        intentional = _load_intentional_removals(pid)
 
         for ft, is_contiguous in [(ft_nan, False), (ft_drop, True)]:
             for sev_idx, sev in enumerate(severities):
@@ -498,7 +541,7 @@ def _run_completeness_experiments(
                     nf = _n_faults(n, sev)
                     rng = np.random.default_rng(_seed(pid, ft, sev_idx))
 
-                    clean_result = _run_completeness(scratch, pid, threshold)
+                    clean_result = _run_completeness(scratch, pid, threshold, intentional)
                     clean_nan = _completeness_nan_count(clean_result, mod)
                     clean_passes = _completeness_passes(clean_result, mod)
 
@@ -512,7 +555,7 @@ def _run_completeness_experiments(
                     else:
                         injected = inject_e4_nan_scattered(csv2, nf, rng2, excl)
 
-                    dirty_result = _run_completeness(scratch2, pid, threshold)
+                    dirty_result = _run_completeness(scratch2, pid, threshold, intentional)
                     dirty_nan = _completeness_nan_count(dirty_result, mod)
                     dirty_passes = _completeness_passes(dirty_result, mod)
                     shutil.rmtree(scratch2)
@@ -538,7 +581,7 @@ def _run_completeness_experiments(
                 nf_rb = _n_faults(n_rb, sev)
                 rng_rb = np.random.default_rng(_seed(pid, ft, sev_idx) + 5)
 
-                clean_result = _run_completeness(scratch, pid, threshold)
+                clean_result = _run_completeness(scratch, pid, threshold, intentional)
                 clean_drops = _completeness_chest_dropped(clean_result)
                 clean_passes_rb = _completeness_chest_passes(clean_result)
 
@@ -560,7 +603,7 @@ def _run_completeness_experiments(
                 else:
                     dropped_nseq = inject_respiban_sequence_gaps(rb_path3, nf_rb, rng_rb3)
 
-                dirty_result3 = _run_completeness(scratch3, pid, threshold)
+                dirty_result3 = _run_completeness(scratch3, pid, threshold, intentional)
                 dirty_drops = _completeness_chest_dropped(dirty_result3)
                 dirty_passes_rb = _completeness_chest_passes(dirty_result3)
                 shutil.rmtree(scratch3)
@@ -592,9 +635,8 @@ def _run_conformance_experiments(
     ranges_cfg: dict,
 ) -> None:
     ft_nn = "conformance_non_numeric"
-    ft_oor = "conformance_out_of_device_range"
+    ft_sr = "conformance_sampling_rate_fault"
 
-    e4_oor_values = {"TEMP": 50.0, "EDA": 150.0, "HR": 0.0}
     e4_targets_excl = {"TEMP": _TEMP_EXCLUDE, "EDA": frozenset(), "HR": frozenset()}
     sig_labels = {"TEMP": "E4_TEMP", "EDA": "E4_EDA", "HR": "E4_HR"}
 
@@ -671,54 +713,13 @@ def _run_conformance_experiments(
                 ).get("ok", True),
             })
 
-            # ---- E4 out-of-device-range ----
-            for mod, fault_val in e4_oor_values.items():
-                excl = e4_targets_excl[mod]
-                csv = e4_dir / f"{mod}.csv"
-                n = _e4_sample_count(csv)
-                nf = _n_faults(n, sev)
-
-                clean = _run_conformance(scratch, ranges_cfg)
-                clean_viol = _conformance_range_violations(clean, mod)
-                clean_pls = _run_plausibility(scratch, ranges_cfg["wesad"], 0.01)
-                clean_pls_viol = _plausibility_violations(clean_pls, mod)
-
-                scratch4 = _copy_participant_to_scratch(pid)
-                csv4 = scratch4 / f"{pid}_E4_Data" / f"{mod}.csv"
-                rng4 = np.random.default_rng(_seed(pid, ft_oor, sev_idx))
-                injected4 = inject_e4_value(csv4, fault_val, nf, rng4, excl)
-
-                dirty4 = _run_conformance(scratch4, ranges_cfg)
-                dirty_viol = _conformance_range_violations(dirty4, mod)
-                dirty_pls = _run_plausibility(scratch4, ranges_cfg["wesad"], 0.01)
-                dirty_pls_viol = _plausibility_violations(dirty_pls, mod)
-                shutil.rmtree(scratch4)
-
-                new_viol = dirty_viol - clean_viol
-                records.append({
-                    "dimension": "conformance",
-                    "fault_type": ft_oor,
-                    "signal": sig_labels[mod],
-                    "participant": pid,
-                    "severity": sev,
-                    "fault_value": fault_val,
-                    "n_injected": len(injected4),
-                    "n_detected_conformance": new_viol,
-                    "detection_rate": new_viol / len(injected4) if injected4 else None,
-                    "false_positive_count": max(0, new_viol - len(injected4)),
-                    "cross_check_plausibility_detections": dirty_pls_viol - clean_pls_viol,
-                    "verdict_flip": not dirty4["e4"].get(mod, {}).get("range", {}).get(
-                        "ok", True
-                    ),
-                })
-
-            # ---- RespiBAN ECG out-of-range ----
+            # ---- RespiBAN ECG out-of-range (ADC = 70000) ----
             clean_rb2 = _run_conformance(scratch, ranges_cfg)
             clean_rb2_viol = _conformance_chest_range_violations(clean_rb2, "CH1")
 
             scratch5 = _copy_participant_to_scratch(pid)
             rb5 = scratch5 / f"{pid}_respiban.txt"
-            rng5 = np.random.default_rng(_seed(pid, ft_oor, sev_idx) + 5)
+            rng5 = np.random.default_rng(_seed(pid, ft_sr, sev_idx) + 5)
             inj5 = inject_respiban_value(rb5, "CH1", 70000, nf_rb, rng5)
 
             dirty_rb2 = _run_conformance(scratch5, ranges_cfg)
@@ -732,7 +733,7 @@ def _run_conformance_experiments(
 
             records.append({
                 "dimension": "conformance",
-                "fault_type": ft_oor,
+                "fault_type": "conformance_out_of_device_range",
                 "signal": "RespiBAN_ECG",
                 "participant": pid,
                 "severity": sev,
@@ -748,6 +749,35 @@ def _run_conformance_experiments(
                     "range_summary", {}
                 ).get("ok", True),
             })
+
+        # ---- E4 EDA sampling-rate fault (file-level, no severity loop) ----
+        scratch_sr = _copy_participant_to_scratch(pid)
+        eda_csv_sr = scratch_sr / f"{pid}_E4_Data" / "EDA.csv"
+
+        clean_sr = _run_conformance(scratch, ranges_cfg)
+        clean_sr_ok = (
+            clean_sr.get("e4", {}).get("EDA", {}).get("sampling_rate", {}).get("ok", True)
+        )
+
+        original_hz = inject_e4_sampling_rate(eda_csv_sr, 8.0)
+        dirty_sr = _run_conformance(scratch_sr, ranges_cfg)
+        dirty_sr_ok = (
+            dirty_sr.get("e4", {}).get("EDA", {}).get("sampling_rate", {}).get("ok", True)
+        )
+        shutil.rmtree(scratch_sr)
+
+        records.append({
+            "dimension": "conformance",
+            "fault_type": ft_sr,
+            "signal": "E4_EDA",
+            "participant": pid,
+            "severity": None,
+            "original_hz": original_hz,
+            "injected_hz": 8.0,
+            "baseline_sampling_rate_ok": clean_sr_ok,
+            "detected": not dirty_sr_ok,
+            "verdict_flip": clean_sr_ok and not dirty_sr_ok,
+        })
 
         shutil.rmtree(scratch, ignore_errors=True)
 
@@ -867,6 +897,88 @@ def _run_timeliness_experiments(
 
 
 # ---------------------------------------------------------------------------
+# Control condition (severity zero)
+# ---------------------------------------------------------------------------
+
+def _run_control_experiments(
+    records: list,
+    participants: list,
+    thresholds_cfg: dict,
+    ranges_cfg: dict,
+) -> None:
+    """
+    Control condition: no faults injected. Pre-registered expectation: every
+    check returns zero flags and a passing verdict for every signal.
+    """
+    comp_threshold = float(thresholds_cfg["completeness"]["max_missingness_rate"])
+    pls_threshold = float(thresholds_cfg["validity"]["max_plausibility_failure_rate"])
+    tl_threshold = float(thresholds_cfg["timeliness"]["max_cross_modal_offset_seconds"])
+    wesad_cfg = ranges_cfg["wesad"]
+
+    for pid in participants:
+        scratch = _copy_participant_to_scratch(pid)
+        intentional = _load_intentional_removals(pid)
+
+        comp = _run_completeness(scratch, pid, comp_threshold, intentional)
+        conf = _run_conformance(scratch, ranges_cfg)
+        plaus = _run_plausibility(scratch, wesad_cfg, pls_threshold)
+        align = _run_alignment(scratch, pid, tl_threshold)
+        shutil.rmtree(scratch, ignore_errors=True)
+
+        comp_e4_flags = {
+            mod: not v.get("passes_threshold", True)
+            for mod, v in comp["e4"].items()
+        }
+        comp_chest_flag = not comp.get("chest", {}).get("sequence_gap_passes_threshold", True)
+
+        conf_e4_flags = {
+            mod: (
+                not m.get("sampling_rate", {}).get("ok", True)
+                or not m.get("range", {}).get("ok", True)
+                or not m.get("non_numeric", {}).get("ok", True)
+            )
+            for mod, m in conf.get("e4", {}).items()
+            if m.get("format", {}).get("ok", True)
+        }
+        conf_chest_flag = not conf.get("chest", {}).get("range_summary", {}).get("ok", True)
+
+        plaus_e4_flags = {
+            mod: not v.get("passes_threshold", True)
+            for mod, v in plaus["e4"].items()
+            if not v.get("excluded") and not v.get("error")
+        }
+        plaus_chest_flag = any(
+            not sig.get("passes_threshold", True)
+            for sig in plaus.get("chest", {}).values()
+            if isinstance(sig, dict) and not sig.get("excluded")
+        )
+
+        any_flag = (
+            any(comp_e4_flags.values()) or comp_chest_flag
+            or any(conf_e4_flags.values()) or conf_chest_flag
+            or any(plaus_e4_flags.values()) or plaus_chest_flag
+            or not align["passes_threshold"]
+        )
+
+        records.append({
+            "dimension": "control",
+            "fault_type": "control_no_injection",
+            "participant": pid,
+            "severity": 0,
+            "n_injected": 0,
+            "completeness_e4_flags": comp_e4_flags,
+            "completeness_chest_flag": comp_chest_flag,
+            "conformance_e4_flags": conf_e4_flags,
+            "conformance_chest_flag": conf_chest_flag,
+            "plausibility_e4_flags": plaus_e4_flags,
+            "plausibility_chest_flag": plaus_chest_flag,
+            "timeliness_passes": align["passes_threshold"],
+            "any_flag": any_flag,
+            "pre_registered_expectation": "any_flag == false",
+        })
+
+
+# ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
 
@@ -903,6 +1015,9 @@ def run_all_experiments() -> None:
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
     records: list = []
+
+    print("Running control condition (severity zero) ...")
+    _run_control_experiments(records, participants, thresholds_cfg, ranges_cfg)
 
     print("Running completeness experiments ...")
     _run_completeness_experiments(records, participants, severities, thresholds_cfg)

@@ -16,6 +16,7 @@ from src.experiments.fault_injection import (
     inject_e4_nan_contiguous,
     inject_e4_non_numeric,
     inject_e4_value,
+    inject_e4_sampling_rate,
     inject_respiban_sequence_gaps,
     inject_respiban_non_numeric,
     inject_respiban_value,
@@ -419,6 +420,48 @@ class TestInjectRespiBanValue:
         for i in range(40):
             if i not in injected:
                 assert data.iloc[i]["CH1"] == 32768
+
+
+# ---------------------------------------------------------------------------
+# E4 sampling rate injector
+# ---------------------------------------------------------------------------
+
+class TestInjectE4SamplingRate:
+
+    def test_hz_changed_in_file(self, tmp_path):
+        f = tmp_path / "EDA.csv"
+        make_e4_csv(f, [5.0] * 10, hz=4.0, start_time=1000.0)
+        inject_e4_sampling_rate(f, 8.0)
+        lines = f.read_text(encoding="utf-8").splitlines()
+        assert float(lines[1].split(",")[0]) == pytest.approx(8.0)
+
+    def test_returns_original_hz(self, tmp_path):
+        f = tmp_path / "EDA.csv"
+        make_e4_csv(f, [5.0] * 10, hz=4.0)
+        original = inject_e4_sampling_rate(f, 8.0)
+        assert original == pytest.approx(4.0)
+
+    def test_start_time_row_unchanged(self, tmp_path):
+        f = tmp_path / "EDA.csv"
+        make_e4_csv(f, [5.0] * 10, hz=4.0, start_time=1000.0)
+        inject_e4_sampling_rate(f, 8.0)
+        lines = f.read_text(encoding="utf-8").splitlines()
+        assert float(lines[0].split(",")[0]) == pytest.approx(1000.0)
+
+    def test_data_rows_unchanged(self, tmp_path):
+        f = tmp_path / "EDA.csv"
+        make_e4_csv(f, [5.0, 6.0, 7.0], hz=4.0)
+        inject_e4_sampling_rate(f, 8.0)
+        data = _read_e4_data(f)
+        assert list(data.iloc[:, 0]) == pytest.approx([5.0, 6.0, 7.0])
+
+    def test_idempotent_if_applied_twice(self, tmp_path):
+        f = tmp_path / "EDA.csv"
+        make_e4_csv(f, [5.0] * 10, hz=4.0)
+        inject_e4_sampling_rate(f, 8.0)
+        inject_e4_sampling_rate(f, 4.0)
+        lines = f.read_text(encoding="utf-8").splitlines()
+        assert float(lines[1].split(",")[0]) == pytest.approx(4.0)
 
 
 # ---------------------------------------------------------------------------

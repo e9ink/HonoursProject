@@ -17,10 +17,28 @@
 metadata:
   status: pre_registered
   date_pre_registered: "2026-10-28"
+  date_amended: "2026-10-28"
+  amendment_summary: >
+    Amended before any experiment run: (1) inject into cleaned state (Silver
+    TEMP + Bronze); (2) add control condition; (3) add verdict_level per_signal;
+    (4) replace E4 OOR conformance fault with sampling-rate fault; (5) add
+    e4_bounds_overlap_note; (6) update TEMP plausibility expectations.
   harness: src/experiments/fault_injection.py
   note: >
     This file must not be modified after the first experiment run. Any change
     after running constitutes post-hoc revision of a pre-registered design.
+
+injection_source:
+  description: >
+    Each participant's scratch directory uses Silver TEMP (warm-up indices 0-3
+    already replaced with NaN) plus Bronze for all other signals. This matches
+    the state that src/checks/post_cleaning.py operates on. Documented
+    intentional removals (indices 0-3 per participant, from
+    reports/wesad_cleaning.json) are excluded from the completeness missingness
+    rate exactly as in the post-cleaning checks.
+  silver_temp_path_pattern: "silver/WESAD/{pid}/{pid}_E4_Data/TEMP.csv"
+  bronze_other_signals: true
+  intentional_removals_source: "reports/wesad_cleaning.json"
 
 # ---------------------------------------------------------------------------
 # Participants
@@ -40,10 +58,9 @@ participants:
 #
 # Target signals overall: E4 TEMP, E4 EDA, E4 HR, RespiBAN ECG.
 # Rationale for signal selection:
-#   E4 TEMP -- the only signal that is cleaned in the Silver layer; tests the
-#              same code path used in the real pipeline. Also has 4 pre-existing
-#              warm-up artifact violations (indices 0-3) that provide a natural
-#              baseline for cross-check interaction.
+#   E4 TEMP -- the only signal cleaned in the Silver layer; experiments inject
+#              into the cleaned state (Silver NaN at indices 0-3), so no
+#              pre-existing violations exist when the checks are run.
 #   E4 EDA  -- device-capacity breach classification (above_max = device_capacity
 #              rather than physiological_implausible); demonstrates cross-check
 #              between conformance and plausibility.
@@ -70,8 +87,11 @@ fault_types:
     implementation_notes:
       E4_signals: >
         Replace selected data rows with "nan". Positions chosen uniformly at
-        random without replacement. For E4/TEMP: exclude indices 0-3 (warm-up
-        artifact positions) from injection to keep accounting clean.
+        random without replacement. For E4/TEMP: exclude indices 0-3 from
+        injection because Silver TEMP already has NaN at those positions;
+        injecting there would overwrite known-clean NaN values. Documented
+        intentional removals (indices 0-3) are excluded from the completeness
+        missingness rate via check_e4(..., intentional_removals_by_mod).
       RespiBAN_ECG: >
         Drop complete rows to create nSeq sequence gaps. Each dropped row is a
         gap of 1 in the sequence counter. Note: dropping rows affects all 8
@@ -93,7 +113,8 @@ fault_types:
       E4_signals: >
         Replace a consecutive block of rows with "nan". Block start chosen
         uniformly at random; all rows in the block are set to NaN.
-        For E4/TEMP: block must not overlap indices 0-3.
+        For E4/TEMP: block must not overlap indices 0-3 (already NaN in Silver
+        TEMP; see injection_source).
       RespiBAN_ECG: >
         Drop a contiguous block of rows to create a single gap of n_faults in
         the nSeq counter.
@@ -119,44 +140,43 @@ fault_types:
 
   conformance_out_of_device_range:
     description: >
-      Values outside the device output range defined in
-      config/physiological_ranges.yaml (same bounds used by the conformance
-      check). For E4 signals, the conformance and plausibility checks share the
-      same config bounds, so these faults are expected to be detected by both
-      checks (cross-check behaviour is documented in pre_registered_expectations).
+      Values outside the device output range. For E4 signals the conformance
+      and plausibility range bounds are identical (see e4_bounds_overlap_note),
+      so E4 out-of-range testing is replaced by conformance_sampling_rate_fault.
+      Only RespiBAN ECG is tested here (ADC range is distinct from the
+      plausibility physical-unit bound after the ECG transfer function).
     target_signals:
-      - E4/TEMP
-      - E4/EDA
-      - E4/HR
       - RespiBAN/ECG
     target_check: conformance
     fault_values:
-      E4_TEMP: 50.0
-      E4_EDA: 150.0
-      E4_HR: 0.0
       RespiBAN_ECG: 70000
     fault_value_rationale:
-      E4_TEMP: >
-        50.0 deg C is above the config max of 42 deg C. The E4 device can
-        physically output this temperature (the warm-up artifact reaches ~382
-        deg C), so it is within device capability but outside the config bound.
-        Conformance and plausibility both use the same 42 deg C upper bound, so
-        this fault is expected to be detected by both checks.
-      E4_EDA: >
-        150.0 microsiemens is above the config max of 100 microsiemens.
-        Detected by both conformance (range check) and plausibility (same bound).
-      E4_HR: >
-        0.0 bpm is below the config min of 20 bpm. A device could output this
-        when the HR algorithm loses signal; physiologically implausible for a
-        conscious participant. Detected by both conformance and plausibility.
       RespiBAN_ECG: >
         70000 is above the 16-bit ADC maximum of 65535. After applying the ECG
         transfer function: (70000/65536 - 0.5) * 3 = 1.70 mV, which exceeds the
         plausibility bound of 1.5 mV. Detected by conformance (ADC range) and
-        also by plausibility (mV range).
-    implementation_notes:
-      E4_TEMP: >
-        Exclude indices 0-3 from injection (pre-existing warm-up violations).
+        also by plausibility (mV range after transfer function).
+
+  conformance_sampling_rate_fault:
+    description: >
+      The declared sampling rate in row 1 of an E4 EDA CSV header is replaced
+      with a wrong value (4 Hz declared as 8 Hz). This is a file-level
+      structural fault: the conformance check either detects the mismatch or
+      it does not. No severity loop is applied; each participant yields one
+      record (detected: true/false).
+    target_signals:
+      - E4/EDA
+    target_check: conformance
+    fault_value:
+      E4_EDA_injected_hz: 8.0
+      E4_EDA_expected_hz: 4.0
+    fault_value_rationale:
+      E4_EDA: >
+        EDA is declared at 4 Hz in the WESAD dataset. Setting row 1 of EDA.csv
+        to 8.0 makes _check_e4_modality compare 8.0 against the expected 4.0
+        and record sampling_rate.ok = False. This tests a conformance mechanism
+        (declared-rate verification) that is independent of the physiological
+        range bounds shared by conformance and plausibility.
 
   plausibility_physiological_impossible:
     description: >
@@ -221,6 +241,49 @@ fault_types:
       modification of any check -- it is calling sub-functions at a level below
       the main orchestrator.
 
+e4_bounds_overlap_note: >
+  For E4 signals (EDA, skin_temperature/TEMP, heart_rate/HR), the conformance
+  range check and the plausibility check use the same numerical bounds, both
+  sourced from config/physiological_ranges.yaml. An out-of-range fault for an
+  E4 signal therefore triggers both checks simultaneously: it is impossible to
+  test E4 conformance range detection independently of plausibility using a
+  value-based fault. This overlap is a design observation about the pipeline
+  architecture. It is the reason the E4 out-of-range conformance fault was
+  replaced with conformance_sampling_rate_fault, which tests a check mechanism
+  (declared-rate verification) that has no equivalent in plausibility. The
+  overlap does not affect RespiBAN ECG: ADC range (conformance) and
+  physical-unit range after ECG transfer function (plausibility) are
+  numerically distinct bounds.
+
+# ---------------------------------------------------------------------------
+# Control condition
+# ---------------------------------------------------------------------------
+
+control_condition:
+  description: >
+    Severity-zero baseline: no faults are injected. The cleaned state (Silver
+    TEMP + Bronze for all other signals) is passed through all checks unchanged.
+    Pre-registered expectation: zero flags from every check and a passing
+    verdict for every signal.
+  participants: [S2, S8, S15]
+  checks: [completeness, conformance, plausibility, timeliness]
+  pre_registered_expectation:
+    all_checks_all_signals:
+      verdict_level: per_signal
+      n_flags: 0
+      verdict: pass
+      reasoning: >
+        The effective cleaned dataset (Silver TEMP + Bronze) has been verified
+        against all checks in the post-cleaning analysis (see
+        reports/wesad_completeness_post_cleaning.json,
+        wesad_conformance_post_cleaning.json,
+        wesad_plausibility_post_cleaning.json). Silver TEMP has NaN at indices
+        0-3: completeness excludes them via intentional_removals_by_mod;
+        plausibility skips them via dropna; conformance treats them as
+        genuinely empty (not non-numeric violations). All other signals are
+        unchanged Bronze with zero violations. The control condition is expected
+        to reproduce these post-cleaning results for S2, S8, and S15.
+
 # ---------------------------------------------------------------------------
 # Severities
 # ---------------------------------------------------------------------------
@@ -247,7 +310,7 @@ random_seeds:
     - completeness_scattered_nan
     - completeness_contiguous_dropout
     - conformance_non_numeric
-    - conformance_out_of_device_range
+    - conformance_sampling_rate_fault
     - plausibility_physiological_impossible
     - timeliness_start_shift
   note: >
@@ -292,6 +355,7 @@ metrics:
 pre_registered_expectations:
 
   completeness_scattered_nan:
+    verdict_level: per_signal
     all_signals:
       all_severities:
         detection_rate: 1.0
@@ -299,15 +363,16 @@ pre_registered_expectations:
         false_positive_count: 0
         reasoning: >
           The completeness threshold is 0.0 (any missingness fails). Every
-          injected NaN is counted in n_nan / total_cells. The WESAD baseline
-          has zero NaN across all signals, so any injected NaN shifts
-          missingness_rate above zero and flips the verdict. No false positives
-          are expected because no non-injected NaN exists in the bronze data.
-          For RespiBAN ECG: each dropped row creates one nSeq gap. The
+          injected NaN is counted in n_nan / total_cells. The cleaned baseline
+          (Silver TEMP + Bronze) has zero NaN after excluding the intentional
+          TEMP removals at indices 0-3. Any injected NaN at non-excluded
+          positions shifts missingness_rate above zero and flips the verdict.
+          For RespiBAN ECG: each dropped row creates one nSeq gap; the
           sequence_gap_missingness_rate becomes total_dropped / expected_n
           which is positive for any n_gaps >= 1.
 
   completeness_contiguous_dropout:
+    verdict_level: per_signal
     all_signals:
       all_severities:
         detection_rate: 1.0
@@ -316,10 +381,9 @@ pre_registered_expectations:
         reasoning: >
           Same reasoning as completeness_scattered_nan. A contiguous block of
           NaN values contributes the same total NaN count to missingness_rate.
-          The check reports it as a single nan_gap_location entry rather than
-          multiple scattered entries, but the aggregate count is identical.
 
   conformance_non_numeric:
+    verdict_level: per_signal
     all_signals:
       all_severities:
         detection_rate: 1.0
@@ -328,39 +392,25 @@ pre_registered_expectations:
         reasoning: >
           The conformance threshold is 0.0. Every "FAULT" string is
           non-parseable by pd.to_numeric and is counted in n_non_numeric.
-          n_non_numeric > 0 causes passes_threshold = False. The baseline
-          has zero non-numeric violations, so no false positives.
+          n_non_numeric > 0 causes non_numeric.ok = False. The baseline
+          has zero non-numeric violations.
+
+  conformance_sampling_rate_fault:
+    verdict_level: per_signal
+    E4_EDA:
+      severity: null
+      detected: true
+      verdict_flip: true
+      reasoning: >
+        The conformance check reads row 1 of EDA.csv as the declared sampling
+        rate and compares to the expected 4.0 Hz. Injecting 8.0 Hz causes
+        _check_e4_modality to set sampling_rate.ok = False and append a
+        sampling violation to the aggregate. Baseline EDA.csv has 4.0 Hz
+        declared, so baseline_sampling_rate_ok = True. After injection,
+        sampling_rate.ok = False. verdict_flip = True.
 
   conformance_out_of_device_range:
-    E4_TEMP:
-      all_severities:
-        detection_rate: 1.0
-        verdict_flip: true
-        false_positive_count: 0
-        cross_check_plausibility: true
-        reasoning: >
-          50 deg C is above the config max of 42 deg C; detected by the range
-          check. The 4 pre-existing warm-up violations at indices 0-3 are
-          excluded from injection, so they do not inflate detection counts.
-          The plausibility check also uses the 42 deg C upper bound, so it
-          also detects the fault (cross-check = true).
-    E4_EDA:
-      all_severities:
-        detection_rate: 1.0
-        verdict_flip: true
-        false_positive_count: 0
-        cross_check_plausibility: true
-        reasoning: >
-          150 microsiemens is above the config max of 100 microsiemens.
-          Plausibility also flags it (same bound).
-    E4_HR:
-      all_severities:
-        detection_rate: 1.0
-        verdict_flip: true
-        false_positive_count: 0
-        cross_check_plausibility: true
-        reasoning: >
-          0.0 bpm is below the config min of 20 bpm. Plausibility also flags it.
+    verdict_level: per_signal
     RespiBAN_ECG:
       all_severities:
         detection_rate: 1.0
@@ -369,31 +419,34 @@ pre_registered_expectations:
         cross_check_plausibility: true
         reasoning: >
           ADC value 70000 exceeds the 16-bit ceiling of 65535. Conformance
-          flags it via ADC range. Plausibility also flags it because the
-          transfer function maps 70000 to ~1.70 mV, which exceeds the 1.5 mV
-          plausibility bound.
+          flags it via ADC range check. Plausibility also flags it because
+          the ECG transfer function maps 70000 to approximately 1.70 mV,
+          which exceeds the 1.5 mV plausibility bound.
 
   plausibility_physiological_impossible:
+    verdict_level: per_signal
     E4_TEMP:
       severity_0.1pct:
-        verdict_flip: true
-        reasoning: >
-          E4 TEMP has 4 pre-existing warm-up violations at indices 0-3.
-          At 0.1% severity, injected faults contribute ~7 additional violations
-          for a session of ~7200 samples. Total ~11 violations; rate ~0.0015.
-          With the pre-existing 4 violations (rate ~0.00056), total rate ~0.0021,
-          which is below the 0.01 threshold. However, for shorter sessions the
-          combined rate may exceed 0.01. Pre-registered as: may or may not flip
-          depending on session length. Exact result is an observation.
+        verdict_flip: false
         detection_rate: 1.0
         cross_check_conformance: true
+        reasoning: >
+          Silver TEMP has NaN at indices 0-3 (excluded by dropna before the
+          plausibility range check); no pre-existing violations. At 0.1%
+          severity: nf = max(1, int(N*0.001)). Rate = nf/(N-4). For typical
+          WESAD E4 TEMP session lengths (N ~7000-27000), rate is approximately
+          0.001, well below the 0.01 threshold. Verdict does not flip.
       severity_1pct:
-        verdict_flip: true
+        verdict_flip: session_length_dependent
         detection_rate: 1.0
         cross_check_conformance: true
         reasoning: >
-          At 1% severity: ~72 injected + 4 pre-existing = ~76 violations on
-          ~7200 samples. Rate ~0.0106 > 0.01 threshold. Flip expected.
+          At 1% severity: nf = int(N*0.01) injected values; valid sample count
+          after dropna is (N-4). Rate = int(N*0.01)/(N-4). For large N this
+          equals approximately 0.01*N/(N-4), which is slightly above 0.01.
+          Whether the verdict flips depends on the exact session length and
+          floor rounding. Pre-registered as session_length_dependent; exact
+          result is an observation.
       severity_5pct_and_10pct:
         verdict_flip: true
         detection_rate: 1.0
@@ -404,15 +457,15 @@ pre_registered_expectations:
         detection_rate: 1.0
         cross_check_conformance: true
         reasoning: >
-          No pre-existing violations. At 0.1% of ~7200 samples: ~7 violations.
-          Rate ~0.001 < 0.01 threshold. Verdict does not flip.
+          No pre-existing violations. At 0.1% of N_EDA samples: nf ~ 0.001*N.
+          Rate ~ 0.001 < 0.01 threshold. Verdict does not flip.
       severity_1pct:
         verdict_flip: false
         detection_rate: 1.0
         cross_check_conformance: true
         reasoning: >
-          At 1% of ~7200 samples: ~72 violations. Rate ~0.01 exactly at
-          threshold. passes_threshold = (rate <= threshold) = True. No flip.
+          At 1% of N_EDA samples: nf = int(N*0.01). Rate = nf/N exactly at
+          threshold (passes_threshold = rate <= threshold = True). No flip.
       severity_5pct:
         verdict_flip: true
         detection_rate: 1.0
@@ -427,15 +480,15 @@ pre_registered_expectations:
         detection_rate: 1.0
         cross_check_conformance: true
         reasoning: >
-          No pre-existing violations. At 0.1% of ~1800 samples: ~2 violations
-          (max(1, int(1800*0.001)) = 1). Rate ~0.00056 < 0.01. No flip.
+          No pre-existing violations. At 0.1% of ~1800 samples: nf = 1 or 2.
+          Rate < 0.01. No flip.
       severity_1pct:
         verdict_flip: false
         detection_rate: 1.0
         cross_check_conformance: true
         reasoning: >
-          At 1% of ~1800 samples: ~18 violations. Rate ~0.01 exactly at
-          threshold. passes_threshold = True. No flip.
+          At 1% of ~1800 samples: nf ~ 18. Rate ~ 0.01 exactly at threshold.
+          passes_threshold = (rate <= threshold) = True. No flip.
       severity_5pct:
         verdict_flip: true
         detection_rate: 1.0
@@ -446,6 +499,7 @@ pre_registered_expectations:
         cross_check_conformance: true
 
   timeliness_start_shift:
+    verdict_level: per_signal
     all_offsets_including_3600s:
       detection_rate: 0.0
       verdict_flip: false
