@@ -139,6 +139,52 @@ def _copy_to_dirty_scratch(pid: str) -> Path:
     return dst
 
 
+def _count_rb_rows(txt_path: Path) -> int:
+    """Count RespiBAN data rows without parsing tab-delimited content."""
+    count = 0
+    with open(txt_path, "rb") as fh:
+        fh.readline(); fh.readline(); fh.readline()
+        for line in fh:
+            if line.strip():
+                count += 1
+    return count
+
+
+def _copy_e4_to_dirty_scratch(pid: str) -> Path:
+    """
+    Copy only the E4_Data directory to dirty scratch.
+    Use for E4-only faults to avoid copying the 250 MB RespiBAN file.
+    """
+    dst = SCRATCH_DIRTY / pid
+    if dst.exists():
+        _rmtree(dst)
+    dst.mkdir(parents=True, exist_ok=True)
+    shutil.copytree(
+        BRONZE_WESAD / pid / f"{pid}_E4_Data",
+        dst / f"{pid}_E4_Data",
+        ignore=shutil.ignore_patterns("*.pkl"),
+    )
+    silver_temp = SILVER_WESAD / pid / f"{pid}_E4_Data" / "TEMP.csv"
+    shutil.copy2(silver_temp, dst / f"{pid}_E4_Data" / "TEMP.csv")
+    return dst
+
+
+def _copy_rb_to_dirty_scratch(pid: str) -> Path:
+    """
+    Copy only the RespiBAN .txt file to dirty scratch.
+    Use for RespiBAN-only faults to avoid copying E4 data unnecessarily.
+    """
+    dst = SCRATCH_DIRTY / pid
+    if dst.exists():
+        _rmtree(dst)
+    dst.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(
+        BRONZE_WESAD / pid / f"{pid}_respiban.txt",
+        dst / f"{pid}_respiban.txt",
+    )
+    return dst
+
+
 # ---------------------------------------------------------------------------
 # E4 injection helpers
 # ---------------------------------------------------------------------------
@@ -412,6 +458,142 @@ def inject_respiban_value(
 
 
 # ---------------------------------------------------------------------------
+# Fast binary RespiBAN injection -- avoids full parse of 4.4 M row Python lists
+# ---------------------------------------------------------------------------
+
+def _inject_rb_gaps_bytes(
+    txt_path: Path,
+    n_gaps: int,
+    rng: np.random.Generator,
+) -> list:
+    """
+    Drop n_gaps rows from a RespiBAN file by streaming binary lines.
+    Semantics identical to inject_respiban_sequence_gaps.
+    Returns sorted list of dropped nSeq integer values.
+    """
+    with open(txt_path, "rb") as fh:
+        header = [fh.readline(), fh.readline(), fh.readline()]
+        lines = [ln for ln in fh if ln.strip()]
+
+    n_rows = len(lines)
+    if n_gaps >= n_rows - 2:
+        raise ValueError(f"Cannot drop {n_gaps} rows from {n_rows}-row RespiBAN file.")
+
+    available = np.array(range(1, n_rows - 1))
+    chosen_idx = sorted(rng.choice(available, size=n_gaps, replace=False).tolist())
+    chosen_set = set(chosen_idx)
+    dropped_nseq = [int(lines[i].split(b"\t", 1)[0]) for i in chosen_idx]
+
+    with open(txt_path, "wb") as fh:
+        fh.writelines(header)
+        for i, ln in enumerate(lines):
+            if i not in chosen_set:
+                fh.write(ln)
+
+    return sorted(dropped_nseq)
+
+
+def _inject_rb_contiguous_bytes(
+    txt_path: Path,
+    n_drop: int,
+    rng: np.random.Generator,
+) -> list:
+    """
+    Drop a contiguous block of n_drop rows from a RespiBAN file.
+    Semantics identical to the in-line contiguous logic in _run_completeness_experiments.
+    Returns sorted list of dropped nSeq integer values.
+    """
+    with open(txt_path, "rb") as fh:
+        header = [fh.readline(), fh.readline(), fh.readline()]
+        lines = [ln for ln in fh if ln.strip()]
+
+    n_rows = len(lines)
+    max_start = n_rows - n_drop - 1
+    start_row = int(rng.integers(1, max(2, max_start)))
+    injected_rb = list(range(start_row, start_row + n_drop))
+    injected_set = set(injected_rb)
+    dropped_nseq = [int(lines[i].split(b"\t", 1)[0]) for i in injected_rb]
+
+    with open(txt_path, "wb") as fh:
+        fh.writelines(header)
+        for i, ln in enumerate(lines):
+            if i not in injected_set:
+                fh.write(ln)
+
+    return sorted(dropped_nseq)
+
+
+def _inject_rb_non_numeric_bytes(
+    txt_path: Path,
+    channel: str,
+    n_faults: int,
+    rng: np.random.Generator,
+) -> list:
+    """
+    Inject b'FAULT' into the specified channel column at n_faults random rows.
+    Semantics identical to inject_respiban_non_numeric.
+    Returns sorted list of injected row indices.
+    """
+    col_idx = _RESPIBAN_COLS.index(channel)
+    with open(txt_path, "rb") as fh:
+        header = [fh.readline(), fh.readline(), fh.readline()]
+        lines = [ln for ln in fh if ln.strip()]
+
+    n_rows = len(lines)
+    available = np.array(range(n_rows))
+    chosen = sorted(rng.choice(available, size=n_faults, replace=False).tolist())
+
+    for idx in chosen:
+        parts = lines[idx].rstrip(b"\n").rstrip(b"\r").split(b"\t")
+        while len(parts) <= col_idx:
+            parts.append(b"0")
+        parts[col_idx] = b"FAULT"
+        lines[idx] = b"\t".join(parts[:10]) + b"\t\n"
+
+    with open(txt_path, "wb") as fh:
+        fh.writelines(header)
+        fh.writelines(lines)
+
+    return chosen
+
+
+def _inject_rb_value_bytes(
+    txt_path: Path,
+    channel: str,
+    fault_value: int,
+    n_faults: int,
+    rng: np.random.Generator,
+) -> list:
+    """
+    Inject fault_value into the specified channel column at n_faults random rows.
+    Semantics identical to inject_respiban_value.
+    Returns sorted list of injected row indices.
+    """
+    col_idx = _RESPIBAN_COLS.index(channel)
+    fault_bytes = str(fault_value).encode()
+    with open(txt_path, "rb") as fh:
+        header = [fh.readline(), fh.readline(), fh.readline()]
+        lines = [ln for ln in fh if ln.strip()]
+
+    n_rows = len(lines)
+    available = np.array(range(n_rows))
+    chosen = sorted(rng.choice(available, size=n_faults, replace=False).tolist())
+
+    for idx in chosen:
+        parts = lines[idx].rstrip(b"\n").rstrip(b"\r").split(b"\t")
+        while len(parts) <= col_idx:
+            parts.append(b"0")
+        parts[col_idx] = fault_bytes
+        lines[idx] = b"\t".join(parts[:10]) + b"\t\n"
+
+    with open(txt_path, "wb") as fh:
+        fh.writelines(header)
+        fh.writelines(lines)
+
+    return chosen
+
+
+# ---------------------------------------------------------------------------
 # Check runners on scratch paths
 # ---------------------------------------------------------------------------
 
@@ -494,6 +676,69 @@ def _run_alignment(scratch_pid_dir: Path, pid: str, threshold_s: float) -> dict:
     }
 
 
+def _run_completeness_e4(
+    scratch_pid_dir: Path,
+    pid: str,
+    threshold: float,
+    intentional_by_mod: "dict | None" = None,
+) -> dict:
+    """Run completeness check on E4 data only."""
+    from src.checks.completeness import check_e4
+    e4 = check_e4(scratch_pid_dir, threshold, intentional_removals_by_mod=intentional_by_mod)
+    return {"e4": e4, "chest": {}}
+
+
+def _run_completeness_chest(
+    scratch_pid_dir: Path,
+    pid: str,
+    threshold: float,
+) -> dict:
+    """Run completeness check on RespiBAN chest data only."""
+    from src.checks.completeness import check_chest
+    rb_path = scratch_pid_dir / f"{pid}_respiban.txt"
+    chest = check_chest(rb_path, threshold) if rb_path.exists() else {}
+    return {"e4": {}, "chest": chest}
+
+
+def _run_conformance_e4(scratch_pid_dir: Path, ranges: dict) -> dict:
+    """Run conformance check on E4 data only."""
+    from src.checks.conformance import check_e4
+    e4 = check_e4(scratch_pid_dir, ranges)
+    return {"e4": e4, "chest": {}}
+
+
+def _run_conformance_rb(scratch_pid_dir: Path, pid: str) -> dict:
+    """Run conformance check on RespiBAN chest data only."""
+    from src.checks.conformance import check_respiban
+    rb_path = scratch_pid_dir / f"{pid}_respiban.txt"
+    chest = check_respiban(rb_path) if rb_path.exists() else {}
+    return {"e4": {}, "chest": chest}
+
+
+def _run_plausibility_e4(
+    scratch_pid_dir: Path,
+    wesad_cfg: dict,
+    threshold: float,
+) -> dict:
+    """Run plausibility check on E4 data only."""
+    from src.checks.plausibility import check_e4
+    e4 = check_e4(scratch_pid_dir, wesad_cfg, threshold)
+    return {"e4": e4, "chest": {}}
+
+
+def _run_plausibility_chest(
+    scratch_pid_dir: Path,
+    pid: str,
+    wesad_cfg: dict,
+    threshold: float,
+) -> dict:
+    """Run plausibility check on RespiBAN chest data only."""
+    from src.checks.plausibility import check_respiban
+    rb_path = scratch_pid_dir / f"{pid}_respiban.txt"
+    chest = check_respiban(rb_path, wesad_cfg, threshold) if rb_path.exists() else {}
+    return {"e4": {}, "chest": chest}
+
+
 # ---------------------------------------------------------------------------
 # Detection metrics helpers
 # ---------------------------------------------------------------------------
@@ -570,13 +815,18 @@ def _run_completeness_experiments(
         e4_dir = scratch / f"{pid}_E4_Data"
         rb_path = scratch / f"{pid}_respiban.txt"
         intentional = _load_intentional_removals(pid)
-        n_rb = len(_read_respiban(rb_path)[1])
+
+        # Count RespiBAN rows once per participant (fast binary scan).
+        n_rb = _count_rb_rows(rb_path)
+
+        # Compute clean references once per participant -- reused across all
+        # (ft, sev) combinations.
+        clean_e4 = _run_completeness_e4(scratch, pid, threshold, intentional)
+        clean_chest = _run_completeness_chest(scratch, pid, threshold)
 
         for ft, is_contiguous in [(ft_nan, False), (ft_drop, True)]:
             for sev_idx, sev in enumerate(severities):
-                # Compute clean reference once per (ft, sev) -- reused for all
-                # E4 modalities and the RespiBAN channel below.
-                clean_result = _run_completeness(scratch, pid, threshold, intentional)
+                nf_rb = _n_faults(n_rb, sev)
 
                 # ---- E4 signals ----
                 for mod, (excl, sig_label) in e4_targets.items():
@@ -584,10 +834,10 @@ def _run_completeness_experiments(
                     n = _e4_sample_count(csv)
                     nf = _n_faults(n, sev)
 
-                    clean_nan = _completeness_nan_count(clean_result, mod)
-                    clean_passes = _completeness_passes(clean_result, mod)
+                    clean_nan = _completeness_nan_count(clean_e4, mod)
+                    clean_passes = _completeness_passes(clean_e4, mod)
 
-                    scratch2 = _copy_to_dirty_scratch(pid)
+                    scratch2 = _copy_e4_to_dirty_scratch(pid)
                     csv2 = scratch2 / f"{pid}_E4_Data" / f"{mod}.csv"
                     rng2 = np.random.default_rng(_seed(pid, ft, sev_idx))
 
@@ -596,7 +846,7 @@ def _run_completeness_experiments(
                     else:
                         injected = inject_e4_nan_scattered(csv2, nf, rng2, excl)
 
-                    dirty_result = _run_completeness(scratch2, pid, threshold, intentional)
+                    dirty_result = _run_completeness_e4(scratch2, pid, threshold, intentional)
                     dirty_nan = _completeness_nan_count(dirty_result, mod)
                     dirty_passes = _completeness_passes(dirty_result, mod)
                     _rmtree(scratch2)
@@ -619,30 +869,19 @@ def _run_completeness_experiments(
                     })
 
                 # ---- RespiBAN ECG (sequence gaps) ----
-                nf_rb = _n_faults(n_rb, sev)
+                clean_drops = _completeness_chest_dropped(clean_chest)
+                clean_passes_rb = _completeness_chest_passes(clean_chest)
 
-                clean_drops = _completeness_chest_dropped(clean_result)
-                clean_passes_rb = _completeness_chest_passes(clean_result)
-                del clean_result
-
-                scratch3 = _copy_to_dirty_scratch(pid)
+                scratch3 = _copy_rb_to_dirty_scratch(pid)
                 rb_path3 = scratch3 / f"{pid}_respiban.txt"
                 rng_rb3 = np.random.default_rng(_seed(pid, ft, sev_idx) + 5)
 
                 if is_contiguous:
-                    _, rows3 = _read_respiban(rb_path3)
-                    n3 = len(rows3)
-                    max_start = n3 - nf_rb - 1
-                    start_row = int(rng_rb3.integers(1, max(2, max_start)))
-                    injected_rb = list(range(start_row, start_row + nf_rb))
-                    kept = [r for i, r in enumerate(rows3) if i not in set(injected_rb)]
-                    hdr3, _ = _read_respiban(rb_path3)
-                    _write_respiban(rb_path3, hdr3, kept)
-                    dropped_nseq = [int(rows3[i][0]) for i in injected_rb]
+                    dropped_nseq = _inject_rb_contiguous_bytes(rb_path3, nf_rb, rng_rb3)
                 else:
-                    dropped_nseq = inject_respiban_sequence_gaps(rb_path3, nf_rb, rng_rb3)
+                    dropped_nseq = _inject_rb_gaps_bytes(rb_path3, nf_rb, rng_rb3)
 
-                dirty_result3 = _run_completeness(scratch3, pid, threshold, intentional)
+                dirty_result3 = _run_completeness_chest(scratch3, pid, threshold)
                 dirty_drops = _completeness_chest_dropped(dirty_result3)
                 dirty_passes_rb = _completeness_chest_passes(dirty_result3)
                 _rmtree(scratch3)
@@ -665,6 +904,7 @@ def _run_completeness_experiments(
                     "note": "RespiBAN completeness measured via nSeq gaps; affects all channels.",
                 })
 
+        del clean_e4, clean_chest
         _rmtree(scratch)
 
 
@@ -685,12 +925,15 @@ def _run_conformance_experiments(
         scratch = _copy_participant_to_scratch(pid)
         e4_dir = scratch / f"{pid}_E4_Data"
         rb_path = scratch / f"{pid}_respiban.txt"
-        n_rb = len(_read_respiban(rb_path)[1])
+
+        # Count RespiBAN rows once per participant (fast binary scan).
+        n_rb = _count_rb_rows(rb_path)
+
+        # Compute clean references once per participant -- reused across all severities.
+        clean_e4 = _run_conformance_e4(scratch, ranges_cfg)
+        clean_rb = _run_conformance_rb(scratch, pid)
 
         for sev_idx, sev in enumerate(severities):
-            # Compute clean conformance once per severity -- reused for all
-            # E4 modalities and both RespiBAN experiments below.
-            clean = _run_conformance(scratch, ranges_cfg)
             nf_rb = _n_faults(n_rb, sev)
 
             # ---- E4 non-numeric ----
@@ -699,14 +942,14 @@ def _run_conformance_experiments(
                 n = _e4_sample_count(csv)
                 nf = _n_faults(n, sev)
 
-                clean_nn = _conformance_non_numeric(clean, mod)
+                clean_nn = _conformance_non_numeric(clean_e4, mod)
 
-                scratch2 = _copy_to_dirty_scratch(pid)
+                scratch2 = _copy_e4_to_dirty_scratch(pid)
                 csv2 = scratch2 / f"{pid}_E4_Data" / f"{mod}.csv"
                 rng = np.random.default_rng(_seed(pid, ft_nn, sev_idx))
                 injected = inject_e4_non_numeric(csv2, nf, rng, excl)
 
-                dirty = _run_conformance(scratch2, ranges_cfg)
+                dirty = _run_conformance_e4(scratch2, ranges_cfg)
                 dirty_nn = _conformance_non_numeric(dirty, mod)
                 verdict_flip = not dirty.get("e4", {}).get(mod, {}).get(
                     "non_numeric", {}
@@ -729,14 +972,14 @@ def _run_conformance_experiments(
                 })
 
             # ---- RespiBAN ECG non-numeric ----
-            clean_rb_nn = _conformance_chest_non_numeric(clean, "CH1")
+            clean_rb_nn = _conformance_chest_non_numeric(clean_rb, "CH1")
 
-            scratch3 = _copy_to_dirty_scratch(pid)
+            scratch3 = _copy_rb_to_dirty_scratch(pid)
             rb3 = scratch3 / f"{pid}_respiban.txt"
             rng_rb = np.random.default_rng(_seed(pid, ft_nn, sev_idx) + 5)
-            inj_rb = inject_respiban_non_numeric(rb3, "CH1", nf_rb, rng_rb)
+            inj_rb = _inject_rb_non_numeric_bytes(rb3, "CH1", nf_rb, rng_rb)
 
-            dirty_rb = _run_conformance(scratch3, ranges_cfg)
+            dirty_rb = _run_conformance_rb(scratch3, pid)
             dirty_rb_nn = _conformance_chest_non_numeric(dirty_rb, "CH1")
             rb_verdict_flip = not dirty_rb.get("chest", {}).get(
                 "range_summary", {}
@@ -760,15 +1003,14 @@ def _run_conformance_experiments(
             })
 
             # ---- RespiBAN ECG out-of-range (ADC = 70000) ----
-            clean_rb2_viol = _conformance_chest_range_violations(clean, "CH1")
-            del clean
+            clean_rb2_viol = _conformance_chest_range_violations(clean_rb, "CH1")
 
-            scratch5 = _copy_to_dirty_scratch(pid)
+            scratch5 = _copy_rb_to_dirty_scratch(pid)
             rb5 = scratch5 / f"{pid}_respiban.txt"
             rng5 = np.random.default_rng(_seed(pid, ft_sr, sev_idx) + 5)
-            inj5 = inject_respiban_value(rb5, "CH1", 70000, nf_rb, rng5)
+            inj5 = _inject_rb_value_bytes(rb5, "CH1", 70000, nf_rb, rng5)
 
-            dirty_rb2 = _run_conformance(scratch5, ranges_cfg)
+            dirty_rb2 = _run_conformance_rb(scratch5, pid)
             dirty_rb2_viol = _conformance_chest_range_violations(dirty_rb2, "CH1")
             rb2_verdict_flip = not dirty_rb2.get("chest", {}).get(
                 "range_summary", {}
@@ -776,7 +1018,7 @@ def _run_conformance_experiments(
             del dirty_rb2
 
             # Cross-check: plausibility on the same corrupted RespiBAN
-            dirty_rb2_pls = _run_plausibility(scratch5, ranges_cfg["wesad"], 0.01)
+            dirty_rb2_pls = _run_plausibility_chest(scratch5, pid, ranges_cfg["wesad"], 0.01)
             ecg_pls = dirty_rb2_pls.get("chest", {}).get("ECG", {})
             pls_viol_rb = ecg_pls.get("n_violations", 0)
             _rmtree(scratch5)
@@ -800,16 +1042,14 @@ def _run_conformance_experiments(
             })
 
         # ---- E4 EDA sampling-rate fault (file-level, no severity loop) ----
-        clean_sr = _run_conformance(scratch, ranges_cfg)
         clean_sr_ok = (
-            clean_sr.get("e4", {}).get("EDA", {}).get("sampling_rate", {}).get("ok", True)
+            clean_e4.get("e4", {}).get("EDA", {}).get("sampling_rate", {}).get("ok", True)
         )
-        del clean_sr
 
-        scratch_sr = _copy_to_dirty_scratch(pid)
+        scratch_sr = _copy_e4_to_dirty_scratch(pid)
         eda_csv_sr = scratch_sr / f"{pid}_E4_Data" / "EDA.csv"
         original_hz = inject_e4_sampling_rate(eda_csv_sr, 8.0)
-        dirty_sr = _run_conformance(scratch_sr, ranges_cfg)
+        dirty_sr = _run_conformance_e4(scratch_sr, ranges_cfg)
         dirty_sr_ok = (
             dirty_sr.get("e4", {}).get("EDA", {}).get("sampling_rate", {}).get("ok", True)
         )
@@ -829,6 +1069,7 @@ def _run_conformance_experiments(
             "verdict_flip": clean_sr_ok and not dirty_sr_ok,
         })
 
+        del clean_e4, clean_rb
         _rmtree(scratch)
 
 
@@ -852,11 +1093,12 @@ def _run_plausibility_experiments(
         scratch = _copy_participant_to_scratch(pid)
         e4_dir = scratch / f"{pid}_E4_Data"
 
-        for sev_idx, sev in enumerate(severities):
-            # Compute clean reference once per severity -- reused for all mods.
-            clean_pls = _run_plausibility(scratch, wesad_cfg, pls_threshold)
-            clean_conf = _run_conformance(scratch, full_ranges_cfg)
+        # Compute clean E4 references once per participant -- reused across all
+        # severities.  RespiBAN is not needed: all plausibility faults target E4.
+        clean_pls = _run_plausibility_e4(scratch, wesad_cfg, pls_threshold)
+        clean_conf = _run_conformance_e4(scratch, full_ranges_cfg)
 
+        for sev_idx, sev in enumerate(severities):
             for mod, (fault_val, excl, sig_label) in targets.items():
                 csv = e4_dir / f"{mod}.csv"
                 n = _e4_sample_count(csv)
@@ -866,17 +1108,17 @@ def _run_plausibility_experiments(
                 clean_passes = _plausibility_passes(clean_pls, mod)
                 clean_conf_viol = _conformance_range_violations(clean_conf, mod)
 
-                scratch2 = _copy_to_dirty_scratch(pid)
+                scratch2 = _copy_e4_to_dirty_scratch(pid)
                 csv2 = scratch2 / f"{pid}_E4_Data" / f"{mod}.csv"
                 rng = np.random.default_rng(_seed(pid, ft, sev_idx))
                 injected = inject_e4_value(csv2, fault_val, nf, rng, excl)
 
-                dirty_pls = _run_plausibility(scratch2, wesad_cfg, pls_threshold)
+                dirty_pls = _run_plausibility_e4(scratch2, wesad_cfg, pls_threshold)
                 dirty_viol = _plausibility_violations(dirty_pls, mod)
                 dirty_passes = _plausibility_passes(dirty_pls, mod)
                 del dirty_pls
 
-                dirty_conf = _run_conformance(scratch2, full_ranges_cfg)
+                dirty_conf = _run_conformance_e4(scratch2, full_ranges_cfg)
                 dirty_conf_viol = _conformance_range_violations(dirty_conf, mod)
                 _rmtree(scratch2)
                 del dirty_conf
@@ -901,8 +1143,7 @@ def _run_plausibility_experiments(
                     "verdict_flip": clean_passes and not dirty_passes,
                 })
 
-            del clean_pls, clean_conf
-
+        del clean_pls, clean_conf
         _rmtree(scratch)
 
 
