@@ -1,0 +1,469 @@
+# Fault injection experiment design for WESAD CCP check validation.
+# Pre-registered 2026-10-28 -- before any experiment is run.
+# Harness: src/experiments/fault_injection.py
+# Results (when run): reports/experiments/fault_injection_results.json
+#
+# Purpose: WESAD bronze data is exceptionally clean (zero missingness, zero
+# conformance violations across all 15 participants). This makes it impossible
+# to assess whether the CCP checks would catch real problems. These experiments
+# inject known faults into copies of three participants' data and measure whether
+# each check detects them. All faults are injected into copies in
+# experiments/scratch/; no bronze file is ever modified.
+#
+# Pre-registration rationale: expectations are stated here before any run so
+# that the results can be evaluated against a prior commitment, not reverse-
+# engineered from outcomes.
+
+metadata:
+  status: pre_registered
+  date_pre_registered: "2026-10-28"
+  harness: src/experiments/fault_injection.py
+  note: >
+    This file must not be modified after the first experiment run. Any change
+    after running constitutes post-hoc revision of a pre-registered design.
+
+# ---------------------------------------------------------------------------
+# Participants
+# ---------------------------------------------------------------------------
+
+participants:
+  fixed: [S2, S8, S15]
+  rationale: >
+    Three participants cover the range of recorded session lengths and include
+    both documented anomaly cases (S2 has a RespiBAN TEMP attachment note) and
+    a standard participant (S15). The set is fixed before any run.
+
+# ---------------------------------------------------------------------------
+# Fault types
+# ---------------------------------------------------------------------------
+# For each fault type: which signals are targeted and why.
+#
+# Target signals overall: E4 TEMP, E4 EDA, E4 HR, RespiBAN ECG.
+# Rationale for signal selection:
+#   E4 TEMP -- the only signal that is cleaned in the Silver layer; tests the
+#              same code path used in the real pipeline. Also has 4 pre-existing
+#              warm-up artifact violations (indices 0-3) that provide a natural
+#              baseline for cross-check interaction.
+#   E4 EDA  -- device-capacity breach classification (above_max = device_capacity
+#              rather than physiological_implausible); demonstrates cross-check
+#              between conformance and plausibility.
+#   E4 HR   -- lowest sample rate among E4 fixed-rate signals (1 Hz); tests
+#              threshold behaviour at small absolute fault counts.
+#   RespiBAN ECG -- the RespiBAN completeness check uses nSeq sequence gaps
+#              rather than per-channel NaN, so ECG faults exercise a different
+#              detection mechanism. Conformance checks ADC range [0, 65535]
+#              independently of the plausibility physical-unit bound, so ECG
+#              tests the ADC-range vs transfer-function cross-check.
+
+fault_types:
+
+  completeness_scattered_nan:
+    description: >
+      Scattered single-sample NaN values injected at randomly chosen
+      (non-contiguous) positions.
+    target_signals:
+      - E4/TEMP
+      - E4/EDA
+      - E4/HR
+      - RespiBAN/ECG
+    target_check: completeness
+    implementation_notes:
+      E4_signals: >
+        Replace selected data rows with "nan". Positions chosen uniformly at
+        random without replacement. For E4/TEMP: exclude indices 0-3 (warm-up
+        artifact positions) from injection to keep accounting clean.
+      RespiBAN_ECG: >
+        Drop complete rows to create nSeq sequence gaps. Each dropped row is a
+        gap of 1 in the sequence counter. Note: dropping rows affects all 8
+        RespiBAN channels, not ECG alone -- this is an inherent property of the
+        sequence-gap completeness mechanism and is documented here as a
+        pre-registered design choice.
+
+  completeness_contiguous_dropout:
+    description: >
+      A single contiguous block of NaN values (simulating a sensor dropout
+      segment) injected at a randomly chosen starting position.
+    target_signals:
+      - E4/TEMP
+      - E4/EDA
+      - E4/HR
+      - RespiBAN/ECG
+    target_check: completeness
+    implementation_notes:
+      E4_signals: >
+        Replace a consecutive block of rows with "nan". Block start chosen
+        uniformly at random; all rows in the block are set to NaN.
+        For E4/TEMP: block must not overlap indices 0-3.
+      RespiBAN_ECG: >
+        Drop a contiguous block of rows to create a single gap of n_faults in
+        the nSeq counter.
+
+  conformance_non_numeric:
+    description: >
+      Non-parseable string values injected into numeric fields. The string
+      "FAULT" is used so injected cells are unambiguously identifiable.
+    target_signals:
+      - E4/TEMP
+      - E4/EDA
+      - E4/HR
+      - RespiBAN/ECG
+    target_check: conformance
+    fault_value: "FAULT"
+    implementation_notes:
+      E4_signals: >
+        Replace data row values with the string "FAULT". Positions chosen
+        uniformly at random without replacement.
+      RespiBAN_ECG: >
+        Replace CH1 (ECG column) values with "FAULT" at randomly chosen rows.
+        Other columns are unchanged.
+
+  conformance_out_of_device_range:
+    description: >
+      Values outside the device output range defined in
+      config/physiological_ranges.yaml (same bounds used by the conformance
+      check). For E4 signals, the conformance and plausibility checks share the
+      same config bounds, so these faults are expected to be detected by both
+      checks (cross-check behaviour is documented in pre_registered_expectations).
+    target_signals:
+      - E4/TEMP
+      - E4/EDA
+      - E4/HR
+      - RespiBAN/ECG
+    target_check: conformance
+    fault_values:
+      E4_TEMP: 50.0
+      E4_EDA: 150.0
+      E4_HR: 0.0
+      RespiBAN_ECG: 70000
+    fault_value_rationale:
+      E4_TEMP: >
+        50.0 deg C is above the config max of 42 deg C. The E4 device can
+        physically output this temperature (the warm-up artifact reaches ~382
+        deg C), so it is within device capability but outside the config bound.
+        Conformance and plausibility both use the same 42 deg C upper bound, so
+        this fault is expected to be detected by both checks.
+      E4_EDA: >
+        150.0 microsiemens is above the config max of 100 microsiemens.
+        Detected by both conformance (range check) and plausibility (same bound).
+      E4_HR: >
+        0.0 bpm is below the config min of 20 bpm. A device could output this
+        when the HR algorithm loses signal; physiologically implausible for a
+        conscious participant. Detected by both conformance and plausibility.
+      RespiBAN_ECG: >
+        70000 is above the 16-bit ADC maximum of 65535. After applying the ECG
+        transfer function: (70000/65536 - 0.5) * 3 = 1.70 mV, which exceeds the
+        plausibility bound of 1.5 mV. Detected by conformance (ADC range) and
+        also by plausibility (mV range).
+    implementation_notes:
+      E4_TEMP: >
+        Exclude indices 0-3 from injection (pre-existing warm-up violations).
+
+  plausibility_physiological_impossible:
+    description: >
+      Physiologically impossible values that are within the device output range
+      (the device can physically produce these values but they are clinically
+      implausible). Fault values are fixed per signal across all severities and
+      participants.
+    target_signals:
+      - E4/TEMP
+      - E4/HR
+      - E4/EDA
+    target_check: plausibility
+    fault_values:
+      E4_TEMP: 50.0
+      E4_HR: 300.0
+      E4_EDA: -1.0
+    fault_value_rationale:
+      E4_TEMP: >
+        50 deg C: above the 42 deg C plausibility bound. The E4 can output this
+        (warm-up artifact shows device reaches ~382 deg C). Physiologically
+        impossible for resting wrist skin temperature. Cross-check: conformance
+        also detects (same 42 deg C bound).
+      E4_HR: >
+        300 bpm: above the 250 bpm plausibility bound. The E4 HR algorithm could
+        theoretically output this if it detects motion artefacts as heartbeats.
+        Physiologically impossible for sustained human HR. Cross-check:
+        conformance also detects (same 250 bpm bound).
+      E4_EDA: >
+        -1.0 microsiemens: below the 0 microsiemens plausibility bound (EDA is
+        always non-negative). Breach class is physiological_implausible (below
+        min). Cross-check: conformance also detects (same 0 min bound).
+    implementation_notes:
+      E4_TEMP: >
+        Exclude indices 0-3 (pre-existing warm-up violations at those positions).
+
+  timeliness_start_shift:
+    description: >
+      The start timestamp of the E4 EDA channel is shifted by a fixed offset.
+      E4 EDA is the reference modality used by the alignment detector (preferred
+      at 4 Hz per _E4_REF_PRIORITY in src/alignment.py). Shifting its start time
+      is equivalent to claiming the E4 started earlier or later than it did.
+    target_signals:
+      - E4/EDA
+    target_check: timeliness
+    offsets_seconds: [0.5, 2.0, 10.0, 60.0, 3600.0]
+    offset_rationale:
+      0.5: Within the 1.0 s threshold -- expected to pass even if detected.
+      2.0: Above the 1.0 s threshold -- would flip verdict if detected.
+      10.0: Large offset well above threshold.
+      60.0: One minute; simulates a systematic recording startup error.
+      3600.0: One hour; simulates a timezone conversion error (UTC vs UTC+1).
+    implementation_note: >
+      The E4 EDA start time is stored in row 0 of EDA.csv (a Unix timestamp).
+      The harness adds offset_s to this value. All other E4 files and the
+      RespiBAN file are copied unchanged.
+    alignment_harness_note: >
+      src/alignment._align_participant() hardcodes BRONZE = Path("bronze/WESAD")
+      at module level and cannot be redirected to a scratch directory. The harness
+      therefore calls the internal helper functions _e4_modality_info,
+      _respiban_info, and _measure_overlap_offsets from src/alignment.py directly.
+      These functions accept path arguments and are not modified. This is not a
+      modification of any check -- it is calling sub-functions at a level below
+      the main orchestrator.
+
+# ---------------------------------------------------------------------------
+# Severities
+# ---------------------------------------------------------------------------
+
+severities:
+  sample_level_fractions: [0.001, 0.01, 0.05, 0.10]
+  labels: ["0.1%", "1%", "5%", "10%"]
+  note: >
+    Applied to completeness, conformance, and plausibility experiments.
+    n_faults = max(1, int(n_samples * severity)).
+    Timeliness uses fixed offsets_seconds instead (no severity dimension).
+
+# ---------------------------------------------------------------------------
+# Random seeds
+# ---------------------------------------------------------------------------
+
+random_seeds:
+  base_seed: 12345
+  derivation: >
+    seed = base_seed + participant_index * 1000 + fault_type_index * 100
+    + severity_index * 10
+  participants_order: [S2, S8, S15]
+  fault_types_order:
+    - completeness_scattered_nan
+    - completeness_contiguous_dropout
+    - conformance_non_numeric
+    - conformance_out_of_device_range
+    - plausibility_physiological_impossible
+    - timeliness_start_shift
+  note: >
+    Seeds are fully specified here so any rerun produces identical injected
+    positions. numpy.random.default_rng(seed) is used throughout.
+
+# ---------------------------------------------------------------------------
+# Metrics
+# ---------------------------------------------------------------------------
+
+metrics:
+  detection_rate:
+    definition: >
+      (number of injected fault positions flagged by the intended check) divided
+      by (number of faults injected). A fault is "flagged" when the check reports
+      a violation at that exact position (for per-sample metrics) or when the
+      aggregate violation count increases by at least the injected count.
+  false_positive_count:
+    definition: >
+      Violations reported by the check at positions that were NOT injected and
+      that were not pre-existing in the clean copy. Pre-existing violations
+      (e.g. E4 TEMP warm-up artifact at indices 0-3) are not counted as false
+      positives.
+  cross_check_detections:
+    definition: >
+      Whether a fault injected for one check dimension is also flagged by a
+      different check dimension. Recorded as a dict {dimension: detected} for
+      each experiment record.
+  verdict_flip:
+    definition: >
+      Whether the check's passes_threshold verdict changes from True (clean
+      copy) to False (corrupted copy). Recorded as a boolean per experiment.
+
+# ---------------------------------------------------------------------------
+# Pre-registered expectations
+# ---------------------------------------------------------------------------
+# Stated before any experiment is run. Expectations are per fault_type and
+# severity. "detection_rate" and "verdict_flip" predictions are the primary
+# commitments; "cross_check_detections" and "false_positive_count" are
+# secondary observations.
+
+pre_registered_expectations:
+
+  completeness_scattered_nan:
+    all_signals:
+      all_severities:
+        detection_rate: 1.0
+        verdict_flip: true
+        false_positive_count: 0
+        reasoning: >
+          The completeness threshold is 0.0 (any missingness fails). Every
+          injected NaN is counted in n_nan / total_cells. The WESAD baseline
+          has zero NaN across all signals, so any injected NaN shifts
+          missingness_rate above zero and flips the verdict. No false positives
+          are expected because no non-injected NaN exists in the bronze data.
+          For RespiBAN ECG: each dropped row creates one nSeq gap. The
+          sequence_gap_missingness_rate becomes total_dropped / expected_n
+          which is positive for any n_gaps >= 1.
+
+  completeness_contiguous_dropout:
+    all_signals:
+      all_severities:
+        detection_rate: 1.0
+        verdict_flip: true
+        false_positive_count: 0
+        reasoning: >
+          Same reasoning as completeness_scattered_nan. A contiguous block of
+          NaN values contributes the same total NaN count to missingness_rate.
+          The check reports it as a single nan_gap_location entry rather than
+          multiple scattered entries, but the aggregate count is identical.
+
+  conformance_non_numeric:
+    all_signals:
+      all_severities:
+        detection_rate: 1.0
+        verdict_flip: true
+        false_positive_count: 0
+        reasoning: >
+          The conformance threshold is 0.0. Every "FAULT" string is
+          non-parseable by pd.to_numeric and is counted in n_non_numeric.
+          n_non_numeric > 0 causes passes_threshold = False. The baseline
+          has zero non-numeric violations, so no false positives.
+
+  conformance_out_of_device_range:
+    E4_TEMP:
+      all_severities:
+        detection_rate: 1.0
+        verdict_flip: true
+        false_positive_count: 0
+        cross_check_plausibility: true
+        reasoning: >
+          50 deg C is above the config max of 42 deg C; detected by the range
+          check. The 4 pre-existing warm-up violations at indices 0-3 are
+          excluded from injection, so they do not inflate detection counts.
+          The plausibility check also uses the 42 deg C upper bound, so it
+          also detects the fault (cross-check = true).
+    E4_EDA:
+      all_severities:
+        detection_rate: 1.0
+        verdict_flip: true
+        false_positive_count: 0
+        cross_check_plausibility: true
+        reasoning: >
+          150 microsiemens is above the config max of 100 microsiemens.
+          Plausibility also flags it (same bound).
+    E4_HR:
+      all_severities:
+        detection_rate: 1.0
+        verdict_flip: true
+        false_positive_count: 0
+        cross_check_plausibility: true
+        reasoning: >
+          0.0 bpm is below the config min of 20 bpm. Plausibility also flags it.
+    RespiBAN_ECG:
+      all_severities:
+        detection_rate: 1.0
+        verdict_flip: true
+        false_positive_count: 0
+        cross_check_plausibility: true
+        reasoning: >
+          ADC value 70000 exceeds the 16-bit ceiling of 65535. Conformance
+          flags it via ADC range. Plausibility also flags it because the
+          transfer function maps 70000 to ~1.70 mV, which exceeds the 1.5 mV
+          plausibility bound.
+
+  plausibility_physiological_impossible:
+    E4_TEMP:
+      severity_0.1pct:
+        verdict_flip: true
+        reasoning: >
+          E4 TEMP has 4 pre-existing warm-up violations at indices 0-3.
+          At 0.1% severity, injected faults contribute ~7 additional violations
+          for a session of ~7200 samples. Total ~11 violations; rate ~0.0015.
+          With the pre-existing 4 violations (rate ~0.00056), total rate ~0.0021,
+          which is below the 0.01 threshold. However, for shorter sessions the
+          combined rate may exceed 0.01. Pre-registered as: may or may not flip
+          depending on session length. Exact result is an observation.
+        detection_rate: 1.0
+        cross_check_conformance: true
+      severity_1pct:
+        verdict_flip: true
+        detection_rate: 1.0
+        cross_check_conformance: true
+        reasoning: >
+          At 1% severity: ~72 injected + 4 pre-existing = ~76 violations on
+          ~7200 samples. Rate ~0.0106 > 0.01 threshold. Flip expected.
+      severity_5pct_and_10pct:
+        verdict_flip: true
+        detection_rate: 1.0
+        cross_check_conformance: true
+    E4_EDA:
+      severity_0.1pct:
+        verdict_flip: false
+        detection_rate: 1.0
+        cross_check_conformance: true
+        reasoning: >
+          No pre-existing violations. At 0.1% of ~7200 samples: ~7 violations.
+          Rate ~0.001 < 0.01 threshold. Verdict does not flip.
+      severity_1pct:
+        verdict_flip: false
+        detection_rate: 1.0
+        cross_check_conformance: true
+        reasoning: >
+          At 1% of ~7200 samples: ~72 violations. Rate ~0.01 exactly at
+          threshold. passes_threshold = (rate <= threshold) = True. No flip.
+      severity_5pct:
+        verdict_flip: true
+        detection_rate: 1.0
+        cross_check_conformance: true
+      severity_10pct:
+        verdict_flip: true
+        detection_rate: 1.0
+        cross_check_conformance: true
+    E4_HR:
+      severity_0.1pct:
+        verdict_flip: false
+        detection_rate: 1.0
+        cross_check_conformance: true
+        reasoning: >
+          No pre-existing violations. At 0.1% of ~1800 samples: ~2 violations
+          (max(1, int(1800*0.001)) = 1). Rate ~0.00056 < 0.01. No flip.
+      severity_1pct:
+        verdict_flip: false
+        detection_rate: 1.0
+        cross_check_conformance: true
+        reasoning: >
+          At 1% of ~1800 samples: ~18 violations. Rate ~0.01 exactly at
+          threshold. passes_threshold = True. No flip.
+      severity_5pct:
+        verdict_flip: true
+        detection_rate: 1.0
+        cross_check_conformance: true
+      severity_10pct:
+        verdict_flip: true
+        detection_rate: 1.0
+        cross_check_conformance: true
+
+  timeliness_start_shift:
+    all_offsets_including_3600s:
+      detection_rate: 0.0
+      verdict_flip: false
+      reasoning: >
+        The alignment detector (src/alignment._measure_overlap_offsets) measures
+        the within-overlap residual by reconstructing each sensor's sample grid
+        from its own start timestamp. When E4 EDA's start timestamp is shifted
+        by offset_s, the E4 sample grid shifts by the same amount. The overlap
+        window also shifts to compensate. At each of the five evaluation points,
+        the reconstructed E4 time and the reconstructed RespiBAN time both track
+        the true wall clock within their respective quantization bounds. The
+        measured offset_s at each point is bounded by the E4 EDA quantization
+        noise (~0.125 s at 4 Hz) regardless of the injected shift. The detector
+        cannot distinguish a correctly synchronized recording from one where the
+        E4 start time has been shifted. This is a documented limitation of the
+        timestamp-anchoring method: it verifies internal consistency of each
+        sensor's own timeline but cannot detect a uniform shift applied to one
+        sensor's recorded start time. The 3600 s offset simulates a timezone
+        error (e.g. UTC vs UTC+1) and is included specifically to confirm this
+        limitation holds even for large shifts.
+      measured_residual_expected: "bounded by ~0.126 s (E4 EDA quantization noise at 4 Hz)"
