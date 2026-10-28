@@ -24,19 +24,22 @@ accept path arguments. No check code is modified.
 """
 
 import json
+import os
 import shutil
+import stat
+import tempfile
 from pathlib import Path
 
 import numpy as np
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent.parent
-SCRATCH_DIR = ROOT / "experiments" / "scratch"
-# SCRATCH_DIRTY holds the injection copies (scratch2/3/4/5) so they never
-# share a path with the clean reference copy in SCRATCH_DIR.  Both are named
-# by pid (e.g. "S2") so participant_dir.name remains the correct pid for all
-# check functions that derive pid from the directory name.
-SCRATCH_DIRTY = ROOT / "experiments" / "scratch_dirty"
+# Scratch directories live in the system temp folder, not the project tree,
+# to avoid OneDrive sync locking and to keep participant data copies off
+# cloud storage. Both are defined here so callers never hardcode paths.
+_SCRATCH_BASE = Path(tempfile.gettempdir()) / "wesad_fault_injection"
+SCRATCH_DIR = _SCRATCH_BASE / "clean"
+SCRATCH_DIRTY = _SCRATCH_BASE / "dirty"
 BRONZE_WESAD = ROOT / "bronze" / "WESAD"
 SILVER_WESAD = ROOT / "silver" / "WESAD"
 CLEANING_REPORT = ROOT / "reports" / "wesad_cleaning.json"
@@ -84,8 +87,19 @@ def _load_intentional_removals(pid: str) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# File copying
+# File copying and deletion
 # ---------------------------------------------------------------------------
+
+def _rmtree(path: Path) -> None:
+    """Remove a directory tree, force-clearing read-only flags on Windows."""
+    def _on_error(func, fpath, exc_info):
+        try:
+            os.chmod(fpath, stat.S_IWRITE)
+            func(fpath)
+        except Exception:
+            pass
+    shutil.rmtree(path, onerror=_on_error)
+
 
 def _copy_participant_to_scratch(pid: str) -> Path:
     """
@@ -98,8 +112,8 @@ def _copy_participant_to_scratch(pid: str) -> Path:
     src = BRONZE_WESAD / pid
     dst = SCRATCH_DIR / pid
     if dst.exists():
-        shutil.rmtree(dst)
-    shutil.copytree(src, dst)
+        _rmtree(dst)
+    shutil.copytree(src, dst, ignore=shutil.ignore_patterns("*.pkl"))
     silver_temp = SILVER_WESAD / pid / f"{pid}_E4_Data" / "TEMP.csv"
     scratch_temp = dst / f"{pid}_E4_Data" / "TEMP.csv"
     shutil.copy2(silver_temp, scratch_temp)
@@ -117,8 +131,8 @@ def _copy_to_dirty_scratch(pid: str) -> Path:
     src = BRONZE_WESAD / pid
     dst = SCRATCH_DIRTY / pid
     if dst.exists():
-        shutil.rmtree(dst)
-    shutil.copytree(src, dst)
+        _rmtree(dst)
+    shutil.copytree(src, dst, ignore=shutil.ignore_patterns("*.pkl"))
     silver_temp = SILVER_WESAD / pid / f"{pid}_E4_Data" / "TEMP.csv"
     scratch_temp = dst / f"{pid}_E4_Data" / "TEMP.csv"
     shutil.copy2(silver_temp, scratch_temp)
@@ -551,26 +565,28 @@ def _run_completeness_experiments(
     }
 
     for pid in participants:
+        print(f"  completeness: {pid}")
         scratch = _copy_participant_to_scratch(pid)
         e4_dir = scratch / f"{pid}_E4_Data"
         rb_path = scratch / f"{pid}_respiban.txt"
         intentional = _load_intentional_removals(pid)
+        n_rb = len(_read_respiban(rb_path)[1])
 
         for ft, is_contiguous in [(ft_nan, False), (ft_drop, True)]:
             for sev_idx, sev in enumerate(severities):
+                # Compute clean reference once per (ft, sev) -- reused for all
+                # E4 modalities and the RespiBAN channel below.
+                clean_result = _run_completeness(scratch, pid, threshold, intentional)
+
                 # ---- E4 signals ----
                 for mod, (excl, sig_label) in e4_targets.items():
                     csv = e4_dir / f"{mod}.csv"
                     n = _e4_sample_count(csv)
                     nf = _n_faults(n, sev)
-                    rng = np.random.default_rng(_seed(pid, ft, sev_idx))
 
-                    clean_result = _run_completeness(scratch, pid, threshold, intentional)
                     clean_nan = _completeness_nan_count(clean_result, mod)
                     clean_passes = _completeness_passes(clean_result, mod)
 
-                    # Fresh injection copy (uses SCRATCH_DIRTY to avoid path
-                    # collision with the clean reference copy in SCRATCH_DIR)
                     scratch2 = _copy_to_dirty_scratch(pid)
                     csv2 = scratch2 / f"{pid}_E4_Data" / f"{mod}.csv"
                     rng2 = np.random.default_rng(_seed(pid, ft, sev_idx))
@@ -583,7 +599,8 @@ def _run_completeness_experiments(
                     dirty_result = _run_completeness(scratch2, pid, threshold, intentional)
                     dirty_nan = _completeness_nan_count(dirty_result, mod)
                     dirty_passes = _completeness_passes(dirty_result, mod)
-                    shutil.rmtree(scratch2)
+                    _rmtree(scratch2)
+                    del dirty_result
 
                     new_nan = dirty_nan - clean_nan
                     records.append({
@@ -602,20 +619,17 @@ def _run_completeness_experiments(
                     })
 
                 # ---- RespiBAN ECG (sequence gaps) ----
-                n_rb = len(_read_respiban(rb_path)[1])
                 nf_rb = _n_faults(n_rb, sev)
-                rng_rb = np.random.default_rng(_seed(pid, ft, sev_idx) + 5)
 
-                clean_result = _run_completeness(scratch, pid, threshold, intentional)
                 clean_drops = _completeness_chest_dropped(clean_result)
                 clean_passes_rb = _completeness_chest_passes(clean_result)
+                del clean_result
 
                 scratch3 = _copy_to_dirty_scratch(pid)
                 rb_path3 = scratch3 / f"{pid}_respiban.txt"
                 rng_rb3 = np.random.default_rng(_seed(pid, ft, sev_idx) + 5)
 
                 if is_contiguous:
-                    # Contiguous gap: drop a consecutive block of rows
                     _, rows3 = _read_respiban(rb_path3)
                     n3 = len(rows3)
                     max_start = n3 - nf_rb - 1
@@ -631,7 +645,8 @@ def _run_completeness_experiments(
                 dirty_result3 = _run_completeness(scratch3, pid, threshold, intentional)
                 dirty_drops = _completeness_chest_dropped(dirty_result3)
                 dirty_passes_rb = _completeness_chest_passes(dirty_result3)
-                shutil.rmtree(scratch3)
+                _rmtree(scratch3)
+                del dirty_result3
 
                 new_drops = dirty_drops - clean_drops
                 records.append({
@@ -650,7 +665,7 @@ def _run_completeness_experiments(
                     "note": "RespiBAN completeness measured via nSeq gaps; affects all channels.",
                 })
 
-        shutil.rmtree(scratch, ignore_errors=True)
+        _rmtree(scratch)
 
 
 def _run_conformance_experiments(
@@ -666,18 +681,24 @@ def _run_conformance_experiments(
     sig_labels = {"TEMP": "E4_TEMP", "EDA": "E4_EDA", "HR": "E4_HR"}
 
     for pid in participants:
+        print(f"  conformance: {pid}")
         scratch = _copy_participant_to_scratch(pid)
         e4_dir = scratch / f"{pid}_E4_Data"
         rb_path = scratch / f"{pid}_respiban.txt"
+        n_rb = len(_read_respiban(rb_path)[1])
 
         for sev_idx, sev in enumerate(severities):
+            # Compute clean conformance once per severity -- reused for all
+            # E4 modalities and both RespiBAN experiments below.
+            clean = _run_conformance(scratch, ranges_cfg)
+            nf_rb = _n_faults(n_rb, sev)
+
             # ---- E4 non-numeric ----
             for mod, excl in e4_targets_excl.items():
                 csv = e4_dir / f"{mod}.csv"
                 n = _e4_sample_count(csv)
                 nf = _n_faults(n, sev)
 
-                clean = _run_conformance(scratch, ranges_cfg)
                 clean_nn = _conformance_non_numeric(clean, mod)
 
                 scratch2 = _copy_to_dirty_scratch(pid)
@@ -687,7 +708,11 @@ def _run_conformance_experiments(
 
                 dirty = _run_conformance(scratch2, ranges_cfg)
                 dirty_nn = _conformance_non_numeric(dirty, mod)
-                shutil.rmtree(scratch2)
+                verdict_flip = not dirty.get("e4", {}).get(mod, {}).get(
+                    "non_numeric", {}
+                ).get("ok", True)
+                _rmtree(scratch2)
+                del dirty
 
                 new_nn = dirty_nn - clean_nn
                 records.append({
@@ -700,17 +725,11 @@ def _run_conformance_experiments(
                     "n_detected": new_nn,
                     "detection_rate": new_nn / len(injected) if injected else None,
                     "false_positive_count": max(0, new_nn - len(injected)),
-                    "verdict_flip": not dirty.get("e4", {}).get(mod, {}).get(
-                        "non_numeric", {}
-                    ).get("ok", True),
+                    "verdict_flip": verdict_flip,
                 })
 
             # ---- RespiBAN ECG non-numeric ----
-            n_rb = len(_read_respiban(rb_path)[1])
-            nf_rb = _n_faults(n_rb, sev)
-
-            clean_rb = _run_conformance(scratch, ranges_cfg)
-            clean_rb_nn = _conformance_chest_non_numeric(clean_rb, "CH1")
+            clean_rb_nn = _conformance_chest_non_numeric(clean, "CH1")
 
             scratch3 = _copy_to_dirty_scratch(pid)
             rb3 = scratch3 / f"{pid}_respiban.txt"
@@ -719,7 +738,11 @@ def _run_conformance_experiments(
 
             dirty_rb = _run_conformance(scratch3, ranges_cfg)
             dirty_rb_nn = _conformance_chest_non_numeric(dirty_rb, "CH1")
-            shutil.rmtree(scratch3)
+            rb_verdict_flip = not dirty_rb.get("chest", {}).get(
+                "range_summary", {}
+            ).get("ok", True)
+            _rmtree(scratch3)
+            del dirty_rb
 
             records.append({
                 "dimension": "conformance",
@@ -733,14 +756,12 @@ def _run_conformance_experiments(
                     (dirty_rb_nn - clean_rb_nn) / len(inj_rb) if inj_rb else None
                 ),
                 "false_positive_count": max(0, dirty_rb_nn - clean_rb_nn - len(inj_rb)),
-                "verdict_flip": not dirty_rb.get("chest", {}).get(
-                    "range_summary", {}
-                ).get("ok", True),
+                "verdict_flip": rb_verdict_flip,
             })
 
             # ---- RespiBAN ECG out-of-range (ADC = 70000) ----
-            clean_rb2 = _run_conformance(scratch, ranges_cfg)
-            clean_rb2_viol = _conformance_chest_range_violations(clean_rb2, "CH1")
+            clean_rb2_viol = _conformance_chest_range_violations(clean, "CH1")
+            del clean
 
             scratch5 = _copy_to_dirty_scratch(pid)
             rb5 = scratch5 / f"{pid}_respiban.txt"
@@ -749,12 +770,17 @@ def _run_conformance_experiments(
 
             dirty_rb2 = _run_conformance(scratch5, ranges_cfg)
             dirty_rb2_viol = _conformance_chest_range_violations(dirty_rb2, "CH1")
+            rb2_verdict_flip = not dirty_rb2.get("chest", {}).get(
+                "range_summary", {}
+            ).get("ok", True)
+            del dirty_rb2
 
             # Cross-check: plausibility on the same corrupted RespiBAN
             dirty_rb2_pls = _run_plausibility(scratch5, ranges_cfg["wesad"], 0.01)
             ecg_pls = dirty_rb2_pls.get("chest", {}).get("ECG", {})
             pls_viol_rb = ecg_pls.get("n_violations", 0)
-            shutil.rmtree(scratch5)
+            _rmtree(scratch5)
+            del dirty_rb2_pls
 
             records.append({
                 "dimension": "conformance",
@@ -770,26 +796,25 @@ def _run_conformance_experiments(
                 ),
                 "false_positive_count": max(0, dirty_rb2_viol - clean_rb2_viol - len(inj5)),
                 "cross_check_plausibility_detections": pls_viol_rb,
-                "verdict_flip": not dirty_rb2.get("chest", {}).get(
-                    "range_summary", {}
-                ).get("ok", True),
+                "verdict_flip": rb2_verdict_flip,
             })
 
         # ---- E4 EDA sampling-rate fault (file-level, no severity loop) ----
-        scratch_sr = _copy_to_dirty_scratch(pid)
-        eda_csv_sr = scratch_sr / f"{pid}_E4_Data" / "EDA.csv"
-
         clean_sr = _run_conformance(scratch, ranges_cfg)
         clean_sr_ok = (
             clean_sr.get("e4", {}).get("EDA", {}).get("sampling_rate", {}).get("ok", True)
         )
+        del clean_sr
 
+        scratch_sr = _copy_to_dirty_scratch(pid)
+        eda_csv_sr = scratch_sr / f"{pid}_E4_Data" / "EDA.csv"
         original_hz = inject_e4_sampling_rate(eda_csv_sr, 8.0)
         dirty_sr = _run_conformance(scratch_sr, ranges_cfg)
         dirty_sr_ok = (
             dirty_sr.get("e4", {}).get("EDA", {}).get("sampling_rate", {}).get("ok", True)
         )
-        shutil.rmtree(scratch_sr)
+        _rmtree(scratch_sr)
+        del dirty_sr
 
         records.append({
             "dimension": "conformance",
@@ -804,7 +829,7 @@ def _run_conformance_experiments(
             "verdict_flip": clean_sr_ok and not dirty_sr_ok,
         })
 
-        shutil.rmtree(scratch, ignore_errors=True)
+        _rmtree(scratch)
 
 
 def _run_plausibility_experiments(
@@ -823,20 +848,22 @@ def _run_plausibility_experiments(
     }
 
     for pid in participants:
+        print(f"  plausibility: {pid}")
         scratch = _copy_participant_to_scratch(pid)
         e4_dir = scratch / f"{pid}_E4_Data"
 
         for sev_idx, sev in enumerate(severities):
+            # Compute clean reference once per severity -- reused for all mods.
+            clean_pls = _run_plausibility(scratch, wesad_cfg, pls_threshold)
+            clean_conf = _run_conformance(scratch, full_ranges_cfg)
+
             for mod, (fault_val, excl, sig_label) in targets.items():
                 csv = e4_dir / f"{mod}.csv"
                 n = _e4_sample_count(csv)
                 nf = _n_faults(n, sev)
 
-                clean_pls = _run_plausibility(scratch, wesad_cfg, pls_threshold)
                 clean_viol = _plausibility_violations(clean_pls, mod)
                 clean_passes = _plausibility_passes(clean_pls, mod)
-
-                clean_conf = _run_conformance(scratch, full_ranges_cfg)
                 clean_conf_viol = _conformance_range_violations(clean_conf, mod)
 
                 scratch2 = _copy_to_dirty_scratch(pid)
@@ -847,10 +874,12 @@ def _run_plausibility_experiments(
                 dirty_pls = _run_plausibility(scratch2, wesad_cfg, pls_threshold)
                 dirty_viol = _plausibility_violations(dirty_pls, mod)
                 dirty_passes = _plausibility_passes(dirty_pls, mod)
+                del dirty_pls
 
                 dirty_conf = _run_conformance(scratch2, full_ranges_cfg)
                 dirty_conf_viol = _conformance_range_violations(dirty_conf, mod)
-                shutil.rmtree(scratch2)
+                _rmtree(scratch2)
+                del dirty_conf
 
                 new_viol = dirty_viol - clean_viol
                 records.append({
@@ -872,7 +901,9 @@ def _run_plausibility_experiments(
                     "verdict_flip": clean_passes and not dirty_passes,
                 })
 
-        shutil.rmtree(scratch, ignore_errors=True)
+            del clean_pls, clean_conf
+
+        _rmtree(scratch)
 
 
 def _run_timeliness_experiments(
@@ -884,6 +915,7 @@ def _run_timeliness_experiments(
     ft = "timeliness_start_shift"
 
     for pid in participants:
+        print(f"  timeliness: {pid}")
         scratch = _copy_participant_to_scratch(pid)
 
         # Baseline alignment on unmodified scratch copy
@@ -897,7 +929,7 @@ def _run_timeliness_experiments(
             shift_e4_start_time(eda_csv, offset)
 
             dirty = _run_alignment(scratch2, pid, timeliness_threshold)
-            shutil.rmtree(scratch2)
+            _rmtree(scratch2)
 
             records.append({
                 "dimension": "timeliness",
@@ -918,7 +950,7 @@ def _run_timeliness_experiments(
                 ),
             })
 
-        shutil.rmtree(scratch, ignore_errors=True)
+        _rmtree(scratch)
 
 
 # ---------------------------------------------------------------------------
@@ -948,7 +980,7 @@ def _run_control_experiments(
         conf = _run_conformance(scratch, ranges_cfg)
         plaus = _run_plausibility(scratch, wesad_cfg, pls_threshold)
         align = _run_alignment(scratch, pid, tl_threshold)
-        shutil.rmtree(scratch, ignore_errors=True)
+        _rmtree(scratch)
 
         comp_e4_flags = {
             mod: not v.get("passes_threshold", True)
@@ -1039,25 +1071,31 @@ def run_all_experiments() -> None:
     SCRATCH_DIR.mkdir(parents=True, exist_ok=True)
     SCRATCH_DIRTY.mkdir(parents=True, exist_ok=True)
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    print(f"Scratch base: {_SCRATCH_BASE}")
 
     records: list = []
 
-    print("Running control condition (severity zero) ...")
+    print("Running control condition ...")
     _run_control_experiments(records, participants, thresholds_cfg, ranges_cfg)
+    print(f"  control done ({len(records)} records so far)")
 
     print("Running completeness experiments ...")
     _run_completeness_experiments(records, participants, severities, thresholds_cfg)
+    print(f"  completeness done ({len(records)} records so far)")
 
     print("Running conformance experiments ...")
     _run_conformance_experiments(records, participants, severities, ranges_cfg)
+    print(f"  conformance done ({len(records)} records so far)")
 
     print("Running plausibility experiments ...")
     _run_plausibility_experiments(
         records, participants, severities, wesad_cfg, ranges_cfg, pls_threshold
     )
+    print(f"  plausibility done ({len(records)} records so far)")
 
     print("Running timeliness experiments ...")
     _run_timeliness_experiments(records, participants, offsets, tl_threshold)
+    print(f"  timeliness done ({len(records)} records so far)")
 
     output = {
         "experiment": "fault_injection",

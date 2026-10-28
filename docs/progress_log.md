@@ -758,3 +758,30 @@ This is consistent with the purpose of the threshold: the 0.0 floor was designed
 **Decided.** Intentional-removal exclusion is now the operational definition of missingness in this framework.
 
 ---
+
+## Fault injection: harness fixes before first complete run
+
+**Date:** 2026-10-28
+
+Two fix commits were applied to `src/experiments/fault_injection.py` before the first complete experiment run. Neither changes the experimental design or any pre-registered expectation. `config/experiments.yaml` is unchanged from the amendment commit `59454f0`.
+
+### Commit 1: `8328e32` -- fix: separate clean and injected scratch copies in fault injection harness
+
+**What was fixed:** A path-collision bug in the harness caused the injected (dirty) copy to overwrite the clean reference copy, because both `_copy_participant_to_scratch` calls returned `SCRATCH_DIR / pid` -- the same path. When the dirty copy was deleted at the end of an inner loop iteration, the next modality iteration failed reading from the now-deleted clean directory. No results were produced from the attempted run.
+
+**Changes:** Added `SCRATCH_DIRTY` constant and `_copy_to_dirty_scratch(pid)` function, which uses `SCRATCH_DIRTY / pid` for injection copies. All `scratch2`/`scratch3`/`scratch5`/`scratch_sr` calls in the experiment runners now use `_copy_to_dirty_scratch`. Directory leaf name is still `pid`, so `participant_dir.name` remains correct for all check functions.
+
+### Commit 2 -- fix: make fault injection harness efficient and reproducible on Windows
+
+**What was fixed:**
+
+- *.pkl files (large processed data files, not read by any check) were being copied into scratch on every participant copy. Excluded via `shutil.ignore_patterns("*.pkl")`, substantially reducing copy time and memory.
+- Scratch directories were inside the OneDrive-synced project folder, causing Windows file-locking errors from the sync client. Moved to `tempfile.gettempdir() / "wesad_fault_injection"`, defined in one place (`_SCRATCH_BASE`). Participant data copies never enter the cloud.
+- Windows read-only file errors on `shutil.rmtree` (Bronze files have read-only permissions set by `copytree`) were previously patched at the call site of an external wrapper script. A `_rmtree` helper is now built into the harness; all `shutil.rmtree` calls inside the harness use it.
+- Redundant clean-reference check calls: the clean result was recomputed for every modality in the inner loop. It is now computed once per participant/severity combination and reused, reducing check function invocations by roughly 4x.
+- Added `src/experiments/run_fault_injection.py` as a foreground runner with per-participant and per-section progress output.
+- The external wrapper script used during the first failed run (`run_experiments.py` in the system temp folder) was deleted.
+
+**Design and expectations:** Unchanged. `config/experiments.yaml` is identical to commit `59454f0`.
+
+---
