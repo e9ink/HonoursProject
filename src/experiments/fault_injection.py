@@ -32,6 +32,11 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 SCRATCH_DIR = ROOT / "experiments" / "scratch"
+# SCRATCH_DIRTY holds the injection copies (scratch2/3/4/5) so they never
+# share a path with the clean reference copy in SCRATCH_DIR.  Both are named
+# by pid (e.g. "S2") so participant_dir.name remains the correct pid for all
+# check functions that derive pid from the directory name.
+SCRATCH_DIRTY = ROOT / "experiments" / "scratch_dirty"
 BRONZE_WESAD = ROOT / "bronze" / "WESAD"
 SILVER_WESAD = ROOT / "silver" / "WESAD"
 CLEANING_REPORT = ROOT / "reports" / "wesad_cleaning.json"
@@ -92,6 +97,25 @@ def _copy_participant_to_scratch(pid: str) -> Path:
     """
     src = BRONZE_WESAD / pid
     dst = SCRATCH_DIR / pid
+    if dst.exists():
+        shutil.rmtree(dst)
+    shutil.copytree(src, dst)
+    silver_temp = SILVER_WESAD / pid / f"{pid}_E4_Data" / "TEMP.csv"
+    scratch_temp = dst / f"{pid}_E4_Data" / "TEMP.csv"
+    shutil.copy2(silver_temp, scratch_temp)
+    return dst
+
+
+def _copy_to_dirty_scratch(pid: str) -> Path:
+    """
+    Copy one participant's files to a fresh injection (dirty) scratch directory.
+    Uses SCRATCH_DIRTY / pid so it never collides with the clean reference copy
+    at SCRATCH_DIR / pid.  Both are named by pid so participant_dir.name is
+    correct for check functions that derive pid from the directory name.
+    Returns the dirty scratch path.
+    """
+    src = BRONZE_WESAD / pid
+    dst = SCRATCH_DIRTY / pid
     if dst.exists():
         shutil.rmtree(dst)
     shutil.copytree(src, dst)
@@ -545,8 +569,9 @@ def _run_completeness_experiments(
                     clean_nan = _completeness_nan_count(clean_result, mod)
                     clean_passes = _completeness_passes(clean_result, mod)
 
-                    # Fresh copy for this experiment
-                    scratch2 = _copy_participant_to_scratch(pid)
+                    # Fresh injection copy (uses SCRATCH_DIRTY to avoid path
+                    # collision with the clean reference copy in SCRATCH_DIR)
+                    scratch2 = _copy_to_dirty_scratch(pid)
                     csv2 = scratch2 / f"{pid}_E4_Data" / f"{mod}.csv"
                     rng2 = np.random.default_rng(_seed(pid, ft, sev_idx))
 
@@ -585,7 +610,7 @@ def _run_completeness_experiments(
                 clean_drops = _completeness_chest_dropped(clean_result)
                 clean_passes_rb = _completeness_chest_passes(clean_result)
 
-                scratch3 = _copy_participant_to_scratch(pid)
+                scratch3 = _copy_to_dirty_scratch(pid)
                 rb_path3 = scratch3 / f"{pid}_respiban.txt"
                 rng_rb3 = np.random.default_rng(_seed(pid, ft, sev_idx) + 5)
 
@@ -655,7 +680,7 @@ def _run_conformance_experiments(
                 clean = _run_conformance(scratch, ranges_cfg)
                 clean_nn = _conformance_non_numeric(clean, mod)
 
-                scratch2 = _copy_participant_to_scratch(pid)
+                scratch2 = _copy_to_dirty_scratch(pid)
                 csv2 = scratch2 / f"{pid}_E4_Data" / f"{mod}.csv"
                 rng = np.random.default_rng(_seed(pid, ft_nn, sev_idx))
                 injected = inject_e4_non_numeric(csv2, nf, rng, excl)
@@ -687,7 +712,7 @@ def _run_conformance_experiments(
             clean_rb = _run_conformance(scratch, ranges_cfg)
             clean_rb_nn = _conformance_chest_non_numeric(clean_rb, "CH1")
 
-            scratch3 = _copy_participant_to_scratch(pid)
+            scratch3 = _copy_to_dirty_scratch(pid)
             rb3 = scratch3 / f"{pid}_respiban.txt"
             rng_rb = np.random.default_rng(_seed(pid, ft_nn, sev_idx) + 5)
             inj_rb = inject_respiban_non_numeric(rb3, "CH1", nf_rb, rng_rb)
@@ -717,7 +742,7 @@ def _run_conformance_experiments(
             clean_rb2 = _run_conformance(scratch, ranges_cfg)
             clean_rb2_viol = _conformance_chest_range_violations(clean_rb2, "CH1")
 
-            scratch5 = _copy_participant_to_scratch(pid)
+            scratch5 = _copy_to_dirty_scratch(pid)
             rb5 = scratch5 / f"{pid}_respiban.txt"
             rng5 = np.random.default_rng(_seed(pid, ft_sr, sev_idx) + 5)
             inj5 = inject_respiban_value(rb5, "CH1", 70000, nf_rb, rng5)
@@ -751,7 +776,7 @@ def _run_conformance_experiments(
             })
 
         # ---- E4 EDA sampling-rate fault (file-level, no severity loop) ----
-        scratch_sr = _copy_participant_to_scratch(pid)
+        scratch_sr = _copy_to_dirty_scratch(pid)
         eda_csv_sr = scratch_sr / f"{pid}_E4_Data" / "EDA.csv"
 
         clean_sr = _run_conformance(scratch, ranges_cfg)
@@ -814,7 +839,7 @@ def _run_plausibility_experiments(
                 clean_conf = _run_conformance(scratch, full_ranges_cfg)
                 clean_conf_viol = _conformance_range_violations(clean_conf, mod)
 
-                scratch2 = _copy_participant_to_scratch(pid)
+                scratch2 = _copy_to_dirty_scratch(pid)
                 csv2 = scratch2 / f"{pid}_E4_Data" / f"{mod}.csv"
                 rng = np.random.default_rng(_seed(pid, ft, sev_idx))
                 injected = inject_e4_value(csv2, fault_val, nf, rng, excl)
@@ -867,7 +892,7 @@ def _run_timeliness_experiments(
         baseline_passes = baseline["passes_threshold"]
 
         for offset in offsets_s:
-            scratch2 = _copy_participant_to_scratch(pid)
+            scratch2 = _copy_to_dirty_scratch(pid)
             eda_csv = scratch2 / f"{pid}_E4_Data" / "EDA.csv"
             shift_e4_start_time(eda_csv, offset)
 
@@ -1012,6 +1037,7 @@ def run_all_experiments() -> None:
     tl_threshold = float(thresholds_cfg["timeliness"]["max_cross_modal_offset_seconds"])
 
     SCRATCH_DIR.mkdir(parents=True, exist_ok=True)
+    SCRATCH_DIRTY.mkdir(parents=True, exist_ok=True)
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
     records: list = []
