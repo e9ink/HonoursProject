@@ -64,7 +64,7 @@ These policies govern how quality is measured and assured. They translate the Ti
 
 **Enforcement:**
 - `config/thresholds.yaml`: thresholds are set by Kevin and signed off by Dr. Tobias Cibis. The file includes `meta.locked: true` and `meta.signed_off: true` with `date_locked: 2026-09-09` (source: `config/thresholds.yaml`).
-- Gate in `src/checks/plausibility.py` and `src/report.py`: both modules read `meta.signed_off` and raise `RuntimeError` if it is false, refusing to run.
+- Gate in `src/report.py`: reads `meta.signed_off` from `config/thresholds.yaml` and raises `RuntimeError` if it is false, refusing to run.
 - `docs/progress_log.md` (Task 1 section, design-decisions entry dated 2026-08-22): thresholds were pre-registered before any check ran.
 
 ### Policy 2.2 -- Completeness Measures Unintended Absence Only
@@ -86,8 +86,7 @@ These policies govern how quality is measured and assured. They translate the Ti
 
 **Enforcement:**
 - `config/physiological_ranges.yaml`: `meta.signed_off: true`, `signed_off_by: Dr. Tobias Cibis`, `date_locked: 2026-09-09` (source: `config/physiological_ranges.yaml`).
-- Gate in `src/checks/conformance.py` (`load_config`) and `src/checks/plausibility.py` (`_load_config`): both check `meta.signed_off` and abort if false.
-- `src/checks/post_cleaning.py` (`_load_ranges`): same gate applied to the post-cleaning run.
+- Gate in `src/checks/conformance.py` (`load_config`), `src/checks/plausibility.py` (`_load_config`), `src/cleaning.py` (`_load_skin_temp_bounds`), and `src/checks/post_cleaning.py` (`_load_ranges`): all four check `meta.signed_off` in `config/physiological_ranges.yaml` and raise `RuntimeError` if it is false, refusing to run.
 - Comment at top of `config/physiological_ranges.yaml`: "never edited or invented by automated pipeline code."
 
 ### Policy 2.4 -- Deterministic Processing
