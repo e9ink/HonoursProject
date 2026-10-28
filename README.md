@@ -1,6 +1,6 @@
 # Data Quality and Governance Framework for Multimodal Behavioural Datasets
 
-This project designs and implements a data quality and governance framework for the WESAD (Wearable Stress and Affect Detection) dataset, collected with an Empatica E4 wristband and a RespiBAN Professional chest device. The framework applies a medallion architecture (Bronze, Silver, Gold) and evaluates five quality dimensions: Conformance, Completeness, Plausibility, Temporal Alignment, and Consistency. All quality decisions and thresholds are recorded before measurement and require formal supervisor sign-off before the final report is produced.
+This project designs and implements a data quality and governance framework for the WESAD (Wearable Stress and Affect Detection) dataset, collected with an Empatica E4 wristband and a RespiBAN Professional chest device. The framework applies a medallion architecture (Bronze, Silver, Gold) and runs three checks (Conformance, Completeness, Plausibility) plus cross-modal alignment detection. These checks inform assessments across five quality dimensions: accuracy, completeness, consistency, timeliness, and validity; accuracy and consistency are recorded as unmeasured for WESAD due to the absence of defined ground truth and a comparator dataset respectively. Quality thresholds and physiological bounds are pre-registered in config/ and gated by a sign-off flag; design decisions and their justifications are recorded in docs/progress_log.md.
 
 ---
 
@@ -28,15 +28,15 @@ reports/         Pipeline measurement outputs (JSON). One file per check per dat
                    wesad_quality_report.json         Final before/after summary report.
                    experiments/                      Fault injection results (when run).
 src/             Python source code:
-                   profiling.py            Bronze profiling (Task 3).
-                   checks/conformance.py   Conformance check (Task 4).
-                   checks/completeness.py  Completeness check (Task 5).
-                   checks/plausibility.py  Plausibility check (Task 6).
-                   alignment.py            Cross-modal temporal alignment (Task 7).
-                   cleaning.py             Silver cleaning (Task 8).
-                   checks/post_cleaning.py Post-cleaning re-checks (Tasks 9 and 10).
-                   governance.py           Governance artefacts -- lineage and audit (Task 10).
-                   report.py               Final quality report (Task 11).
+                   profiling.py            Bronze profiling.
+                   checks/conformance.py   Conformance check.
+                   checks/completeness.py  Completeness check.
+                   checks/plausibility.py  Plausibility check.
+                   alignment.py            Cross-modal temporal alignment.
+                   cleaning.py             Silver cleaning.
+                   checks/post_cleaning.py Post-cleaning re-checks.
+                   governance.py           Governance artefacts (lineage and audit trail).
+                   report.py               Final quality report.
                    experiments/            Fault injection harness and runner.
 tests/           pytest unit tests for check modules and injectors.
 docs/            Decision log and governance documents:
@@ -76,10 +76,21 @@ The pipeline expects participant directories under `bronze/WESAD/`:
 bronze/WESAD/S2/
 bronze/WESAD/S3/
 ...
-bronze/WESAD/S17/   (S1 and S12 are excluded by the original dataset)
+bronze/WESAD/S17/   (S1 and S12 are absent: two participants' data were
+                     discarded due to sensor malfunction, Schmidt et al., 2018)
 ```
 
-Each participant directory should contain the files as distributed by the WESAD dataset authors (Schmidt et al., 2018). Raw data is covered by the dataset access agreement and must never be committed to the repository. The files `bronze/WESAD/`, `silver/WESAD/`, and `archive.zip` are listed in `.gitignore` and will not be tracked by git.
+Each participant directory should contain the files as distributed by the WESAD dataset authors. Raw data is covered by the dataset access agreement and must never be committed to the repository. The `.gitignore` entries that prevent tracking are:
+
+```
+bronze/*
+silver/*
+archive.zip
+experiments/scratch/
+experiments/scratch_dirty/
+```
+
+The fault injection harness now writes scratch copies to the system temporary directory (outside the repository), so the `experiments/scratch/` and `experiments/scratch_dirty/` entries are retained as a safeguard only.
 
 ---
 
@@ -126,7 +137,7 @@ The harness prints progress per participant and per fault type. Results contain 
 | `reports/wesad_alignment.json` | Cross-modal start-time offsets and overlap measurements per participant. |
 | `reports/wesad_cleaning.json` | Indices replaced with NaN during Silver cleaning, per participant. |
 | `reports/wesad_*_post_cleaning.json` | Re-run of conformance, completeness, and plausibility on Silver data. |
-| `reports/wesad_governance.json` | Lineage and audit trail for governance review. |
+| `reports/wesad_governance.json` | Governance audit trail. Lineage is in `gold/WESAD/wesad_lineage.json`. |
 | `reports/wesad_quality_report.json` | Final before/after comparison across all quality dimensions with threshold verdicts. |
 | `gold/WESAD/wesad_lineage.json` | Per-participant, per-signal provenance document for the Gold layer. |
 | `reports/experiments/fault_injection_results.json` | Fault injection results (written after running the experiment harness). |
@@ -139,4 +150,9 @@ Governance documents (Data Impact Assessment, Datasheet, Policy Hierarchy, Stewa
 
 The full history of every threshold decision, design choice, and supervisor sign-off is in `docs/progress_log.md`.
 
-The `meta.signed_off` flag in `config/thresholds.yaml` must be set to `true` before `src.report` (Task 11) and `src.governance` (Task 5 gate) will execute. Setting it requires formal sign-off from the project owner and supervisor.
+Five modules gate on a `meta.signed_off` flag before running:
+
+- `src/checks/conformance.py`, `src/checks/plausibility.py`, `src/cleaning.py`, and `src/checks/post_cleaning.py` each check `meta.signed_off` in `config/physiological_ranges.yaml` before using any physiological bounds.
+- `src/report.py` checks `meta.signed_off` in `config/thresholds.yaml` before producing the final quality report.
+
+Setting either flag requires formal sign-off from the project owner and supervisor.
