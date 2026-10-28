@@ -785,3 +785,64 @@ Two fix commits were applied to `src/experiments/fault_injection.py` before the 
 **Design and expectations:** Unchanged. `config/experiments.yaml` is identical to commit `59454f0`.
 
 ---
+
+## Fault injection: performance fix before first complete run
+
+**Date:** 2026-10-28
+**Commit:** `8e67a64` -- perf: speed up fault injection harness without changing measurements
+
+### Motivation
+
+A timed run on participant S2 revealed that the completeness section alone could not complete in three hours. Profiling traced three dominant costs:
+
+- `_read_respiban` (pure-Python tab parser): 21 s per call on the 4.4 M-row S2 file. This was called once just to count rows, and again inside every RespiBAN injection.
+- `inject_respiban_sequence_gaps` / `inject_respiban_non_numeric` / `inject_respiban_value`: each loaded the full 4.4 M rows into Python lists, filtered or modified entries, then rewrote with `_write_respiban`. The combined read-filter-write consumed over 300 s and exhausted available RAM (OOM) on the test machine.
+- `check_chest` (pandas, 250 MB): called for every E4-only fault, wasting 7.3 s per iteration on data irrelevant to the fault.
+
+### Changes
+
+**Fast binary RespiBAN helpers** (`_inject_rb_gaps_bytes`, `_inject_rb_contiguous_bytes`, `_inject_rb_non_numeric_bytes`, `_inject_rb_value_bytes`): stream raw binary lines without tab-splitting, write kept lines back as bytes. Injection time: 2.4 s (was >300 s or OOM).
+
+**Fast row counter** (`_count_rb_rows`): counts data lines in a binary pass without parsing tab columns. Time: 0.58 s (was 21 s via `_read_respiban`).
+
+**Device-specific copy functions** (`_copy_e4_to_dirty_scratch`, `_copy_rb_to_dirty_scratch`): copy only the relevant device's files rather than the full 250 MB + E4 bundle for every fault.
+
+**Device-specific check wrappers** (`_run_completeness_e4`, `_run_completeness_chest`, `_run_conformance_e4`, `_run_conformance_rb`, `_run_plausibility_e4`, `_run_plausibility_chest`): call only the sub-check for the device under test. Eliminates the 7.3 s pandas RespiBAN read for every E4 fault and the 0.7 s E4 scan for every RespiBAN fault.
+
+**Clean references computed once per participant** in all three experiment runners (previously once per severity in plausibility and once per fault-type/severity in conformance).
+
+**Double-read bug fixed** in the contiguous RespiBAN completeness path: `_read_respiban` was called twice (once discarding the header, once discarding the rows). Replaced with `_inject_rb_contiguous_bytes` which does a single pass.
+
+The original `inject_respiban_*` functions are preserved in the module for use by existing tests; the experiment runners now call the fast binary variants.
+
+### Before and after timings (completeness_scattered_nan, 1% severity, S2)
+
+| Step | Before | After |
+|---|---|---|
+| Row count (`n_rb`) | 21 s (`_read_respiban`) | 0.58 s (`_count_rb_rows`) |
+| RespiBAN injection | >300 s / OOM | 2.4 s (`_inject_rb_gaps_bytes`) |
+| E4 TEMP (copy + inject + check) | ~8.3 s (full copy + full check) | 0.79 s (E4-only copy + E4-only check) |
+| E4 EDA | ~8.3 s | 0.76 s |
+| E4 HR | ~8.3 s | 0.73 s |
+| RespiBAN total (copy + inject + check) | >300 s | 7.8 s |
+| One condition total | >300 s (did not complete) | 15.5 s |
+
+### Equivalence check
+
+Condition: completeness_scattered_nan, 1% severity, S2.
+
+E4 signals: `_run_completeness_e4` returns the identical E4 dict as `_run_completeness` for all modalities (same `check_e4` call; field-by-field match confirmed).
+
+RespiBAN injection: `_count_rb_rows` = `len(_read_respiban(...)[1])` = 4,442,067. Same row count gives the same `available[]` array and therefore the same NumPy RNG choices and the same dropped rows. The old injector could not be run to completion due to OOM; equivalence is proved by the row-count identity and the identical algorithm structure.
+
+Post-fix field values for all four signals (TEMP, EDA, HR, RespiBAN_ECG): n_injected == n_detected, detection_rate = 1.0, false_positive_count = 0, verdict_flip = True.
+
+### Projected runtime
+
+Completeness: ~4 min. Conformance: ~4 min. Plausibility: ~1 min. Timeliness: ~11 s. Control: ~38 s. Total: ~10 min.
+
+### Design and expectations
+
+Unchanged. `config/experiments.yaml` is identical to commit `59454f0`. `pytest`: 101 passed.
+
+---
