@@ -859,3 +859,152 @@ Completeness: ~4 min. Conformance: ~4 min. Plausibility: ~1 min. Timeliness: ~11
 Unchanged. `config/experiments.yaml` is identical to commit `59454f0`. `pytest`: 101 passed.
 
 ---
+
+## Fault injection experiments: results (WESAD)
+
+**Date:** 2026-10-29
+**Design commit:** `59454f0` -- feat: amend fault injection design before first run
+**Harness commits:** `8328e32`, `8513480`, `8e67a64`
+**Results file:** `reports/experiments/fault_injection_results.json` (213 records)
+
+The experiment was executed manually by running `python -m src.experiments.run_fault_injection` in a terminal, after confirming `config/experiments.yaml` matches `59454f0` and `src/experiments/` matches `8e67a64`.
+
+### Determinism check
+
+`conformance_non_numeric` for S2 was re-run by calling `_run_conformance_experiments` directly (without modifying any harness or design file). All 16 records (4 signals x 4 severities) matched the main results file exactly, field by field.
+
+### Scratch directory cleanup
+
+The scratch directories (`<tmp>/wesad_fault_injection/clean` and `.../dirty`) were present after the run but empty -- the harness deletes each participant's copy as it goes. Both directories were removed after confirming they held no participant data.
+
+---
+
+### Table 1: Control condition
+
+| Participant | Completeness flags | Conformance flags | Plausibility flags | Timeliness passes | any_flag | Matches expectation |
+|---|---|---|---|---|---|---|
+| S2 | 0 | 0 | 0 | Yes | False | Yes |
+| S8 | 0 | 0 | 0 | Yes | False | Yes |
+| S15 | 0 | 0 | 0 | Yes | False | Yes |
+
+Pre-registered expectation: `any_flag == false` for all participants. Met.
+
+---
+
+### Table 2: Fault injection results
+
+All three participants produced identical detection rate, false positive count, and verdict flip for every row shown below. n_injected varies by session length (S2 longest, S8 and S15 similar).
+
+#### Completeness: scattered NaN and contiguous dropout
+
+Both fault types, all signals, all severities, all participants: detection rate = 1.0, false positives = 0, verdict flip = True. No cross-check detections by conformance or plausibility.
+
+| Fault type | Signal | 0.1% n_inj (S2/S8/S15) | dr | fp | vf | Expectation |
+|---|---|---|---|---|---|---|
+| scattered_nan | E4_TEMP | 31/26/26 | 1.0 | 0 | True | Met |
+| scattered_nan | E4_EDA | 31/26/26 | 1.0 | 0 | True | Met |
+| scattered_nan | E4_HR | 7/6/6 | 1.0 | 0 | True | Met |
+| scattered_nan | RespiBAN_ECG | 4442/3959/3936 | 1.0 | 0 | True | Met |
+| contiguous_dropout | E4_TEMP | 31/26/26 | 1.0 | 0 | True | Met |
+| contiguous_dropout | E4_EDA | 31/26/26 | 1.0 | 0 | True | Met |
+| contiguous_dropout | E4_HR | 7/6/6 | 1.0 | 0 | True | Met |
+| contiguous_dropout | RespiBAN_ECG | 4442/3959/3936 | 1.0 | 0 | True | Met |
+
+Results at 1%, 5%, and 10% (n_injected scaled proportionally) follow the same pattern.
+
+#### Conformance: non-numeric
+
+All signals, all severities, all participants: detection rate = 1.0, false positives = 0, verdict flip = True.
+
+| Signal | 0.1% n_inj (S2/S8/S15) | dr | fp | vf | Expectation |
+|---|---|---|---|---|---|
+| E4_TEMP | 31/26/26 | 1.0 | 0 | True | Met |
+| E4_EDA | 31/26/26 | 1.0 | 0 | True | Met |
+| E4_HR | 7/6/6 | 1.0 | 0 | True | Met |
+| RespiBAN_ECG | 4442/3959/3936 | 1.0 | 0 | True | Met |
+
+Results at 1%, 5%, and 10% follow the same pattern.
+
+#### Conformance: out-of-device-range (RespiBAN ECG, fault value 70000)
+
+Conformance (ADC range check, ceiling 65535) detected all injected values. Plausibility (ECG transfer function physical-unit bound 1.5 mV) independently detected all injected values as a cross-check. Both checks flagged every fault at every severity.
+
+| Severity | n_inj (S2/S8/S15) | Conf dr | Pls cross-detections (S2/S8/S15) | fp | vf | Expectation |
+|---|---|---|---|---|---|---|
+| 0.1% | 4442/3959/3936 | 1.0 | 4442/3959/3936 | 0 | True | Met |
+| 1% | 44420/39599/39369 | 1.0 | 44420/39599/39369 | 0 | True | Met |
+| 5% | 222103/197995/196848 | 1.0 | 222103/197995/196848 | 0 | True | Met |
+| 10% | 444206/395991/393697 | 1.0 | 444206/395991/393697 | 0 | True | Met |
+
+#### Conformance: sampling-rate fault (E4 EDA, 4 Hz declared as 8 Hz)
+
+| Participant | Original Hz | Injected Hz | Detected | Verdict flip |
+|---|---|---|---|---|
+| S2 | 4.0 | 8.0 | Yes | Yes |
+| S8 | 4.0 | 8.0 | Yes | Yes |
+| S15 | 4.0 | 8.0 | Yes | Yes |
+
+Pre-registered expectation: detected=True, verdict_flip=True. Met.
+
+#### Plausibility: physiological impossible values (E4_TEMP=50 deg C, E4_EDA=-1.0 uS, E4_HR=300 bpm)
+
+Detection rate = 1.0 at all severities for all signals and all participants. Conformance detected the same faults via shared range bounds (cross_check_conformance = n_injected in all cases). False positives = 0. Verdict flip depends on whether the injected rate exceeds the 0.01 threshold.
+
+| Signal | Severity | n_inj (S2/S8/S15) | dr | fp | Cross-conf (S2/S8/S15) | vf | Expectation |
+|---|---|---|---|---|---|---|---|
+| E4_TEMP | 0.1% | 31/26/26 | 1.0 | 0 | 31/26/26 | False | Met |
+| E4_TEMP | 1% | 314/265/265 | 1.0 | 0 | 314/265/265 | False | See mismatches |
+| E4_TEMP | 5% | 1574/1327/1328 | 1.0 | 0 | 1574/1327/1328 | True | Met |
+| E4_TEMP | 10% | 3149/2655/2656 | 1.0 | 0 | 3149/2655/2656 | True | Met |
+| E4_EDA | 0.1% | 31/26/26 | 1.0 | 0 | 31/26/26 | False | Met |
+| E4_EDA | 1% | 314/265/265 | 1.0 | 0 | 314/265/265 | False | Met |
+| E4_EDA | 5% | 1574/1327/1328 | 1.0 | 0 | 1574/1327/1328 | True | Met |
+| E4_EDA | 10% | 3149/2655/2656 | 1.0 | 0 | 3149/2655/2656 | True | Met |
+| E4_HR | 0.1% | 7/6/6 | 1.0 | 0 | 7/6/6 | False | Met |
+| E4_HR | 1% | 78/66/66 | 1.0 | 0 | 78/66/66 | False | Met |
+| E4_HR | 5% | 393/331/331 | 1.0 | 0 | 393/331/331 | True | Met |
+| E4_HR | 10% | 786/662/663 | 1.0 | 0 | 786/662/663 | True | Met |
+
+---
+
+### Table 3: Timeliness
+
+E4 EDA start timestamp shifted by the listed offset. Detector uses each sensor's own timestamps; the overlap window shifts with the injected start time, so the measured residual does not change with the offset. All dirty residuals remain below the 1.0 s threshold. No verdict flips at any offset.
+
+| Participant | Baseline residual (s) | Offset injected (s) | Dirty residual (s) | Change (s) | Exceeds 1.0 s | Detected | Expectation |
+|---|---|---|---|---|---|---|---|
+| S2 | 0.107 | 0.5 | 0.107 | 0.000 | No | No | Met |
+| S2 | 0.107 | 2.0 | 0.107 | 0.000 | No | No | Met |
+| S2 | 0.107 | 10.0 | 0.107 | 0.000 | No | No | Met |
+| S2 | 0.107 | 60.0 | 0.107 | 0.000 | No | No | Met |
+| S2 | 0.107 | 3600.0 | 0.107 | 0.000 | No | No | Met |
+| S8 | 0.000 | 0.5 | 0.000 | 0.000 | No | No | Met |
+| S8 | 0.000 | 2.0 | 0.126 | 0.126 | No | No | Met |
+| S8 | 0.000 | 10.0 | 0.126 | 0.126 | No | No | Met |
+| S8 | 0.000 | 60.0 | 0.126 | 0.126 | No | No | Met |
+| S8 | 0.000 | 3600.0 | 0.016 | 0.016 | No | No | Met |
+| S15 | 0.000 | 0.5 | 0.000 | 0.000 | No | No | Met |
+| S15 | 0.000 | 2.0 | 0.000 | 0.000 | No | No | Met |
+| S15 | 0.000 | 10.0 | 0.000 | 0.000 | No | No | Met |
+| S15 | 0.000 | 60.0 | 0.000 | 0.000 | No | No | Met |
+| S15 | 0.000 | 3600.0 | 0.123 | 0.123 | No | No | Met |
+
+Pre-registered expectation: all offsets go undetected, all residuals bounded by approximately 0.126 s (E4 EDA quantization noise at 4 Hz). Largest observed dirty residual: 0.126 s. All 15 records met the expectation.
+
+---
+
+### Mismatches with pre-registered expectations
+
+**One mismatch (uncertain pre-registered case):**
+
+**E4_TEMP plausibility, 1% severity**: the pre-registered expectation was `verdict_flip: session_length_dependent` -- explicitly marked as uncertain, because the injected rate (int(N*0.01) / (N-4)) was predicted to be "slightly above 0.01" but could go either way depending on floor rounding. Observed: verdict_flip = False for all three participants. S2: 314 injected out of 31474 valid TEMP samples, rate = 0.00998, which is below the 0.01 threshold. S8 and S15: 265 injected out of 26503 valid samples, rate = 0.01000, exactly at the threshold; because the check uses `rate <= threshold`, this also passes. Neither participant triggers a flip. This is consistent with the pre-registered reasoning; the floor rounding resolves to no-flip for all three session lengths in this dataset.
+
+**No other mismatches.** Detection rate = 1.0 and false positives = 0 for every fault type, signal, severity, and participant. All pre-registered verdict flip predictions (excluding the session-length-dependent TEMP 1% case) were met exactly. Conformance sampling-rate faults were detected for all three participants. Timeliness faults went undetected at all five offsets for all three participants.
+
+---
+
+### Alignment limitation note
+
+The timeliness results confirm the limitation discussed with the supervisor: the timestamp-anchoring timeliness detector verifies internal consistency of each sensor's own timeline but cannot detect a uniform shift applied to one sensor's recorded start time. Even a 3600 s offset (simulating a timezone conversion error) produces no change in the measured alignment residual. The dirty residual remains bounded by quantization noise (~0.126 s) regardless of the injected shift magnitude. This limitation is noted in the pre-registered design and bears on the scope of the timeliness check.
+
+---
