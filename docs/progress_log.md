@@ -833,7 +833,20 @@ Condition: completeness_scattered_nan, 1% severity, S2.
 
 E4 signals: `_run_completeness_e4` returns the identical E4 dict as `_run_completeness` for all modalities (same `check_e4` call; field-by-field match confirmed).
 
-RespiBAN injection: `_count_rb_rows` = `len(_read_respiban(...)[1])` = 4,442,067. Same row count gives the same `available[]` array and therefore the same NumPy RNG choices and the same dropped rows. The old injector could not be run to completion due to OOM; equivalence is proved by the row-count identity and the identical algorithm structure.
+RespiBAN injection: empirical equivalence verified on 2026-10-29 using a truncated real file (3 header lines + first 100,000 data rows from `bronze/WESAD/S2/S2_respiban.txt`, copied in binary mode to preserve original line endings). Each of the four new binary injectors was compared against the corresponding old injector at 1% severity (n_faults=1,000) and 10% severity (n_faults=10,000), using the same seed (42) on separate file copies.
+
+| Pair | Old function | New function | Returned values | Byte-identical | check_chest / check_respiban diffs |
+|---|---|---|---|---|---|
+| gaps 1% | `inject_respiban_sequence_gaps` | `_inject_rb_gaps_bytes` | identical | yes | 0 |
+| gaps 10% | `inject_respiban_sequence_gaps` | `_inject_rb_gaps_bytes` | identical | yes | 0 |
+| contiguous 1% | old in-line logic | `_inject_rb_contiguous_bytes` | identical | yes | 0 |
+| contiguous 10% | old in-line logic | `_inject_rb_contiguous_bytes` | identical | yes | 0 |
+| non_numeric 1% | `inject_respiban_non_numeric` | `_inject_rb_non_numeric_bytes` | identical | no* | 0 |
+| non_numeric 10% | `inject_respiban_non_numeric` | `_inject_rb_non_numeric_bytes` | identical | no* | 0 |
+| value 1% | `inject_respiban_value` | `_inject_rb_value_bytes` | identical | no* | 0 |
+| value 10% | `inject_respiban_value` | `_inject_rb_value_bytes` | identical | no* | 0 |
+
+*Non-identical bytes reflect line-ending normalisation: the old `inject_respiban_non_numeric` and `inject_respiban_value` rewrite all rows through `_write_respiban` (text mode, Unix `\n` endings); the new binary variants rewrite only the injected rows, leaving the original line endings on untouched rows. `conformance.check_respiban` and `plausibility.check_respiban` (both pandas-based) produce zero field differences between the two output files at both severities.
 
 Post-fix field values for all four signals (TEMP, EDA, HR, RespiBAN_ECG): n_injected == n_detected, detection_rate = 1.0, false_positive_count = 0, verdict_flip = True.
 
