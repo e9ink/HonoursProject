@@ -1008,3 +1008,65 @@ Pre-registered expectation: all offsets go undetected, all residuals bounded by 
 The timeliness results confirm the limitation discussed with the supervisor: the timestamp-anchoring timeliness detector verifies internal consistency of each sensor's own timeline but cannot detect a uniform shift applied to one sensor's recorded start time. Even a 3600 s offset (simulating a timezone conversion error) produces no change in the measured alignment residual. The dirty residual remains bounded by quantization noise (~0.126 s) regardless of the injected shift magnitude. This limitation is noted in the pre-registered design and bears on the scope of the timeliness check.
 
 ---
+
+## Gold dataset manifest
+
+**Date:** 2026-10-29
+**Commit:** feat: gold dataset manifest
+
+### Approach
+
+The Gold layer in this project uses a manifest rather than a physical copy of the data. The manifest () lists every participant and signal file with:
+
+- The authoritative file path (Silver for E4 TEMP, Bronze for all other signals)
+- Its SHA-256 checksum
+- Its row or sample count
+- The post-cleaning check outcomes for that signal (drawn from , , and )
+- Any documented intentional removals (E4 TEMP warm-up indices 0-3 replaced with NaN, recorded in )
+- Exclusion flags for signals not covered by certain checks: E4 BVP and IBI from plausibility, E4 IBI from conformance range checks, RespiBAN EDA_chest and TEMP_chest from plausibility
+
+The manifest also records a top-level summary: participant list, signal list, reference to , and a definition statement.
+
+A  function in  recomputes every checksum and reports any mismatches.
+
+### Why no physical copy
+
+The WESAD raw data may not be redistributed; copying it into gold/ would create a duplicate that violates the dataset's terms of use and adds no analytical value. The only cleaned file is Silver TEMP (one CSV per participant, replacing warm-up indices 0-3 with NaN); the manifest points directly to those Silver files. All other signals are unchanged Bronze. Analysis code reads from the paths in the manifest, not from a separate gold/ copy.
+
+### Coverage
+
+15 participants, 6 E4 signal files + 1 RespiBAN file per participant = 105 signal files total. All post-cleaning checks pass for all participants and signals (gold_passes_all_measured_thresholds = true).
+
+### pytest: 109 passed.
+
+---
+
+## Gold dataset manifest
+
+**Date:** 2026-10-29
+**Commit:** feat: gold dataset manifest
+
+### Approach
+
+The Gold layer in this project uses a manifest rather than a physical copy of the data. The manifest (`gold/WESAD/wesad_gold_manifest.json`) lists every participant and signal file with:
+
+- The authoritative file path (Silver for E4 TEMP, Bronze for all other signals)
+- Its SHA-256 checksum
+- Its row or sample count
+- The post-cleaning check outcomes for that signal (drawn from the three `*_post_cleaning.json` reports)
+- Any documented intentional removals (E4 TEMP warm-up indices 0-3 replaced with NaN, recorded in `reports/wesad_cleaning.json`)
+- Exclusion flags for signals not covered by certain checks: E4 BVP and IBI from plausibility, E4 IBI from conformance range checks, RespiBAN EDA_chest and TEMP_chest from plausibility
+
+The manifest includes a top-level summary: participant list, signal list, reference to `reports/wesad_quality_report.json`, and a definition statement. A `verify_manifest` function in `src/gold_manifest.py` recomputes every checksum and reports any mismatches.
+
+### Why no physical copy
+
+The WESAD raw data may not be redistributed; copying it into gold/ would create a duplicate that violates the dataset terms of use and adds no analytical value. The only cleaned file is Silver TEMP (one CSV per participant, replacing warm-up indices 0-3 with NaN); the manifest points directly to those Silver files. All other signals are unchanged Bronze. Analysis code reads from the paths in the manifest.
+
+### Coverage
+
+15 participants, 6 E4 signal files + 1 RespiBAN file per participant = 105 signal files total. All post-cleaning checks pass for all participants and signals (`gold_passes_all_measured_thresholds = true`).
+
+### pytest: 109 passed.
+
+---

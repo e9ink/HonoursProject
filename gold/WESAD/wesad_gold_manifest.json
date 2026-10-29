@@ -1,0 +1,3796 @@
+{
+  "schema": "wesad_gold_manifest_v1",
+  "dataset": "WESAD",
+  "run_context": {
+    "note": "This field is non-deterministic. Strip it for diffing.",
+    "generated_at": "2026-10-29T03:25:32.832137+00:00",
+    "generator": "src/gold_manifest.py"
+  },
+  "definition": "The WESAD Gold dataset is defined by this manifest. It consists of the Silver and Bronze files listed below, identified by their authoritative paths and SHA-256 checksums. No physical copy is made; analysis code should read from the paths listed in each entry. Silver TEMP files contain the cleaned warm-up replacement (NaN at indices 0-3); all other signals are Bronze.",
+  "quality_report": "reports/wesad_quality_report.json",
+  "summary": {
+    "participants": [
+      "S10",
+      "S11",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9"
+    ],
+    "n_participants": 15,
+    "e4_signals": [
+      "ACC",
+      "BVP",
+      "EDA",
+      "HR",
+      "IBI",
+      "TEMP"
+    ],
+    "signal_files_per_participant": 7,
+    "total_signal_files": 105,
+    "gold_passes_all_measured_thresholds": true,
+    "quality_headline": "The Gold pipeline resolves the only quality issues found in WESAD. Conformance and plausibility violations fall from 60 to 0 after cleaning the E4 TEMP warm-up artefact. Completeness after cleaning: unintentional missingness = 0.0 (60 intentional removals reported separately). Cross-modal alignment passes the 1.0 s threshold (max residual 0.107 s). All four measured dimensions pass. The framework demonstrates end-to-end detection, documentation, and resolution of a real quality issue.",
+    "gold_definition_note": "Gold is a manifest, not a physical copy. Each entry points to the authoritative file in Silver or Bronze. The manifest checksums guarantee that any future verification detects accidental modification of any source file."
+  },
+  "participants": {
+    "S10": {
+      "e4": {
+        "ACC": {
+          "authoritative_path": "bronze/WESAD/S10/S10_E4_Data/ACC.csv",
+          "layer": "bronze",
+          "sha256": "2519c3f7fe878de81768a03fce6fd5ea2fb15696c85506b3cab8c5c5e2585254",
+          "n_samples": 218328,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 218328,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "BVP": {
+          "authoritative_path": "bronze/WESAD/S10/S10_E4_Data/BVP.csv",
+          "layer": "bronze",
+          "sha256": "99499fe14844bcaeb77bbd34a6113207df4162ba3d5ad3daa1a4d5f85358c420",
+          "n_samples": 436645,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "plausibility": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 436645,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": null,
+              "n_above_max": null,
+              "n_below_min": null,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+            }
+          }
+        },
+        "EDA": {
+          "authoritative_path": "bronze/WESAD/S10/S10_E4_Data/EDA.csv",
+          "layer": "bronze",
+          "sha256": "c5a2fd0f3daf9296bf7664f316ed1bc8e3d0acccfc649ffff0b18aabf05629fc",
+          "n_samples": 27288,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 27288,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "HR": {
+          "authoritative_path": "bronze/WESAD/S10/S10_E4_Data/HR.csv",
+          "layer": "bronze",
+          "sha256": "2b5b5ded80137500f0d6d15e612cf433fbbf657ba596f943d9dab0769e8e9ce0",
+          "n_samples": 6813,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 6813,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "IBI": {
+          "authoritative_path": "bronze/WESAD/S10/S10_E4_Data/IBI.csv",
+          "layer": "bronze",
+          "sha256": "a6fa927066ccbae004751f951f41a8fa95af37da36025c706f753d79b46bf5ff",
+          "n_samples": 5175,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "conformance": "IBI is event-based; not included in conformance range check.",
+            "plausibility": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_events": 5176,
+              "n_nan": 0,
+              "threshold_applied": false,
+              "note": "Event-based signal; missingness rate is undefined."
+            },
+            "conformance": {
+              "excluded": true,
+              "reason": "IBI is event-based; not included in conformance range check."
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+            }
+          }
+        },
+        "TEMP": {
+          "authoritative_path": "silver/WESAD/S10/S10_E4_Data/TEMP.csv",
+          "layer": "silver",
+          "sha256": "4f23235970f09e7fdb1d9fa0bcebb464496862a60a252f6ad9f8a08d54079874",
+          "n_samples": 27288,
+          "intentional_removals": {
+            "action": "e4_temp_warmup_strip",
+            "indices_replaced": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "original_values": [
+              382.21,
+              382.21,
+              382.21,
+              382.21
+            ],
+            "replacement": "NaN",
+            "source_report": "reports/wesad_cleaning.json"
+          },
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 27288,
+              "n_nan": 4,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        }
+      },
+      "respiban": {
+        "authoritative_path": "bronze/WESAD/S10/S10_respiban.txt",
+        "layer": "bronze",
+        "sha256": "1f7746b06c9aefea5cea9ac4406fbedf10306259bd727d5442f18de550276634",
+        "n_rows": 3992284,
+        "intentional_removals": null,
+        "check_exclusions": {
+          "plausibility": {
+            "EDA_chest": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor.",
+            "TEMP_chest": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+          }
+        },
+        "check_outcomes": {
+          "completeness": {
+            "n_samples": 3992284,
+            "n_sequence_gaps": 0,
+            "passes_threshold": true
+          },
+          "conformance": {
+            "range_ok": true,
+            "total_violations": 0,
+            "format_ok": true,
+            "column_count_ok": true,
+            "sampling_rate_ok": true
+          },
+          "plausibility": {
+            "ACC": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "ECG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "EDA_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor."
+            },
+            "EMG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "RESP": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "TEMP_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+            }
+          }
+        }
+      }
+    },
+    "S11": {
+      "e4": {
+        "ACC": {
+          "authoritative_path": "bronze/WESAD/S11/S11_E4_Data/ACC.csv",
+          "layer": "bronze",
+          "sha256": "42ed207787af990ad3263f887397120ff480212bf48d26ae862d2f3d3a80e626",
+          "n_samples": 206736,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 206736,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "BVP": {
+          "authoritative_path": "bronze/WESAD/S11/S11_E4_Data/BVP.csv",
+          "layer": "bronze",
+          "sha256": "9e269ca9ce8bb5fa753a4ae0fcc9b5d322330008c2ab6ac8342c9191f230b904",
+          "n_samples": 413468,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "plausibility": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 413468,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": null,
+              "n_above_max": null,
+              "n_below_min": null,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+            }
+          }
+        },
+        "EDA": {
+          "authoritative_path": "bronze/WESAD/S11/S11_E4_Data/EDA.csv",
+          "layer": "bronze",
+          "sha256": "06f647cd022256d2c87ccebb6f711ac9bef01b2367013492230b5834fc00cd38",
+          "n_samples": 25842,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 25842,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "HR": {
+          "authoritative_path": "bronze/WESAD/S11/S11_E4_Data/HR.csv",
+          "layer": "bronze",
+          "sha256": "fa9955b65899ae0dd18047f960c9cdc21c8542a9d9644d3427014d0293b87047",
+          "n_samples": 6451,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 6451,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "IBI": {
+          "authoritative_path": "bronze/WESAD/S11/S11_E4_Data/IBI.csv",
+          "layer": "bronze",
+          "sha256": "a6ea20d90acf9bff8c0ddef9f66e6ccd41505d37a4f3b2642831f393d2c46bb4",
+          "n_samples": 3277,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "conformance": "IBI is event-based; not included in conformance range check.",
+            "plausibility": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_events": 3278,
+              "n_nan": 0,
+              "threshold_applied": false,
+              "note": "Event-based signal; missingness rate is undefined."
+            },
+            "conformance": {
+              "excluded": true,
+              "reason": "IBI is event-based; not included in conformance range check."
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+            }
+          }
+        },
+        "TEMP": {
+          "authoritative_path": "silver/WESAD/S11/S11_E4_Data/TEMP.csv",
+          "layer": "silver",
+          "sha256": "47b2f8c68529023b899c84dd4e35e8d3a7ae85f46bff2328a498d0f177e34dbf",
+          "n_samples": 25840,
+          "intentional_removals": {
+            "action": "e4_temp_warmup_strip",
+            "indices_replaced": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "original_values": [
+              382.21,
+              382.21,
+              382.21,
+              382.21
+            ],
+            "replacement": "NaN",
+            "source_report": "reports/wesad_cleaning.json"
+          },
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 25840,
+              "n_nan": 4,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        }
+      },
+      "respiban": {
+        "authoritative_path": "bronze/WESAD/S11/S11_respiban.txt",
+        "layer": "bronze",
+        "sha256": "c4421e492e14f6c0bb34cee30c793cf2deab02f2941b67143a9768fb1e0af56b",
+        "n_rows": 3788875,
+        "intentional_removals": null,
+        "check_exclusions": {
+          "plausibility": {
+            "EDA_chest": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor.",
+            "TEMP_chest": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+          }
+        },
+        "check_outcomes": {
+          "completeness": {
+            "n_samples": 3788875,
+            "n_sequence_gaps": 0,
+            "passes_threshold": true
+          },
+          "conformance": {
+            "range_ok": true,
+            "total_violations": 0,
+            "format_ok": true,
+            "column_count_ok": true,
+            "sampling_rate_ok": true
+          },
+          "plausibility": {
+            "ACC": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "ECG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "EDA_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor."
+            },
+            "EMG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "RESP": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "TEMP_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+            }
+          }
+        }
+      }
+    },
+    "S13": {
+      "e4": {
+        "ACC": {
+          "authoritative_path": "bronze/WESAD/S13/S13_E4_Data/ACC.csv",
+          "layer": "bronze",
+          "sha256": "f17a7068512fcb1baa494bcad221c4b429760a60622099b4bbb7a53a7f19ab2a",
+          "n_samples": 219606,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 219606,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "BVP": {
+          "authoritative_path": "bronze/WESAD/S13/S13_E4_Data/BVP.csv",
+          "layer": "bronze",
+          "sha256": "053545207b836406ebd5432ed0b91add453f77534c349fbeb8e8d842d89b6cee",
+          "n_samples": 439208,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "plausibility": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 439208,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": null,
+              "n_above_max": null,
+              "n_below_min": null,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+            }
+          }
+        },
+        "EDA": {
+          "authoritative_path": "bronze/WESAD/S13/S13_E4_Data/EDA.csv",
+          "layer": "bronze",
+          "sha256": "7d515361ebdc4eeb62e5ebb6013ddc111870af64d33fbf105c475e5ce42462f5",
+          "n_samples": 27450,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 27450,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "HR": {
+          "authoritative_path": "bronze/WESAD/S13/S13_E4_Data/HR.csv",
+          "layer": "bronze",
+          "sha256": "1d780888cac0fc6648dec3b2302ccf5c942e64aa2bb1eeed071ed4bbd441b6c8",
+          "n_samples": 6853,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 6853,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "IBI": {
+          "authoritative_path": "bronze/WESAD/S13/S13_E4_Data/IBI.csv",
+          "layer": "bronze",
+          "sha256": "baa01987b5f2706a49a3bf620c8360d134d8c4b0a7e800d1911ec575a18d81aa",
+          "n_samples": 2857,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "conformance": "IBI is event-based; not included in conformance range check.",
+            "plausibility": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_events": 2858,
+              "n_nan": 0,
+              "threshold_applied": false,
+              "note": "Event-based signal; missingness rate is undefined."
+            },
+            "conformance": {
+              "excluded": true,
+              "reason": "IBI is event-based; not included in conformance range check."
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+            }
+          }
+        },
+        "TEMP": {
+          "authoritative_path": "silver/WESAD/S13/S13_E4_Data/TEMP.csv",
+          "layer": "silver",
+          "sha256": "cdfa9a092ad3f6df4da3156a7ff5e96303f4e7cc9be9298bf475a09dc48bbd5b",
+          "n_samples": 27448,
+          "intentional_removals": {
+            "action": "e4_temp_warmup_strip",
+            "indices_replaced": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "original_values": [
+              382.21,
+              382.21,
+              382.21,
+              382.21
+            ],
+            "replacement": "NaN",
+            "source_report": "reports/wesad_cleaning.json"
+          },
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 27448,
+              "n_nan": 4,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        }
+      },
+      "respiban": {
+        "authoritative_path": "bronze/WESAD/S13/S13_respiban.txt",
+        "layer": "bronze",
+        "sha256": "aea4bf19d09d9e47416404d19c961570f35229d67a0a2f73732c240356248e16",
+        "n_rows": 4016515,
+        "intentional_removals": null,
+        "check_exclusions": {
+          "plausibility": {
+            "EDA_chest": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor.",
+            "TEMP_chest": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+          }
+        },
+        "check_outcomes": {
+          "completeness": {
+            "n_samples": 4016515,
+            "n_sequence_gaps": 0,
+            "passes_threshold": true
+          },
+          "conformance": {
+            "range_ok": true,
+            "total_violations": 0,
+            "format_ok": true,
+            "column_count_ok": true,
+            "sampling_rate_ok": true
+          },
+          "plausibility": {
+            "ACC": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "ECG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "EDA_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor."
+            },
+            "EMG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "RESP": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "TEMP_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+            }
+          }
+        }
+      }
+    },
+    "S14": {
+      "e4": {
+        "ACC": {
+          "authoritative_path": "bronze/WESAD/S14/S14_E4_Data/ACC.csv",
+          "layer": "bronze",
+          "sha256": "4efa800901bf6a6d14cf8441a87d59d8739a22a02fa01ac036400f48cb389cd3",
+          "n_samples": 223560,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 223560,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "BVP": {
+          "authoritative_path": "bronze/WESAD/S14/S14_E4_Data/BVP.csv",
+          "layer": "bronze",
+          "sha256": "e42102b2a0b7c64cc6d643e86be59298bcdc8b3e591681e5c8be3ca8e5443abc",
+          "n_samples": 447128,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "plausibility": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 447128,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": null,
+              "n_above_max": null,
+              "n_below_min": null,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+            }
+          }
+        },
+        "EDA": {
+          "authoritative_path": "bronze/WESAD/S14/S14_E4_Data/EDA.csv",
+          "layer": "bronze",
+          "sha256": "122e67f54d61f0d65ca9d3572bc3146d54b9089ee2fd3b0deba6b6bff4a7c066",
+          "n_samples": 27942,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 27942,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "HR": {
+          "authoritative_path": "bronze/WESAD/S14/S14_E4_Data/HR.csv",
+          "layer": "bronze",
+          "sha256": "d5ea2ebc32fc0d071e9e69b8210829b95f877fddcb900a1d500b2b12d3c1568c",
+          "n_samples": 6977,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 6977,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "IBI": {
+          "authoritative_path": "bronze/WESAD/S14/S14_E4_Data/IBI.csv",
+          "layer": "bronze",
+          "sha256": "caa548c9ad573f1ccecdbc0a6e5f9339961bbeaaec3561983a53ac00cc37ba2f",
+          "n_samples": 4995,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "conformance": "IBI is event-based; not included in conformance range check.",
+            "plausibility": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_events": 4996,
+              "n_nan": 0,
+              "threshold_applied": false,
+              "note": "Event-based signal; missingness rate is undefined."
+            },
+            "conformance": {
+              "excluded": true,
+              "reason": "IBI is event-based; not included in conformance range check."
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+            }
+          }
+        },
+        "TEMP": {
+          "authoritative_path": "silver/WESAD/S14/S14_E4_Data/TEMP.csv",
+          "layer": "silver",
+          "sha256": "b3edda02073299ec7f76d66e0ed20268eea3005435416aa17635c4a333de3699",
+          "n_samples": 27944,
+          "intentional_removals": {
+            "action": "e4_temp_warmup_strip",
+            "indices_replaced": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "original_values": [
+              382.21,
+              382.21,
+              382.21,
+              382.21
+            ],
+            "replacement": "NaN",
+            "source_report": "reports/wesad_cleaning.json"
+          },
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 27944,
+              "n_nan": 4,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        }
+      },
+      "respiban": {
+        "authoritative_path": "bronze/WESAD/S14/S14_respiban.txt",
+        "layer": "bronze",
+        "sha256": "6dff01d534638da190105612bdeac8fe7aa0339ba308979a86d4fe5cfe152f4c",
+        "n_rows": 4034461,
+        "intentional_removals": null,
+        "check_exclusions": {
+          "plausibility": {
+            "EDA_chest": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor.",
+            "TEMP_chest": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+          }
+        },
+        "check_outcomes": {
+          "completeness": {
+            "n_samples": 4034461,
+            "n_sequence_gaps": 0,
+            "passes_threshold": true
+          },
+          "conformance": {
+            "range_ok": true,
+            "total_violations": 0,
+            "format_ok": true,
+            "column_count_ok": true,
+            "sampling_rate_ok": true
+          },
+          "plausibility": {
+            "ACC": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "ECG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "EDA_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor."
+            },
+            "EMG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "RESP": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "TEMP_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+            }
+          }
+        }
+      }
+    },
+    "S15": {
+      "e4": {
+        "ACC": {
+          "authoritative_path": "bronze/WESAD/S15/S15_E4_Data/ACC.csv",
+          "layer": "bronze",
+          "sha256": "3aedfcd87acdf1cad3c83687effae22a5afaee99d14d3ebd8b22c7e192cfa8da",
+          "n_samples": 212568,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 212568,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "BVP": {
+          "authoritative_path": "bronze/WESAD/S15/S15_E4_Data/BVP.csv",
+          "layer": "bronze",
+          "sha256": "fe52fe7685abe2a614ee0482ebd739a9df3fd70760d4e8ff4fb22ac2924d2640",
+          "n_samples": 425139,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "plausibility": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 425139,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": null,
+              "n_above_max": null,
+              "n_below_min": null,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+            }
+          }
+        },
+        "EDA": {
+          "authoritative_path": "bronze/WESAD/S15/S15_E4_Data/EDA.csv",
+          "layer": "bronze",
+          "sha256": "9b32414eef61790e18405c31ec876c4e0eb3a6f8ec2df265ff7aa9e1ec99af3e",
+          "n_samples": 26568,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 26568,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "HR": {
+          "authoritative_path": "bronze/WESAD/S15/S15_E4_Data/HR.csv",
+          "layer": "bronze",
+          "sha256": "b7512f31c783fd90b72445b5b2db60e2703b7fcac8116714a2f381b77e57ff04",
+          "n_samples": 6633,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 6633,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "IBI": {
+          "authoritative_path": "bronze/WESAD/S15/S15_E4_Data/IBI.csv",
+          "layer": "bronze",
+          "sha256": "3492aa25c3b0947d5b68dc4a48b450e497c9aa20e46df2da0d7d931b0fd9b7f0",
+          "n_samples": 3397,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "conformance": "IBI is event-based; not included in conformance range check.",
+            "plausibility": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_events": 3398,
+              "n_nan": 0,
+              "threshold_applied": false,
+              "note": "Event-based signal; missingness rate is undefined."
+            },
+            "conformance": {
+              "excluded": true,
+              "reason": "IBI is event-based; not included in conformance range check."
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+            }
+          }
+        },
+        "TEMP": {
+          "authoritative_path": "silver/WESAD/S15/S15_E4_Data/TEMP.csv",
+          "layer": "silver",
+          "sha256": "c2010c736eb94d360fbfc7e5d0c862ac689ea6a23264fd2e4db7d3dbc7f9e8c7",
+          "n_samples": 26568,
+          "intentional_removals": {
+            "action": "e4_temp_warmup_strip",
+            "indices_replaced": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "original_values": [
+              382.21,
+              382.21,
+              382.21,
+              382.21
+            ],
+            "replacement": "NaN",
+            "source_report": "reports/wesad_cleaning.json"
+          },
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 26568,
+              "n_nan": 4,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        }
+      },
+      "respiban": {
+        "authoritative_path": "bronze/WESAD/S15/S15_respiban.txt",
+        "layer": "bronze",
+        "sha256": "b2e960ccb2c5f36c6f1c11574c3d9036548979cec9f4f735434b8dd8ad5268f7",
+        "n_rows": 3936977,
+        "intentional_removals": null,
+        "check_exclusions": {
+          "plausibility": {
+            "EDA_chest": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor.",
+            "TEMP_chest": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+          }
+        },
+        "check_outcomes": {
+          "completeness": {
+            "n_samples": 3936977,
+            "n_sequence_gaps": 0,
+            "passes_threshold": true
+          },
+          "conformance": {
+            "range_ok": true,
+            "total_violations": 0,
+            "format_ok": true,
+            "column_count_ok": true,
+            "sampling_rate_ok": true
+          },
+          "plausibility": {
+            "ACC": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "ECG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "EDA_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor."
+            },
+            "EMG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "RESP": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "TEMP_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+            }
+          }
+        }
+      }
+    },
+    "S16": {
+      "e4": {
+        "ACC": {
+          "authoritative_path": "bronze/WESAD/S16/S16_E4_Data/ACC.csv",
+          "layer": "bronze",
+          "sha256": "53a8563ce34954545e5873ad71159d4262dae89fe43046ab4b17ec79fe389870",
+          "n_samples": 227430,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 227430,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "BVP": {
+          "authoritative_path": "bronze/WESAD/S16/S16_E4_Data/BVP.csv",
+          "layer": "bronze",
+          "sha256": "7baf0ac66158bbf993b638a2a5dc41fed5b5ab8f7853244fbaca9ce3f821d50d",
+          "n_samples": 454850,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "plausibility": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 454850,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": null,
+              "n_above_max": null,
+              "n_below_min": null,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+            }
+          }
+        },
+        "EDA": {
+          "authoritative_path": "bronze/WESAD/S16/S16_E4_Data/EDA.csv",
+          "layer": "bronze",
+          "sha256": "1111b1af3cb66d671d19dcfccb1fc20a5c86b833a945d6013f14bf5556f8f186",
+          "n_samples": 28428,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 28428,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "HR": {
+          "authoritative_path": "bronze/WESAD/S16/S16_E4_Data/HR.csv",
+          "layer": "bronze",
+          "sha256": "bc98f7392b6af3e7aaa4093072c0707382e54d7ee8f96b63bf4f283172535735",
+          "n_samples": 7098,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 7098,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "IBI": {
+          "authoritative_path": "bronze/WESAD/S16/S16_E4_Data/IBI.csv",
+          "layer": "bronze",
+          "sha256": "318ebc91f71b5a07b79f070440a151fa3a96bebec8a809fd25be21255726610a",
+          "n_samples": 3937,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "conformance": "IBI is event-based; not included in conformance range check.",
+            "plausibility": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_events": 3938,
+              "n_nan": 0,
+              "threshold_applied": false,
+              "note": "Event-based signal; missingness rate is undefined."
+            },
+            "conformance": {
+              "excluded": true,
+              "reason": "IBI is event-based; not included in conformance range check."
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+            }
+          }
+        },
+        "TEMP": {
+          "authoritative_path": "silver/WESAD/S16/S16_E4_Data/TEMP.csv",
+          "layer": "silver",
+          "sha256": "af2c5b12a4dfcb4144e53fe3392f48ef5db9bee96560e043ce80b0374a87fbd0",
+          "n_samples": 28424,
+          "intentional_removals": {
+            "action": "e4_temp_warmup_strip",
+            "indices_replaced": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "original_values": [
+              382.21,
+              382.21,
+              382.21,
+              382.21
+            ],
+            "replacement": "NaN",
+            "source_report": "reports/wesad_cleaning.json"
+          },
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 28424,
+              "n_nan": 4,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        }
+      },
+      "respiban": {
+        "authoritative_path": "bronze/WESAD/S16/S16_respiban.txt",
+        "layer": "bronze",
+        "sha256": "46c3c0d0bff0e1be4078d94620c8f183540584e0cd808de20d0abb203b2448b6",
+        "n_rows": 4156017,
+        "intentional_removals": null,
+        "check_exclusions": {
+          "plausibility": {
+            "EDA_chest": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor.",
+            "TEMP_chest": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+          }
+        },
+        "check_outcomes": {
+          "completeness": {
+            "n_samples": 4156017,
+            "n_sequence_gaps": 0,
+            "passes_threshold": true
+          },
+          "conformance": {
+            "range_ok": true,
+            "total_violations": 0,
+            "format_ok": true,
+            "column_count_ok": true,
+            "sampling_rate_ok": true
+          },
+          "plausibility": {
+            "ACC": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "ECG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "EDA_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor."
+            },
+            "EMG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "RESP": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "TEMP_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+            }
+          }
+        }
+      }
+    },
+    "S17": {
+      "e4": {
+        "ACC": {
+          "authoritative_path": "bronze/WESAD/S17/S17_E4_Data/ACC.csv",
+          "layer": "bronze",
+          "sha256": "61c1ead14a151937c9fb55962063b8c7c6705123a4142fdf5e7fbc38a81966d5",
+          "n_samples": 231414,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 231414,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "BVP": {
+          "authoritative_path": "bronze/WESAD/S17/S17_E4_Data/BVP.csv",
+          "layer": "bronze",
+          "sha256": "b9114c49a31e0d42d00edcb503d905437990f5c08ea164a95d2f0f338b5df6ec",
+          "n_samples": 462825,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "plausibility": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 462825,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": null,
+              "n_above_max": null,
+              "n_below_min": null,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+            }
+          }
+        },
+        "EDA": {
+          "authoritative_path": "bronze/WESAD/S17/S17_E4_Data/EDA.csv",
+          "layer": "bronze",
+          "sha256": "b5c844eb3bce379ce08034c20bbb4a5c360424bd790dd85f39df2532142264bc",
+          "n_samples": 28926,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 28926,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "HR": {
+          "authoritative_path": "bronze/WESAD/S17/S17_E4_Data/HR.csv",
+          "layer": "bronze",
+          "sha256": "d7d6ba7132617cda4bc85be4b3993c90dd2a8f0e8b962f39c18b438ea9ef2a20",
+          "n_samples": 7222,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 7222,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "IBI": {
+          "authoritative_path": "bronze/WESAD/S17/S17_E4_Data/IBI.csv",
+          "layer": "bronze",
+          "sha256": "f86657a70d81b637a5daddca4562e6b57c9f52761cf2955119c2d63c2d4e7653",
+          "n_samples": 2137,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "conformance": "IBI is event-based; not included in conformance range check.",
+            "plausibility": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_events": 2138,
+              "n_nan": 0,
+              "threshold_applied": false,
+              "note": "Event-based signal; missingness rate is undefined."
+            },
+            "conformance": {
+              "excluded": true,
+              "reason": "IBI is event-based; not included in conformance range check."
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+            }
+          }
+        },
+        "TEMP": {
+          "authoritative_path": "silver/WESAD/S17/S17_E4_Data/TEMP.csv",
+          "layer": "silver",
+          "sha256": "3202757317ac4671cb0e5fd598fc624c2e9aefdabbe976c0cb5486484b2b7292",
+          "n_samples": 28920,
+          "intentional_removals": {
+            "action": "e4_temp_warmup_strip",
+            "indices_replaced": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "original_values": [
+              382.21,
+              382.21,
+              382.21,
+              382.21
+            ],
+            "replacement": "NaN",
+            "source_report": "reports/wesad_cleaning.json"
+          },
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 28920,
+              "n_nan": 4,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        }
+      },
+      "respiban": {
+        "authoritative_path": "bronze/WESAD/S17/S17_respiban.txt",
+        "layer": "bronze",
+        "sha256": "fcd67f4a2d36b4d71594442e8d2dfa3e0015f7f582a9b23cc928d0e6192035ca",
+        "n_rows": 4287118,
+        "intentional_removals": null,
+        "check_exclusions": {
+          "plausibility": {
+            "EDA_chest": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor.",
+            "TEMP_chest": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+          }
+        },
+        "check_outcomes": {
+          "completeness": {
+            "n_samples": 4287118,
+            "n_sequence_gaps": 0,
+            "passes_threshold": true
+          },
+          "conformance": {
+            "range_ok": true,
+            "total_violations": 0,
+            "format_ok": true,
+            "column_count_ok": true,
+            "sampling_rate_ok": true
+          },
+          "plausibility": {
+            "ACC": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "ECG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "EDA_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor."
+            },
+            "EMG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "RESP": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "TEMP_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+            }
+          }
+        }
+      }
+    },
+    "S2": {
+      "e4": {
+        "ACC": {
+          "authoritative_path": "bronze/WESAD/S2/S2_E4_Data/ACC.csv",
+          "layer": "bronze",
+          "sha256": "13cf123dbb0ab6da674d70f6e524fbf31f61a049b15f0e79125bbcc231bd0c73",
+          "n_samples": 251970,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 251970,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "BVP": {
+          "authoritative_path": "bronze/WESAD/S2/S2_E4_Data/BVP.csv",
+          "layer": "bronze",
+          "sha256": "9ca507dd3a22906a45bd11b32606bda36e9236102e2f98976423c5f17d942b11",
+          "n_samples": 503943,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "plausibility": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 503943,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": null,
+              "n_above_max": null,
+              "n_below_min": null,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+            }
+          }
+        },
+        "EDA": {
+          "authoritative_path": "bronze/WESAD/S2/S2_E4_Data/EDA.csv",
+          "layer": "bronze",
+          "sha256": "14039e1ce162ece563dacea9bf775aca3c3272373c1baddec9cd27c269185078",
+          "n_samples": 31494,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 31494,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "HR": {
+          "authoritative_path": "bronze/WESAD/S2/S2_E4_Data/HR.csv",
+          "layer": "bronze",
+          "sha256": "875ad22b4ded4e2c2c61b35c7cc3c9d489dce33782da3a5ebc1ac5c5fc0770b6",
+          "n_samples": 7865,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 7865,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "IBI": {
+          "authoritative_path": "bronze/WESAD/S2/S2_E4_Data/IBI.csv",
+          "layer": "bronze",
+          "sha256": "85f2722d457535e2a6b738a42f5ec8ad27635c94a9c4f33bea9c4decffbacaa6",
+          "n_samples": 3457,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "conformance": "IBI is event-based; not included in conformance range check.",
+            "plausibility": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_events": 3458,
+              "n_nan": 0,
+              "threshold_applied": false,
+              "note": "Event-based signal; missingness rate is undefined."
+            },
+            "conformance": {
+              "excluded": true,
+              "reason": "IBI is event-based; not included in conformance range check."
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+            }
+          }
+        },
+        "TEMP": {
+          "authoritative_path": "silver/WESAD/S2/S2_E4_Data/TEMP.csv",
+          "layer": "silver",
+          "sha256": "5318d7f5513015f5051e286d6f67e870abb850181fc1ac677ad72295c226d719",
+          "n_samples": 31496,
+          "intentional_removals": {
+            "action": "e4_temp_warmup_strip",
+            "indices_replaced": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "original_values": [
+              382.18,
+              382.18,
+              382.18,
+              382.18
+            ],
+            "replacement": "NaN",
+            "source_report": "reports/wesad_cleaning.json"
+          },
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 31496,
+              "n_nan": 4,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        }
+      },
+      "respiban": {
+        "authoritative_path": "bronze/WESAD/S2/S2_respiban.txt",
+        "layer": "bronze",
+        "sha256": "f3cb494cbfb53874733b565a1551ba21a62774a6565f7d4d987209e777f491db",
+        "n_rows": 4442067,
+        "intentional_removals": null,
+        "check_exclusions": {
+          "plausibility": {
+            "EDA_chest": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor.",
+            "TEMP_chest": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+          }
+        },
+        "check_outcomes": {
+          "completeness": {
+            "n_samples": 4442067,
+            "n_sequence_gaps": 0,
+            "passes_threshold": true
+          },
+          "conformance": {
+            "range_ok": true,
+            "total_violations": 0,
+            "format_ok": true,
+            "column_count_ok": true,
+            "sampling_rate_ok": true
+          },
+          "plausibility": {
+            "ACC": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "ECG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "EDA_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor."
+            },
+            "EMG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "RESP": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "TEMP_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+            }
+          }
+        }
+      }
+    },
+    "S3": {
+      "e4": {
+        "ACC": {
+          "authoritative_path": "bronze/WESAD/S3/S3_E4_Data/ACC.csv",
+          "layer": "bronze",
+          "sha256": "fe16a6d80196c829f563ea4a0674533ad0fc4e44a0fdef254b5c15902e4152d2",
+          "n_samples": 247152,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 247152,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "BVP": {
+          "authoritative_path": "bronze/WESAD/S3/S3_E4_Data/BVP.csv",
+          "layer": "bronze",
+          "sha256": "c768d60e6745316bfbc8321ce663e7cbef64e497e445e30f686364d0fa2e7b6a",
+          "n_samples": 494307,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "plausibility": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 494307,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": null,
+              "n_above_max": null,
+              "n_below_min": null,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+            }
+          }
+        },
+        "EDA": {
+          "authoritative_path": "bronze/WESAD/S3/S3_E4_Data/EDA.csv",
+          "layer": "bronze",
+          "sha256": "912d242cd6f9bc9e5c7008ad25874e6cd520b194aec77559761517c6e979ed54",
+          "n_samples": 30894,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 30894,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "HR": {
+          "authoritative_path": "bronze/WESAD/S3/S3_E4_Data/HR.csv",
+          "layer": "bronze",
+          "sha256": "cfe6841a56afcbb1b075fa369d300341b4404cb9ea942e8b4dbcdc3fc94481f5",
+          "n_samples": 7714,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 7714,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "IBI": {
+          "authoritative_path": "bronze/WESAD/S3/S3_E4_Data/IBI.csv",
+          "layer": "bronze",
+          "sha256": "a9c19353bfbfc0e872aae874a58c57c0be6ffd047299b8a9318325bdf5ecefb0",
+          "n_samples": 1919,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "conformance": "IBI is event-based; not included in conformance range check.",
+            "plausibility": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_events": 1920,
+              "n_nan": 0,
+              "threshold_applied": false,
+              "note": "Event-based signal; missingness rate is undefined."
+            },
+            "conformance": {
+              "excluded": true,
+              "reason": "IBI is event-based; not included in conformance range check."
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+            }
+          }
+        },
+        "TEMP": {
+          "authoritative_path": "silver/WESAD/S3/S3_E4_Data/TEMP.csv",
+          "layer": "silver",
+          "sha256": "3ad8e2ce1565a95c431070e564946dfc57c1d38e9d35bf1cb1bdc4322c689ef9",
+          "n_samples": 30888,
+          "intentional_removals": {
+            "action": "e4_temp_warmup_strip",
+            "indices_replaced": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "original_values": [
+              382.18,
+              382.18,
+              382.18,
+              382.18
+            ],
+            "replacement": "NaN",
+            "source_report": "reports/wesad_cleaning.json"
+          },
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 30888,
+              "n_nan": 4,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        }
+      },
+      "respiban": {
+        "authoritative_path": "bronze/WESAD/S3/S3_respiban.txt",
+        "layer": "bronze",
+        "sha256": "14cfb6910cb972f5feb23cf9d12b75bbb2e92f45419b24503deedf0fe3e43881",
+        "n_rows": 4643347,
+        "intentional_removals": null,
+        "check_exclusions": {
+          "plausibility": {
+            "EDA_chest": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor.",
+            "TEMP_chest": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+          }
+        },
+        "check_outcomes": {
+          "completeness": {
+            "n_samples": 4643347,
+            "n_sequence_gaps": 0,
+            "passes_threshold": true
+          },
+          "conformance": {
+            "range_ok": true,
+            "total_violations": 0,
+            "format_ok": true,
+            "column_count_ok": true,
+            "sampling_rate_ok": true
+          },
+          "plausibility": {
+            "ACC": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "ECG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "EDA_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor."
+            },
+            "EMG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "RESP": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "TEMP_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+            }
+          }
+        }
+      }
+    },
+    "S4": {
+      "e4": {
+        "ACC": {
+          "authoritative_path": "bronze/WESAD/S4/S4_E4_Data/ACC.csv",
+          "layer": "bronze",
+          "sha256": "95faca75b3f2e5170a2679d60029903e69de27686e23f46c2752adcdbee308be",
+          "n_samples": 255978,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 255978,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "BVP": {
+          "authoritative_path": "bronze/WESAD/S4/S4_E4_Data/BVP.csv",
+          "layer": "bronze",
+          "sha256": "c6d78486af716e177f439adf90a1ea03b9fdfe3c5784df3a7f9f584758f34f9f",
+          "n_samples": 511962,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "plausibility": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 511962,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": null,
+              "n_above_max": null,
+              "n_below_min": null,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+            }
+          }
+        },
+        "EDA": {
+          "authoritative_path": "bronze/WESAD/S4/S4_E4_Data/EDA.csv",
+          "layer": "bronze",
+          "sha256": "1c83a235d5ae12287395d9f634020b77571dacd9e463bf4424b74702c5d4166b",
+          "n_samples": 31998,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 31998,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "HR": {
+          "authoritative_path": "bronze/WESAD/S4/S4_E4_Data/HR.csv",
+          "layer": "bronze",
+          "sha256": "e5ce1df9857f1e2e769d409b3b6149e4f6c227d62ca43f4fb47391ec7d274eda",
+          "n_samples": 7990,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 7990,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "IBI": {
+          "authoritative_path": "bronze/WESAD/S4/S4_E4_Data/IBI.csv",
+          "layer": "bronze",
+          "sha256": "ea3fff0f01d44a75871ea39fec61835cf936ca03c10e6fe97619e21da9368edb",
+          "n_samples": 3277,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "conformance": "IBI is event-based; not included in conformance range check.",
+            "plausibility": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_events": 3278,
+              "n_nan": 0,
+              "threshold_applied": false,
+              "note": "Event-based signal; missingness rate is undefined."
+            },
+            "conformance": {
+              "excluded": true,
+              "reason": "IBI is event-based; not included in conformance range check."
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+            }
+          }
+        },
+        "TEMP": {
+          "authoritative_path": "silver/WESAD/S4/S4_E4_Data/TEMP.csv",
+          "layer": "silver",
+          "sha256": "8999194b38fdb2722789d0fb5ebb819219eb03756e81afbbf52c9ca0372e7761",
+          "n_samples": 31992,
+          "intentional_removals": {
+            "action": "e4_temp_warmup_strip",
+            "indices_replaced": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "original_values": [
+              382.21,
+              382.21,
+              382.21,
+              382.21
+            ],
+            "replacement": "NaN",
+            "source_report": "reports/wesad_cleaning.json"
+          },
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 31992,
+              "n_nan": 4,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        }
+      },
+      "respiban": {
+        "authoritative_path": "bronze/WESAD/S4/S4_respiban.txt",
+        "layer": "bronze",
+        "sha256": "8a0613617aeadf6c78098df3162c2d930654f34a4289ff3b3c2cdf61c5b44130",
+        "n_rows": 4588553,
+        "intentional_removals": null,
+        "check_exclusions": {
+          "plausibility": {
+            "EDA_chest": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor.",
+            "TEMP_chest": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+          }
+        },
+        "check_outcomes": {
+          "completeness": {
+            "n_samples": 4588553,
+            "n_sequence_gaps": 0,
+            "passes_threshold": true
+          },
+          "conformance": {
+            "range_ok": true,
+            "total_violations": 0,
+            "format_ok": true,
+            "column_count_ok": true,
+            "sampling_rate_ok": true
+          },
+          "plausibility": {
+            "ACC": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "ECG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "EDA_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor."
+            },
+            "EMG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "RESP": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "TEMP_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+            }
+          }
+        }
+      }
+    },
+    "S5": {
+      "e4": {
+        "ACC": {
+          "authoritative_path": "bronze/WESAD/S5/S5_E4_Data/ACC.csv",
+          "layer": "bronze",
+          "sha256": "f6b68b81462bc98423a035e0ef34fdf5723c20cabc494a5102ee6a49cbe82a5b",
+          "n_samples": 241620,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 241620,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "BVP": {
+          "authoritative_path": "bronze/WESAD/S5/S5_E4_Data/BVP.csv",
+          "layer": "bronze",
+          "sha256": "5e22f3a8c4f625b657f702092e56a41134beba9a0ff3bb3d1c1e4fc3756d18b8",
+          "n_samples": 483241,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "plausibility": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 483241,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": null,
+              "n_above_max": null,
+              "n_below_min": null,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+            }
+          }
+        },
+        "EDA": {
+          "authoritative_path": "bronze/WESAD/S5/S5_E4_Data/EDA.csv",
+          "layer": "bronze",
+          "sha256": "36b53390b4f0452b03893129aa42eda040ad4512146cce94012bc1f67f6fc415",
+          "n_samples": 30204,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 30204,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "HR": {
+          "authoritative_path": "bronze/WESAD/S5/S5_E4_Data/HR.csv",
+          "layer": "bronze",
+          "sha256": "d657f294cabe6ef5e89a616855b4e7424ca5e149e378c94086251dad1e47b386",
+          "n_samples": 7541,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 7541,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "IBI": {
+          "authoritative_path": "bronze/WESAD/S5/S5_E4_Data/IBI.csv",
+          "layer": "bronze",
+          "sha256": "6717e5bacdee6d905c05519ce4e667c57733ff9d34b2753e17b1ee2f0f2ad276",
+          "n_samples": 1229,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "conformance": "IBI is event-based; not included in conformance range check.",
+            "plausibility": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_events": 1230,
+              "n_nan": 0,
+              "threshold_applied": false,
+              "note": "Event-based signal; missingness rate is undefined."
+            },
+            "conformance": {
+              "excluded": true,
+              "reason": "IBI is event-based; not included in conformance range check."
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+            }
+          }
+        },
+        "TEMP": {
+          "authoritative_path": "silver/WESAD/S5/S5_E4_Data/TEMP.csv",
+          "layer": "silver",
+          "sha256": "8000ba3caf595b7193b5197fe1502ef277c68940d568581d54d4c5375529393f",
+          "n_samples": 30200,
+          "intentional_removals": {
+            "action": "e4_temp_warmup_strip",
+            "indices_replaced": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "original_values": [
+              382.21,
+              382.21,
+              382.21,
+              382.21
+            ],
+            "replacement": "NaN",
+            "source_report": "reports/wesad_cleaning.json"
+          },
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 30200,
+              "n_nan": 4,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        }
+      },
+      "respiban": {
+        "authoritative_path": "bronze/WESAD/S5/S5_respiban.txt",
+        "layer": "bronze",
+        "sha256": "af96990033177e6ef29c88255e2dbe46ed29d3707be3f430d7a6acc24b917a51",
+        "n_rows": 4498418,
+        "intentional_removals": null,
+        "check_exclusions": {
+          "plausibility": {
+            "EDA_chest": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor.",
+            "TEMP_chest": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+          }
+        },
+        "check_outcomes": {
+          "completeness": {
+            "n_samples": 4498418,
+            "n_sequence_gaps": 0,
+            "passes_threshold": true
+          },
+          "conformance": {
+            "range_ok": true,
+            "total_violations": 0,
+            "format_ok": true,
+            "column_count_ok": true,
+            "sampling_rate_ok": true
+          },
+          "plausibility": {
+            "ACC": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "ECG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "EDA_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor."
+            },
+            "EMG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "RESP": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "TEMP_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+            }
+          }
+        }
+      }
+    },
+    "S6": {
+      "e4": {
+        "ACC": {
+          "authoritative_path": "bronze/WESAD/S6/S6_E4_Data/ACC.csv",
+          "layer": "bronze",
+          "sha256": "2178a3aebfe3fe2b20a811792d125c642ece54bd01d8d04951953fb5037ea7f2",
+          "n_samples": 266352,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 266352,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "BVP": {
+          "authoritative_path": "bronze/WESAD/S6/S6_E4_Data/BVP.csv",
+          "layer": "bronze",
+          "sha256": "0513dcaed6b55f3c6237d7949139f49b6e67f4c8c0dbedb41ea16169dec2a40d",
+          "n_samples": 532708,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "plausibility": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 532708,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": null,
+              "n_above_max": null,
+              "n_below_min": null,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+            }
+          }
+        },
+        "EDA": {
+          "authoritative_path": "bronze/WESAD/S6/S6_E4_Data/EDA.csv",
+          "layer": "bronze",
+          "sha256": "49cfd9345c1899d903d34fdec2293feb1cce0fc0717dd8a0d6e57355ea44a441",
+          "n_samples": 33294,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 33294,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "HR": {
+          "authoritative_path": "bronze/WESAD/S6/S6_E4_Data/HR.csv",
+          "layer": "bronze",
+          "sha256": "8b668b6e00425383544efc0fd94163cadc3a5f44b57c728b4efda6aa117f7c3b",
+          "n_samples": 8314,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 8314,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "IBI": {
+          "authoritative_path": "bronze/WESAD/S6/S6_E4_Data/IBI.csv",
+          "layer": "bronze",
+          "sha256": "5a4b8223206084e72618b44b9ac7cf8489aa0bdfa44738e481182886c3e04641",
+          "n_samples": 2827,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "conformance": "IBI is event-based; not included in conformance range check.",
+            "plausibility": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_events": 2828,
+              "n_nan": 0,
+              "threshold_applied": false,
+              "note": "Event-based signal; missingness rate is undefined."
+            },
+            "conformance": {
+              "excluded": true,
+              "reason": "IBI is event-based; not included in conformance range check."
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+            }
+          }
+        },
+        "TEMP": {
+          "authoritative_path": "silver/WESAD/S6/S6_E4_Data/TEMP.csv",
+          "layer": "silver",
+          "sha256": "a8eafe152e17ab6060ed940511c05037367b29fc7069760d693dbbd82179c789",
+          "n_samples": 33288,
+          "intentional_removals": {
+            "action": "e4_temp_warmup_strip",
+            "indices_replaced": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "original_values": [
+              382.21,
+              382.21,
+              382.21,
+              382.21
+            ],
+            "replacement": "NaN",
+            "source_report": "reports/wesad_cleaning.json"
+          },
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 33288,
+              "n_nan": 4,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        }
+      },
+      "respiban": {
+        "authoritative_path": "bronze/WESAD/S6/S6_respiban.txt",
+        "layer": "bronze",
+        "sha256": "0b7e41b5eaa7b531e74964eee09f87e99dbcc0857cf1add409d19544a55c5c09",
+        "n_rows": 5055420,
+        "intentional_removals": null,
+        "check_exclusions": {
+          "plausibility": {
+            "EDA_chest": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor.",
+            "TEMP_chest": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+          }
+        },
+        "check_outcomes": {
+          "completeness": {
+            "n_samples": 5055420,
+            "n_sequence_gaps": 0,
+            "passes_threshold": true
+          },
+          "conformance": {
+            "range_ok": true,
+            "total_violations": 0,
+            "format_ok": true,
+            "column_count_ok": true,
+            "sampling_rate_ok": true
+          },
+          "plausibility": {
+            "ACC": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "ECG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "EDA_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor."
+            },
+            "EMG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "RESP": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "TEMP_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+            }
+          }
+        }
+      }
+    },
+    "S7": {
+      "e4": {
+        "ACC": {
+          "authoritative_path": "bronze/WESAD/S7/S7_E4_Data/ACC.csv",
+          "layer": "bronze",
+          "sha256": "60e1821bcae5c681d9a8a8065101c58e81f039d1e450719301daaf6ccf43997e",
+          "n_samples": 207822,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 207822,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "BVP": {
+          "authoritative_path": "bronze/WESAD/S7/S7_E4_Data/BVP.csv",
+          "layer": "bronze",
+          "sha256": "2f848812e5cc547d5f26f4cacb8a06de1e7ab65df99799430fc31d560c07f84f",
+          "n_samples": 415646,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "plausibility": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 415646,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": null,
+              "n_above_max": null,
+              "n_below_min": null,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+            }
+          }
+        },
+        "EDA": {
+          "authoritative_path": "bronze/WESAD/S7/S7_E4_Data/EDA.csv",
+          "layer": "bronze",
+          "sha256": "d08a2830e4bf9854cce410f86f4e84da3aaeb6291c520df857bdf492729c0019",
+          "n_samples": 25974,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 25974,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "HR": {
+          "authoritative_path": "bronze/WESAD/S7/S7_E4_Data/HR.csv",
+          "layer": "bronze",
+          "sha256": "00b5b9dac78d43b92b0017414bc33a61bc890f0eb758b6daf5b7424d5c8c885d",
+          "n_samples": 6485,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 6485,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "IBI": {
+          "authoritative_path": "bronze/WESAD/S7/S7_E4_Data/IBI.csv",
+          "layer": "bronze",
+          "sha256": "df77840ba4814bb0bd05881cd23acbadae1de1754ddf943bc092a103e63be73d",
+          "n_samples": 2947,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "conformance": "IBI is event-based; not included in conformance range check.",
+            "plausibility": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_events": 2948,
+              "n_nan": 0,
+              "threshold_applied": false,
+              "note": "Event-based signal; missingness rate is undefined."
+            },
+            "conformance": {
+              "excluded": true,
+              "reason": "IBI is event-based; not included in conformance range check."
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+            }
+          }
+        },
+        "TEMP": {
+          "authoritative_path": "silver/WESAD/S7/S7_E4_Data/TEMP.csv",
+          "layer": "silver",
+          "sha256": "913c2fa271b831e2c329332852ccfa71d0977d6c14c59c77e1bf10fac3b36576",
+          "n_samples": 25976,
+          "intentional_removals": {
+            "action": "e4_temp_warmup_strip",
+            "indices_replaced": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "original_values": [
+              382.21,
+              382.21,
+              382.21,
+              382.21
+            ],
+            "replacement": "NaN",
+            "source_report": "reports/wesad_cleaning.json"
+          },
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 25976,
+              "n_nan": 4,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        }
+      },
+      "respiban": {
+        "authoritative_path": "bronze/WESAD/S7/S7_respiban.txt",
+        "layer": "bronze",
+        "sha256": "94a3384aa321037b431456ef6e77bbbac949ef20c0ea2b46f9596ece04136405",
+        "n_rows": 3785775,
+        "intentional_removals": null,
+        "check_exclusions": {
+          "plausibility": {
+            "EDA_chest": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor.",
+            "TEMP_chest": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+          }
+        },
+        "check_outcomes": {
+          "completeness": {
+            "n_samples": 3785775,
+            "n_sequence_gaps": 0,
+            "passes_threshold": true
+          },
+          "conformance": {
+            "range_ok": true,
+            "total_violations": 0,
+            "format_ok": true,
+            "column_count_ok": true,
+            "sampling_rate_ok": true
+          },
+          "plausibility": {
+            "ACC": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "ECG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "EDA_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor."
+            },
+            "EMG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "RESP": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "TEMP_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+            }
+          }
+        }
+      }
+    },
+    "S8": {
+      "e4": {
+        "ACC": {
+          "authoritative_path": "bronze/WESAD/S8/S8_E4_Data/ACC.csv",
+          "layer": "bronze",
+          "sha256": "613cd1a57023c712b6077510607537743a61fbde438e3a78e76bc4758858ab40",
+          "n_samples": 212430,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 212430,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "BVP": {
+          "authoritative_path": "bronze/WESAD/S8/S8_E4_Data/BVP.csv",
+          "layer": "bronze",
+          "sha256": "539133b300134d54febde3c3bcdae57a328bff8a1c4e258cde01241de98c667b",
+          "n_samples": 424864,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "plausibility": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 424864,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": null,
+              "n_above_max": null,
+              "n_below_min": null,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+            }
+          }
+        },
+        "EDA": {
+          "authoritative_path": "bronze/WESAD/S8/S8_E4_Data/EDA.csv",
+          "layer": "bronze",
+          "sha256": "a69c262781a59a59b7c7edca7f63ffb162dfe4c8f07e40e5397ba5ba83090962",
+          "n_samples": 26550,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 26550,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "HR": {
+          "authoritative_path": "bronze/WESAD/S8/S8_E4_Data/HR.csv",
+          "layer": "bronze",
+          "sha256": "b6d3f535900bc62918539b7ed17b3c48497bbc6513e9caa9e79a2e417a7917e4",
+          "n_samples": 6629,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 6629,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "IBI": {
+          "authoritative_path": "bronze/WESAD/S8/S8_E4_Data/IBI.csv",
+          "layer": "bronze",
+          "sha256": "795b8a7d011763d2ba9370dd31a92d03f50f9889ed9d383888bf2300ee850119",
+          "n_samples": 2377,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "conformance": "IBI is event-based; not included in conformance range check.",
+            "plausibility": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_events": 2378,
+              "n_nan": 0,
+              "threshold_applied": false,
+              "note": "Event-based signal; missingness rate is undefined."
+            },
+            "conformance": {
+              "excluded": true,
+              "reason": "IBI is event-based; not included in conformance range check."
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+            }
+          }
+        },
+        "TEMP": {
+          "authoritative_path": "silver/WESAD/S8/S8_E4_Data/TEMP.csv",
+          "layer": "silver",
+          "sha256": "73c03eeaea0d2febcbb18142b1237b7fc281bfad9b4b6aff9a44edcf7ecc83e4",
+          "n_samples": 26552,
+          "intentional_removals": {
+            "action": "e4_temp_warmup_strip",
+            "indices_replaced": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "original_values": [
+              382.21,
+              382.21,
+              382.21,
+              382.21
+            ],
+            "replacement": "NaN",
+            "source_report": "reports/wesad_cleaning.json"
+          },
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 26552,
+              "n_nan": 4,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        }
+      },
+      "respiban": {
+        "authoritative_path": "bronze/WESAD/S8/S8_respiban.txt",
+        "layer": "bronze",
+        "sha256": "781f93ba217e65b524c5eddab2cdbe11f6f01b50668c827bfceaf4faece923c4",
+        "n_rows": 3959911,
+        "intentional_removals": null,
+        "check_exclusions": {
+          "plausibility": {
+            "EDA_chest": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor.",
+            "TEMP_chest": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+          }
+        },
+        "check_outcomes": {
+          "completeness": {
+            "n_samples": 3959911,
+            "n_sequence_gaps": 0,
+            "passes_threshold": true
+          },
+          "conformance": {
+            "range_ok": true,
+            "total_violations": 0,
+            "format_ok": true,
+            "column_count_ok": true,
+            "sampling_rate_ok": true
+          },
+          "plausibility": {
+            "ACC": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "ECG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "EDA_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor."
+            },
+            "EMG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "RESP": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "TEMP_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+            }
+          }
+        }
+      }
+    },
+    "S9": {
+      "e4": {
+        "ACC": {
+          "authoritative_path": "bronze/WESAD/S9/S9_E4_Data/ACC.csv",
+          "layer": "bronze",
+          "sha256": "2ce184cc603482168bdcc0e4769682b082e1e21fad4287ac198790972fd9ade8",
+          "n_samples": 199314,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 199314,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "BVP": {
+          "authoritative_path": "bronze/WESAD/S9/S9_E4_Data/BVP.csv",
+          "layer": "bronze",
+          "sha256": "2d320545db76316f9b20d57b85f144762f4f3609d44b8b09689cebfd76623f27",
+          "n_samples": 398629,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "plausibility": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 398629,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": null,
+              "n_above_max": null,
+              "n_below_min": null,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "BVP is excluded from plausibility checking. No device output range is documented in WESAD materials."
+            }
+          }
+        },
+        "EDA": {
+          "authoritative_path": "bronze/WESAD/S9/S9_E4_Data/EDA.csv",
+          "layer": "bronze",
+          "sha256": "719e702fb313e815785330443ac41ec2d0e602156ffb88112b467c62c99494c0",
+          "n_samples": 24912,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 24912,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "HR": {
+          "authoritative_path": "bronze/WESAD/S9/S9_E4_Data/HR.csv",
+          "layer": "bronze",
+          "sha256": "806fc19f91c30b3dec334f43ec4e6491c04a0347928ad5e33d2d5e71ebd8c341",
+          "n_samples": 6219,
+          "intentional_removals": null,
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 6219,
+              "n_nan": 0,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        },
+        "IBI": {
+          "authoritative_path": "bronze/WESAD/S9/S9_E4_Data/IBI.csv",
+          "layer": "bronze",
+          "sha256": "fea7a26b8245c6b319e5c43d471cad7a809cc8df1934ee850514e14a4f4439d3",
+          "n_samples": 3277,
+          "intentional_removals": null,
+          "check_exclusions": {
+            "conformance": "IBI is event-based; not included in conformance range check.",
+            "plausibility": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+          },
+          "check_outcomes": {
+            "completeness": {
+              "n_events": 3278,
+              "n_nan": 0,
+              "threshold_applied": false,
+              "note": "Event-based signal; missingness rate is undefined."
+            },
+            "conformance": {
+              "excluded": true,
+              "reason": "IBI is event-based; not included in conformance range check."
+            },
+            "plausibility": {
+              "excluded": true,
+              "reason": "IBI is excluded from plausibility checking. HRV derivation requires consecutive intervals and is out of scope."
+            }
+          }
+        },
+        "TEMP": {
+          "authoritative_path": "silver/WESAD/S9/S9_E4_Data/TEMP.csv",
+          "layer": "silver",
+          "sha256": "fa9236bb8b11fad20c5e197a7d831ec9740b57614d9b9ba2300f320f16a41347",
+          "n_samples": 24912,
+          "intentional_removals": {
+            "action": "e4_temp_warmup_strip",
+            "indices_replaced": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "original_values": [
+              382.21,
+              382.21,
+              382.21,
+              382.21
+            ],
+            "replacement": "NaN",
+            "source_report": "reports/wesad_cleaning.json"
+          },
+          "check_exclusions": {},
+          "check_outcomes": {
+            "completeness": {
+              "n_samples": 24912,
+              "n_nan": 4,
+              "missingness_rate": 0.0,
+              "passes_threshold": true
+            },
+            "conformance": {
+              "non_numeric_ok": true,
+              "n_non_numeric": 0,
+              "range_ok": true,
+              "n_above_max": 0,
+              "n_below_min": 0,
+              "sampling_rate_ok": true
+            },
+            "plausibility": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            }
+          }
+        }
+      },
+      "respiban": {
+        "authoritative_path": "bronze/WESAD/S9/S9_respiban.txt",
+        "layer": "bronze",
+        "sha256": "67da755f7fc89777fbbdc35e671a3fe0b3b192a82deaf1f4c2e7f06d60bc387f",
+        "n_rows": 3749760,
+        "intentional_removals": null,
+        "check_exclusions": {
+          "plausibility": {
+            "EDA_chest": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor.",
+            "TEMP_chest": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+          }
+        },
+        "check_outcomes": {
+          "completeness": {
+            "n_samples": 3749760,
+            "n_sequence_gaps": 0,
+            "passes_threshold": true
+          },
+          "conformance": {
+            "range_ok": true,
+            "total_violations": 0,
+            "format_ok": true,
+            "column_count_ok": true,
+            "sampling_rate_ok": true
+          },
+          "plausibility": {
+            "ACC": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "ECG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "EDA_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH2 (EDA) has no config bound. The config EDA entry applies to the E4 wrist sensor."
+            },
+            "EMG": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "RESP": {
+              "excluded": false,
+              "n_violations": 0,
+              "passes_threshold": true
+            },
+            "TEMP_chest": {
+              "excluded": true,
+              "reason": "RespiBAN CH4 (TEMP) has no config bound. The config skin_temperature entry applies to the E4 wrist sensor."
+            }
+          }
+        }
+      }
+    }
+  }
+}

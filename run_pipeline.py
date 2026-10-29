@@ -27,6 +27,7 @@ STAGES = [
     ("Post-cleaning checks",               "src.checks.post_cleaning",    "main"),
     ("Governance artefacts",               "src.governance",              "main"),
     ("Quality report",                     "src.report",                  "main"),
+    ("Gold manifest",                      "src.gold_manifest",           "main"),
 ]
 
 

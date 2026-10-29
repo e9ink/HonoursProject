@@ -9,7 +9,15 @@ This project designs and implements a data quality and governance framework for 
 ```
 bronze/          Raw, immutable participant data. Never written to by any pipeline code.
 silver/          Cleaned participant data (E4 TEMP warm-up artefact replaced with NaN).
-gold/            Governance outputs: lineage metadata (gold/WESAD/wesad_lineage.json).
+gold/            Gold dataset manifest and governance outputs:
+                   wesad_lineage.json       Provenance chain for each signal.
+                   wesad_gold_manifest.json Analysis-ready dataset manifest: one entry per
+                                            participant and signal file with authoritative
+                                            path (Silver for E4 TEMP, Bronze for all others),
+                                            SHA-256 checksum, sample count, post-cleaning
+                                            check outcomes, intentional removals, and
+                                            exclusion flags. No data is copied; Gold is
+                                            defined as the Silver and Bronze files listed here.
 config/          YAML configuration files:
                    experiments.yaml        Pre-registered fault injection experiment design.
                    physiological_ranges.yaml  Per-signal physiological and device bounds.
@@ -27,6 +35,10 @@ reports/         Pipeline measurement outputs (JSON). One file per check per dat
                    wesad_governance.json             Governance audit trail.
                    wesad_quality_report.json         Final before/after summary report.
                    experiments/                      Fault injection results (when run).
+gold/WESAD/        Gold layer outputs:
+                   wesad_lineage.json                Signal provenance chain.
+                   wesad_gold_manifest.json          Gold dataset manifest (paths, checksums,
+                                                     check outcomes, intentional removals).
 src/             Python source code:
                    profiling.py            Bronze profiling.
                    checks/conformance.py   Conformance check.
@@ -37,6 +49,7 @@ src/             Python source code:
                    checks/post_cleaning.py Post-cleaning re-checks.
                    governance.py           Governance artefacts (lineage and audit trail).
                    report.py               Final quality report.
+                   gold_manifest.py        Gold dataset manifest generator and verifier.
                    experiments/            Fault injection harness and runner.
 tests/           pytest unit tests for check modules and injectors.
 docs/            Decision log and governance documents:
