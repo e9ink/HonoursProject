@@ -1,0 +1,784 @@
+{
+  "_note": "Reference numbers recorded before final-tidy changes. Do not modify.",
+  "conformance_before": {
+    "summary": {
+      "format_errors": [],
+      "n_format_errors": 0,
+      "n_sampling_violations": 0,
+      "overall_range_violation_rate": 1.2e-07,
+      "passes_threshold": false,
+      "sampling_violations": [],
+      "threshold_max_conformance_violation_rate": 0.0,
+      "total_non_numeric_violations": 0,
+      "total_range_cells_checked": 514713128,
+      "total_range_violations": 60
+    },
+    "per_participant": {
+      "S10": {
+        "e4_range_violations": 4,
+        "chest_range_violations": 0
+      },
+      "S11": {
+        "e4_range_violations": 4,
+        "chest_range_violations": 0
+      },
+      "S13": {
+        "e4_range_violations": 4,
+        "chest_range_violations": 0
+      },
+      "S14": {
+        "e4_range_violations": 4,
+        "chest_range_violations": 0
+      },
+      "S15": {
+        "e4_range_violations": 4,
+        "chest_range_violations": 0
+      },
+      "S16": {
+        "e4_range_violations": 4,
+        "chest_range_violations": 0
+      },
+      "S17": {
+        "e4_range_violations": 4,
+        "chest_range_violations": 0
+      },
+      "S2": {
+        "e4_range_violations": 4,
+        "chest_range_violations": 0
+      },
+      "S3": {
+        "e4_range_violations": 4,
+        "chest_range_violations": 0
+      },
+      "S4": {
+        "e4_range_violations": 4,
+        "chest_range_violations": 0
+      },
+      "S5": {
+        "e4_range_violations": 4,
+        "chest_range_violations": 0
+      },
+      "S6": {
+        "e4_range_violations": 4,
+        "chest_range_violations": 0
+      },
+      "S7": {
+        "e4_range_violations": 4,
+        "chest_range_violations": 0
+      },
+      "S8": {
+        "e4_range_violations": 4,
+        "chest_range_violations": 0
+      },
+      "S9": {
+        "e4_range_violations": 4,
+        "chest_range_violations": 0
+      }
+    }
+  },
+  "conformance_after": {
+    "summary": {
+      "format_errors": [],
+      "n_format_errors": 0,
+      "n_sampling_violations": 0,
+      "overall_range_violation_rate": 0.0,
+      "sampling_violations": [],
+      "total_non_numeric_violations": 0,
+      "total_range_cells_checked": 514713128,
+      "total_range_violations": 0
+    }
+  },
+  "completeness_before": {
+    "summary": {
+      "chest_nan_rate": 0.0,
+      "chest_sequence_gap_rate": 0.0,
+      "chest_total_dropped_samples": 0,
+      "chest_total_expected_samples": 62935498,
+      "chest_total_nan_cells": 0,
+      "dataset_passes_threshold": true,
+      "e4_overall_missingness_rate": 0.0,
+      "e4_total_cells_checked": 18073707,
+      "e4_total_nan_cells": 0,
+      "note_ibi": "IBI is event-based; no missingness rate is defined for it and it is excluded from the threshold comparison. See per-participant e4.IBI entries for event and NaN counts.",
+      "per_participant_passes": {
+        "S10": true,
+        "S11": true,
+        "S13": true,
+        "S14": true,
+        "S15": true,
+        "S16": true,
+        "S17": true,
+        "S2": true,
+        "S3": true,
+        "S4": true,
+        "S5": true,
+        "S6": true,
+        "S7": true,
+        "S8": true,
+        "S9": true
+      },
+      "threshold_max_missingness_rate": 0.0
+    },
+    "per_participant_missingness_rates": {
+      "S10": {
+        "e4_missingness_rates": {
+          "ACC": 0.0,
+          "BVP": 0.0,
+          "EDA": 0.0,
+          "HR": 0.0,
+          "TEMP": 0.0
+        },
+        "chest_n_sequence_gaps": 0
+      },
+      "S11": {
+        "e4_missingness_rates": {
+          "ACC": 0.0,
+          "BVP": 0.0,
+          "EDA": 0.0,
+          "HR": 0.0,
+          "TEMP": 0.0
+        },
+        "chest_n_sequence_gaps": 0
+      },
+      "S13": {
+        "e4_missingness_rates": {
+          "ACC": 0.0,
+          "BVP": 0.0,
+          "EDA": 0.0,
+          "HR": 0.0,
+          "TEMP": 0.0
+        },
+        "chest_n_sequence_gaps": 0
+      },
+      "S14": {
+        "e4_missingness_rates": {
+          "ACC": 0.0,
+          "BVP": 0.0,
+          "EDA": 0.0,
+          "HR": 0.0,
+          "TEMP": 0.0
+        },
+        "chest_n_sequence_gaps": 0
+      },
+      "S15": {
+        "e4_missingness_rates": {
+          "ACC": 0.0,
+          "BVP": 0.0,
+          "EDA": 0.0,
+          "HR": 0.0,
+          "TEMP": 0.0
+        },
+        "chest_n_sequence_gaps": 0
+      },
+      "S16": {
+        "e4_missingness_rates": {
+          "ACC": 0.0,
+          "BVP": 0.0,
+          "EDA": 0.0,
+          "HR": 0.0,
+          "TEMP": 0.0
+        },
+        "chest_n_sequence_gaps": 0
+      },
+      "S17": {
+        "e4_missingness_rates": {
+          "ACC": 0.0,
+          "BVP": 0.0,
+          "EDA": 0.0,
+          "HR": 0.0,
+          "TEMP": 0.0
+        },
+        "chest_n_sequence_gaps": 0
+      },
+      "S2": {
+        "e4_missingness_rates": {
+          "ACC": 0.0,
+          "BVP": 0.0,
+          "EDA": 0.0,
+          "HR": 0.0,
+          "TEMP": 0.0
+        },
+        "chest_n_sequence_gaps": 0
+      },
+      "S3": {
+        "e4_missingness_rates": {
+          "ACC": 0.0,
+          "BVP": 0.0,
+          "EDA": 0.0,
+          "HR": 0.0,
+          "TEMP": 0.0
+        },
+        "chest_n_sequence_gaps": 0
+      },
+      "S4": {
+        "e4_missingness_rates": {
+          "ACC": 0.0,
+          "BVP": 0.0,
+          "EDA": 0.0,
+          "HR": 0.0,
+          "TEMP": 0.0
+        },
+        "chest_n_sequence_gaps": 0
+      },
+      "S5": {
+        "e4_missingness_rates": {
+          "ACC": 0.0,
+          "BVP": 0.0,
+          "EDA": 0.0,
+          "HR": 0.0,
+          "TEMP": 0.0
+        },
+        "chest_n_sequence_gaps": 0
+      },
+      "S6": {
+        "e4_missingness_rates": {
+          "ACC": 0.0,
+          "BVP": 0.0,
+          "EDA": 0.0,
+          "HR": 0.0,
+          "TEMP": 0.0
+        },
+        "chest_n_sequence_gaps": 0
+      },
+      "S7": {
+        "e4_missingness_rates": {
+          "ACC": 0.0,
+          "BVP": 0.0,
+          "EDA": 0.0,
+          "HR": 0.0,
+          "TEMP": 0.0
+        },
+        "chest_n_sequence_gaps": 0
+      },
+      "S8": {
+        "e4_missingness_rates": {
+          "ACC": 0.0,
+          "BVP": 0.0,
+          "EDA": 0.0,
+          "HR": 0.0,
+          "TEMP": 0.0
+        },
+        "chest_n_sequence_gaps": 0
+      },
+      "S9": {
+        "e4_missingness_rates": {
+          "ACC": 0.0,
+          "BVP": 0.0,
+          "EDA": 0.0,
+          "HR": 0.0,
+          "TEMP": 0.0
+        },
+        "chest_n_sequence_gaps": 0
+      }
+    }
+  },
+  "completeness_after": {
+    "summary": {
+      "chest_nan_rate": 0.0,
+      "chest_sequence_gap_rate": 0.0,
+      "chest_total_dropped_samples": 0,
+      "chest_total_expected_samples": 62935498,
+      "chest_total_nan_cells": 0,
+      "dataset_passes_threshold": true,
+      "e4_intentional_removals": 60,
+      "e4_overall_missingness_rate": 0.0,
+      "e4_total_cells_checked": 18073707,
+      "e4_total_nan_cells": 60,
+      "e4_unintentional_nan_cells": 0,
+      "intentional_removals_note": "e4_overall_missingness_rate is based on unintentional NaN only. 60 samples were intentionally removed during cleaning (documented in reports/wesad_cleaning.json) and are excluded from the missingness rate.",
+      "note_ibi": "IBI is event-based; no missingness rate is defined for it and it is excluded from the threshold comparison. See per-participant e4.IBI entries for event and NaN counts.",
+      "per_participant_passes": {
+        "S10": true,
+        "S11": true,
+        "S13": true,
+        "S14": true,
+        "S15": true,
+        "S16": true,
+        "S17": true,
+        "S2": true,
+        "S3": true,
+        "S4": true,
+        "S5": true,
+        "S6": true,
+        "S7": true,
+        "S8": true,
+        "S9": true
+      },
+      "threshold_max_missingness_rate": 0.0
+    }
+  },
+  "plausibility_before": {
+    "summary": {
+      "dataset_passes_threshold": true,
+      "device_flagged_count": 0,
+      "device_flagged_rate": 0.0,
+      "note_excluded": "BVP and IBI are excluded from plausibility checking per supervisor confirmation (Dr. Tobias Cibis, 2026-08-27). RespiBAN CH2 (EDA) and CH4 (TEMP) have no config bounds and are not checked.",
+      "overall_failure_rate": 1.5e-07,
+      "per_participant_passes": {
+        "S10": true,
+        "S11": true,
+        "S13": true,
+        "S14": true,
+        "S15": true,
+        "S16": true,
+        "S17": true,
+        "S2": true,
+        "S3": true,
+        "S4": true,
+        "S5": true,
+        "S6": true,
+        "S7": true,
+        "S8": true,
+        "S9": true
+      },
+      "physiological_implausible_count": 60,
+      "physiological_implausible_rate": 1.5e-07,
+      "threshold_max_plausibility_failure_rate": 0.01,
+      "total_samples_checked": 388842132,
+      "total_violations": 60
+    },
+    "per_participant": {
+      "S10": {
+        "e4_total_violations": 4
+      },
+      "S11": {
+        "e4_total_violations": 4
+      },
+      "S13": {
+        "e4_total_violations": 4
+      },
+      "S14": {
+        "e4_total_violations": 4
+      },
+      "S15": {
+        "e4_total_violations": 4
+      },
+      "S16": {
+        "e4_total_violations": 4
+      },
+      "S17": {
+        "e4_total_violations": 4
+      },
+      "S2": {
+        "e4_total_violations": 4
+      },
+      "S3": {
+        "e4_total_violations": 4
+      },
+      "S4": {
+        "e4_total_violations": 4
+      },
+      "S5": {
+        "e4_total_violations": 4
+      },
+      "S6": {
+        "e4_total_violations": 4
+      },
+      "S7": {
+        "e4_total_violations": 4
+      },
+      "S8": {
+        "e4_total_violations": 4
+      },
+      "S9": {
+        "e4_total_violations": 4
+      }
+    }
+  },
+  "plausibility_after": {
+    "summary": {
+      "dataset_passes_threshold": true,
+      "device_flagged_count": 0,
+      "device_flagged_rate": 0.0,
+      "note_excluded": "BVP and IBI are excluded from plausibility checking per supervisor confirmation (Dr. Tobias Cibis, 2026-08-27). RespiBAN CH2 (EDA) and CH4 (TEMP) have no config bounds and are not checked.",
+      "overall_failure_rate": 0.0,
+      "per_participant_passes": {
+        "S10": true,
+        "S11": true,
+        "S13": true,
+        "S14": true,
+        "S15": true,
+        "S16": true,
+        "S17": true,
+        "S2": true,
+        "S3": true,
+        "S4": true,
+        "S5": true,
+        "S6": true,
+        "S7": true,
+        "S8": true,
+        "S9": true
+      },
+      "physiological_implausible_count": 0,
+      "physiological_implausible_rate": 0.0,
+      "threshold_max_plausibility_failure_rate": 0.01,
+      "total_samples_checked": 388842132,
+      "total_violations": 0
+    }
+  },
+  "cleaning": {
+    "summary": {
+      "n_participants_cleaned": 15,
+      "indices_replaced_per_participant": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "total_samples_replaced": 60
+    },
+    "per_participant": {
+      "S10": {
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "n_replaced": 4
+      },
+      "S11": {
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "n_replaced": 4
+      },
+      "S13": {
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "n_replaced": 4
+      },
+      "S14": {
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "n_replaced": 4
+      },
+      "S15": {
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "n_replaced": 4
+      },
+      "S16": {
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "n_replaced": 4
+      },
+      "S17": {
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "n_replaced": 4
+      },
+      "S2": {
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "n_replaced": 4
+      },
+      "S3": {
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "n_replaced": 4
+      },
+      "S4": {
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "n_replaced": 4
+      },
+      "S5": {
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "n_replaced": 4
+      },
+      "S6": {
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "n_replaced": 4
+      },
+      "S7": {
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "n_replaced": 4
+      },
+      "S8": {
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "n_replaced": 4
+      },
+      "S9": {
+        "indices_replaced": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "n_replaced": 4
+      }
+    }
+  },
+  "alignment": {
+    "summary": {
+      "n_participants": 15,
+      "mean_offset_before_s": 1181.2,
+      "min_offset_before_s": 920.0,
+      "max_offset_before_s": 1416.0,
+      "mean_offset_after_s": 0.019048,
+      "max_offset_after_s": 0.107143,
+      "n_pass_threshold": 15,
+      "n_fail_threshold": 0,
+      "all_pass_threshold": true
+    },
+    "per_participant": {
+      "S10": {
+        "offset_before_s": 1193.0,
+        "offset_after_s": 0.0,
+        "passes_threshold": true
+      },
+      "S11": {
+        "offset_before_s": 1122.0,
+        "offset_after_s": 0.0,
+        "passes_threshold": true
+      },
+      "S13": {
+        "offset_before_s": 1194.0,
+        "offset_after_s": 0.0,
+        "passes_threshold": true
+      },
+      "S14": {
+        "offset_before_s": 1290.0,
+        "offset_after_s": 0.0,
+        "passes_threshold": true
+      },
+      "S15": {
+        "offset_before_s": 1145.0,
+        "offset_after_s": 0.0,
+        "passes_threshold": true
+      },
+      "S16": {
+        "offset_before_s": 1296.0,
+        "offset_after_s": 0.0,
+        "passes_threshold": true
+      },
+      "S17": {
+        "offset_before_s": 1179.0,
+        "offset_after_s": 0.0,
+        "passes_threshold": true
+      },
+      "S2": {
+        "offset_before_s": 1416.0,
+        "offset_after_s": 0.107143,
+        "passes_threshold": true
+      },
+      "S3": {
+        "offset_before_s": 1033.0,
+        "offset_after_s": 0.102857,
+        "passes_threshold": true
+      },
+      "S4": {
+        "offset_before_s": 1401.0,
+        "offset_after_s": 0.075714,
+        "passes_threshold": true
+      },
+      "S5": {
+        "offset_before_s": 1188.0,
+        "offset_after_s": 0.0,
+        "passes_threshold": true
+      },
+      "S6": {
+        "offset_before_s": 1163.0,
+        "offset_after_s": 0.0,
+        "passes_threshold": true
+      },
+      "S7": {
+        "offset_before_s": 1137.0,
+        "offset_after_s": 0.0,
+        "passes_threshold": true
+      },
+      "S8": {
+        "offset_before_s": 1041.0,
+        "offset_after_s": 0.0,
+        "passes_threshold": true
+      },
+      "S9": {
+        "offset_before_s": 920.0,
+        "offset_after_s": 0.0,
+        "passes_threshold": true
+      }
+    }
+  },
+  "quality_report": {
+    "overall": {
+      "gold_passes_all_measured_thresholds": true,
+      "measured_dimensions": [
+        "completeness",
+        "validity_conformance",
+        "validity_plausibility",
+        "timeliness"
+      ],
+      "unmeasured_dimensions": [
+        "consistency",
+        "accuracy"
+      ],
+      "headline": "The Gold pipeline resolves the only quality issues found in WESAD. Conformance and plausibility violations fall from 60 to 0 after cleaning the E4 TEMP warm-up artefact. Completeness after cleaning: unintentional missingness = 0.0 (60 intentional removals reported separately). Cross-modal alignment passes the 1.0 s threshold (max residual 0.107 s; timeliness partly assessed: the check cannot detect uniform start-time shifts). All four measured dimensions pass. The framework demonstrates end-to-end detection, documentation, and resolution of a real quality issue."
+    },
+    "timeliness": {
+      "dimension": "timeliness",
+      "threshold_key": "timeliness.max_cross_modal_offset_seconds",
+      "threshold": 1.0,
+      "before": {
+        "state": "raw_start_time_gap",
+        "metric": "mean_start_time_difference_s",
+        "value_s": 1181.2,
+        "range_s": {
+          "min": 920.0,
+          "max": 1416.0
+        },
+        "interpretation": "The ~19-minute gap is a sensor activation-window difference: the E4 wristband activates ~15-24 minutes before the RespiBAN chest sensor. This is resolved by trimming to the shared overlap window. It is NOT a residual the threshold measures.",
+        "threshold_pass": null,
+        "threshold_applies": false,
+        "note": "Threshold does not apply to the raw start-time gap."
+      },
+      "after": {
+        "state": "within_overlap_residual",
+        "metric": "max_absolute_offset_across_5_reconstruction_points",
+        "mean_offset_s": 0.019048,
+        "max_offset_s": 0.107143,
+        "n_participants_pass": 15,
+        "n_participants_fail": 0,
+        "threshold_pass": true,
+        "note": "12/15 participants: zero residual. S2/S3/S4: residuals up to 0.107 s, within the E4 EDA quantisation bound of +/-0.125 s. All 15 participants pass the 1.0 s threshold."
+      },
+      "threshold_pass_bronze": null,
+      "threshold_pass_gold": true,
+      "limitation": "Partly assessed. The 5-point reconstruction method verifies internal consistency within the overlap window but cannot detect a uniform start-time shift applied to both devices simultaneously. Fault injection confirmed that shifts of 0.5 s to 3600 s all went undetected."
+    },
+    "completeness": {
+      "dimension": "completeness",
+      "threshold_key": "completeness.max_missingness_rate",
+      "threshold": 0.0,
+      "before": {
+        "state": "bronze_baseline",
+        "nan_count": 0,
+        "cells_checked": 18073707,
+        "missingness_rate": 0.0,
+        "threshold_pass": true
+      },
+      "after": {
+        "state": "gold_cleaned",
+        "missingness_rate": 0.0,
+        "threshold_pass": true,
+        "intentional_removals": {
+          "count": 60,
+          "description": "E4 TEMP warm-up artefact samples set to NaN during cleaning. Documented in reports/wesad_cleaning.json. Excluded from missingness_rate by definition (intentional, not unintended absence)."
+        },
+        "source": "reports/wesad_completeness_post_cleaning.json"
+      },
+      "completeness_definition_note": "Missingness measures UNINTENDED absence only. Samples intentionally removed during cleaning are excluded from the rate and reported separately. Decision: Kevin, 2026-10-12.",
+      "threshold_pass_bronze": true,
+      "threshold_pass_gold": true
+    },
+    "validity_conformance": {
+      "dimension": "validity_conformance",
+      "threshold_key": "validity.max_conformance_violation_rate",
+      "threshold": 0.0,
+      "before": {
+        "state": "bronze_baseline",
+        "violation_count": 60,
+        "cells_checked": 514713128,
+        "violation_rate": 1.2e-07,
+        "threshold_pass": false,
+        "violation_cause": "E4 TEMP warm-up artefact: all 60 violations were indices 0-3 of the TEMP channel (~382 degrees C) across all 15 participants. All other signals: zero violations."
+      },
+      "after": {
+        "state": "gold_cleaned",
+        "violation_count": 0,
+        "cells_checked": 514713128,
+        "violation_rate": 0.0,
+        "threshold_pass": true,
+        "source": "reports/wesad_conformance_post_cleaning.json"
+      },
+      "headline": "Conformance violations: 60 (Bronze) -> 0 (Gold). Pipeline resolved the only conformance issue in the dataset.",
+      "threshold_pass_bronze": false,
+      "threshold_pass_gold": true
+    },
+    "validity_plausibility": {
+      "dimension": "validity_plausibility",
+      "threshold_key": "validity.max_plausibility_failure_rate",
+      "threshold": 0.01,
+      "before": {
+        "state": "bronze_baseline",
+        "violation_count": 60,
+        "samples_checked": 388842132,
+        "failure_rate": 1.5e-07,
+        "threshold_pass": true,
+        "violation_cause": "Same 60 TEMP warm-up samples as the conformance violations. Physiologically implausible (~382 degrees C, above the 42 degrees C skin-temperature ceiling). Zero device-flagged violations."
+      },
+      "after": {
+        "state": "gold_cleaned",
+        "violation_count": 0,
+        "samples_checked": 388842132,
+        "failure_rate": 0.0,
+        "threshold_pass": true,
+        "source": "reports/wesad_plausibility_post_cleaning.json"
+      },
+      "headline": "Plausibility failures: 60 (Bronze) -> 0 (Gold). The only physiologically implausible signal was the TEMP warm-up artefact, resolved by cleaning.",
+      "threshold_pass_bronze": true,
+      "threshold_pass_gold": true
+    }
+  },
+  "fault_injection": {
+    "n_records": 213,
+    "n_control_records": 0,
+    "n_fault_records": 213,
+    "all_control_pass": true
+  }
+}

@@ -119,7 +119,8 @@
         "note": "12/15 participants: zero residual. S2/S3/S4: residuals up to 0.107 s, within the E4 EDA quantisation bound of +/-0.125 s. All 15 participants pass the 1.0 s threshold."
       },
       "threshold_pass_bronze": null,
-      "threshold_pass_gold": true
+      "threshold_pass_gold": true,
+      "limitation": "Partly assessed. The 5-point reconstruction method verifies internal consistency within the overlap window but cannot detect a uniform start-time shift applied to both devices simultaneously. Fault injection confirmed that shifts of 0.5 s to 3600 s all went undetected."
     },
     "consistency": {
       "dimension": "consistency",
@@ -154,6 +155,6 @@
       "consistency",
       "accuracy"
     ],
-    "headline": "The Gold pipeline resolves the only quality issues found in WESAD. Conformance and plausibility violations fall from 60 to 0 after cleaning the E4 TEMP warm-up artefact. Completeness after cleaning: unintentional missingness = 0.0 (60 intentional removals reported separately). Cross-modal alignment passes the 1.0 s threshold (max residual 0.107 s). All four measured dimensions pass. The framework demonstrates end-to-end detection, documentation, and resolution of a real quality issue."
+    "headline": "The Gold pipeline resolves the only quality issues found in WESAD. Conformance and plausibility violations fall from 60 to 0 after cleaning the E4 TEMP warm-up artefact. Completeness after cleaning: unintentional missingness = 0.0 (60 intentional removals reported separately). Cross-modal alignment passes the 1.0 s threshold (max residual 0.107 s; timeliness partly assessed: the check cannot detect uniform start-time shifts). All four measured dimensions pass. The framework demonstrates end-to-end detection, documentation, and resolution of a real quality issue."
   }
 }
