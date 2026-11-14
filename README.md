@@ -1,6 +1,6 @@
 # Data Quality and Governance Framework for Multimodal Behavioural Datasets
 
-This project designs and implements a data quality and governance framework for the WESAD (Wearable Stress and Affect Detection) dataset, collected with an Empatica E4 wristband and a RespiBAN Professional chest device. The framework applies a medallion architecture (Bronze, Silver, Gold) and runs three checks (Conformance, Completeness, Plausibility) plus cross-modal alignment detection. These checks inform assessments across five quality dimensions: accuracy, completeness, consistency, timeliness, and validity; accuracy is unmeasured because no ground-truth reference instrument was recorded alongside WESAD; consistency is unmeasured because WESAD presents no distinct consistency issue: its one cross-modal structural issue (the start-time gap between devices) is a timeliness matter, and counting it under consistency as well would double-count it (see docs/progress_log.md, Threshold decisions: Consistency). Quality thresholds and physiological bounds are pre-registered in config/ and gated by a sign-off flag; design decisions and their justifications are recorded in docs/progress_log.md.
+This project designs and implements a data quality and governance framework for the WESAD (Wearable Stress and Affect Detection) dataset, collected with an Empatica E4 wristband and a RespiBAN Professional chest device. The framework applies a medallion architecture (Bronze, Silver, Gold) and runs three checks (Conformance, Completeness, Plausibility) plus cross-modal alignment detection. These checks inform assessments across five quality dimensions: accuracy, completeness, consistency, timeliness (partly assessed -- the cross-modal alignment check verifies internal consistency within the shared overlap window but cannot detect a uniform start-time shift applied to both devices simultaneously, confirmed by fault injection), and validity; accuracy is unmeasured because no ground-truth reference instrument was recorded alongside WESAD; consistency is unmeasured because WESAD presents no distinct consistency issue: its one cross-modal structural issue (the start-time gap between devices) is a timeliness matter, and counting it under consistency as well would double-count it (see docs/progress_log.md, Threshold decisions: Consistency). Quality thresholds and physiological bounds are pre-registered in config/ and gated by a sign-off flag; design decisions and their justifications are recorded in docs/progress_log.md.
 
 ---
 
@@ -169,3 +169,19 @@ Five modules gate on a `meta.signed_off` flag before running:
 - `src/report.py` checks `meta.signed_off` in `config/thresholds.yaml` before producing the final quality report.
 
 Setting either flag requires formal sign-off from the project owner and supervisor.
+
+---
+
+## Known limitations
+
+**Timeliness is partly assessed.**
+The cross-modal alignment check uses a 5-point reconstruction method that verifies internal consistency of each sensor's own timeline within the shared overlap window. It cannot detect a uniform start-time shift applied to both devices simultaneously (e.g., a timezone-conversion error). Fault injection experiments confirmed that shifts from 0.5 s to 3600 s all went undetected. See docs/progress_log.md (Timeliness section) and reports/experiments/fault_injection_results.json.
+
+**Within-bounds faults are not tested.**
+The fault injection harness only injects faults that push values outside the configured physiological bounds. Faults that keep all values within bounds (e.g. a small systematic offset to a signal) would not be detected by the current conformance or plausibility checks. This is a known gap in the validation coverage.
+
+**Accuracy is not measured.**
+No ground-truth reference instrument was recorded alongside WESAD. Accuracy in the Wang and Strong (1996) sense cannot be assessed without a reference. This is documented in reports/wesad_quality_report.json (dimensions.accuracy) and config/thresholds.yaml.
+
+**Consistency is not assessed.**
+No dedicated consistency metric is defined for WESAD. The only cross-modal structural issue (the ~19-minute start-time gap between devices) is captured under the timeliness dimension. Defining a separate consistency metric would double-count the same phenomenon. See config/thresholds.yaml and docs/progress_log.md.
