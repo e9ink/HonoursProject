@@ -1,7 +1,7 @@
 # Datasheet for WESAD
 
 **Dataset:** WESAD (Wearable Stress and Affect Detection)
-**Prepared by:** Kevin Hudoyo 
+**Prepared by:** Kevin Hudoyo
 **Framework:** Gebru, T., Morgenstern, J., Vecchione, B., Vaughan, J. W., Wallach, H., Daume, H., III, & Crawford, K. (2021). Datasheets for datasets. Communications of the ACM, 64(12), 86-92. https://doi.org/10.1145/3458723
 
 ---
