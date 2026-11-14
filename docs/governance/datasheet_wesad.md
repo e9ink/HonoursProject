@@ -1,7 +1,7 @@
 # Datasheet for WESAD
 
 **Dataset:** WESAD (Wearable Stress and Affect Detection)
-**Prepared by:** Kevin Hudoyo, UTS Honours
+**Prepared by:** Kevin Hudoyo 
 **Framework:** Gebru, T., Morgenstern, J., Vecchione, B., Vaughan, J. W., Wallach, H., Daume, H., III, & Crawford, K. (2021). Datasheets for datasets. Communications of the ACM, 64(12), 86-92. https://doi.org/10.1145/3458723
 
 ---
@@ -117,7 +117,7 @@ Missingness measured as n_NaN / (n_samples x n_columns). E4 cells checked: 18,07
 Physiological range checks applied to signals with defined bounds. Before cleaning: 60 violations on E4 TEMP (same 60 warm-up samples as conformance). Overall failure rate: 1.5e-07 (below the 0.01 threshold). BVP, IBI, RespiBAN EDA (CH2), and RespiBAN TEMP (CH4) are excluded from plausibility checking; reasons documented in `config/physiological_ranges.yaml` and `docs/progress_log.md`. Report: `reports/wesad_plausibility.json`.
 
 **Alignment detection (Task 7):**
-Cross-modal temporal alignment was measured between E4 and RespiBAN using a 5-point nearest-sample reconstruction method across the shared overlap window. Start-time gap (sensor activation difference): mean 1181.2 s (range 920-1416 s) -- this is not a defect but a sensor activation-window difference. Within-overlap residual after alignment: mean 0.019 s, max 0.107 s. All 15 participants pass the 1.0 s threshold. Report: `reports/wesad_alignment.json`.
+Cross-modal temporal alignment was measured between E4 and RespiBAN using a 5-point nearest-sample reconstruction method across the shared overlap window. Start-time gap (sensor activation difference): mean 1181.2 s (range 920-1416 s) -- this is not a defect but a sensor activation-window difference. Within-overlap residual after alignment: mean 0.019 s, max 0.107 s. All 15 participants pass the 1.0 s threshold (timeliness is partly assessed -- the check cannot detect a uniform start-time shift applied to both devices simultaneously). Report: `reports/wesad_alignment.json`.
 
 **Cleaning (Task 8 -- Silver layer):**
 The E4 TEMP warm-up artefact (indices 0-3, all 15 participants, 60 samples total) was replaced with NaN in Silver layer files. Bronze data was not modified. Channel lengths are preserved. Cleaned files are in `silver/WESAD/<pid>/<pid>_E4_Data/TEMP.csv`. Report: `reports/wesad_cleaning.json`.
@@ -134,8 +134,10 @@ After cleaning, conformance and plausibility were re-measured on the effective c
 | Plausibility rate | 1.50e-07 | 0.0 | 0.01 | Yes |
 | Timeliness (max offset) | n/a (19-min gap) | 0.107 s | 1.0 s | Yes |
 
+Timeliness is partly assessed. The 5-point reconstruction method verifies internal consistency of each sensor's own timeline within the shared overlap window, but cannot detect a uniform start-time shift applied to both devices simultaneously. Fault injection experiments confirmed that shifts of 0.5 s to 3600 s all went undetected (source: `docs/progress_log.md`, Timeliness table; `reports/experiments/fault_injection_results.json`).
+
 **Labels:**
-The study protocol (condition assignment) served as ground truth for the baseline experiments in Schmidt et al. (2018). Subjective labels were collected at five self-report points via: PANAS (20 items, 5-point Likert, positive and negative affect); STAI (6 items, 4-point Likert, anxiety); SAM (Self-Assessment Manikins, valence-arousal space); and SSSQ (9 items after TSST, measuring worry, engagement, and distress) (Schmidt et al., 2018, p. 3-4). [KEVIN TO REVIEW: confirm which label format (protocol labels, questionnaire scores, or combined) is appropriate for the intended downstream analysis.]
+The study protocol (condition assignment) served as ground truth for the baseline experiments in Schmidt et al. (2018). Subjective labels were collected at five self-report points via: PANAS (20 items, 5-point Likert, positive and negative affect); STAI (6 items, 4-point Likert, anxiety); SAM (Self-Assessment Manikins, valence-arousal space); and SSSQ (9 items after TSST, measuring worry, engagement, and distress) (Schmidt et al., 2018, p. 3-4). 
 
 ---
 
@@ -145,10 +147,10 @@ The study protocol (condition assignment) served as ground truth for the baselin
 Schmidt et al. (2018) provides the baseline benchmark on WESAD. Using all physiological features, the best classification accuracy reported was 80.34% for the three-class problem (baseline vs. stress vs. amusement) and 93.12% for the binary problem (stress vs. non-stress), both using chest-based modalities (Schmidt et al., 2018, p. 8 and abstract).
 
 **What tasks is the dataset suited for?**
-Wearable-based stress and affect detection; multimodal physiological signal analysis; sensor fusion research. [KEVIN TO REVIEW: suitability for clinical applications.]
+Wearable-based stress and affect detection; multimodal physiological signal analysis; sensor fusion research.
 
 **Are there tasks for which the dataset should not be used?**
-[KEVIN TO REVIEW: clinical diagnosis; population-level inference beyond the study population; deployment in high-stakes automated decision-making without additional validation.]
+Clinical diagnosis; population-level inference beyond the study population; deployment in high-stakes automated decision-making without additional validation.
 
 The 15-participant sample size limits generalisation. Lab-induced stress may not reflect naturalistic stress responses. These constraints apply to any model trained on this data.
 
@@ -158,9 +160,6 @@ The 15-participant sample size limits generalisation. Lab-induced stress may not
 
 **How is the dataset distributed?**
 Schmidt et al. (2018) describes the dataset as publicly available but does not provide an access URL in the available 9-page paper. Access request process: not documented in the available sources. [KEVIN TO COMPLETE: current repository URL and access request process.] Total recorded: 17 subjects participated; 2 were discarded due to sensor malfunction; 15 remain in this release (Schmidt et al., 2018, p. 3). No larger release is documented in the available sources.
-
-**Under what license?**
-[KEVIN TO COMPLETE: license or access agreement terms.]
 
 **Has the dataset been shared under an access agreement?**
 Yes. Raw physiological data is covered by an access agreement. It is excluded from this project's version control repository via `.gitignore` (`bronze/*` and `archive.zip` excluded) and must not be redistributed (source: `.gitignore`).
@@ -173,7 +172,7 @@ Participants are pseudonymised using codes S2-S17. Per-participant readme files 
 ## 7. Maintenance
 
 **Who maintains the original dataset?**
-The original dataset was created by Philip Schmidt, Attila Reiss, Robert Duerichen, Claus Marberger (Robert Bosch GmbH), and Kristof Van Laerhoven (University of Siegen) (Schmidt et al., 2018, p. 1). Current maintainer contact: not documented in the available sources.
+The original dataset was created by Philip Schmidt, Attila Reiss, Robert Duerichen, Claus Marberger (Robert Bosch GmbH), and Kristof Van Laerhoven (University of Siegen) (Schmidt et al., 2018, p. 1). 
 
 **Who maintains this pipeline and its governance outputs?**
 Kevin Hudoyo (UTS Honours, student ID 24790848), supervised by Dr. Tobias Cibis. Pipeline source: this repository. Quality thresholds and physiological ranges signed off by Dr. Tobias Cibis on 2026-09-09 (source: `config/thresholds.yaml` and `config/physiological_ranges.yaml`, `meta.signed_off_by`).

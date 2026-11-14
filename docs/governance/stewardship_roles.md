@@ -19,7 +19,7 @@ This document identifies four data governance roles and maps them to the WESAD p
 The data owner holds ultimate accountability for the data asset. The owner authorises use, sets policy, and bears responsibility for how the data is managed and what decisions are made with it.
 
 **In the context of the original WESAD dataset:**
-[KEVIN TO COMPLETE: the research institution or group that created and maintains WESAD is the data owner of the raw dataset. The access agreement governs what this project may do with the data.]
+The research institution or group that created and maintains WESAD is the data owner of the raw dataset. The access agreement governs what this project may do with the data.
 
 **In the context of this pipeline's outputs:**
 The data owner of the pipeline outputs (quality reports, governance artefacts, Silver layer cleaned data) is Kevin Hudoyo as the responsible researcher. Dr. Tobias Cibis, as supervising academic, holds oversight accountability for the research project as a whole.

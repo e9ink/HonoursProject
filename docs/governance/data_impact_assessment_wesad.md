@@ -11,7 +11,7 @@
 **Sample size:**
 15 participants (S2-S17, with S1 and S12 absent from this release). This is a small sample by machine learning standards (source: `reports/wesad_baseline.json`, field `n_participants`).
 
-Implication: models trained solely on this dataset will have high variance and limited generalisability. Statistical estimates derived from this sample carry wide confidence intervals. [KEVIN TO REVIEW: minimum sample size requirements for the intended downstream application.]
+Implication: models trained solely on this dataset will have high variance and limited generalisability. Statistical estimates derived from this sample carry wide confidence intervals.
 
 **Population representativeness:**
 The 15 participants range in age from 24 to 35 years, with 12 male and 3 female participants (source: per-participant readme files, `bronze/WESAD/<pid>/<pid>_readme.txt`; Schmidt et al., 2018, p. 3). Ethnic and cultural composition: not documented in the available sources. The study was conducted by researchers affiliated with Robert Bosch GmbH (Renningen, Germany) and the University of Siegen, Germany (Schmidt et al., 2018, p. 1). Any model trained on this data may not generalise to populations with different demographic compositions, including children, older adults, or populations with different physiological baselines.
@@ -25,9 +25,9 @@ Data was collected in a controlled laboratory setting using induced stress proto
 
 2. *RespiBAN TEMP sensor attachment:* Two participants (S2, S17) have the note "The RespiBAN temperature sensor was not fully attached throughout the entire duration of the study protocol" (source: `bronze/WESAD/S2/S2_readme.txt`, `bronze/WESAD/S17/S17_readme.txt`). The pipeline does not attempt to detect or correct this; it is a data-collection issue that may affect chest TEMP values for those participants.
 
-3. *Cross-modal start-time gap:* The E4 wristband activates 15-24 minutes before the RespiBAN chest device in every participant (mean gap: 1181.2 s, source: `reports/wesad_alignment.json`, `summary.mean_offset_before_s`). After aligning to the shared overlap window, the within-overlap residual is small (max 0.107 s, all 15 participants pass the 1.0 s threshold). Analyses that do not account for this gap risk including E4 data that has no RespiBAN counterpart.
+3. *Cross-modal start-time gap:* The E4 wristband activates 15-24 minutes before the RespiBAN chest device in every participant (mean gap: 1181.2 s, source: `reports/wesad_alignment.json`, `summary.mean_offset_before_s`). After aligning to the shared overlap window, the within-overlap residual is small (max 0.107 s, all 15 participants pass the 1.0 s threshold; timeliness is partly assessed -- the check cannot detect a uniform start-time shift applied to both devices simultaneously). Analyses that do not account for this gap risk including E4 data that has no RespiBAN counterpart.
 
-4. *Individual participant anomalies:* Per-participant readme notes document individual confounders: one participant may have fallen asleep during meditation (S5), another was not stressed during the TSST due to prior interview experience and had a stressful week prior to the study (S6), and one had a stressful day prior to the study (S8). These are field notes, not quality violations, but they affect the validity of condition labels for those participants. [KEVIN TO REVIEW: whether affected participants should be flagged or excluded for specific analyses.]
+4. *Individual participant anomalies:* Per-participant readme notes document individual confounders: one participant may have fallen asleep during meditation (S5), another was not stressed during the TSST due to prior interview experience and had a stressful week prior to the study (S6), and one had a stressful day prior to the study (S8). These are field notes, not quality violations, but they affect the validity of condition labels for those participants.
 
 ---
 
@@ -37,20 +37,20 @@ Data was collected in a controlled laboratory setting using induced stress proto
 Participants are identified by codes S2-S17. No names or direct identifiers appear in any data file (source: directory inspection of `bronze/WESAD/`).
 
 **Quasi-identifiers in readme files:**
-Each per-participant readme records age, gender, height, weight, and dominant hand. Combined with the study context, these fields could contribute to re-identification for individuals with distinctive profiles. [KEVIN TO REVIEW: whether the combination of demographic fields in the readme files constitutes sufficient risk to warrant additional controls before sharing derived outputs.]
+Each per-participant readme records age, gender, height, weight, and dominant hand. Combined with the study context, these fields could contribute to re-identification for individuals with distinctive profiles.
 
 **Access-agreement constraints:**
 Raw physiological data is subject to an access agreement. This pipeline excludes all raw data from version control (`bronze/*`, `silver/*`, and `archive.zip` in `.gitignore`). The Gold layer governance outputs, quality reports, and pipeline code do not contain participant physiological measurements and are therefore version-controlled (source: `.gitignore`).
 
 **Physiological signal sensitivity:**
-Physiological signals including ECG, EDA, and skin temperature can be used for inference beyond stress detection. [KEVIN TO REVIEW: whether specific derived features (e.g. heart rate variability derived from IBI, or EDA peaks) carry additional privacy risks in the intended deployment context.]
+Physiological signals including ECG, EDA, and skin temperature can be used for inference beyond stress detection.
 
 ---
 
 ## 3. Risks if Quality Issues Went Undetected
 
 **Risk 1: TEMP warm-up artefact entering training data**
-If the 60 E4 TEMP warm-up samples (~382 degC) were not detected and removed before model training, a model could learn a spurious association between near-382 degC readings and whatever condition label coincides with the study start (typically baseline or pre-study). Consequences could include: a model that classifies sensor initialisation noise as a physiological state; biased feature distributions for any TEMP-derived feature; incorrect normalisation of the temperature channel. This pipeline detects and removes these samples. The detection is documented in `reports/wesad_conformance.json` and `reports/wesad_plausibility.json`. [KEVIN TO REVIEW: severity of this risk for the specific downstream model architecture.]
+If the 60 E4 TEMP warm-up samples (~382 degC) were not detected and removed before model training, a model could learn a spurious association between near-382 degC readings and whatever condition label coincides with the study start (typically baseline or pre-study). Consequences could include: a model that classifies sensor initialisation noise as a physiological state; biased feature distributions for any TEMP-derived feature; incorrect normalisation of the temperature channel. This pipeline detects and removes these samples. The detection is documented in `reports/wesad_conformance.json` and `reports/wesad_plausibility.json`.
 
 **Risk 2: Cross-modal misalignment biasing multi-signal models**
 If the E4 and RespiBAN signals are not aligned to a common time base, samples from the two devices at the same frame index will correspond to different moments in the session. For a multi-input model that treats both devices as synchronous, this is a silent data-quality error. The pipeline measures and documents cross-modal alignment. All 15 participants pass the 1.0 s threshold (source: `reports/wesad_alignment.json`). The residual is within E4 EDA quantisation noise (+- 0.125 s at 4 Hz).
@@ -74,7 +74,7 @@ Accuracy (Wang and Strong, 1996) cannot be assessed because no ground-truth refe
 No dedicated consistency metric is defined for WESAD. The one cross-modal structural issue (start-time gap) is captured by the timeliness dimension. Treating it as both timeliness and consistency would double-count the same phenomenon. Decision documented in `config/thresholds.yaml` and `docs/progress_log.md`.
 
 **Alignment detection cannot verify absolute start times:**
-The 5-point reconstruction method measures whether E4 and RespiBAN are internally consistent within the overlap window. It cannot detect a uniform timezone-conversion error applied at both ends, which would cancel out in the difference. If the UTC+2 (CEST) timezone assumption for RespiBAN is wrong, the alignment check would not detect it (source: `docs/progress_log.md`, alignment decision section).
+The 5-point reconstruction method measures whether E4 and RespiBAN are internally consistent within the overlap window. It cannot detect a uniform timezone-conversion error applied at both ends, which would cancel out in the difference. If the UTC+2 (CEST) timezone assumption for RespiBAN is wrong, the alignment check would not detect it (source: `docs/progress_log.md`, alignment decision section). Timeliness is therefore partly assessed.
 
 **RespiBAN chest EDA and TEMP not plausibility-checked:**
 RespiBAN CH2 (EDA) and CH4 (TEMP) are stored as raw ADC values. Plausibility checking requires physical-unit transfer functions (a linear scaling for EDA; a non-linear thermistor conversion for TEMP). These are not implemented. The exclusion is documented in `docs/progress_log.md` (Chest EDA/TEMP channels scoped out section). `config/physiological_ranges.yaml` does not define entries for these chest channels. E4 wrist EDA and TEMP are checked, providing coverage of the same physiological quantities from a different sensor location.

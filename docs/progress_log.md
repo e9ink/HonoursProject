@@ -893,13 +893,13 @@ Pre-registered expectation: `any_flag == false` for all participants. Met.
 
 ### Table 2: Fault injection results
 
-All three participants produced identical detection rate, false positive count, and verdict flip for every row shown below. n_injected varies by session length (S2 longest, S8 and S15 similar).
+All three participants produced identical detection rate, false detection count, and verdict flip for every row shown below. n_injected varies by session length (S2 longest, S8 and S15 similar).
 
 #### Completeness: scattered NaN and contiguous dropout
 
-Both fault types, all signals, all severities, all participants: detection rate = 1.0, false positives = 0, verdict flip = True. No cross-check detections by conformance or plausibility.
+Both fault types, all signals, all severities, all participants: detection rate = 1.0, false detections = 0, verdict flip = True. No cross-check detections by conformance or plausibility.
 
-| Fault type | Signal | 0.1% n_inj (S2/S8/S15) | dr | fp | vf | Expectation |
+| Fault type | Signal | 0.1% n_inj (S2/S8/S15) | dr | fd | vf | Expectation |
 |---|---|---|---|---|---|---|
 | scattered_nan | E4_TEMP | 31/26/26 | 1.0 | 0 | True | Met |
 | scattered_nan | E4_EDA | 31/26/26 | 1.0 | 0 | True | Met |
@@ -914,9 +914,9 @@ Results at 1%, 5%, and 10% (n_injected scaled proportionally) follow the same pa
 
 #### Conformance: non-numeric
 
-All signals, all severities, all participants: detection rate = 1.0, false positives = 0, verdict flip = True.
+All signals, all severities, all participants: detection rate = 1.0, false detections = 0, verdict flip = True.
 
-| Signal | 0.1% n_inj (S2/S8/S15) | dr | fp | vf | Expectation |
+| Signal | 0.1% n_inj (S2/S8/S15) | dr | fd | vf | Expectation |
 |---|---|---|---|---|---|
 | E4_TEMP | 31/26/26 | 1.0 | 0 | True | Met |
 | E4_EDA | 31/26/26 | 1.0 | 0 | True | Met |
@@ -929,7 +929,7 @@ Results at 1%, 5%, and 10% follow the same pattern.
 
 Conformance (ADC range check, ceiling 65535) detected all injected values. Plausibility (ECG transfer function physical-unit bound 1.5 mV) independently detected all injected values as a cross-check. Both checks flagged every fault at every severity.
 
-| Severity | n_inj (S2/S8/S15) | Conf dr | Pls cross-detections (S2/S8/S15) | fp | vf | Expectation |
+| Severity | n_inj (S2/S8/S15) | Conf dr | Pls cross-detections (S2/S8/S15) | fd | vf | Expectation |
 |---|---|---|---|---|---|---|
 | 0.1% | 4442/3959/3936 | 1.0 | 4442/3959/3936 | 0 | True | Met |
 | 1% | 44420/39599/39369 | 1.0 | 44420/39599/39369 | 0 | True | Met |
@@ -948,9 +948,9 @@ Pre-registered expectation: detected=True, verdict_flip=True. Met.
 
 #### Plausibility: physiological impossible values (E4_TEMP=50 deg C, E4_EDA=-1.0 uS, E4_HR=300 bpm)
 
-Detection rate = 1.0 at all severities for all signals and all participants. Conformance detected the same faults via shared range bounds (cross_check_conformance = n_injected in all cases). False positives = 0. Verdict flip depends on whether the injected rate exceeds the 0.01 threshold.
+Detection rate = 1.0 at all severities for all signals and all participants. Conformance detected the same faults via shared range bounds (cross_check_conformance = n_injected in all cases). False detections = 0. Verdict flip depends on whether the injected rate exceeds the 0.01 threshold.
 
-| Signal | Severity | n_inj (S2/S8/S15) | dr | fp | Cross-conf (S2/S8/S15) | vf | Expectation |
+| Signal | Severity | n_inj (S2/S8/S15) | dr | fd | Cross-conf (S2/S8/S15) | vf | Expectation |
 |---|---|---|---|---|---|---|---|
 | E4_TEMP | 0.1% | 31/26/26 | 1.0 | 0 | 31/26/26 | False | Met |
 | E4_TEMP | 1% | 314/265/265 | 1.0 | 0 | 314/265/265 | False | See mismatches |
@@ -999,7 +999,7 @@ Pre-registered expectation: all offsets go undetected, all residuals bounded by 
 
 **E4_TEMP plausibility, 1% severity**: the pre-registered expectation was `verdict_flip: session_length_dependent` -- explicitly marked as uncertain, because the injected rate (int(N*0.01) / (N-4)) was predicted to be "slightly above 0.01" but could go either way depending on floor rounding. Observed: verdict_flip = False for all three participants. S2: 314 injected out of 31474 valid TEMP samples, rate = 0.00998, which is below the 0.01 threshold. S8 and S15: 265 injected out of 26503 valid samples, rate = 0.01000, exactly at the threshold; because the check uses `rate <= threshold`, this also passes. Neither participant triggers a flip. This is consistent with the pre-registered reasoning; the floor rounding resolves to no-flip for all three session lengths in this dataset.
 
-**No other mismatches.** Detection rate = 1.0 and false positives = 0 for every fault type, signal, severity, and participant. All pre-registered verdict flip predictions (excluding the session-length-dependent TEMP 1% case) were met exactly. Conformance sampling-rate faults were detected for all three participants. Timeliness faults went undetected at all five offsets for all three participants.
+**No other mismatches.** Detection rate = 1.0 and false detections = 0 for every fault type, signal, severity, and participant. All pre-registered verdict flip predictions (excluding the session-length-dependent TEMP 1% case) were met exactly. Conformance sampling-rate faults were detected for all three participants. Timeliness faults went undetected at all five offsets for all three participants.
 
 ---
 

@@ -268,6 +268,12 @@ def _dim_timeliness(thresholds: dict, alignment: dict) -> dict:
         },
         "threshold_pass_bronze": None,
         "threshold_pass_gold":   summary["all_pass_threshold"],
+        "limitation": (
+            "Partly assessed. The 5-point reconstruction method verifies internal "
+            "consistency within the overlap window but cannot detect a uniform "
+            "start-time shift applied to both devices simultaneously. Fault injection "
+            "confirmed that shifts of 0.5 s to 3600 s all went undetected."
+        ),
     }
 
 
@@ -494,9 +500,10 @@ def main() -> dict:
                 "cleaning the E4 TEMP warm-up artefact. Completeness after cleaning: "
                 "unintentional missingness = 0.0 (60 intentional removals reported "
                 "separately). Cross-modal alignment passes the 1.0 s threshold "
-                "(max residual 0.107 s). All four measured dimensions pass. "
-                "The framework demonstrates end-to-end detection, documentation, "
-                "and resolution of a real quality issue."
+                "(max residual 0.107 s; timeliness partly assessed: the check "
+                "cannot detect uniform start-time shifts). All four measured "
+                "dimensions pass. The framework demonstrates end-to-end detection, "
+                "documentation, and resolution of a real quality issue."
             ),
         },
     }
