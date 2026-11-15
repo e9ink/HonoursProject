@@ -3,7 +3,7 @@
   "dataset": "WESAD",
   "run_context": {
     "note": "This field is non-deterministic. Strip it for diffing.",
-    "generated_at": "2026-11-14T02:48:46.323558+00:00",
+    "generated_at": "2026-11-15T06:14:21.355189+00:00",
     "generator": "src/gold_manifest.py"
   },
   "definition": "The WESAD Gold dataset is defined by this manifest. It consists of the Silver and Bronze files listed below, identified by their authoritative paths and SHA-256 checksums. No physical copy is made; analysis code should read from the paths listed in each entry. Silver TEMP files contain the cleaned warm-up replacement (NaN at indices 0-3); all other signals are Bronze.",
