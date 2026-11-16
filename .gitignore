@@ -15,6 +15,7 @@ archive.zip
 TRM_Assessment_2_Final.pdf
 *.pptx
 docs/sources/
+.venv_verify/
 
 # Experiment scratch space -- contains participant data copies; never commit
 experiments/scratch/
