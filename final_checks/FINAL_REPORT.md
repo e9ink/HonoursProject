@@ -139,6 +139,69 @@ PASS: all reference numbers match.
 
 ---
 
+## Final fixes (branch: final-fixes)
+
+**Branch:** final-fixes -> master
+**Date:** 2026-11-16
+
+### Items corrected
+
+**Item 1 -- Timeliness wording:**
+Replaced "cannot detect a uniform start-time shift applied to both devices simultaneously"
+throughout with the precise claim: the 5-point method relies on each device's own recorded
+timestamps and cannot detect an offset in one device's clock; fault injection confirmed
+shifts 0.5 s-3600 s applied to one device went undetected; signal-based alignment is
+future work. Updated in README.md, datasheet, DIA, and src/report.py.
+
+**Item 2 -- Unqualified alignment claims:**
+Added "(timeliness partly assessed -- see Section 4)" to DIA Risk 2. Rewrote
+src/report.py overall_assessment headline to name all four measured dimensions
+(completeness, validity_conformance, validity_plausibility, timeliness) explicitly.
+
+**Item 3 -- false-detection terminology:**
+docs/progress_log.md lines 311 and 525: changed "false positives" to "false detections"
+(both refer to checks flagging valid data).
+
+**Item 4 -- Stewardship roles:**
+Replaced generic "research institution or group..." in stewardship_roles.md with the
+actual WESAD creators: Philip Schmidt, Attila Reiss, Robert Duerichen, Claus Marberger
+(Robert Bosch GmbH), and Kristof Van Laerhoven (University of Siegen).
+
+**Item 5 -- Code tidy (ruff + docstrings):**
+- Removed 4 unused imports (F401): _find_nan_runs, pytest x3.
+- Removed 2 unused variables (F841): threshold_rate, conformance_threshold.
+- Added module docstring to src/experiments/__init__.py.
+- Added short docstrings to 23 functions in src/ that were missing them.
+- 109 tests pass.
+
+**Item 6 -- README completeness:**
+All required sections confirmed present (Python version, pip install, WESAD data placement,
+run command, outputs, tests, fault injection, repo map).
+
+**Item 7 -- Housekeeping:**
+- Added .venv_verify/ to .gitignore.
+- Two remaining markers:
+  - docs/governance/datasheet_wesad.md line 162: WESAD repository URL and access request
+    process (genuinely unknown from available sources).
+  - docs/governance/stewardship_roles.md line 72: OneDrive backup permission under WESAD
+    access terms (open governance question for Kevin to verify).
+
+**Item 8 -- Verification:**
+- pytest: 109/109 pass.
+- Quality report regenerated: all four dimensions PASS, numbers unchanged.
+- compare_ref_numbers.py: 20/20 reference numbers match (PASS).
+- Grep for em dashes in new text: clean (pre-existing em dashes in unchanged code left as-is).
+- Grep for "both devices simultaneously": no matches.
+
+### Commits on final-fixes
+
+1. `de7320c` docs(final-fixes): timeliness wording, stewardship names, false-detection terminology
+2. `3aac006` chore(final-fixes): add .venv_verify/ to .gitignore
+3. `45f0a5c` refactor(final-fixes): remove unused imports/variables, add docstrings
+4. `26741f1` docs(final-fixes): replace em dash with double-hyphen in progress_log line 525
+
+---
+
 ## Step 7: Merge and tag
 
 - Merged `final-tidy` into `master` with a fast-forward merge.
