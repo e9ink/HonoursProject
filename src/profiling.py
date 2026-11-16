@@ -237,6 +237,7 @@ def profile_chest(txt_path: Path) -> dict:
 # ---------------------------------------------------------------------------
 
 def profile_participant(participant_dir: Path) -> dict:
+    """Build a structural profile dict (sample counts, frequencies, start timestamps) for one participant."""
     pid = participant_dir.name
     e4_dir = participant_dir / f"{pid}_E4_Data"
 
@@ -271,6 +272,7 @@ def profile_participant(participant_dir: Path) -> dict:
 # ---------------------------------------------------------------------------
 
 def main() -> None:
+    """Profile all participants and write reports/wesad_baseline.json."""
     REPORTS.mkdir(exist_ok=True)
 
     participant_dirs = sorted(

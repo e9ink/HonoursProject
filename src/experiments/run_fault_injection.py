@@ -19,6 +19,7 @@ from src.experiments.fault_injection import run_all_experiments, RESULTS_PATH
 
 
 def main() -> None:
+    """Run all fault-injection scenarios and write results to experiments/results/."""
     print("=" * 60)
     print("Fault injection experiments -- WESAD")
     print("Design: config/experiments.yaml")

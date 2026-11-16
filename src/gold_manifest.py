@@ -391,6 +391,7 @@ def verify_manifest(
 # ---------------------------------------------------------------------------
 
 def main() -> None:
+    """Generate the Gold layer manifest with SHA-256 checksums and write gold/WESAD/wesad_manifest.json."""
     print("Gold manifest: generating ...", flush=True)
     generate_manifest()
     print("Gold manifest: done.", flush=True)

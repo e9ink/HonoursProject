@@ -8,7 +8,6 @@ import hashlib
 import json
 from pathlib import Path
 
-import pytest
 
 from src.gold_manifest import _sha256, verify_manifest
 

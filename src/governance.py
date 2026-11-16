@@ -408,6 +408,7 @@ def _build_audit(
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main() -> None:
+    """Build lineage and audit-trail artefacts and write gold/WESAD/wesad_lineage.json and reports/wesad_governance.json."""
     cleaning_report  = _load_report("wesad_cleaning.json")
     alignment_report = _load_report("wesad_alignment.json")
 

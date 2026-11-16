@@ -104,14 +104,12 @@ def _check_surprises_post_cleaning(participants: dict) -> None:
 # ---------------------------------------------------------------------------
 
 def main() -> None:
+    """Re-run CCP checks on the effective cleaned dataset and write post-cleaning reports."""
     thresholds = _load_thresholds()
     ranges = _load_ranges()
     cleaning = _load_cleaning_report()
 
     completeness_threshold = float(thresholds["completeness"]["max_missingness_rate"])
-    conformance_threshold = float(
-        thresholds["validity"]["max_conformance_violation_rate"]
-    )
     plausibility_threshold = float(
         thresholds["validity"]["max_plausibility_failure_rate"]
     )

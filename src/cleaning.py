@@ -147,6 +147,7 @@ def _verify_silver_temp(pid: str, temp_min: float, temp_max: float) -> dict:
 
 
 def main() -> dict:
+    """Replace E4 TEMP warm-up indices 0-3 with NaN in Silver and write reports/wesad_cleaning.json."""
     temp_min, temp_max = _load_skin_temp_bounds()
 
     # Load the existing conformance report to retrieve the before-cleaning violation count

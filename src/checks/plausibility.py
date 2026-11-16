@@ -369,6 +369,7 @@ def check_e4(
 # ── RespiBAN chest plausibility ───────────────────────────────────────────────
 
 def check_respiban(txt_path: Path, wesad_cfg: dict, threshold: float) -> dict:
+    """Run physiological plausibility checks on a RespiBAN .txt file."""
     # Load data once; apply transfer functions per channel group.
     with open(txt_path, "r", encoding="utf-8", errors="replace") as fh:
         fh.readline()
@@ -538,6 +539,7 @@ def _check_for_surprises(participants: dict, n_participants: int) -> None:
 # ── Aggregate summary ─────────────────────────────────────────────────────────
 
 def _summarise(participants: dict, threshold: float) -> dict:
+    """Aggregate per-participant plausibility results into a dataset-level summary."""
     total_n = total_viol = phys_impl_total = device_flagged_total = 0
     per_participant_passes: dict[str, bool] = {}
 
@@ -600,6 +602,7 @@ def _summarise(participants: dict, threshold: float) -> dict:
 # ── Entry point ───────────────────────────────────────────────────────────────
 
 def main() -> None:
+    """Run plausibility check for all participants and write reports/wesad_plausibility.json."""
     thresholds, ranges = _load_config()
     threshold = float(thresholds["validity"]["max_plausibility_failure_rate"])
     wesad_cfg = ranges["wesad"]

@@ -11,7 +11,6 @@ Tests verify:
 """
 import json
 
-import pytest
 
 from src.checks.plausibility import _check_e4_signal, check_respiban
 from tests.conftest import (

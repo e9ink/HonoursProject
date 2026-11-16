@@ -126,6 +126,7 @@ def _e4_range_bounds(modality: str, ranges: dict) -> tuple[float, float] | None:
 # ---------------------------------------------------------------------------
 
 def _check_e4_modality(csv_path: Path, modality: str, ranges: dict) -> dict:
+    """Run format, sampling-rate, non-numeric, and range checks on one E4 CSV signal."""
     findings: dict = {}
 
     # --- Format ---
@@ -285,6 +286,7 @@ def check_e4(
 # ---------------------------------------------------------------------------
 
 def check_respiban(txt_path: Path) -> dict:
+    """Run format, non-numeric, and range checks on a RespiBAN .txt file."""
     findings: dict = {}
 
     # --- Format: header parseable ---
@@ -421,6 +423,7 @@ def check_participant(
     ranges: dict,
     e4_path_overrides: "dict[str, Path] | None" = None,
 ) -> dict:
+    """Run all conformance checks (E4 and RespiBAN) for one participant directory."""
     pid = participant_dir.name
     txt_path = participant_dir / f"{pid}_respiban.txt"
 
@@ -439,6 +442,7 @@ def check_participant(
 # ---------------------------------------------------------------------------
 
 def _aggregate(participants: dict) -> dict:
+    """Aggregate per-participant conformance results into a dataset-level summary."""
     total_cells = 0
     total_violations = 0
     total_non_numeric = 0
@@ -498,8 +502,8 @@ def _aggregate(participants: dict) -> dict:
 # ---------------------------------------------------------------------------
 
 def main() -> None:
+    """Run conformance check for all participants and write reports/wesad_conformance.json."""
     thresholds, ranges = load_config()
-    threshold_rate = thresholds["completeness"]  # read full block for reference
     conf_threshold = thresholds["validity"]["max_conformance_violation_rate"]
 
     REPORTS.mkdir(exist_ok=True)

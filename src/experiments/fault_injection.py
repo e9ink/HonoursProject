@@ -616,6 +616,7 @@ def _run_conformance(scratch_pid_dir: Path, ranges: dict) -> dict:
 
 
 def _run_plausibility(scratch_pid_dir: Path, wesad_cfg: dict, threshold: float) -> dict:
+    """Run plausibility checks on a scratch participant directory for one fault scenario."""
     from src.checks.plausibility import check_e4, check_respiban
     pid = scratch_pid_dir.name
     e4 = check_e4(scratch_pid_dir, wesad_cfg, threshold)

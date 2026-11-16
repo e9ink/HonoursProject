@@ -176,6 +176,7 @@ def _measure_overlap_offsets(
 
 
 def _align_participant(pid: str, threshold_s: float) -> dict:
+    """Measure cross-modal temporal alignment for a single participant."""
     participant_dir = BRONZE / pid
     e4_dir = participant_dir / f"{pid}_E4_Data"
 
@@ -275,6 +276,7 @@ def _align_participant(pid: str, threshold_s: float) -> dict:
 
 
 def main() -> dict:
+    """Run alignment detection for all participants and write reports/wesad_alignment.json."""
     threshold_s = _load_threshold()
     results = {}
     for pid in sorted(PARTICIPANTS):

@@ -9,7 +9,7 @@ from pathlib import Path
 
 import pytest
 
-from src.checks.completeness import _check_e4_fixed, _check_e4_ibi, check_chest, _find_nan_runs
+from src.checks.completeness import _check_e4_fixed, _check_e4_ibi, check_chest
 from tests.conftest import make_e4_csv, make_respiban_txt, neutral_respiban_row
 
 THRESHOLD = 0.0

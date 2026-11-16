@@ -80,6 +80,7 @@ def _load_threshold() -> float:
 # ---------------------------------------------------------------------------
 
 def _find_nan_runs(bool_series: "pd.Series[bool]", hz: float) -> list:
+    """Return list of contiguous NaN run dicts with start index, length, and duration."""
     runs = []
     arr = bool_series.to_numpy()
     n = len(arr)
@@ -402,6 +403,7 @@ def _cross_check_baseline(participants: dict) -> None:
 # ---------------------------------------------------------------------------
 
 def _summarise(participants: dict, threshold: float) -> dict:
+    """Aggregate per-participant completeness results into a dataset-level summary."""
     e4_total_nan = 0
     e4_intentional_nan = 0
     e4_total_cells = 0
@@ -497,6 +499,7 @@ def _summarise(participants: dict, threshold: float) -> dict:
 # ---------------------------------------------------------------------------
 
 def main() -> None:
+    """Run completeness check for all participants and write reports/wesad_completeness.json."""
     threshold = _load_threshold()
     print(f"  Threshold: max_missingness_rate = {threshold}")
 

@@ -5,7 +5,6 @@ All inputs are synthetic — no real WESAD data is read.
 """
 import json
 
-import pytest
 
 from src.checks.conformance import _check_e4_modality, check_respiban
 from tests.conftest import (
