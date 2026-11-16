@@ -522,9 +522,9 @@ The fix was applied consistently across both sensor paths in src/checks/conforma
 
 After applying the fix, the conformance check was re-run on the full WESAD Bronze dataset (15 participants). Result:
 
-- total_non_numeric_violations: 0 — no false detections introduced.
-- total_range_violations: 60 — unchanged (TEMP warm-up artifact, pre-existing).
-- n_format_errors: 0, n_sampling_violations: 0 — unchanged.
+- total_non_numeric_violations: 0 -- no false detections introduced.
+- total_range_violations: 60 -- unchanged (TEMP warm-up artifact, pre-existing).
+- n_format_errors: 0, n_sampling_violations: 0 -- unchanged.
 
 The real WESAD data contains no non-numeric channel values. This fix closes a coverage gap rather than correcting observed corruption.
 
