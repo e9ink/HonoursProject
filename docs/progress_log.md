@@ -308,7 +308,7 @@ Note: max_conformance_violation_rate was committed in the same commit as the con
 
 **Decision:** keep the −1 to +1 g plausibility bound derived from the calibration transfer function. Cancel the previously planned data-span check.
 
-**Justification:** the RespiBAN accelerometer is calibrated to the Cmin/Cmax window (28000–38000 ADC), and the ±1 g output range already accounts for the effect of gravity on a static sensor. Supervisor confirmed (2026-08-27) that no additional widening is needed and that the ±1 g reference range will not produce systematic false positives. The earlier note suggesting ±1 g might be wrong and needs widening is removed.
+**Justification:** the RespiBAN accelerometer is calibrated to the Cmin/Cmax window (28000–38000 ADC), and the ±1 g output range already accounts for the effect of gravity on a static sensor. Supervisor confirmed (2026-08-27) that no additional widening is needed and that the ±1 g reference range will not produce systematic false detections. The earlier note suggesting ±1 g might be wrong and needs widening is removed.
 
 ---
 
@@ -522,7 +522,7 @@ The fix was applied consistently across both sensor paths in src/checks/conforma
 
 After applying the fix, the conformance check was re-run on the full WESAD Bronze dataset (15 participants). Result:
 
-- total_non_numeric_violations: 0 — no false positives introduced.
+- total_non_numeric_violations: 0 — no false detections introduced.
 - total_range_violations: 60 — unchanged (TEMP warm-up artifact, pre-existing).
 - n_format_errors: 0, n_sampling_violations: 0 — unchanged.
 

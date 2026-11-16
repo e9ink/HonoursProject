@@ -269,10 +269,12 @@ def _dim_timeliness(thresholds: dict, alignment: dict) -> dict:
         "threshold_pass_bronze": None,
         "threshold_pass_gold":   summary["all_pass_threshold"],
         "limitation": (
-            "Partly assessed. The 5-point reconstruction method verifies internal "
-            "consistency within the overlap window but cannot detect a uniform "
-            "start-time shift applied to both devices simultaneously. Fault injection "
-            "confirmed that shifts of 0.5 s to 3600 s all went undetected."
+            "Partly assessed. The 5-point method relies on each device's own recorded "
+            "timestamps. It confirms the two streams are consistent with their own "
+            "clocks but cannot detect an offset in one device's clock. Fault injection "
+            "confirmed that start-time shifts from 0.5 s to 3600 s applied to one "
+            "device all went undetected. Signal-based alignment (for example "
+            "accelerometer cross-correlation) is future work."
         ),
     }
 
@@ -324,6 +326,7 @@ def _dim_accuracy() -> dict:
 # ── Terminal table ────────────────────────────────────────────────────────────
 
 def _print_table(report: dict) -> None:
+    """Print a formatted quality-dimension summary table to stdout."""
     dims = report["dimensions"]
 
     def _pass_str(v) -> str:
@@ -421,6 +424,7 @@ def _print_table(report: dict) -> None:
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 def main() -> dict:
+    """Assemble the quality report from all dimension outputs and write reports/wesad_quality_report.json."""
     thresholds = _load_thresholds()
 
     if not thresholds.get("meta", {}).get("signed_off"):
@@ -500,10 +504,13 @@ def main() -> dict:
                 "cleaning the E4 TEMP warm-up artefact. Completeness after cleaning: "
                 "unintentional missingness = 0.0 (60 intentional removals reported "
                 "separately). Cross-modal alignment passes the 1.0 s threshold "
-                "(max residual 0.107 s; timeliness partly assessed: the check "
-                "cannot detect uniform start-time shifts). All four measured "
-                "dimensions pass. The framework demonstrates end-to-end detection, "
-                "documentation, and resolution of a real quality issue."
+                "(max residual 0.107 s; timeliness partly assessed: the 5-point "
+                "method relies on each device's own timestamps and cannot detect "
+                "an offset in one device's clock). All four measured dimensions "
+                "(completeness, validity_conformance, validity_plausibility, "
+                "timeliness) pass their thresholds. The framework demonstrates "
+                "end-to-end detection, documentation, and resolution of a real "
+                "quality issue."
             ),
         },
     }
