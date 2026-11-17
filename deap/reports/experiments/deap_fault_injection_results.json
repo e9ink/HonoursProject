@@ -1,0 +1,362 @@
+{
+  "all_expected_outcomes_met": false,
+  "config_source": "deap/config/experiments.yaml",
+  "experiment": "deap_fault_injection",
+  "fault_count": 4,
+  "participant_count": 2,
+  "records": [
+    {
+      "all_expected_met": false,
+      "check_results": {
+        "completeness": {
+          "pass": true,
+          "total_inf": 0,
+          "total_nan": 0
+        },
+        "conformance": {
+          "pass": true,
+          "violation_count": 0
+        },
+        "consistency_cross_source": {
+          "mismatches": 26,
+          "pass": false
+        },
+        "consistency_structure": {
+          "pass": true
+        },
+        "label_plausibility": {
+          "pass": false,
+          "total_out_of_range": 5
+        }
+      },
+      "expected_outcomes": {
+        "completeness": "pass",
+        "conformance": "pass",
+        "consistency_cross_source": "pass",
+        "consistency_structure": "pass",
+        "label_plausibility": "pass",
+        "overall": "pass"
+      },
+      "fault_id": "control",
+      "fault_type": "none",
+      "participant": "s01",
+      "verdict_matches": {
+        "completeness": true,
+        "conformance": true,
+        "consistency_cross_source": false,
+        "consistency_structure": true,
+        "label_plausibility": false,
+        "overall": false
+      }
+    },
+    {
+      "all_expected_met": false,
+      "check_results": {
+        "completeness": {
+          "pass": false,
+          "total_inf": 0,
+          "total_nan": 3225
+        },
+        "conformance": {
+          "pass": true,
+          "violation_count": 0
+        },
+        "consistency_cross_source": {
+          "mismatches": 26,
+          "pass": false
+        },
+        "consistency_structure": {
+          "pass": true
+        },
+        "label_plausibility": {
+          "pass": false,
+          "total_out_of_range": 5
+        }
+      },
+      "expected_outcomes": {
+        "completeness": "fail",
+        "conformance": "pass",
+        "consistency_cross_source": "pass",
+        "consistency_structure": "pass",
+        "label_plausibility": "pass",
+        "overall": "fail"
+      },
+      "fault_id": "nan_in_eeg",
+      "fault_type": "completeness_nan",
+      "participant": "s01",
+      "verdict_matches": {
+        "completeness": true,
+        "conformance": true,
+        "consistency_cross_source": false,
+        "consistency_structure": true,
+        "label_plausibility": false,
+        "overall": true
+      }
+    },
+    {
+      "all_expected_met": true,
+      "check_results": {
+        "completeness": {
+          "pass": true,
+          "total_inf": 0,
+          "total_nan": 0
+        },
+        "conformance": {
+          "pass": true,
+          "violation_count": 0
+        },
+        "consistency_cross_source": {
+          "mismatches": 33,
+          "pass": false
+        },
+        "consistency_structure": {
+          "pass": true
+        },
+        "label_plausibility": {
+          "pass": false,
+          "total_out_of_range": 13
+        }
+      },
+      "expected_outcomes": {
+        "completeness": "pass",
+        "conformance": "pass",
+        "consistency_cross_source": "fail",
+        "consistency_structure": "pass",
+        "label_plausibility": "fail",
+        "overall": "fail"
+      },
+      "fault_id": "label_out_of_range",
+      "fault_type": "label_plausibility_violation",
+      "participant": "s01",
+      "verdict_matches": {
+        "completeness": true,
+        "conformance": true,
+        "consistency_cross_source": true,
+        "consistency_structure": true,
+        "label_plausibility": true,
+        "overall": true
+      }
+    },
+    {
+      "all_expected_met": false,
+      "check_results": {
+        "completeness": {
+          "pass": true,
+          "total_inf": 0,
+          "total_nan": 0
+        },
+        "conformance": {
+          "pass": false,
+          "violation_count": 1
+        },
+        "consistency_cross_source": {
+          "mismatches": 26,
+          "pass": false
+        },
+        "consistency_structure": {
+          "pass": false
+        },
+        "label_plausibility": {
+          "pass": false,
+          "total_out_of_range": 5
+        }
+      },
+      "expected_outcomes": {
+        "completeness": "pass",
+        "conformance": "fail",
+        "consistency_cross_source": "pass",
+        "consistency_structure": "fail",
+        "label_plausibility": "pass",
+        "overall": "fail"
+      },
+      "fault_id": "truncated_data",
+      "fault_type": "conformance_shape_violation",
+      "participant": "s01",
+      "verdict_matches": {
+        "completeness": true,
+        "conformance": true,
+        "consistency_cross_source": false,
+        "consistency_structure": true,
+        "label_plausibility": false,
+        "overall": true
+      }
+    },
+    {
+      "all_expected_met": false,
+      "check_results": {
+        "completeness": {
+          "pass": true,
+          "total_inf": 0,
+          "total_nan": 0
+        },
+        "conformance": {
+          "pass": true,
+          "violation_count": 0
+        },
+        "consistency_cross_source": {
+          "mismatches": 28,
+          "pass": false
+        },
+        "consistency_structure": {
+          "pass": true
+        },
+        "label_plausibility": {
+          "pass": false,
+          "total_out_of_range": 12
+        }
+      },
+      "expected_outcomes": {
+        "completeness": "pass",
+        "conformance": "pass",
+        "consistency_cross_source": "pass",
+        "consistency_structure": "pass",
+        "label_plausibility": "pass",
+        "overall": "pass"
+      },
+      "fault_id": "control",
+      "fault_type": "none",
+      "participant": "s25",
+      "verdict_matches": {
+        "completeness": true,
+        "conformance": true,
+        "consistency_cross_source": false,
+        "consistency_structure": true,
+        "label_plausibility": false,
+        "overall": false
+      }
+    },
+    {
+      "all_expected_met": false,
+      "check_results": {
+        "completeness": {
+          "pass": false,
+          "total_inf": 0,
+          "total_nan": 3225
+        },
+        "conformance": {
+          "pass": true,
+          "violation_count": 0
+        },
+        "consistency_cross_source": {
+          "mismatches": 28,
+          "pass": false
+        },
+        "consistency_structure": {
+          "pass": true
+        },
+        "label_plausibility": {
+          "pass": false,
+          "total_out_of_range": 12
+        }
+      },
+      "expected_outcomes": {
+        "completeness": "fail",
+        "conformance": "pass",
+        "consistency_cross_source": "pass",
+        "consistency_structure": "pass",
+        "label_plausibility": "pass",
+        "overall": "fail"
+      },
+      "fault_id": "nan_in_eeg",
+      "fault_type": "completeness_nan",
+      "participant": "s25",
+      "verdict_matches": {
+        "completeness": true,
+        "conformance": true,
+        "consistency_cross_source": false,
+        "consistency_structure": true,
+        "label_plausibility": false,
+        "overall": true
+      }
+    },
+    {
+      "all_expected_met": true,
+      "check_results": {
+        "completeness": {
+          "pass": true,
+          "total_inf": 0,
+          "total_nan": 0
+        },
+        "conformance": {
+          "pass": true,
+          "violation_count": 0
+        },
+        "consistency_cross_source": {
+          "mismatches": 33,
+          "pass": false
+        },
+        "consistency_structure": {
+          "pass": true
+        },
+        "label_plausibility": {
+          "pass": false,
+          "total_out_of_range": 19
+        }
+      },
+      "expected_outcomes": {
+        "completeness": "pass",
+        "conformance": "pass",
+        "consistency_cross_source": "fail",
+        "consistency_structure": "pass",
+        "label_plausibility": "fail",
+        "overall": "fail"
+      },
+      "fault_id": "label_out_of_range",
+      "fault_type": "label_plausibility_violation",
+      "participant": "s25",
+      "verdict_matches": {
+        "completeness": true,
+        "conformance": true,
+        "consistency_cross_source": true,
+        "consistency_structure": true,
+        "label_plausibility": true,
+        "overall": true
+      }
+    },
+    {
+      "all_expected_met": false,
+      "check_results": {
+        "completeness": {
+          "pass": true,
+          "total_inf": 0,
+          "total_nan": 0
+        },
+        "conformance": {
+          "pass": false,
+          "violation_count": 1
+        },
+        "consistency_cross_source": {
+          "mismatches": 28,
+          "pass": false
+        },
+        "consistency_structure": {
+          "pass": false
+        },
+        "label_plausibility": {
+          "pass": false,
+          "total_out_of_range": 12
+        }
+      },
+      "expected_outcomes": {
+        "completeness": "pass",
+        "conformance": "fail",
+        "consistency_cross_source": "pass",
+        "consistency_structure": "fail",
+        "label_plausibility": "pass",
+        "overall": "fail"
+      },
+      "fault_id": "truncated_data",
+      "fault_type": "conformance_shape_violation",
+      "participant": "s25",
+      "verdict_matches": {
+        "completeness": true,
+        "conformance": true,
+        "consistency_cross_source": false,
+        "consistency_structure": true,
+        "label_plausibility": false,
+        "overall": true
+      }
+    }
+  ],
+  "total_records": 8
+}

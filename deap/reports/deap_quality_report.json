@@ -1,0 +1,59 @@
+{
+  "dataset": "DEAP",
+  "dimensions": {
+    "completeness": {
+      "detail": "total NaN: 0, total Inf: 0",
+      "dimension": "completeness",
+      "status": "pass",
+      "threshold": "max_nan_count=0, max_inf_count=0",
+      "value": 0
+    },
+    "conformance": {
+      "detail": "total violations: 0",
+      "dimension": "conformance",
+      "status": "pass",
+      "threshold": "max_violations=0",
+      "value": 0
+    },
+    "consistency": {
+      "dimension": "consistency",
+      "status": "fail",
+      "sub_checks": {
+        "cross_source": {
+          "status": "fail",
+          "threshold": "max_mismatches=0, tolerance=0.0001",
+          "value": 878
+        },
+        "scale_descriptive": {
+          "detail": "Descriptive only; no threshold.",
+          "status": "not_applicable"
+        },
+        "structure": {
+          "status": "pass",
+          "threshold": "max_mismatches=0",
+          "value": 0
+        }
+      }
+    },
+    "label_plausibility": {
+      "detail": "total out-of-SAM-range: 163",
+      "dimension": "label_plausibility",
+      "status": "fail",
+      "threshold": "max_out_of_range=0",
+      "value": 163
+    },
+    "physiological_plausibility": {
+      "dimension": "physiological_plausibility",
+      "reason": "Peripheral channel units and preprocessing in the preprocessed release are not documented in available sources. GSR has negative values due to drift subtraction (Koelstra et al. 2012, p. 10: low-frequency drift removed by 256-point moving average subtraction). Temp channel is on incompatible scales across participants (s01-s23 and s25 show baseline-corrected small values; s24 and s26-s32 show extreme raw values; source of split unknown). Resp and BVP units are not stated in the paper.\n",
+      "status": "not_applied"
+    },
+    "timeliness": {
+      "dimension": "timeliness",
+      "reason": "All 40 channels share a single sample clock per participant. No cross-device temporal alignment is needed.\n",
+      "status": "not_applied"
+    }
+  },
+  "overall_pass": false,
+  "participant_count": 32,
+  "threshold_source": "deap/config/thresholds.yaml"
+}
