@@ -9,6 +9,7 @@ Tables go to figures/tables/ (CSV + Markdown).
 
 import csv
 import json
+import time
 from pathlib import Path
 
 import matplotlib
@@ -97,10 +98,19 @@ def _load(name: str) -> dict:
 
 
 def _save(fig: plt.Figure, stem: str) -> None:
-    """Save figure as PNG and PDF."""
+    """Save figure as PNG and PDF, retrying on transient file-lock errors."""
     FIGURES.mkdir(parents=True, exist_ok=True)
-    fig.savefig(FIGURES / f"{stem}.png", dpi=DPI, bbox_inches="tight")
-    fig.savefig(FIGURES / f"{stem}.pdf", bbox_inches="tight")
+    for ext, kwargs in [(".png", {"dpi": DPI, "bbox_inches": "tight"}),
+                        (".pdf", {"bbox_inches": "tight"})]:
+        path = FIGURES / f"{stem}{ext}"
+        for attempt in range(5):
+            try:
+                fig.savefig(path, **kwargs)
+                break
+            except OSError:
+                if attempt == 4:
+                    raise
+                time.sleep(1.5)
     plt.close(fig)
 
 
@@ -368,18 +378,13 @@ def fig_temp_artefact(pid: str = "S2") -> None:
         fontsize=10,
     )
 
-    # -- break marks: use transAxes, clip_on=True (default) so nothing draws outside --
-    # height_ratios=[1, 2] -> bottom panel is physically 2x taller.
-    # To get equal physical mark size: d_lo = d_hi * (1/2).
-    d_hi = 0.05   # axes fraction for top (shorter) panel
-    d_lo = 0.025  # axes fraction for bottom (taller) panel
-    bk = dict(color=BLACK, lw=1.2)
-    # bottom edge of top panel (break line, marks straddle y=0 in transAxes)
-    ax_hi.plot((-d_hi, d_hi), (-d_hi, d_hi), transform=ax_hi.transAxes, **bk)
-    ax_hi.plot((1 - d_hi, 1 + d_hi), (-d_hi, d_hi), transform=ax_hi.transAxes, **bk)
-    # top edge of bottom panel (break line, marks straddle y=1 in transAxes)
-    ax_lo.plot((-d_lo, d_lo), (1 - d_lo, 1 + d_lo), transform=ax_lo.transAxes, **bk)
-    ax_lo.plot((1 - d_lo, 1 + d_lo), (1 - d_lo, 1 + d_lo), transform=ax_lo.transAxes, **bk)
+    # -- break marks: standard matplotlib diagonal-marker approach --
+    # marker path [(-1,-0.5),(1,0.5)] draws a "/" slash; placed at the axis
+    # spine corners with clip_on=False so the mark straddles the boundary.
+    bk = dict(marker=[(-1, -0.5), (1, 0.5)], markersize=12,
+              linestyle="none", color=BLACK, clip_on=False)
+    ax_hi.plot([0, 1], [0, 0], transform=ax_hi.transAxes, **bk)
+    ax_lo.plot([0, 1], [1, 1], transform=ax_lo.transAxes, **bk)
 
     fig.subplots_adjust(left=0.12, right=0.95, top=0.97, bottom=0.10, hspace=0.08)
     _save(fig, "fig4_1_temp_artefact")
@@ -601,17 +606,20 @@ def fig_timeliness_shift(fi: dict) -> None:
 
     fig, ax = plt.subplots(figsize=(7, 4))
 
-    markers = ["o", "s", "^"]
-    colours = [BLUE, ORANGE, VERMILION]
+    markers  = ["o", "s", "^"]
+    colours  = [BLUE, ORANGE, VERMILION]
+    x_scales = [0.9, 1.0, 1.1]   # jitter each participant on the log scale
     for idx, pid in enumerate(pids):
-        pts = {r["offset_injected_s"]: r["dirty_residual_s"]
-               for r in tim if r["participant"] == pid}
-        xs = [off for off in offsets]
-        ys = [pts[off] for off in offsets]
+        pts   = {r["offset_injected_s"]: r["dirty_residual_s"]
+                 for r in tim if r["participant"] == pid}
+        scale = x_scales[idx % len(x_scales)]
+        xs    = [off * scale for off in offsets]
+        ys    = [pts[off] for off in offsets]
         ax.scatter(xs, ys,
-                   color=colours[idx % len(colours)],
+                   facecolors="none",
+                   edgecolors=colours[idx % len(colours)],
                    marker=markers[idx % len(markers)],
-                   s=55, zorder=4, label=pid)
+                   s=65, linewidths=1.5, zorder=4, label=pid)
 
     threshold = 1.0
     ax.axhline(threshold, color="#888888", lw=1.2, ls="--",
