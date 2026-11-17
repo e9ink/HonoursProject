@@ -12,6 +12,9 @@ bronze/*
 silver/*
 !silver/.gitkeep
 archive.zip
+archive_DEAP.zip
+bronze/DEAP/
+handoff/
 TRM_Assessment_2_Final.pdf
 *.pptx
 docs/sources/
