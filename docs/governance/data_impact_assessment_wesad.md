@@ -40,7 +40,7 @@ Participants are identified by codes S2-S17. No names or direct identifiers appe
 Each per-participant readme records age, gender, height, weight, and dominant hand. Combined with the study context, these fields could contribute to re-identification for individuals with distinctive profiles.
 
 **Access-agreement constraints:**
-Raw physiological data is subject to an access agreement. This pipeline excludes all raw data from version control (`bronze/*`, `silver/*`, and `archive.zip` in `.gitignore`). The Gold layer governance outputs, quality reports, and pipeline code do not contain participant physiological measurements and are therefore version-controlled (source: `.gitignore`).
+Raw physiological data is subject to the dataset's terms of use (academic, non-commercial research; citation of Schmidt et al., 2018). This pipeline excludes all raw data from version control (`bronze/*`, `silver/*`, and `archive.zip` in `.gitignore`). The Gold layer governance outputs, quality reports, and pipeline code do not contain participant physiological measurements and are therefore version-controlled (source: `.gitignore`).
 
 **Physiological signal sensitivity:**
 Physiological signals including ECG, EDA, and skin temperature can be used for inference beyond stress detection.
