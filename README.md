@@ -51,6 +51,8 @@ src/             Python source code:
                    report.py               Final quality report.
                    gold_manifest.py        Gold dataset manifest generator and verifier.
                    experiments/            Fault injection harness and runner.
+                   figures/                Figure and table generation for the thesis.
+figures/         Generated figures (PNG + PDF) and tables (CSV + Markdown).
 tests/           pytest unit tests for check modules and injectors.
 docs/            Decision log and governance documents:
                    progress_log.md         Full history of all threshold and design decisions.
@@ -126,6 +128,14 @@ python run_pipeline.py --dry-run
 ```
 python -m pytest tests/ -v
 ```
+
+### Generate figures and tables
+
+```
+python -m src.figures.make_figures
+```
+
+Saves four figures (PNG and PDF, 300 dpi) and three CSV/Markdown tables to `figures/`.
 
 ### Run the fault injection experiments
 

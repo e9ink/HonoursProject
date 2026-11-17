@@ -1,0 +1,27 @@
+Fault type,Dimension,Severity,n records,Detection rate,Verdict flip,False detections
+Completeness: contiguous dropout,completeness,0.1%,12,1.00,True,0
+Completeness: contiguous dropout,completeness,1.0%,12,1.00,True,0
+Completeness: contiguous dropout,completeness,5.0%,12,1.00,True,0
+Completeness: contiguous dropout,completeness,10.0%,12,1.00,True,0
+Completeness: scattered NaN,completeness,0.1%,12,1.00,True,0
+Completeness: scattered NaN,completeness,1.0%,12,1.00,True,0
+Completeness: scattered NaN,completeness,5.0%,12,1.00,True,0
+Completeness: scattered NaN,completeness,10.0%,12,1.00,True,0
+Conformance: non-numeric values,conformance,0.1%,12,1.00,True,0
+Conformance: non-numeric values,conformance,1.0%,12,1.00,True,0
+Conformance: non-numeric values,conformance,5.0%,12,1.00,True,0
+Conformance: non-numeric values,conformance,10.0%,12,1.00,True,0
+Conformance: out-of-range,conformance,0.1%,3,1.00,True,0
+Conformance: out-of-range,conformance,1.0%,3,1.00,True,0
+Conformance: out-of-range,conformance,5.0%,3,1.00,True,0
+Conformance: out-of-range,conformance,10.0%,3,1.00,True,0
+Conformance: sampling rate,conformance,N/A (binary),3,1.00,True,0
+Plausibility: impossible value,plausibility,0.1%,9,1.00,False,0
+Plausibility: impossible value,plausibility,1.0%,9,1.00,False,0
+Plausibility: impossible value,plausibility,5.0%,9,1.00,True,0
+Plausibility: impossible value,plausibility,10.0%,9,1.00,True,0
+Timeliness: start-time shift,timeliness,0.5 s shift,3,0.00,False,0
+Timeliness: start-time shift,timeliness,2.0 s shift,3,0.00,False,0
+Timeliness: start-time shift,timeliness,10.0 s shift,3,0.00,False,0
+Timeliness: start-time shift,timeliness,60.0 s shift,3,0.00,False,0
+Timeliness: start-time shift,timeliness,3600.0 s shift,3,0.00,False,0
