@@ -37,11 +37,12 @@ Each instance is one participant's data for one 60-second music video trial.
 - labels: numpy array of shape (40, 4) -- 40 trials, 4 self-report dimensions
 
 **What data does each instance consist of?**
-40 channels. Sampling rate is inferred as 128 Hz from the array length (8064 samples
-over a 63-second trial: 3 s pre-trial baseline plus 60 s stimulus per Koelstra et al.
-2012, p. 5-6); 128 Hz is not stated in the paper or in the sources available. The
-dataset website lists the preprocessed files as "downsampling, EOG removal, filtering,
-segmenting etc." without per-channel detail (https://www.eecs.qmul.ac.uk/mmv/datasets/deap/readme.html).
+40 channels. Each trial array contains 8064 samples. The paper documents a 60-second
+stimulus per trial (Koelstra et al. 2012, p. 5); at 128 Hz, 8064 samples span 63 s.
+Neither the sampling rate of the released files nor the composition of the extra 3 s
+is documented in the sources held. The dataset website lists the preprocessed files as
+"downsampling, EOG removal, filtering, segmenting etc." without per-channel detail
+(https://www.eecs.qmul.ac.uk/mmv/datasets/deap/readme.html).
 
 EEG channels (32): Fp1, AF3, F3, F7, FC5, FC1, C3, T7, CP5, CP1, P3, P7, PO3, O1,
 Oz, Pz, Fp2, AF4, Fz, F4, F8, FC6, FC2, Cz, C4, T8, CP6, CP2, P4, P8, PO4, O2.
@@ -70,7 +71,9 @@ No NaN or Inf values detected in the v2 mirror (see deap/reports/deap_completene
    a threshold violation because Temp units and preprocessing are undocumented in the paper.
 
 3. Sampling rate not stated in the paper or on the dataset website for the Python
-   preprocessed files. 128 Hz inferred from: 8064 samples / 63 s = 128 Hz.
+   preprocessed files. 128 Hz inferred from 8064 samples per trial; the paper
+   documents a 60-second stimulus; at 128 Hz this spans 63 s, but the extra 3 s
+   composition is not documented in sources held.
 
 4. Label inversion in v2 mirror: 878 of 5120 entries in the v2 mirror differed from
    participant_ratings.xls. All inversions followed the pattern v2 = 9 - v1 for
@@ -122,7 +125,8 @@ The following are therefore not documented in available sources for the released
 - Common average reference application
 - Exact downsampling target for the released files (128 Hz is inferred from array length)
 
-Frontal face video was extracted for 32 participants (Koelstra et al. 2012, p. 4).
+Frontal face video was extracted for 22 of the 32 participants (Koelstra et al. 2012,
+abstract and conclusion).
 
 **Is the software that was used to preprocess/clean/label the data available?**
 Not publicly released by the authors. The preprocessed Python pickle files are

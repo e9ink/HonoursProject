@@ -24,10 +24,11 @@ conformance:
   justification: >
     DEAP preprocessed format: 40 trials x 40 channels x 8064 samples.
     Koelstra et al. (2012): 32 participants, 40 one-minute music video trials,
-    32 EEG + 8 peripheral channels. 8064 samples at 128 Hz = 63 s per trial
-    (3 s pre-trial baseline + 60 s stimulus). The 128 Hz rate is not documented
-    in the paper (which describes downsampling to 256 Hz); it is inferred from
-    sample count. Labels shape (40, 4): valence, arousal, dominance, liking.
+    32 EEG + 8 peripheral channels. 8064 samples per trial. The paper documents
+    a 60-second stimulus; at 128 Hz, 8064 samples span 63 s. Neither the
+    sampling rate of the released files nor the composition of the extra 3 s
+    is documented in sources held (the paper describes downsampling to 256 Hz
+    for its own analysis, not for the released files). Labels shape (40, 4): valence, arousal, dominance, liking.
 
 label_plausibility:
   min_label_value: 1.0

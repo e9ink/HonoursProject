@@ -135,7 +135,7 @@ def profile_participant(path: str) -> dict:
         result["data_dtype"] = str(d.dtype)
         # Interpret dimensions based on DEAP paper (Koelstra et al. 2012):
         # shape (40, 40, 8064): (n_trials=40, n_channels=40, n_samples=8064)
-        # 8064 samples at 128 Hz = 63 s (3 s pre-trial baseline + 60 s trial)
+        # 8064 samples per trial; 128 Hz inferred; paper documents 60 s stimulus; extra 3 s not sourced
         if d.ndim == 3:
             result["data_dim_interpretation"] = {
                 "dim0": f"trials (n={d.shape[0]})",
@@ -146,8 +146,9 @@ def profile_participant(path: str) -> dict:
             if d.shape[2] == 8064:
                 result["sampling_rate_hz"] = 128
                 result["sampling_rate_source"] = (
-                    "inferred from sample count: 8064 / 128 Hz = 63 s "
-                    "(3 s pre-trial + 60 s trial per DEAP paper)"
+                    "inferred from sample count: 8064 / 128 Hz = 63 s; "
+                    "paper documents 60 s stimulus (p. 5); extra 3 s composition "
+                    "not documented in sources held"
                 )
             else:
                 result["sampling_rate_hz"] = None
