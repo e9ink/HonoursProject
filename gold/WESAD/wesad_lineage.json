@@ -8,7 +8,7 @@
   },
   "run_context": {
     "note": "This field is non-deterministic. Strip it for diffing.",
-    "generated_at": "2026-11-15T06:13:59.169367+00:00",
+    "generated_at": "2026-11-17T06:43:04.537248+00:00",
     "generator": "src/governance.py"
   },
   "pipeline_stages": [

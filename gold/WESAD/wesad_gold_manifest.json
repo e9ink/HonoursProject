@@ -3,7 +3,7 @@
   "dataset": "WESAD",
   "run_context": {
     "note": "This field is non-deterministic. Strip it for diffing.",
-    "generated_at": "2026-11-15T06:14:21.355189+00:00",
+    "generated_at": "2026-11-17T06:43:17.571778+00:00",
     "generator": "src/gold_manifest.py"
   },
   "definition": "The WESAD Gold dataset is defined by this manifest. It consists of the Silver and Bronze files listed below, identified by their authoritative paths and SHA-256 checksums. No physical copy is made; analysis code should read from the paths listed in each entry. Silver TEMP files contain the cleaned warm-up replacement (NaN at indices 0-3); all other signals are Bronze.",
@@ -38,7 +38,7 @@
     "signal_files_per_participant": 7,
     "total_signal_files": 105,
     "gold_passes_all_measured_thresholds": true,
-    "quality_headline": "The Gold pipeline resolves the only quality issues found in WESAD. Conformance and plausibility violations fall from 60 to 0 after cleaning the E4 TEMP warm-up artefact. Completeness after cleaning: unintentional missingness = 0.0 (60 intentional removals reported separately). Cross-modal alignment passes the 1.0 s threshold (max residual 0.107 s; timeliness partly assessed: the check cannot detect uniform start-time shifts). All four measured dimensions pass. The framework demonstrates end-to-end detection, documentation, and resolution of a real quality issue.",
+    "quality_headline": "The Gold pipeline resolves the only quality issues found in WESAD. Conformance and plausibility violations fall from 60 to 0 after cleaning the E4 TEMP warm-up artefact. Completeness after cleaning: unintentional missingness = 0.0 (60 intentional removals reported separately). Cross-modal alignment passes the 1.0 s threshold (max residual 0.107 s; timeliness partly assessed: the 5-point method relies on each device's own timestamps and cannot detect an offset in one device's clock). All four measured dimensions (completeness, validity_conformance, validity_plausibility, timeliness) pass their thresholds. The framework demonstrates end-to-end detection, documentation, and resolution of a real quality issue.",
     "gold_definition_note": "Gold is a manifest, not a physical copy. Each entry points to the authoritative file in Silver or Bronze. The manifest checksums guarantee that any future verification detects accidental modification of any source file."
   },
   "participants": {
