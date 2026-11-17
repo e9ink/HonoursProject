@@ -1,0 +1,553 @@
+{
+  "check": "conformance",
+  "overall_pass": true,
+  "participant_count": 32,
+  "participants": {
+    "s01": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s01",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s02": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s02",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s03": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s03",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s04": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s04",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s05": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s05",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s06": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s06",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s07": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s07",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s08": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s08",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s09": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s09",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s10": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s10",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s11": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s11",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s12": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s12",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s13": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s13",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s14": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s14",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s15": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s15",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s16": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s16",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s17": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s17",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s18": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s18",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s19": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s19",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s20": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s20",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s21": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s21",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s22": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s22",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s23": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s23",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s24": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s24",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s25": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s25",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s26": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s26",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s27": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s27",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s28": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s28",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s29": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s29",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s30": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s30",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s31": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s31",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    },
+    "s32": {
+      "data_dtype": "float64",
+      "data_shape": [
+        40,
+        40,
+        8064
+      ],
+      "labels_dtype": "float64",
+      "labels_shape": [
+        40,
+        4
+      ],
+      "participant": "s32",
+      "pass": true,
+      "violation_count": 0,
+      "violations": []
+    }
+  },
+  "threshold_source": "deap/config/thresholds.yaml",
+  "total_violations": 0
+}

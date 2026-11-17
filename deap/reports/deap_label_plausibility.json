@@ -1,0 +1,1241 @@
+{
+  "check": "label_plausibility",
+  "overall_pass": false,
+  "participant_count": 32,
+  "participants": {
+    "s01": {
+      "participant": "s01",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 5,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "value": 0.9
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "value": 0.42
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "value": 0.74
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 21,
+          "trial_index": 20,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 25,
+          "trial_index": 24,
+          "value": 0.14
+        }
+      ]
+    },
+    "s02": {
+      "participant": "s02",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 22,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "value": 0.99
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "value": 0.0
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "value": 0.0
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "value": 0.99
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "value": 0.06
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "value": 0.0
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "value": 0.99
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "value": 0.0
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "value": 0.68
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "value": 0.03
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "value": 0.0
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 24,
+          "trial_index": 23,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 25,
+          "trial_index": 24,
+          "value": 0.0
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 25,
+          "trial_index": 24,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 26,
+          "trial_index": 25,
+          "value": 0.0
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 26,
+          "trial_index": 25,
+          "value": 0.96
+        }
+      ]
+    },
+    "s03": {
+      "participant": "s03",
+      "pass": true,
+      "threshold": 0,
+      "total_out_of_range": 0,
+      "violations": []
+    },
+    "s04": {
+      "participant": "s04",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 4,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "value": 0.05
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "value": 0.9
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "value": 0.83
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "value": 0.95
+        }
+      ]
+    },
+    "s05": {
+      "participant": "s05",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 7,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "value": 0.0
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "value": 0.76
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "value": 0.91
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "value": 0.83
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "value": 0.0
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 33,
+          "trial_index": 32,
+          "value": 0.0
+        }
+      ]
+    },
+    "s06": {
+      "participant": "s06",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 2,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "value": 0.74
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "value": 0.73
+        }
+      ]
+    },
+    "s07": {
+      "participant": "s07",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 4,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "value": 0.94
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 35,
+          "trial_index": 34,
+          "value": 0.95
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 36,
+          "trial_index": 35,
+          "value": 0.9
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 36,
+          "trial_index": 35,
+          "value": 0.0
+        }
+      ]
+    },
+    "s08": {
+      "participant": "s08",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 7,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "value": 0.85
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "value": 0.77
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "value": 0.18
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "value": 0.22
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "value": 0.53
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "value": 0.67
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 32,
+          "trial_index": 31,
+          "value": 0.77
+        }
+      ]
+    },
+    "s09": {
+      "participant": "s09",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 1,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "value": 0.85
+        }
+      ]
+    },
+    "s10": {
+      "participant": "s10",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 2,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "value": 0.04
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "value": 0.01
+        }
+      ]
+    },
+    "s11": {
+      "participant": "s11",
+      "pass": true,
+      "threshold": 0,
+      "total_out_of_range": 0,
+      "violations": []
+    },
+    "s12": {
+      "participant": "s12",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 4,
+      "violations": [
+        {
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "value": 0.0
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "value": 0.26
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "value": 0.85
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "value": 0.28
+        }
+      ]
+    },
+    "s13": {
+      "participant": "s13",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 5,
+      "violations": [
+        {
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "value": 0.91
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "value": 0.49
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 28,
+          "trial_index": 27,
+          "value": 0.99
+        }
+      ]
+    },
+    "s14": {
+      "participant": "s14",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 1,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "value": 0.78
+        }
+      ]
+    },
+    "s15": {
+      "participant": "s15",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 6,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "value": 0.1
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "value": 0.01
+        }
+      ]
+    },
+    "s16": {
+      "participant": "s16",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 1,
+      "violations": [
+        {
+          "dim": "arousal",
+          "experiment_id": 32,
+          "trial_index": 31,
+          "value": 0.88
+        }
+      ]
+    },
+    "s17": {
+      "participant": "s17",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 1,
+      "violations": [
+        {
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "value": 0.85
+        }
+      ]
+    },
+    "s18": {
+      "participant": "s18",
+      "pass": true,
+      "threshold": 0,
+      "total_out_of_range": 0,
+      "violations": []
+    },
+    "s19": {
+      "participant": "s19",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 1,
+      "violations": [
+        {
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "value": 0.38
+        }
+      ]
+    },
+    "s20": {
+      "participant": "s20",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 4,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "value": 0.18
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "value": 0.94
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "value": 0.78
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "value": 0.82
+        }
+      ]
+    },
+    "s21": {
+      "participant": "s21",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 5,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "value": 0.91
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "value": 0.19
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "value": 0.44
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "value": 0.9
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "value": 0.77
+        }
+      ]
+    },
+    "s22": {
+      "participant": "s22",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 6,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "value": 0.0
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "value": 0.95
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "value": 0.95
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "value": 0.95
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "value": 0.92
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "value": 0.0
+        }
+      ]
+    },
+    "s23": {
+      "participant": "s23",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 7,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "value": 0.0
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "value": 0.79
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "value": 0.06
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "value": 0.99
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "value": 0.99
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "value": 0.85
+        }
+      ]
+    },
+    "s24": {
+      "participant": "s24",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 3,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "value": 0.04
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "value": 0.95
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "value": 0.04
+        }
+      ]
+    },
+    "s25": {
+      "participant": "s25",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 12,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "value": 0.94
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "value": 0.92
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "value": 0.95
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "value": 0.96
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "value": 0.94
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "value": 0.91
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "value": 0.0
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "value": 0.96
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "value": 0.92
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "value": 0.91
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 22,
+          "trial_index": 21,
+          "value": 0.97
+        }
+      ]
+    },
+    "s26": {
+      "participant": "s26",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 12,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "value": 0.0
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "value": 0.92
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "value": 0.97
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "value": 0.95
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "value": 0.91
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "value": 0.99
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "value": 0.83
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "value": 0.95
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "value": 0.96
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "value": 0.0
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "value": 0.95
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "value": 0.92
+        }
+      ]
+    },
+    "s27": {
+      "participant": "s27",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 15,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "value": 0.0
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "value": 0.96
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "value": 0.76
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "value": 0.83
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "value": 0.01
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "value": 0.94
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 16,
+          "trial_index": 15,
+          "value": 0.94
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 17,
+          "trial_index": 16,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "value": 0.0
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "value": 0.01
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 21,
+          "trial_index": 20,
+          "value": 0.0
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 21,
+          "trial_index": 20,
+          "value": 0.86
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 24,
+          "trial_index": 23,
+          "value": 0.1
+        }
+      ]
+    },
+    "s28": {
+      "participant": "s28",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 9,
+      "violations": [
+        {
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "value": 0.9
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "value": 0.92
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "value": 0.97
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "value": 0.85
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "value": 0.9
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "value": 0.91
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "value": 0.96
+        }
+      ]
+    },
+    "s29": {
+      "participant": "s29",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 9,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "value": 0.0
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "value": 0.91
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "value": 0.95
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "value": 0.97
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "value": 0.0
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "value": 0.97
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "value": 0.94
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "value": 0.97
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 39,
+          "trial_index": 38,
+          "value": 0.92
+        }
+      ]
+    },
+    "s30": {
+      "participant": "s30",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 2,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "value": 0.73
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "value": 0.99
+        }
+      ]
+    },
+    "s31": {
+      "participant": "s31",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 2,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "value": 0.96
+        },
+        {
+          "dim": "arousal",
+          "experiment_id": 21,
+          "trial_index": 20,
+          "value": 0.96
+        }
+      ]
+    },
+    "s32": {
+      "participant": "s32",
+      "pass": false,
+      "threshold": 0,
+      "total_out_of_range": 4,
+      "violations": [
+        {
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "value": 0.95
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "value": 0.76
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "value": 0.97
+        },
+        {
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "value": 0.76
+        }
+      ]
+    }
+  },
+  "scale": "SAM 1-9 (Koelstra et al. 2012, p. 6)",
+  "threshold_source": "deap/config/thresholds.yaml",
+  "total_out_of_range_all_participants": 163
+}

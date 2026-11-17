@@ -1,0 +1,5514 @@
+{
+  "check": "completeness",
+  "overall_pass": true,
+  "participant_count": 32,
+  "participants": {
+    "s01": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s01",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s02": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s02",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s03": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s03",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s04": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s04",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s05": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s05",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s06": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s06",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s07": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s07",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s08": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s08",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s09": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s09",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s10": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s10",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s11": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s11",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s12": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s12",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s13": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s13",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s14": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s14",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s15": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s15",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s16": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s16",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s17": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s17",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s18": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s18",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s19": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s19",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s20": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s20",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s21": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s21",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s22": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s22",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s23": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s23",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s24": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s24",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s25": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s25",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s26": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s26",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s27": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s27",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s28": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s28",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s29": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s29",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s30": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s30",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s31": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s31",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    },
+    "s32": {
+      "inf_pass": true,
+      "inf_threshold": 0,
+      "nan_pass": true,
+      "nan_threshold": 0,
+      "participant": "s32",
+      "pass": true,
+      "per_channel": {
+        "AF3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "AF4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "BVP": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "C4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "CP6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Cz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "F8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC5": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "FC6": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fp2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Fz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "GSR": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O1": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "O2": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Oz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "P8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO3": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "PO4": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Pz": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Resp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T7": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "T8": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "Temp": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "hEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "tEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "vEOG": {
+          "inf_count": 0,
+          "nan_count": 0
+        },
+        "zEMG": {
+          "inf_count": 0,
+          "nan_count": 0
+        }
+      },
+      "total_inf": 0,
+      "total_nan": 0
+    }
+  },
+  "threshold_source": "deap/config/thresholds.yaml",
+  "total_inf_all_participants": 0,
+  "total_nan_all_participants": 0
+}

@@ -1,0 +1,73 @@
+meta:
+  signed_off: true
+  signed_off_by: Kevin Hudoyo
+  note: "pending supervisor review"
+  date: "2026-11-17"
+
+# NOTE: These rules were defined after Bronze profiling (unlike the WESAD rules,
+# which were set before any check ran). The profiling results informed which checks
+# are applicable and which must be deferred.
+
+completeness:
+  max_nan_count: 0
+  max_inf_count: 0
+  justification: >
+    No unintended missingness expected in preprocessed DEAP data.
+    Bronze profiling confirmed 0 NaNs and 0 Infs across all 32 participants
+    and all 40 channels.
+
+conformance:
+  expected_data_shape: [40, 40, 8064]
+  expected_labels_shape: [40, 4]
+  expected_dtype: "float64"
+  max_violations: 0
+  justification: >
+    DEAP preprocessed format: 40 trials x 40 channels x 8064 samples.
+    Koelstra et al. (2012): 32 participants, 40 one-minute music video trials,
+    32 EEG + 8 peripheral channels. 8064 samples at 128 Hz = 63 s per trial
+    (3 s pre-trial baseline + 60 s stimulus). The 128 Hz rate is not documented
+    in the paper (which describes downsampling to 256 Hz); it is inferred from
+    sample count. Labels shape (40, 4): valence, arousal, dominance, liking.
+
+label_plausibility:
+  min_label_value: 1.0
+  max_label_value: 9.0
+  max_out_of_range: 0
+  justification: >
+    SAM 1-9 scale. Koelstra et al. (2012), p. 6: "numbers 1-9 printed below"
+    the self-assessment manikins. Participants could click anywhere below or
+    in between numbers, making this a continuous scale within [1, 9].
+
+consistency_structure:
+  max_mismatches: 0
+  justification: >
+    All participants must have identical array shapes (40, 40, 8064) and
+    (40, 4), identical channel count (40), and identical trial count (40).
+
+consistency_cross_source:
+  tolerance: 1.0e-4
+  max_mismatches: 0
+  justification: >
+    Labels in .dat files must match participant_ratings.xls.
+    Matching: dat labels[i] corresponds to XLS row with Experiment_id == i+1
+    (trials in Experiment_id order, confirmed by EDA_DEAP.ipynb notebook and
+    label audit).
+
+# NOT APPLIED -- recorded for transparency
+physiological_plausibility:
+  applied: false
+  reason: >
+    Peripheral channel units and preprocessing in the preprocessed release are
+    not documented in available sources. GSR has negative values due to drift
+    subtraction (Koelstra et al. 2012, p. 10: low-frequency drift removed by
+    256-point moving average subtraction). Temp channel is on incompatible
+    scales across participants (s01-s23 and s25 show baseline-corrected small
+    values; s24 and s26-s32 show extreme raw values; source of split unknown).
+    Resp and BVP units are not stated in the paper.
+
+# NOT APPLICABLE
+timeliness:
+  applied: false
+  reason: >
+    All 40 channels share a single sample clock per participant. No cross-device
+    temporal alignment is needed.

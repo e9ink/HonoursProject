@@ -1,0 +1,148 @@
+# DEAP Quality Check Rules
+# Source document: Koelstra et al. (2012), "DEAP: A Database for Emotion Analysis
+# Using Physiological Signals", IEEE Trans. Affective Computing, 3(1), 18-31.
+#
+# NOTE: These rules were defined after Bronze profiling (unlike the WESAD rules,
+# which were set before any check ran). Profiling results informed applicability.
+
+meta:
+  signed_off: true
+  signed_off_by: Kevin Hudoyo
+  note: "pending supervisor review"
+  date: "2026-11-17"
+  source: "Koelstra et al. (2012)"
+
+rules:
+
+  - id: completeness_no_nan
+    dimension: completeness
+    description: >
+      The data array must contain no NaN values.
+    threshold: "max_nan_count = 0 (per participant, across all channels and samples)"
+    rationale: >
+      No missing data is expected in the preprocessed DEAP files. Bronze profiling
+      confirmed 0 NaNs across all 32 participants and all 40 channels.
+    source: "Bronze profiling (deap/reports/deap_baseline.json)"
+
+  - id: completeness_no_inf
+    dimension: completeness
+    description: >
+      The data array must contain no infinite values.
+    threshold: "max_inf_count = 0 (per participant, across all channels and samples)"
+    rationale: >
+      No infinite values expected in preprocessed data.
+    source: "Bronze profiling (deap/reports/deap_baseline.json)"
+
+  - id: conformance_data_shape
+    dimension: conformance
+    description: >
+      The data array must have shape (40, 40, 8064): 40 trials, 40 channels,
+      8064 time samples.
+    threshold: "max_violations = 0"
+    rationale: >
+      Koelstra et al. (2012): 40 one-minute music video trials (p. 1), 32 EEG +
+      8 peripheral channels = 40 total (p. 5, p. 10). 8064 samples at 128 Hz
+      = 63 s per trial (3 s pre-trial baseline per experiment protocol, p. 5-6,
+      plus 60 s stimulus). The 128 Hz rate is inferred from sample count; the
+      paper documents downsampling to 256 Hz for analysis (p. 7, 10), not to 128 Hz.
+    source: "Koelstra et al. (2012), pp. 1, 5-6, 10"
+
+  - id: conformance_labels_shape
+    dimension: conformance
+    description: >
+      The labels array must have shape (40, 4): 40 trials, 4 self-report dimensions
+      (valence, arousal, dominance, liking).
+    threshold: "max_violations = 0"
+    rationale: >
+      Koelstra et al. (2012), p. 5-6: participants rated each video for arousal,
+      valence, liking, and dominance using SAM scales.
+    source: "Koelstra et al. (2012), pp. 5-6"
+
+  - id: conformance_dtype
+    dimension: conformance
+    description: >
+      Both data and labels arrays must be float64.
+    threshold: "max_violations = 0"
+    rationale: >
+      Confirmed from Bronze profiling; float64 precision required for downstream
+      analysis.
+    source: "Bronze profiling (deap/reports/deap_baseline.json)"
+
+  - id: label_plausibility_sam_range
+    dimension: label_plausibility
+    description: >
+      Every label value must be in [1.0, 9.0].
+    threshold: "max_out_of_range = 0"
+    rationale: >
+      SAM scale uses numbers 1-9. Koelstra et al. (2012), p. 6: "The manikins
+      were displayed in the middle of the screen with the numbers 1-9 printed
+      below. Participants moved the mouse strictly horizontally just below the
+      numbers and clicked to indicate their self-assessment level. Participants
+      were informed they could click anywhere directly below or in-between the
+      numbers." This defines a continuous scale within [1, 9].
+    source: "Koelstra et al. (2012), p. 6"
+    applies_to: "valence, arousal, dominance, liking (columns 0-3 of labels array)"
+    note: >
+      Label audit showed v2 mirror has 163 values outside [1, 9] due to scale
+      inversion. This check flags those values. See deap/reports/deap_label_audit.json.
+
+  - id: consistency_structure
+    dimension: consistency
+    description: >
+      Array shapes, channel count, and trial count must be identical across all
+      32 participants.
+    threshold: "max_mismatches = 0"
+    rationale: >
+      All participants completed the same protocol. Any shape mismatch indicates
+      a data integrity issue.
+    source: "Koelstra et al. (2012), p. 1; Bronze profiling"
+
+  - id: consistency_cross_source
+    dimension: consistency
+    description: >
+      Each participant's label values in the .dat file must match the corresponding
+      row in participant_ratings.xls, matched by Experiment_id order.
+    threshold: "max_mismatches = 0, tolerance = 1e-4"
+    rationale: >
+      The .dat file and the XLS file are two representations of the same ratings.
+      Discrepancies indicate one source is unreliable. Label audit established
+      v2 mirror has 878 inverted Valence/Arousal entries vs XLS.
+    matching_method: >
+      Trials in .dat labels[i] correspond to XLS row with Experiment_id == i+1
+      for the same participant. Confirmed by EDA_DEAP.ipynb notebook note:
+      "The videos are in the order of Experiment_id".
+    source: "deap/reports/deap_label_audit.json; EDA_DEAP.ipynb"
+
+  - id: consistency_scale_descriptive
+    dimension: consistency
+    description: >
+      Descriptive comparison of per-channel min, max, and range across participants.
+      No pass/fail threshold; recorded for anomaly identification only.
+    threshold: "none (descriptive)"
+    rationale: >
+      Identifies outlier participants for specific channels (e.g., Temp scale split
+      between participants). Cannot set bounds without documented units and preprocessing.
+    source: "Bronze profiling anomalies"
+
+  - id: physiological_plausibility_not_applied
+    dimension: physiological_plausibility
+    description: "NOT APPLIED"
+    rationale: >
+      Peripheral channel units and preprocessing are not documented in available
+      sources (Koelstra et al. 2012 does not state units for Temp, Resp, or BVP).
+      GSR has negative values due to documented drift subtraction (Koelstra et al.
+      2012, p. 10). Temp channel has incompatible scales across participants
+      (Groups A and B identified in profiling; source unknown). EEG plausibility
+      bounds are not set (no device rail documented).
+    deferred_until: >
+      Official DEAP readme obtained and units confirmed.
+
+  - id: timeliness_not_applicable
+    dimension: timeliness
+    description: "NOT APPLICABLE"
+    rationale: >
+      All 40 channels in DEAP share a single sample clock per participant
+      (Biosemi ActiveTwo system, Koelstra et al. 2012, p. 5). No cross-device
+      temporal alignment is needed. This contrasts with WESAD, which uses two
+      separate recording devices (E4 wristband and RespiBAN chest device).
+    source: "Koelstra et al. (2012), p. 5"
