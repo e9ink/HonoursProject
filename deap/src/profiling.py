@@ -247,7 +247,7 @@ def run_profiling(bronze_dir: str, output_path: str) -> None:
             "numpy.core.multiarray._reconstruct, numpy.ndarray, numpy.dtype."
         ),
         "archive_file": "archive_DEAP.zip",
-        "bronze_dir": "bronze/DEAP/",
+        "bronze_dir": "bronze/DEAP/deap-dataset/data_preprocessed_python/",
         "participant_count": len(participants),
         "participant_ids": [p["participant"] for p in participants],
         "dataset_version": (
@@ -294,7 +294,7 @@ def run_profiling(bronze_dir: str, output_path: str) -> None:
 if __name__ == "__main__":
     bronze_dir = os.path.join(
         os.path.dirname(os.path.dirname(os.path.dirname(__file__))),
-        "bronze", "DEAP"
+        "bronze", "DEAP", "deap-dataset", "data_preprocessed_python"
     )
     output_path = os.path.join(
         os.path.dirname(os.path.dirname(__file__)),

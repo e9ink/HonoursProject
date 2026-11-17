@@ -1082,3 +1082,14 @@ The WESAD raw data may not be redistributed; copying it into gold/ would create 
 **What stayed at the project root:** bronze/, silver/, gold/, README.md, requirements.txt, .gitignore, docs/progress_log.md.
 
 **Path changes:** All Python modules now derive a WESAD root (wesad/) and a data root (project root) separately. No check logic, threshold values, or physiological bounds were changed. All 109 tests pass and reference numbers are unchanged.
+
+---
+
+## DEAP: replaced incomplete mirror with complete mirror
+
+**Date:** 2026-11-17
+**Branch:** deap-profile
+
+The original DEAP archive (archive_DEAP.zip, now renamed archive_DEAP_v1.zip) contained only 12 of 32 participants. A more complete mirror (archive_DEAP_V2.zip, all 32 participants) was provided by the user and extracted to bronze/DEAP/deap-dataset/.
+
+A cross-mirror label audit (deap/src/label_audit.py) compared both mirrors and v2 against participant_ratings.xls. The physiological data arrays are identical across both mirrors. The labels differ: mirror v1 matches the XLS reference ratings exactly (1920/1920 entries); mirror v2 has 878/5120 label entries where the Valence or Arousal value equals 9 minus the XLS value. All 32 v2 participants are affected. The source of the inversion is not explained by the archive. No label values have been modified; the discrepancy is recorded in deap/docs/governance/deap_provenance.md and deap/reports/deap_label_audit.json.
