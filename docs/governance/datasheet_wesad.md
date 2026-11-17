@@ -77,7 +77,7 @@ The study elicited three affective states: neutral (baseline), stress, and amuse
 Two participants (S2, S17) have the note "The RespiBAN temperature sensor was not fully attached throughout the entire duration of the study protocol" (source: `bronze/WESAD/S2/S2_readme.txt`, `bronze/WESAD/S17/S17_readme.txt`). S6 notes the participant was not stressed during the TSST due to prior interview experience. S5 notes the participant may have fallen asleep during the first meditation.
 
 **Does the dataset contain confidential data?**
-Participant physiological data is covered by an access agreement. Raw data files in `bronze/WESAD/` are excluded from version control via `.gitignore` and must not be shared without authorisation (source: `.gitignore`).
+Participant physiological data is covered by the dataset's terms of use (academic, non-commercial research; citation of Schmidt et al., 2018). Raw data files in `bronze/WESAD/` are excluded from version control via `.gitignore` and must not be shared without authorisation (source: `.gitignore`).
 
 ---
 
@@ -159,10 +159,10 @@ The 15-participant sample size limits generalisation. Lab-induced stress may not
 ## 6. Distribution
 
 **How is the dataset distributed?**
-Schmidt et al. (2018) describes the dataset as publicly available but does not provide an access URL in the available 9-page paper. Access request process: not documented in the available sources. [KEVIN TO COMPLETE: current repository URL and access request process.] Total recorded: 17 subjects participated; 2 were discarded due to sensor malfunction; 15 remain in this release (Schmidt et al., 2018, p. 3). No larger release is documented in the available sources.
+WESAD is available from the UCI Machine Learning Repository (https://archive.ics.uci.edu/dataset/465/wesad, DOI 10.24432/C57K5T), where it is listed as: Schmidt, P., & Reiss, A. (2018). WESAD (Wearable Stress and Affect Detection) [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C57K5T. No access request is required; the archive can be downloaded directly. Users are asked to cite Schmidt et al. (2018), and dataset summaries state that the data is intended for academic research and non-commercial use only. Total recorded: 17 subjects participated; 2 were discarded due to sensor malfunction; 15 remain in this release (Schmidt et al., 2018, p. 3). No larger release is documented in the available sources.
 
-**Has the dataset been shared under an access agreement?**
-Yes. Raw physiological data is covered by an access agreement. It is excluded from this project's version control repository via `.gitignore` (`bronze/*` and `archive.zip` excluded) and must not be redistributed (source: `.gitignore`).
+**Has the dataset been shared under terms of use?**
+Yes. Raw physiological data is covered by the dataset's terms of use (academic, non-commercial research; citation of Schmidt et al., 2018). It is excluded from this project's version control repository via `.gitignore` (`bronze/*` and `archive.zip` excluded) and must not be redistributed (source: `.gitignore`).
 
 **Is any personally identifiable information present?**
 Participants are pseudonymised using codes S2-S17. Per-participant readme files contain age, gender, height, and weight. These files are stored in `bronze/` and are excluded from version control (source: `.gitignore`).

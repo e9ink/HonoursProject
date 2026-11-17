@@ -19,7 +19,7 @@ This document identifies four data governance roles and maps them to the WESAD p
 The data owner holds ultimate accountability for the data asset. The owner authorises use, sets policy, and bears responsibility for how the data is managed and what decisions are made with it.
 
 **In the context of the original WESAD dataset:**
-Philip Schmidt, Attila Reiss, Robert Duerichen, and Claus Marberger (Robert Bosch GmbH, Renningen, Germany) and Kristof Van Laerhoven (University of Siegen, Germany) are the data owners of the raw dataset (Schmidt et al., 2018, p. 1). The access agreement governs what this project may do with the data.
+Philip Schmidt, Attila Reiss, Robert Duerichen, and Claus Marberger (Robert Bosch GmbH, Renningen, Germany) and Kristof Van Laerhoven (University of Siegen, Germany) are the data owners of the raw dataset (Schmidt et al., 2018, p. 1). The dataset's terms of use (academic, non-commercial research; citation of Schmidt et al., 2018) govern what this project may do with the data.
 
 **In the context of this pipeline's outputs:**
 The data owner of the pipeline outputs (quality reports, governance artefacts, Silver layer cleaned data) is Kevin Hudoyo as the responsible researcher. Dr. Tobias Cibis, as supervising academic, holds oversight accountability for the research project as a whole.
@@ -28,7 +28,7 @@ The data owner of the pipeline outputs (quality reports, governance artefacts, S
 - Deciding the scope of the pipeline (which datasets, which signals, which checks).
 - Approving the completeness definition change (documented in `docs/progress_log.md`, dated 2026-10-12).
 - Deciding which signals are excluded from plausibility checking and why (documented in `docs/progress_log.md`).
-- Ensuring raw data is handled in accordance with the access agreement (raw data excluded from version control via `.gitignore`).
+- Ensuring raw data is handled in accordance with the dataset's terms of use (academic, non-commercial research; citation of Schmidt et al., 2018) (raw data excluded from version control via `.gitignore`).
 
 ---
 
@@ -69,7 +69,7 @@ The data custodian is responsible for the physical storage, security, and access
 Kevin Hudoyo acts as data custodian for the local copy of WESAD.
 
 **Responsibilities:**
-- Maintaining the local machine where raw data resides. The project folder, including bronze/, is stored in a OneDrive-synced directory, which provides cloud backup of all pipeline code and governance outputs. Raw physiological data files in bronze/ are therefore backed up to OneDrive. [KEVIN TO REVIEW: confirm cloud storage is permitted under the WESAD access terms before relying on OneDrive as the backup mechanism for participant data.]
+- Maintaining the local machine where raw data resides. Raw WESAD files are stored locally and in a personal OneDrive backup for research continuity in this academic, non-commercial project. The backup is not shared with anyone. Raw data is excluded from version control and is not redistributed.
 - Enforcing Bronze immutability: the pipeline is designed so that no code writes to, moves, or modifies anything in `bronze/`. This is a pipeline-design constraint, not a filesystem permission. Bronze immutability was verified during the profiling task (git status confirmed `bronze/WESAD/` was never staged as modified after profiling ran) (source: `docs/progress_log.md`, Task 2 section).
 - Excluding raw data from version control: `bronze/*` and `archive.zip` are listed in `.gitignore` (source: `.gitignore`).
 - Maintaining Silver layer outputs: cleaned TEMP.csv files for all 15 participants in `silver/WESAD/`.
@@ -88,7 +88,7 @@ Kevin Hudoyo is the primary current consumer, using the Gold layer outputs for t
 **Responsibilities:**
 - Reading and understanding the quality reports before using data for modelling or analysis.
 - Noting documented exclusions (BVP, IBI, RespiBAN EDA/TEMP plausibility) and the known quality findings (TEMP warm-up artefact, sensor attachment issues for S2/S17).
-- Not redistributing raw data outside the terms of the access agreement.
+- Not redistributing raw data outside the dataset's terms of use (academic, non-commercial research; citation of Schmidt et al., 2018).
 - Using Silver layer TEMP files (not Bronze) when working with the cleaned E4 TEMP channel.
 
 **What the consumer receives:**
