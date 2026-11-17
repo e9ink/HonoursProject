@@ -1,0 +1,549 @@
+{
+  "comparisons": [
+    {
+      "count_vs_control": {
+        "completeness": {
+          "total_inf": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          },
+          "total_nan": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          }
+        },
+        "conformance": {
+          "violation_count": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          }
+        },
+        "consistency_cross_source": {
+          "mismatches": {
+            "control": 26,
+            "delta": 0,
+            "fault": 26
+          }
+        },
+        "label_plausibility": {
+          "total_out_of_range": {
+            "control": 5,
+            "delta": 0,
+            "fault": 5
+          }
+        }
+      },
+      "fault_id": "control",
+      "participant": "s01"
+    },
+    {
+      "count_vs_control": {
+        "completeness": {
+          "total_inf": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          },
+          "total_nan": {
+            "control": 0,
+            "delta": 3225,
+            "fault": 3225
+          }
+        },
+        "conformance": {
+          "violation_count": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          }
+        },
+        "consistency_cross_source": {
+          "mismatches": {
+            "control": 26,
+            "delta": 0,
+            "fault": 26
+          }
+        },
+        "label_plausibility": {
+          "total_out_of_range": {
+            "control": 5,
+            "delta": 0,
+            "fault": 5
+          }
+        }
+      },
+      "fault_id": "nan_in_eeg",
+      "participant": "s01"
+    },
+    {
+      "count_vs_control": {
+        "completeness": {
+          "total_inf": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          },
+          "total_nan": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          }
+        },
+        "conformance": {
+          "violation_count": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          }
+        },
+        "consistency_cross_source": {
+          "mismatches": {
+            "control": 26,
+            "delta": 7,
+            "fault": 33
+          }
+        },
+        "label_plausibility": {
+          "total_out_of_range": {
+            "control": 5,
+            "delta": 8,
+            "fault": 13
+          }
+        }
+      },
+      "fault_id": "label_out_of_range",
+      "label_positions": {
+        "delta_matches_net_new_oor": true,
+        "injected_count": 10,
+        "net_new_oor": 8,
+        "positions": [
+          {
+            "dim_index": 0,
+            "dim_name": "valence",
+            "injected_oor": true,
+            "injected_value": 0.0,
+            "net_new_oor": true,
+            "original_already_oor": false,
+            "original_value": 1.29,
+            "trial_index": 0
+          },
+          {
+            "dim_index": 0,
+            "dim_name": "valence",
+            "injected_oor": true,
+            "injected_value": 0.0,
+            "net_new_oor": false,
+            "original_already_oor": true,
+            "original_value": 0.9,
+            "trial_index": 1
+          },
+          {
+            "dim_index": 0,
+            "dim_name": "valence",
+            "injected_oor": true,
+            "injected_value": 0.0,
+            "net_new_oor": false,
+            "original_already_oor": true,
+            "original_value": 0.42,
+            "trial_index": 2
+          },
+          {
+            "dim_index": 0,
+            "dim_name": "valence",
+            "injected_oor": true,
+            "injected_value": 0.0,
+            "net_new_oor": true,
+            "original_already_oor": false,
+            "original_value": 4.94,
+            "trial_index": 3
+          },
+          {
+            "dim_index": 0,
+            "dim_name": "valence",
+            "injected_oor": true,
+            "injected_value": 0.0,
+            "net_new_oor": true,
+            "original_already_oor": false,
+            "original_value": 6.96,
+            "trial_index": 4
+          },
+          {
+            "dim_index": 1,
+            "dim_name": "arousal",
+            "injected_oor": true,
+            "injected_value": 10.0,
+            "net_new_oor": true,
+            "original_already_oor": false,
+            "original_value": 3.92,
+            "trial_index": 5
+          },
+          {
+            "dim_index": 1,
+            "dim_name": "arousal",
+            "injected_oor": true,
+            "injected_value": 10.0,
+            "net_new_oor": true,
+            "original_already_oor": false,
+            "original_value": 3.73,
+            "trial_index": 6
+          },
+          {
+            "dim_index": 1,
+            "dim_name": "arousal",
+            "injected_oor": true,
+            "injected_value": 10.0,
+            "net_new_oor": true,
+            "original_already_oor": false,
+            "original_value": 2.55,
+            "trial_index": 7
+          },
+          {
+            "dim_index": 1,
+            "dim_name": "arousal",
+            "injected_oor": true,
+            "injected_value": 10.0,
+            "net_new_oor": true,
+            "original_already_oor": false,
+            "original_value": 3.29,
+            "trial_index": 8
+          },
+          {
+            "dim_index": 1,
+            "dim_name": "arousal",
+            "injected_oor": true,
+            "injected_value": 10.0,
+            "net_new_oor": true,
+            "original_already_oor": false,
+            "original_value": 4.86,
+            "trial_index": 9
+          }
+        ],
+        "pre_existing_overwritten": 2
+      },
+      "participant": "s01"
+    },
+    {
+      "count_vs_control": {
+        "completeness": {
+          "total_inf": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          },
+          "total_nan": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          }
+        },
+        "conformance": {
+          "violation_count": {
+            "control": 0,
+            "delta": 1,
+            "fault": 1
+          }
+        },
+        "consistency_cross_source": {
+          "mismatches": {
+            "control": 26,
+            "delta": 0,
+            "fault": 26
+          }
+        },
+        "label_plausibility": {
+          "total_out_of_range": {
+            "control": 5,
+            "delta": 0,
+            "fault": 5
+          }
+        }
+      },
+      "fault_id": "truncated_data",
+      "participant": "s01"
+    },
+    {
+      "count_vs_control": {
+        "completeness": {
+          "total_inf": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          },
+          "total_nan": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          }
+        },
+        "conformance": {
+          "violation_count": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          }
+        },
+        "consistency_cross_source": {
+          "mismatches": {
+            "control": 28,
+            "delta": 0,
+            "fault": 28
+          }
+        },
+        "label_plausibility": {
+          "total_out_of_range": {
+            "control": 12,
+            "delta": 0,
+            "fault": 12
+          }
+        }
+      },
+      "fault_id": "control",
+      "participant": "s25"
+    },
+    {
+      "count_vs_control": {
+        "completeness": {
+          "total_inf": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          },
+          "total_nan": {
+            "control": 0,
+            "delta": 3225,
+            "fault": 3225
+          }
+        },
+        "conformance": {
+          "violation_count": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          }
+        },
+        "consistency_cross_source": {
+          "mismatches": {
+            "control": 28,
+            "delta": 0,
+            "fault": 28
+          }
+        },
+        "label_plausibility": {
+          "total_out_of_range": {
+            "control": 12,
+            "delta": 0,
+            "fault": 12
+          }
+        }
+      },
+      "fault_id": "nan_in_eeg",
+      "participant": "s25"
+    },
+    {
+      "count_vs_control": {
+        "completeness": {
+          "total_inf": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          },
+          "total_nan": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          }
+        },
+        "conformance": {
+          "violation_count": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          }
+        },
+        "consistency_cross_source": {
+          "mismatches": {
+            "control": 28,
+            "delta": 5,
+            "fault": 33
+          }
+        },
+        "label_plausibility": {
+          "total_out_of_range": {
+            "control": 12,
+            "delta": 7,
+            "fault": 19
+          }
+        }
+      },
+      "fault_id": "label_out_of_range",
+      "label_positions": {
+        "delta_matches_net_new_oor": true,
+        "injected_count": 10,
+        "net_new_oor": 7,
+        "positions": [
+          {
+            "dim_index": 0,
+            "dim_name": "valence",
+            "injected_oor": true,
+            "injected_value": 0.0,
+            "net_new_oor": false,
+            "original_already_oor": true,
+            "original_value": 0.94,
+            "trial_index": 0
+          },
+          {
+            "dim_index": 0,
+            "dim_name": "valence",
+            "injected_oor": true,
+            "injected_value": 0.0,
+            "net_new_oor": true,
+            "original_already_oor": false,
+            "original_value": 2.99,
+            "trial_index": 1
+          },
+          {
+            "dim_index": 0,
+            "dim_name": "valence",
+            "injected_oor": true,
+            "injected_value": 0.0,
+            "net_new_oor": true,
+            "original_already_oor": false,
+            "original_value": 1.88,
+            "trial_index": 2
+          },
+          {
+            "dim_index": 0,
+            "dim_name": "valence",
+            "injected_oor": true,
+            "injected_value": 0.0,
+            "net_new_oor": true,
+            "original_already_oor": false,
+            "original_value": 5.0,
+            "trial_index": 3
+          },
+          {
+            "dim_index": 0,
+            "dim_name": "valence",
+            "injected_oor": true,
+            "injected_value": 0.0,
+            "net_new_oor": true,
+            "original_already_oor": false,
+            "original_value": 5.04,
+            "trial_index": 4
+          },
+          {
+            "dim_index": 1,
+            "dim_name": "arousal",
+            "injected_oor": true,
+            "injected_value": 10.0,
+            "net_new_oor": true,
+            "original_already_oor": false,
+            "original_value": 6.06,
+            "trial_index": 5
+          },
+          {
+            "dim_index": 1,
+            "dim_name": "arousal",
+            "injected_oor": true,
+            "injected_value": 10.0,
+            "net_new_oor": false,
+            "original_already_oor": true,
+            "original_value": 0.95,
+            "trial_index": 6
+          },
+          {
+            "dim_index": 1,
+            "dim_name": "arousal",
+            "injected_oor": true,
+            "injected_value": 10.0,
+            "net_new_oor": false,
+            "original_already_oor": true,
+            "original_value": 0.94,
+            "trial_index": 7
+          },
+          {
+            "dim_index": 1,
+            "dim_name": "arousal",
+            "injected_oor": true,
+            "injected_value": 10.0,
+            "net_new_oor": true,
+            "original_already_oor": false,
+            "original_value": 1.01,
+            "trial_index": 8
+          },
+          {
+            "dim_index": 1,
+            "dim_name": "arousal",
+            "injected_oor": true,
+            "injected_value": 10.0,
+            "net_new_oor": true,
+            "original_already_oor": false,
+            "original_value": 6.12,
+            "trial_index": 9
+          }
+        ],
+        "pre_existing_overwritten": 3
+      },
+      "participant": "s25"
+    },
+    {
+      "count_vs_control": {
+        "completeness": {
+          "total_inf": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          },
+          "total_nan": {
+            "control": 0,
+            "delta": 0,
+            "fault": 0
+          }
+        },
+        "conformance": {
+          "violation_count": {
+            "control": 0,
+            "delta": 1,
+            "fault": 1
+          }
+        },
+        "consistency_cross_source": {
+          "mismatches": {
+            "control": 28,
+            "delta": 0,
+            "fault": 28
+          }
+        },
+        "label_plausibility": {
+          "total_out_of_range": {
+            "control": 12,
+            "delta": 0,
+            "fault": 12
+          }
+        }
+      },
+      "fault_id": "truncated_data",
+      "participant": "s25"
+    }
+  ],
+  "count_metrics": {
+    "completeness": [
+      "total_nan",
+      "total_inf"
+    ],
+    "conformance": [
+      "violation_count"
+    ],
+    "consistency_cross_source": [
+      "mismatches"
+    ],
+    "label_plausibility": [
+      "total_out_of_range"
+    ]
+  },
+  "method": "Per-fault counts compared against the unmodified control baseline for the same participant. For label_out_of_range, each injected position is examined against the original data to identify whether it was already out of [1,9] range before injection.",
+  "source": "deap/reports/experiments/deap_fault_injection_results.json"
+}

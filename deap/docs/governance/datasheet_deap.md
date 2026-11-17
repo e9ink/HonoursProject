@@ -54,8 +54,11 @@ No NaN or Inf values detected in the v2 mirror (see deap/reports/deap_completene
 **Are there any known issues with the data?**
 
 1. GSR (galvanic skin response) has negative values in the preprocessed data.
-   Source: Koelstra et al. (2012), p. 10: "baseline removal" via subtraction of
-   256-point moving average. This is expected preprocessing, not a data error.
+   Koelstra et al. (2012), p. 10, describes removing the GSR trend by subtracting
+   a 256-point moving average as part of the paper's own analysis pipeline. Whether
+   this step was applied to the released preprocessed files is not stated, so negative
+   GSR values are a possible consequence of that described process rather than a
+   confirmed one. They are not treated as errors in this framework.
 
 2. Temp channel splits into two groups across participants:
    - Group A (s01-s23, s25): small baseline-corrected values (typically -1 to 1 degC)
@@ -68,8 +71,12 @@ No NaN or Inf values detected in the v2 mirror (see deap/reports/deap_completene
 
 4. Label inversion in v2 mirror: 878 of 5120 entries in the v2 mirror differed from
    participant_ratings.xls. All inversions followed the pattern v2 = 9 - v1 for
-   Valence and Arousal only. v1 mirror matched XLS exactly. Inconsistency logged in
-   deap/docs/governance/deap_provenance.md and in the cross-source consistency report.
+   Valence and Arousal only. v1 mirror matched XLS exactly. The 163 out-of-range
+   label values flagged by the label_plausibility check are a subset of these
+   inverted entries: an inverted value (9 minus the original XLS rating) falls below
+   the SAM minimum of 1 whenever the original rating was above 8. Inconsistency
+   logged in deap/docs/governance/deap_provenance.md and in the cross-source
+   consistency report.
 
 ---
 
