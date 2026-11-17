@@ -37,8 +37,11 @@ Each instance is one participant's data for one 60-second music video trial.
 - labels: numpy array of shape (40, 4) -- 40 trials, 4 self-report dimensions
 
 **What data does each instance consist of?**
-40 channels at 128 Hz (inferred from 8064 samples / 63 s; not explicitly stated
-in the paper -- paper states downsampled to 256 Hz, then further to 128 Hz):
+40 channels. Sampling rate is inferred as 128 Hz from the array length (8064 samples
+over a 63-second trial: 3 s pre-trial baseline plus 60 s stimulus per Koelstra et al.
+2012, p. 5-6); 128 Hz is not stated in the paper or in the sources available. The
+dataset website lists the preprocessed files as "downsampling, EOG removal, filtering,
+segmenting etc." without per-channel detail (https://www.eecs.qmul.ac.uk/mmv/datasets/deap/readme.html).
 
 EEG channels (32): Fp1, AF3, F3, F7, FC5, FC1, C3, T7, CP5, CP1, P3, P7, PO3, O1,
 Oz, Pz, Fp2, AF4, Fz, F4, F8, FC6, FC2, Cz, C4, T8, CP6, CP2, P4, P8, PO4, O2.
@@ -66,8 +69,8 @@ No NaN or Inf values detected in the v2 mirror (see deap/reports/deap_completene
    This anomaly is flagged in the descriptive consistency report but not treated as
    a threshold violation because Temp units and preprocessing are undocumented in the paper.
 
-3. Sampling rate not documented in paper for the Python preprocessed files.
-   128 Hz inferred from: 8064 samples / 63 seconds = 128 Hz.
+3. Sampling rate not stated in the paper or on the dataset website for the Python
+   preprocessed files. 128 Hz inferred from: 8064 samples / 63 s = 128 Hz.
 
 4. Label inversion in v2 mirror: 878 of 5120 entries in the v2 mirror differed from
    participant_ratings.xls. All inversions followed the pattern v2 = 9 - v1 for
@@ -104,15 +107,22 @@ Not explicitly stated. DEAP is distributed publicly for research use.
 ## Preprocessing
 
 **Was any preprocessing/cleaning/labeling of the data done?**
-Yes. Per Koelstra et al. (2012), p. 9-10:
-- EEG: EOG artefact removal using blind source separation (BSS-CCA).
-- EEG: Downsampled from 512 Hz to 128 Hz.
-- EEG: Common average reference.
-- EEG: Bandpass filtered 4-45 Hz.
-- EEG: Frontal face video extracted for 32 participants.
-- Peripheral signals: 60-second baseline recording subtracted.
-- GSR: Drift removed by subtracting 256-point moving average.
-- All signals downsampled to 128 Hz.
+The dataset website (https://www.eecs.qmul.ac.uk/mmv/datasets/deap/readme.html) describes
+the preprocessed Python files as having undergone "downsampling, EOG removal, filtering,
+segmenting etc." No per-channel detail is given for the released files.
+
+Koelstra et al. (2012) describes the preprocessing applied in the paper's own analysis
+pipeline (pp. 9-10), which includes downsampling to 256 Hz (p. 10) and removing ECG and
+GSR drift using a 256-point moving average (p. 10). Whether these steps were applied to
+the released preprocessed files in the same way is not stated.
+
+The following are therefore not documented in available sources for the released files:
+- EEG bandpass filter cutoffs (e.g. 4-45 Hz)
+- EOG artefact removal method (e.g. BSS-CCA)
+- Common average reference application
+- Exact downsampling target for the released files (128 Hz is inferred from array length)
+
+Frontal face video was extracted for 32 participants (Koelstra et al. 2012, p. 4).
 
 **Is the software that was used to preprocess/clean/label the data available?**
 Not publicly released by the authors. The preprocessed Python pickle files are

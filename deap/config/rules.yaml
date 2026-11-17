@@ -41,10 +41,13 @@ rules:
     threshold: "max_violations = 0"
     rationale: >
       Koelstra et al. (2012): 40 one-minute music video trials (p. 1), 32 EEG +
-      8 peripheral channels = 40 total (p. 5, p. 10). 8064 samples at 128 Hz
-      = 63 s per trial (3 s pre-trial baseline per experiment protocol, p. 5-6,
-      plus 60 s stimulus). The 128 Hz rate is inferred from sample count; the
-      paper documents downsampling to 256 Hz for analysis (p. 7, 10), not to 128 Hz.
+      8 peripheral channels = 40 total (p. 5, p. 10). 8064 samples per trial.
+      The 128 Hz rate is inferred from sample count: 8064 / 63 s = 128 Hz (3 s
+      pre-trial baseline per experiment protocol, p. 5-6, plus 60 s stimulus).
+      128 Hz is not stated in the paper or in the dataset website for the released
+      files. The paper documents downsampling to 256 Hz for its own analysis
+      (p. 10), not to 128 Hz, and does not state what rate was used for the
+      released preprocessed files.
     source: "Koelstra et al. (2012), pp. 1, 5-6, 10"
 
   - id: conformance_labels_shape
@@ -130,8 +133,10 @@ rules:
     rationale: >
       Peripheral channel units and preprocessing are not documented in available
       sources (Koelstra et al. 2012 does not state units for Temp, Resp, or BVP).
-      GSR has negative values due to documented drift subtraction (Koelstra et al.
-      2012, p. 10). Temp channel has incompatible scales across participants
+      GSR has negative values in the preprocessed data. Koelstra et al. (2012),
+      p. 10, describes removing GSR drift by subtracting a 256-point moving average
+      as part of the paper's own analysis. Whether this was applied to the released
+      files is not stated; negative GSR values are a possible consequence. Temp channel has incompatible scales across participants
       (Groups A and B identified in profiling; source unknown). EEG plausibility
       bounds are not set (no device rail documented).
     deferred_until: >
