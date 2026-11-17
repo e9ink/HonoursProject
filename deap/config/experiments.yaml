@@ -1,0 +1,82 @@
+# DEAP Fault Injection Design
+# Pre-registered before any fault injection run.
+# Date: 2026-11-17
+
+meta:
+  signed_off: true
+  signed_off_by: Kevin Hudoyo
+  date: "2026-11-17"
+  note: "pending supervisor review"
+
+participants:
+  - s01
+  - s25
+
+# s01: Group A participant (Temp baseline-corrected, typical profile)
+# s25: Group A participant with slightly larger Temp range; also present in v1 mirror
+
+scratch_dir: system_temp  # written to OS temp directory, deleted after each run
+
+faults:
+
+  - id: control
+    description: "No fault applied. Verifies clean data passes all checks."
+    fault_type: none
+    expected_outcomes:
+      completeness: pass
+      conformance: pass
+      label_plausibility: pass
+      consistency_structure: pass
+      consistency_cross_source: pass
+      overall: pass
+
+  - id: nan_in_eeg
+    description: >
+      1 percent of Fp1 channel (channel index 0) samples set to NaN, scattered
+      uniformly across all 40 trials. Fp1 is the first EEG channel.
+    fault_type: completeness_nan
+    channel_index: 0
+    channel_name: "Fp1"
+    fraction: 0.01
+    expected_outcomes:
+      completeness: fail
+      conformance: pass
+      label_plausibility: pass
+      consistency_structure: pass
+      consistency_cross_source: pass
+      overall: fail
+    expected_flagging_check: completeness
+
+  - id: label_out_of_range
+    description: >
+      5 label values set to 0.0 (below SAM minimum of 1) and 5 label values set
+      to 10.0 (above SAM maximum of 9). Applied to valence and arousal columns
+      across the first 10 trials.
+    fault_type: label_plausibility_violation
+    n_below: 5
+    below_value: 0.0
+    n_above: 5
+    above_value: 10.0
+    expected_outcomes:
+      completeness: pass
+      conformance: pass
+      label_plausibility: fail
+      consistency_structure: pass
+      consistency_cross_source: fail
+      overall: fail
+    expected_flagging_check: label_plausibility
+
+  - id: truncated_data
+    description: >
+      Data array truncated to shape (40, 40, 8000) instead of (40, 40, 8064),
+      simulating a corrupt or incomplete file.
+    fault_type: conformance_shape_violation
+    truncated_shape: [40, 40, 8000]
+    expected_outcomes:
+      completeness: pass
+      conformance: fail
+      label_plausibility: pass
+      consistency_structure: fail
+      consistency_cross_source: pass
+      overall: fail
+    expected_flagging_check: conformance
