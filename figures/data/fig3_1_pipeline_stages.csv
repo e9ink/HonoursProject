@@ -1,9 +1,10 @@
 stage,label,output,layer
+data,Raw WESAD data (read-only),,Bronze
 1,Profiling,wesad_baseline.json,Bronze
-2,Conformance check,wesad_conformance.json,Bronze
-3,Completeness check,wesad_completeness.json,Bronze
-4,Plausibility check,wesad_plausibility.json,Bronze
-5,Temporal alignment,wesad_alignment.json,Bronze
+2,Conformance check,wesad_conformance.json,Silver
+3,Completeness check,wesad_completeness.json,Silver
+4,Plausibility check,wesad_plausibility.json,Silver
+5,Temporal alignment,wesad_alignment.json,Silver
 6,Silver cleaning,wesad_cleaning.json,Silver
 7,Post-cleaning,wesad_*_post_cleaning.json,Silver
 8,Governance,wesad_lineage.json,Gold
