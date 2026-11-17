@@ -83,22 +83,23 @@ wesad:
     min: 15
     max: 42
     provenance: >
-      Clinical plausibility bound for surface skin temperature recorded at the
-      wrist. Lower bound reflects cold extremities in realistic lab conditions;
-      upper bound is below fever-range tissue damage. Pending formal re-sourcing
-      from a medical textbook before the final report.
+      Corruption bound, deliberately wider than the 25 to 40 degC on-body range
+      used with the Empatica E4 by Bottcher et al. (2022, Scientific Reports
+      12:21412). Upper bound: sustained skin temperatures above about 44 degC
+      cause burns (Moritz & Henriques, 1947, Am J Pathol 23(5):695-720). Lower
+      bound set below the on-body floor so that loose or off-wrist periods are
+      not treated as corrupt values.
 
   heart_rate:
     unit: bpm
     min: 20
     max: 250
     provenance: >
-      Corruption/plausibility bound (not a healthy resting-HR range). Lower bound
-      represents extreme bradycardia; upper bound captures VT/artifact ceiling.
-      This bound is confirmed as a data-integrity gate, not a health-screening
-      gate. NOTE (Kevin, 2026-08-27): some sources used to ground this range
-      (e.g. record-low resting-HR figures) are non-peer-reviewed. Re-source both
-      limits from a medical textbook (e.g. Guyton & Hall) before the final report.
+      Corruption bound. Upper: well above the age-predicted maximum
+      (208 - 0.7 x age; about 184 to 191 bpm for ages 24 to 35) from Tanaka,
+      Monahan & Seals (2001, JACC 37(1):153-156). Lower: heart rates of 30 bpm
+      or below are recorded in some endurance athletes (D'Ambrosio et al., 2026,
+      Circulation 153:616-630), so 20 bpm leaves headroom.
 
   accelerometry_e4:
     unit: g
