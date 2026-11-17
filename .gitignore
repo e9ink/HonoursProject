@@ -20,6 +20,7 @@ handoff/
 TRM_Assessment_2_Final.pdf
 *.pptx
 docs/sources/
+deap/docs/sources/*.pdf
 .venv_verify/
 
 # Experiment scratch space -- contains participant data copies; never commit
