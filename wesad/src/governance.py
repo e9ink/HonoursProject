@@ -32,10 +32,11 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT         = Path(__file__).resolve().parent.parent
-BRONZE_WESAD = ROOT / "bronze" / "WESAD"
-SILVER_WESAD = ROOT / "silver" / "WESAD"
-GOLD_WESAD   = ROOT / "gold"   / "WESAD"
+ROOT         = Path(__file__).resolve().parent.parent  # wesad/
+DATA_ROOT    = ROOT.parent                             # project root; bronze/silver/gold live here
+BRONZE_WESAD = DATA_ROOT / "bronze" / "WESAD"
+SILVER_WESAD = DATA_ROOT / "silver" / "WESAD"
+GOLD_WESAD   = DATA_ROOT / "gold"   / "WESAD"
 REPORTS      = ROOT / "reports"
 
 PARTICIPANTS = [f"S{n}" for n in range(2, 18) if n != 12]
@@ -148,7 +149,7 @@ _STAGE_IDS = {s["stage_id"] for s in PIPELINE_STAGES}
 
 def _rel(path: Path) -> str:
     """Return a forward-slash repo-relative path string."""
-    return str(path.relative_to(ROOT)).replace("\\", "/")
+    return str(path.relative_to(DATA_ROOT)).replace("\\", "/")
 
 
 def _load_report(name: str) -> dict:

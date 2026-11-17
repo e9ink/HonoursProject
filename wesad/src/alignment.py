@@ -20,9 +20,10 @@ from pathlib import Path
 
 import yaml
 
-BRONZE = Path("bronze/WESAD")
-CONFIG_PATH = Path("config/thresholds.yaml")
-OUTPUT_PATH = Path("reports/wesad_alignment.json")
+_DIR = Path(__file__).resolve().parent.parent  # wesad/
+BRONZE = _DIR.parent / "bronze" / "WESAD"
+CONFIG_PATH = _DIR / "config" / "thresholds.yaml"
+OUTPUT_PATH = _DIR / "reports" / "wesad_alignment.json"
 
 # Fixed-rate E4 modalities used for timing (IBI is event-based, excluded)
 E4_FIXED = ["ACC", "BVP", "EDA", "TEMP", "HR"]

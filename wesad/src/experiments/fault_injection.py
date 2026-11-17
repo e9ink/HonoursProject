@@ -33,15 +33,16 @@ from pathlib import Path
 import numpy as np
 import yaml
 
-ROOT = Path(__file__).resolve().parent.parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent  # wesad/
+DATA_ROOT = ROOT.parent                               # project root; bronze/silver/gold live here
 # Scratch directories live in the system temp folder, not the project tree,
 # to avoid OneDrive sync locking and to keep participant data copies off
 # cloud storage. Both are defined here so callers never hardcode paths.
 _SCRATCH_BASE = Path(tempfile.gettempdir()) / "wesad_fault_injection"
 SCRATCH_DIR = _SCRATCH_BASE / "clean"
 SCRATCH_DIRTY = _SCRATCH_BASE / "dirty"
-BRONZE_WESAD = ROOT / "bronze" / "WESAD"
-SILVER_WESAD = ROOT / "silver" / "WESAD"
+BRONZE_WESAD = DATA_ROOT / "bronze" / "WESAD"
+SILVER_WESAD = DATA_ROOT / "silver" / "WESAD"
 CLEANING_REPORT = ROOT / "reports" / "wesad_cleaning.json"
 RESULTS_DIR = ROOT / "reports" / "experiments"
 RESULTS_PATH = RESULTS_DIR / "fault_injection_results.json"

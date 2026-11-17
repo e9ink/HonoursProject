@@ -44,8 +44,9 @@ def _json_default(obj):
         return obj.isoformat()
     raise TypeError(f"Object of type {type(obj).__name__} is not JSON serializable")
 
-ROOT = Path(__file__).resolve().parent.parent.parent
-BRONZE_WESAD = ROOT / "bronze" / "WESAD"
+ROOT = Path(__file__).resolve().parent.parent.parent  # wesad/
+DATA_ROOT = ROOT.parent                               # project root; bronze/silver/gold live here
+BRONZE_WESAD = DATA_ROOT / "bronze" / "WESAD"
 REPORTS = ROOT / "reports"
 CONFIG_DIR = ROOT / "config"
 

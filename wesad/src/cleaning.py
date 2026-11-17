@@ -27,9 +27,10 @@ from pathlib import Path
 import pandas as pd
 import yaml
 
-ROOT = Path(__file__).resolve().parent.parent
-BRONZE_WESAD = ROOT / "bronze" / "WESAD"
-SILVER_WESAD = ROOT / "silver" / "WESAD"
+ROOT = Path(__file__).resolve().parent.parent  # wesad/
+DATA_ROOT = ROOT.parent                        # project root; bronze/silver/gold live here
+BRONZE_WESAD = DATA_ROOT / "bronze" / "WESAD"
+SILVER_WESAD = DATA_ROOT / "silver" / "WESAD"
 REPORTS = ROOT / "reports"
 CONFIG_DIR = ROOT / "config"
 
@@ -107,8 +108,8 @@ def _clean_participant(pid: str) -> dict:
 
     return {
         "action": "e4_temp_warmup_strip",
-        "bronze_path": str(bronze_temp.relative_to(ROOT)),
-        "silver_path": str(silver_temp.relative_to(ROOT)),
+        "bronze_path": str(bronze_temp.relative_to(DATA_ROOT)),
+        "silver_path": str(silver_temp.relative_to(DATA_ROOT)),
         "indices_replaced": TEMP_WARMUP_INDICES,
         "replacement": "NaN (literal text 'NaN' in CSV cell; pandas default NA detection reads as numpy.nan, row preserved)",
         "original_values": original_values,

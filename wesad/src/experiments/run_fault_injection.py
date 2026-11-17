@@ -1,9 +1,8 @@
 """
 Runner for the pre-registered fault injection experiments.
 
-Usage:
-    python -m src.experiments.run_fault_injection
-    python src/experiments/run_fault_injection.py
+Usage (from project root):
+    python wesad/src/experiments/run_fault_injection.py
 
 Runs in the foreground and prints progress per participant and fault type.
 Results are written to reports/experiments/fault_injection_results.json.

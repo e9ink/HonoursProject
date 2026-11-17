@@ -1070,3 +1070,15 @@ The WESAD raw data may not be redistributed; copying it into gold/ would create 
 ### pytest: 109 passed.
 
 ---
+
+## Restructure: moved WESAD pipeline into wesad/ subfolder
+
+**Date:** 2026-11-17
+**Branch:** wesad-folder (merged to master as v1.4-wesad-folder)
+**Why:** Preparing to add a second dataset (DEAP). Each dataset pipeline is kept in its own subfolder so config, reports, figures, tests, and source code do not collide. Data layers (bronze/, silver/, gold/) stay at the project root because they are shared across datasets (each dataset already has its own WESAD/ subdirectory within them).
+
+**What moved into wesad/:** run_pipeline.py, src/, config/, tests/, reports/, figures/, final_checks/, docs/governance/.
+
+**What stayed at the project root:** bronze/, silver/, gold/, README.md, requirements.txt, .gitignore, docs/progress_log.md.
+
+**Path changes:** All Python modules now derive a WESAD root (wesad/) and a data root (project root) separately. No check logic, threshold values, or physiological bounds were changed. All 109 tests pass and reference numbers are unchanged.

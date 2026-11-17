@@ -43,8 +43,9 @@ from pathlib import Path
 import pandas as pd
 import yaml
 
-ROOT = Path(__file__).resolve().parent.parent.parent
-BRONZE_WESAD = ROOT / "bronze" / "WESAD"
+ROOT = Path(__file__).resolve().parent.parent.parent  # wesad/
+DATA_ROOT = ROOT.parent                               # project root; bronze/silver/gold live here
+BRONZE_WESAD = DATA_ROOT / "bronze" / "WESAD"
 REPORTS = ROOT / "reports"
 CONFIG_DIR = ROOT / "config"
 
