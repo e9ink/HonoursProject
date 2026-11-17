@@ -46,11 +46,11 @@ BLACK     = "#000000"
 FONT = "DejaVu Sans"
 DPI = 300
 
-BRONZE_COLOUR = "#CD7F32"
-SILVER_COLOUR = "#A8A9AD"
-GOLD_COLOUR   = "#CFB53B"
+BRONZE_COLOUR      = "#CD7F32"
+SILVER_COLOUR      = "#A8A9AD"
+SILVER_TEXT_COLOUR = "#505052"   # darker for legibility on the gray band
+GOLD_COLOUR        = "#CFB53B"
 
-# Bronze layer: stages 1-5; Silver: 6-7; Gold: 8-10
 LAYER_COLOURS = {
     "Bronze": "#F4E0C4",
     "Silver": "#E8E8E8",
@@ -61,6 +61,14 @@ LAYER_EDGE = {
     "Silver": SILVER_COLOUR,
     "Gold":   GOLD_COLOUR,
 }
+
+# Figure 4.2a cell colours: muted, colour-blind-safe
+# verdict_flip=True (detected + verdict failed): muted amber
+CELL_FLIP    = "#F5C07A"
+# verdict_flip=False (detected + verdict still passed): muted sky blue
+CELL_NO_FLIP = "#A8CCE0"
+# not detected: very light grey
+CELL_MISS    = "#F0F0F0"
 
 plt.rcParams.update({
     "font.family":        FONT,
@@ -127,111 +135,133 @@ def _save_table(df: pd.DataFrame, stem: str) -> None:
     (TABLES_DIR / f"{stem}.md").write_text(_df_to_markdown(df), encoding="utf-8")
 
 
+def _pid_key(pid: str) -> int:
+    """Sort key for participant IDs: S2, S3 ... S17 -> 2, 3 ... 17."""
+    return int(pid[1:])
+
+
 # ---------------------------------------------------------------------------
 # Figure 3.1 -- pipeline overview
 # ---------------------------------------------------------------------------
-PIPELINE_STAGES = [
-    # (number, label, short output, layer)
-    (1,  "Profiling",          "wesad_baseline.json",          "Bronze"),
-    (2,  "Conformance check",  "wesad_conformance.json",       "Bronze"),
-    (3,  "Completeness check", "wesad_completeness.json",      "Bronze"),
-    (4,  "Plausibility check", "wesad_plausibility.json",      "Bronze"),
-    (5,  "Temporal alignment", "wesad_alignment.json",         "Bronze"),
-    (6,  "Silver cleaning",    "wesad_cleaning.json",          "Silver"),
-    (7,  "Post-cleaning",      "wesad_*_post_cleaning.json",   "Silver"),
-    (8,  "Governance",         "wesad_lineage.json",           "Gold"),
-    (9,  "Quality report",     "wesad_quality_report.json",    "Gold"),
-    (10, "Gold manifest",      "wesad_manifest.json",          "Gold"),
+
+# Each entry: (num_or_None, label, short_output, layer, is_source)
+# is_source=True marks the read-only data input node (no stage number, no output).
+PIPELINE_ENTRIES = [
+    (None, "Raw WESAD data (read-only)", "",                             "Bronze", True),
+    (1,    "Profiling",                  "wesad_baseline.json",          "Bronze", False),
+    (2,    "Conformance check",          "wesad_conformance.json",       "Silver", False),
+    (3,    "Completeness check",         "wesad_completeness.json",      "Silver", False),
+    (4,    "Plausibility check",         "wesad_plausibility.json",      "Silver", False),
+    (5,    "Temporal alignment",         "wesad_alignment.json",         "Silver", False),
+    (6,    "Silver cleaning",            "wesad_cleaning.json",          "Silver", False),
+    (7,    "Post-cleaning",              "wesad_*_post_cleaning.json",   "Silver", False),
+    (8,    "Governance",                 "wesad_lineage.json",           "Gold",   False),
+    (9,    "Quality report",             "wesad_quality_report.json",    "Gold",   False),
+    (10,   "Gold manifest",              "wesad_manifest.json",          "Gold",   False),
 ]
 
-# Layer spans (1-indexed stage numbers)
+# Layer spans: (name, first_entry_index, last_entry_index) -- 0-indexed into PIPELINE_ENTRIES
 LAYER_SPANS = [
-    ("Bronze", 1, 5),
-    ("Silver", 6, 7),
+    ("Bronze", 0, 1),
+    ("Silver", 2, 7),
     ("Gold",   8, 10),
 ]
 
 
 def fig_pipeline_overview() -> None:
     """Figure 3.1: pipeline stages diagram, Bronze / Silver / Gold layers."""
-    n = len(PIPELINE_STAGES)
-    fig_h = n * 0.75 + 1.0
-    fig, ax = plt.subplots(figsize=(8, fig_h))
+    n = len(PIPELINE_ENTRIES)
+    gap   = 0.70   # vertical step per entry
+    box_h = 0.54
+    box_x0 = 0.4
+    box_w  = 7.8   # narrower than v1
+
+    fig_h = n * gap + 0.4
+    fig, ax = plt.subplots(figsize=(7, fig_h))
     ax.set_xlim(0, 10)
-    ax.set_ylim(-0.5, n + 0.5)
+    ax.set_ylim(-0.5, n * gap + 0.1)
     ax.axis("off")
 
-    box_x0 = 0.5
-    box_w  = 9.0
-    box_h  = 0.58
-    gap    = 0.75   # vertical step per stage (y increases upward; we flip)
-    arrow_dx = 0.0  # centred
-
-    def stage_y(i: int) -> float:
-        """y-centre for stage i (0-indexed, top-to-bottom)."""
+    def entry_y(i: int) -> float:
+        """y-centre for entry i (0-indexed, top-to-bottom)."""
         return (n - 1 - i) * gap
 
     # -- layer background bands --
-    for layer, s_start, s_end in LAYER_SPANS:
-        y_top  = stage_y(s_start - 1) + box_h / 2 + 0.12
-        y_bot  = stage_y(s_end   - 1) - box_h / 2 - 0.12
+    for layer, i_start, i_end in LAYER_SPANS:
+        y_top = entry_y(i_start) + box_h / 2 + 0.10
+        y_bot = entry_y(i_end)   - box_h / 2 - 0.10
         band = mpatches.FancyBboxPatch(
-            (box_x0 - 0.15, y_bot),
-            box_w + 0.3,
+            (box_x0 - 0.12, y_bot),
+            box_w + 0.24,
             y_top - y_bot,
-            boxstyle="round,pad=0.05",
+            boxstyle="round,pad=0.04",
             linewidth=1.2,
             edgecolor=LAYER_EDGE[layer],
             facecolor=LAYER_COLOURS[layer],
             zorder=1,
         )
         ax.add_patch(band)
+        text_colour = SILVER_TEXT_COLOUR if layer == "Silver" else LAYER_EDGE[layer]
         ax.text(
-            9.65, (y_top + y_bot) / 2,
+            box_x0 + box_w + 0.42, (y_top + y_bot) / 2,
             layer,
             ha="center", va="center",
             fontsize=9, fontweight="bold",
-            color=LAYER_EDGE[layer],
+            color=text_colour,
             rotation=90,
             zorder=5,
         )
 
-    # -- stage boxes --
-    for i, (num, label, output, layer) in enumerate(PIPELINE_STAGES):
-        y = stage_y(i)
+    # -- entry boxes and text --
+    for i, (num, label, output, layer, is_source) in enumerate(PIPELINE_ENTRIES):
+        y = entry_y(i)
+        ls = "dashed" if is_source else "solid"
+        fc = LAYER_COLOURS[layer] if is_source else "white"
         rect = mpatches.FancyBboxPatch(
             (box_x0, y - box_h / 2),
-            box_w - 0.3,
+            box_w,
             box_h,
             boxstyle="round,pad=0.04",
             linewidth=1,
             edgecolor=LAYER_EDGE[layer],
-            facecolor="white",
+            linestyle=ls,
+            facecolor=fc,
             zorder=3,
         )
         ax.add_patch(rect)
-        ax.text(
-            box_x0 + 0.25, y + 0.03,
-            f"{num}. {label}",
-            ha="left", va="center",
-            fontsize=9, fontweight="bold",
-            color=BLACK, zorder=4,
-        )
-        ax.text(
-            box_x0 + 0.25, y - 0.19,
-            f"output: {output}",
-            ha="left", va="center",
-            fontsize=7.5, color="#444444",
-            style="italic", zorder=4,
-        )
+        if is_source:
+            ax.text(
+                box_x0 + box_w / 2, y,
+                label,
+                ha="center", va="center",
+                fontsize=9, style="italic",
+                color="#555555", zorder=4,
+            )
+        else:
+            prefix = f"{num}. " if num is not None else ""
+            ax.text(
+                box_x0 + 0.22, y + 0.03,
+                f"{prefix}{label}",
+                ha="left", va="center",
+                fontsize=8.5, fontweight="bold",
+                color=BLACK, zorder=4,
+            )
+            ax.text(
+                box_x0 + 0.22, y - 0.18,
+                f"output: {output}",
+                ha="left", va="center",
+                fontsize=7, color="#444444",
+                style="italic", zorder=4,
+            )
 
-    # -- arrows between stages --
+    # -- arrows between consecutive entries --
+    mid_x = box_x0 + box_w / 2
     for i in range(n - 1):
-        y_from = stage_y(i)   - box_h / 2
-        y_to   = stage_y(i+1) + box_h / 2
+        y_from = entry_y(i)   - box_h / 2
+        y_to   = entry_y(i+1) + box_h / 2
         ax.annotate(
-            "", xy=(box_x0 + (box_w - 0.3) / 2, y_to),
-            xytext=(box_x0 + (box_w - 0.3) / 2, y_from),
+            "", xy=(mid_x, y_to),
+            xytext=(mid_x, y_from),
             arrowprops=dict(
                 arrowstyle="-|>",
                 color="#666666",
@@ -241,25 +271,11 @@ def fig_pipeline_overview() -> None:
             zorder=2,
         )
 
-    # -- raw data input arrow at the top --
-    top_y = stage_y(0) + box_h / 2
-    ax.annotate(
-        "", xy=(box_x0 + (box_w - 0.3) / 2, top_y),
-        xytext=(box_x0 + (box_w - 0.3) / 2, top_y + 0.4),
-        arrowprops=dict(arrowstyle="-|>", color="#666666", lw=1.0, mutation_scale=10),
-        zorder=2,
-    )
-    ax.text(
-        box_x0 + (box_w - 0.3) / 2, top_y + 0.5,
-        "Raw WESAD data (bronze/)",
-        ha="center", va="bottom", fontsize=8.5, color="#444444",
-    )
-
-    fig.subplots_adjust(left=0.01, right=0.93, top=0.97, bottom=0.01)
+    fig.subplots_adjust(left=0.01, right=0.90, top=0.99, bottom=0.01)
     _save(fig, "fig3_1_pipeline_overview")
     _save_csv(
-        [{"stage": num, "label": lbl, "output": out, "layer": lay}
-         for num, lbl, out, lay in PIPELINE_STAGES],
+        [{"stage": num if num is not None else "data", "label": lbl, "output": out, "layer": lay}
+         for num, lbl, out, lay, _ in PIPELINE_ENTRIES],
         "fig3_1_pipeline_stages",
     )
     print("  saved: fig3_1_pipeline_overview")
@@ -272,7 +288,6 @@ def fig_pipeline_overview() -> None:
 def _read_temp_csv(path: Path) -> np.ndarray:
     """Read E4 TEMP CSV (start_time / hz / values...) and return values array."""
     lines = path.read_text(encoding="utf-8").splitlines()
-    # skip first two lines (unix timestamp, sampling rate)
     vals = []
     for line in lines[2:]:
         line = line.strip()
@@ -297,9 +312,8 @@ def fig_temp_artefact(pid: str = "S2") -> None:
     cleaned = _read_temp_csv(silver_path)[:n_samples]
     t = np.arange(n_samples) / hz   # seconds
 
-    # Plausibility bounds from physiological_ranges.yaml (embedded constants)
     plaus_min, plaus_max = 15.0, 42.0
-    artefact_val = raw[0]           # ~382 C
+    artefact_val = raw[0]           # ~382 degC
 
     # -- broken y-axis: top panel = artefact zone, bottom = normal range --
     fig = plt.figure(figsize=(8, 5))
@@ -316,49 +330,60 @@ def fig_temp_artefact(pid: str = "S2") -> None:
     ax_hi.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f"{x:.0f}"))
     ax_hi.spines["bottom"].set_visible(False)
     ax_hi.tick_params(bottom=False, labelbottom=False)
-    ax_hi.set_ylabel("Temp (deg C)")
     ax_hi.legend(loc="center right", framealpha=0.85, fontsize=8)
 
-    # annotation in top panel pointing at the artefact samples
+    # annotation pointing at the artefact samples in top panel
     ax_hi.annotate(
-        "Warm-up artefact\n(indices 0-3)",
-        xy=(0.75 / hz, artefact_val),   # first sample
-        xytext=(5, artefact_val - 1),
+        "Warm-up artefact\n(first 4 samples, about 382 °C)",
+        xy=(0.75 / hz, artefact_val),
+        xytext=(6, artefact_val - 2),
         fontsize=8,
         arrowprops=dict(arrowstyle="->", color="#444444", lw=0.8),
         ha="left",
         color="#444444",
     )
 
-    # bottom panel: normal range (plaus bounds at 15 and 42 deg C)
+    # bottom panel: normal range (plausibility bounds at 15 and 42 degC)
     ax_lo.plot(t, raw,     color=ORANGE, lw=1.5)
     ax_lo.plot(t, cleaned, color=BLUE,   lw=1.5, zorder=3)
     ax_lo.axhline(plaus_min, color=VERMILION, lw=1.0, ls="--",
-                  label=f"Plausibility bound ({plaus_min:.0f} deg C)")
+                  label=f"Plausibility bound ({plaus_min:.0f} °C)")
     ax_lo.axhline(plaus_max, color=VERMILION, lw=1.0, ls="--",
-                  label=f"Plausibility bound ({plaus_max:.0f} deg C)")
+                  label=f"Plausibility bound ({plaus_max:.0f} °C)")
     ax_lo.set_ylim(plaus_min - 2, plaus_max + 2)
     ax_lo.set_xlim(-0.5, 60.5)
     ax_lo.set_xlabel("Time (s)")
-    ax_lo.set_ylabel("Temp (deg C)")
     ax_lo.spines["top"].set_visible(False)
-    ax_lo.legend(loc="lower right", framealpha=0.85, fontsize=8)
+    # bounds legend in the empty middle-right area of the lower panel
+    ax_lo.legend(loc="center right", framealpha=0.85, fontsize=8)
 
-    # -- break markers using axes-relative coordinates --
-    # d_hi and d_lo matched so the marks are the same physical size on the page;
-    # height_ratios=[1,2] so d_lo = d_hi * (1/2)
-    d_hi = 0.03
-    d_lo = d_hi / 2
-    bk = dict(color=BLACK, clip_on=False, lw=1.2)
+    # -- shared y-axis label --
+    ax_hi.set_ylabel("")
+    ax_lo.set_ylabel("")
+    fig.text(
+        0.03, 0.5,
+        "Skin temperature (°C)",
+        va="center", ha="center",
+        rotation="vertical",
+        fontsize=10,
+    )
+
+    # -- break marks: use transAxes, clip_on=True (default) so nothing draws outside --
+    # height_ratios=[1, 2] -> bottom panel is physically 2x taller.
+    # To get equal physical mark size: d_lo = d_hi * (1/2).
+    d_hi = 0.05   # axes fraction for top (shorter) panel
+    d_lo = 0.025  # axes fraction for bottom (taller) panel
+    bk = dict(color=BLACK, lw=1.2)
+    # bottom edge of top panel (break line, marks straddle y=0 in transAxes)
     ax_hi.plot((-d_hi, d_hi), (-d_hi, d_hi), transform=ax_hi.transAxes, **bk)
     ax_hi.plot((1 - d_hi, 1 + d_hi), (-d_hi, d_hi), transform=ax_hi.transAxes, **bk)
+    # top edge of bottom panel (break line, marks straddle y=1 in transAxes)
     ax_lo.plot((-d_lo, d_lo), (1 - d_lo, 1 + d_lo), transform=ax_lo.transAxes, **bk)
     ax_lo.plot((1 - d_lo, 1 + d_lo), (1 - d_lo, 1 + d_lo), transform=ax_lo.transAxes, **bk)
 
-    fig.subplots_adjust(left=0.1, right=0.95, top=0.97, bottom=0.1, hspace=0.08)
+    fig.subplots_adjust(left=0.12, right=0.95, top=0.97, bottom=0.10, hspace=0.08)
     _save(fig, "fig4_1_temp_artefact")
 
-    # save data
     rows = [
         {"time_s": float(t[i]), "bronze_temp_c": float(raw[i]),
          "silver_temp_c": (float(cleaned[i]) if not np.isnan(cleaned[i]) else "NaN")}
@@ -369,51 +394,45 @@ def fig_temp_artefact(pid: str = "S2") -> None:
 
 
 # ---------------------------------------------------------------------------
-# Figure 4.2 -- fault injection results
+# Figure 4.2a -- detection grid by fault type and severity
 # ---------------------------------------------------------------------------
 
-def _aggregate_fault_records(records: list[dict]) -> dict:
-    """Aggregate fault records (avg detection_rate, any verdict_flip)."""
-    drs = [r["detection_rate"] for r in records if "detection_rate" in r]
-    flips = [r.get("verdict_flip", False) for r in records]
-    fps = [r.get("false_positive_count", 0) for r in records if "false_positive_count" in r]
-    return {
-        "n": len(records),
-        "detection_rate": float(np.mean(drs)) if drs else float("nan"),
-        "verdict_flip": any(flips),
-        "false_positive_count": int(sum(fps)),
-    }
-
-
-# Human-readable short names for fault types
-FAULT_LABELS = {
-    "completeness_contiguous_dropout":    "Completeness: contiguous dropout",
-    "completeness_scattered_nan":         "Completeness: scattered NaN",
-    "conformance_non_numeric":            "Conformance: non-numeric values",
-    "conformance_out_of_device_range":    "Conformance: out-of-range",
-    "conformance_sampling_rate_fault":    "Conformance: sampling rate",
-    "plausibility_physiological_impossible": "Plausibility: impossible value",
+GRID_FAULT_LABELS = {
+    "completeness_scattered_nan":         "Completeness: scattered\nmissing values",
+    "completeness_contiguous_dropout":    "Completeness: contiguous\ndropout",
+    "conformance_non_numeric":            "Conformance: non-numeric\nvalues",
+    "conformance_out_of_device_range":    "Conformance: out-of-range\nECG",
+    "plausibility_physiological_impossible": "Plausibility: impossible\nvalues",
 }
-# Order for grid rows
+
 GRID_ROWS = [
-    "completeness_contiguous_dropout",
     "completeness_scattered_nan",
+    "completeness_contiguous_dropout",
     "conformance_non_numeric",
     "conformance_out_of_device_range",
     "plausibility_physiological_impossible",
 ]
-SEVERITY_COLS = [0.001, 0.01, 0.05, 0.1]
-SEV_LABELS = ["0.1 %", "1 %", "5 %", "10 %"]
+SEVERITY_COLS   = [0.001, 0.01, 0.05, 0.1]
+SEV_LABELS      = ["0.1 %", "1 %", "5 %", "10 %"]
 
 
-def fig_fault_injection(fi: dict) -> None:
-    """Figure 4.2: fault injection result grid."""
+def _aggregate_fault_records(records: list[dict]) -> dict:
+    """Aggregate count-based fault records (avg detection_rate, any verdict_flip)."""
+    drs   = [r["detection_rate"] for r in records if "detection_rate" in r]
+    flips = [r.get("verdict_flip", False) for r in records]
+    return {
+        "n":              len(records),
+        "detection_rate": float(np.mean(drs)) if drs else float("nan"),
+        "verdict_flip":   any(flips),
+    }
+
+
+def fig_detection_grid(fi: dict) -> None:
+    """Figure 4.2a: fault detection rate grid with verdict-flip colouring."""
     records = fi["records"]
     fault_records = [r for r in records if r["fault_type"] != "control_no_injection"]
-    control_records = [r for r in records if r["fault_type"] == "control_no_injection"]
 
-    # -- build grid data --
-    # grid[row_ft][sev] = aggregated
+    # build grid
     grid: dict[str, dict] = {}
     for ft in GRID_ROWS:
         grid[ft] = {}
@@ -422,235 +441,217 @@ def fig_fault_injection(fi: dict) -> None:
                       if r["fault_type"] == ft and r.get("severity") == sev]
             grid[ft][sev] = _aggregate_fault_records(subset)
 
-    # sampling rate fault
+    # sampling rate aggregates for the note
     sr_records = [r for r in fault_records if r["fault_type"] == "conformance_sampling_rate_fault"]
-    sr_agg = {
-        "n": len(sr_records),
-        "detected": sum(1 for r in sr_records if r.get("detected", False)),
-        "verdict_flip": any(r.get("verdict_flip", False) for r in sr_records),
-    }
+    sr_det   = sum(1 for r in sr_records if r.get("detected", False))
+    sr_total = len(sr_records)
+    sr_flip  = any(r.get("verdict_flip", False) for r in sr_records)
 
-    # timeliness
-    tim_records = [r for r in fault_records if r["fault_type"] == "timeliness_start_shift"]
-    tim_offsets = sorted(set(r["offset_injected_s"] for r in tim_records))
-    tim_by_offset: dict[float, dict] = {}
-    for off in tim_offsets:
-        subset = [r for r in tim_records if r["offset_injected_s"] == off]
-        detected = sum(1 for r in subset if r.get("detected", False))
-        tim_by_offset[off] = {
-            "n": len(subset),
-            "detected": detected,
-            "undetected": len(subset) - detected,
-        }
+    ctrl_records = [r for r in records if r["fault_type"] == "control_no_injection"]
+    ctrl_total   = len(ctrl_records)
+    ctrl_flags   = sum(1 for r in ctrl_records if r.get("any_flag", False))
 
-    # control
-    ctrl_agg = {
-        "n": len(control_records),
-        "any_flag": sum(1 for r in control_records if r.get("any_flag", True)),
-        "false_detections": sum(1 for r in control_records if r.get("any_flag", True)),
-    }
-
-    # -- figure layout: two panels stacked --
-    fig = plt.figure(figsize=(10, 8))
-    gs_main = gridspec.GridSpec(2, 1, figure=fig, hspace=0.45,
-                                height_ratios=[5, 2])
-
-    ax_grid = fig.add_subplot(gs_main[0])
-    ax_tim  = fig.add_subplot(gs_main[1])
-
-    ax_grid.axis("off")
-    ax_tim.axis("off")
-
-    n_rows = len(GRID_ROWS) + 2  # +1 sampling rate, +1 control
+    # -- figure layout --
+    n_rows = len(GRID_ROWS)
     n_cols = len(SEVERITY_COLS)
 
-    col_w = 1.0 / (n_cols + 1.5)
-    row_h = 1.0 / (n_rows + 0.5)
+    fig, ax = plt.subplots(figsize=(10, 5.5))
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+    ax.axis("off")
 
-    # column headers
+    # column proportions: label_frac takes the left portion
+    label_frac = 0.38
+    data_frac  = 1.0 - label_frac
+    col_w = data_frac / n_cols
+
+    # vertical allocation:
+    #   header_h   = column-header row
+    #   legend_h   = colour-swatch legend row
+    #   note_h     = note text at very bottom
+    #   remainder  = n_rows data rows
+    header_h = 0.10
+    legend_h = 0.10
+    note_h   = 0.07
+    row_h    = (1.0 - header_h - legend_h - note_h) / n_rows
+
+    def row_y(i: int) -> float:
+        """Bottom y of data row i (0 = top row)."""
+        return 1.0 - header_h - (i + 1) * row_h
+
+    # -- column headers --
     for j, sl in enumerate(SEV_LABELS):
-        ax_grid.text(
-            (j + 1.5) * col_w, 1 - 0.3 * row_h,
-            sl,
+        cx = label_frac + (j + 0.5) * col_w
+        ax.text(cx, 1.0 - header_h * 0.5, sl,
+                ha="center", va="center", fontsize=9, fontweight="bold",
+                transform=ax.transAxes)
+    ax.text(label_frac * 0.5, 1.0 - header_h * 0.5, "Fault type",
             ha="center", va="center", fontsize=9, fontweight="bold",
-            transform=ax_grid.transAxes,
-        )
-    ax_grid.text(
-        0.5 * col_w, 1 - 0.3 * row_h, "Fault type",
-        ha="center", va="center", fontsize=9, fontweight="bold",
-        transform=ax_grid.transAxes,
-    )
+            transform=ax.transAxes)
 
-    def _cell_color(dr: float) -> str:
-        if np.isnan(dr):
-            return "#FFFFFF"
-        # gradient: 0 = red, 1 = green (colour-blind-safe using blue-orange)
-        # DR=1 -> green; DR=0 -> light red
-        g = int(dr * 180 + 40)
-        r = int((1 - dr) * 180 + 40)
-        b = 40
-        return f"#{r:02X}{g:02X}{b:02X}"
-
-    # grid rows
+    # -- data cells and row labels --
     for i, ft in enumerate(GRID_ROWS):
-        y = 1 - (i + 1.3) * row_h
-        # row label
-        ax_grid.text(
-            0.5 * col_w, y + 0.5 * row_h,
-            FAULT_LABELS[ft],
-            ha="center", va="center", fontsize=8,
-            transform=ax_grid.transAxes,
-        )
+        y = row_y(i)
+        # row label (left-aligned, centred vertically in row)
+        ax.text(0.01, y + row_h * 0.5,
+                GRID_FAULT_LABELS[ft],
+                ha="left", va="center", fontsize=8.5,
+                transform=ax.transAxes, linespacing=1.3)
+        # cell separator line under row
+        ax.plot([0, 1], [y, y], color="#CCCCCC", lw=0.5, transform=ax.transAxes)
+
         for j, sev in enumerate(SEVERITY_COLS):
             agg = grid[ft][sev]
-            x = (j + 1.5) * col_w
-            dr = agg["detection_rate"]
+            dr   = agg["detection_rate"]
             flip = agg["verdict_flip"]
-            fp = agg["false_positive_count"]
-            fc = _cell_color(dr)
+
+            if np.isnan(dr) or dr == 0.0:
+                fc = CELL_MISS
+            elif flip:
+                fc = CELL_FLIP
+            else:
+                fc = CELL_NO_FLIP
+
+            cell_x = label_frac + j * col_w
+            pad = 0.004
             rect = mpatches.FancyBboxPatch(
-                (x - col_w * 0.47, y + 0.05 * row_h),
-                col_w * 0.94, row_h * 0.9,
-                boxstyle="round,pad=0.01",
-                linewidth=0.6, edgecolor="#888888",
-                facecolor=fc, transform=ax_grid.transAxes,
+                (cell_x + pad, y + pad),
+                col_w - 2 * pad, row_h - 2 * pad,
+                boxstyle="round,pad=0.005",
+                linewidth=0.5, edgecolor="#AAAAAA",
+                facecolor=fc, transform=ax.transAxes, zorder=2,
             )
-            ax_grid.add_patch(rect)
-            flip_sym = " F" if flip else ""
-            fd_sym   = f" fd={fp}" if fp > 0 else ""
-            ax_grid.text(
-                x, y + 0.5 * row_h,
-                f"DR={dr:.2f}{flip_sym}{fd_sym}",
-                ha="center", va="center", fontsize=8,
-                transform=ax_grid.transAxes,
-            )
+            ax.add_patch(rect)
 
-    # sampling rate row
-    i = len(GRID_ROWS)
-    y = 1 - (i + 1.3) * row_h
-    ax_grid.text(
-        0.5 * col_w, y + 0.5 * row_h,
-        FAULT_LABELS["conformance_sampling_rate_fault"],
-        ha="center", va="center", fontsize=8,
-        transform=ax_grid.transAxes,
-    )
-    # one merged cell spanning all severity columns
-    n_det = sr_agg["detected"]
-    n_tot = sr_agg["n"]
-    dr_sr = n_det / n_tot if n_tot else float("nan")
-    flip_sym = " F" if sr_agg["verdict_flip"] else ""
-    fc_sr = _cell_color(dr_sr)
-    merged_x0 = 1.5 * col_w
-    merged_w  = n_cols * col_w
-    rect = mpatches.FancyBboxPatch(
-        (merged_x0 - col_w * 0.47, y + 0.05 * row_h),
-        merged_w - 0.06 * col_w, row_h * 0.9,
-        boxstyle="round,pad=0.01",
-        linewidth=0.6, edgecolor="#888888",
-        facecolor=fc_sr, transform=ax_grid.transAxes,
-    )
-    ax_grid.add_patch(rect)
-    ax_grid.text(
-        merged_x0 + (merged_w - col_w) / 2, y + 0.5 * row_h,
-        f"DR={dr_sr:.2f}{flip_sym}  (single fault, no severity parameter)",
-        ha="center", va="center", fontsize=8,
-        transform=ax_grid.transAxes,
-    )
+            pct = f"{dr * 100:.0f}%" if not np.isnan(dr) else "--"
+            ax.text(cell_x + col_w * 0.5, y + row_h * 0.5, pct,
+                    ha="center", va="center", fontsize=9,
+                    transform=ax.transAxes, zorder=3)
 
-    # control row
-    i = len(GRID_ROWS) + 1
-    y = 1 - (i + 1.3) * row_h
-    ax_grid.text(
-        0.5 * col_w, y + 0.5 * row_h,
-        "Control (no injection)",
-        ha="center", va="center", fontsize=8, style="italic",
-        transform=ax_grid.transAxes,
+    # top border under column headers
+    ax.plot([0, 1], [1.0 - header_h, 1.0 - header_h],
+            color="#888888", lw=1.0, transform=ax.transAxes)
+    # bottom border of last row
+    ax.plot([0, 1], [row_y(n_rows - 1), row_y(n_rows - 1)],
+            color="#888888", lw=1.0, transform=ax.transAxes)
+    # vertical divider between labels and cells (ends at bottom of last data row)
+    ax.plot([label_frac, label_frac], [note_h + legend_h, 1.0],
+            color="#888888", lw=0.8, transform=ax.transAxes)
+
+    # -- legend row: sits between data rows and note --
+    swatch_y = note_h + legend_h * 0.25
+    swatch_h = legend_h * 0.50
+    swatch_w = 0.025
+    legend_x = 0.01   # start from the left edge
+    for fc, txt in [
+        (CELL_FLIP,    "Detected -- verdict failed"),
+        (CELL_NO_FLIP, "Detected -- verdict still passed"),
+    ]:
+        sw = mpatches.FancyBboxPatch(
+            (legend_x, swatch_y),
+            swatch_w, swatch_h,
+            boxstyle="round,pad=0.003",
+            linewidth=0.5, edgecolor="#AAAAAA",
+            facecolor=fc, transform=ax.transAxes, zorder=2,
+        )
+        ax.add_patch(sw)
+        ax.text(legend_x + swatch_w + 0.01, swatch_y + swatch_h * 0.5,
+                txt, ha="left", va="center", fontsize=8,
+                transform=ax.transAxes)
+        legend_x += swatch_w + 0.01 + len(txt) * 0.011 + 0.03
+
+    # -- note at the very bottom --
+    sr_flip_txt = "verdict failed" if sr_flip else "verdict still passed"
+    note = (
+        f"Sampling-rate fault: detected for {sr_det} of {sr_total} participants, {sr_flip_txt}.  "
+        f"Control: {ctrl_flags} flags across {ctrl_total} participants."
     )
-    fc_ctrl = _cell_color(0.0) if ctrl_agg["any_flag"] > 0 else "#C8E6C9"
-    rect = mpatches.FancyBboxPatch(
-        (1.5 * col_w - col_w * 0.47, y + 0.05 * row_h),
-        n_cols * col_w - 0.06 * col_w, row_h * 0.9,
-        boxstyle="round,pad=0.01",
-        linewidth=0.6, edgecolor="#888888",
-        facecolor=fc_ctrl, transform=ax_grid.transAxes,
-    )
-    ax_grid.add_patch(rect)
-    ax_grid.text(
-        1.5 * col_w + (n_cols * col_w - col_w) / 2, y + 0.5 * row_h,
-        f"{ctrl_agg['n']} participants, 0 false detections (expected: none flagged)",
-        ha="center", va="center", fontsize=8,
-        transform=ax_grid.transAxes,
-    )
+    ax.text(0.0, note_h * 0.45, note,
+            ha="left", va="center", fontsize=8, color="#444444",
+            transform=ax.transAxes)
 
-    ax_grid.text(
-        0.5, 1.03,
-        "F = verdict flipped to Fail",
-        ha="center", va="bottom", fontsize=8, color="#555555",
-        transform=ax_grid.transAxes,
-    )
+    fig.subplots_adjust(left=0.02, right=0.98, top=0.97, bottom=0.04)
+    _save(fig, "fig4_2a_detection_grid")
 
-    # -- timeliness panel --
-    ax_tim.set_title("Timeliness fault injection (start-time shift; all undetected by design)",
-                     fontsize=9, loc="left", pad=4)
-
-    n_offs = len(tim_offsets)
-    bar_colors = [ORANGE if d["detected"] == 0 else GREEN
-                  for d in tim_by_offset.values()]
-    ypos = np.arange(n_offs)
-
-    ax_tim2 = fig.add_axes(ax_tim.get_position(), frameon=True)
-    ax_tim2.barh(ypos, [d["n"] for d in tim_by_offset.values()],
-                 color=SILVER_COLOUR, label="Injected (not detected)", height=0.5)
-    ax_tim2.set_yticks(ypos)
-    ax_tim2.set_yticklabels([f"{o:.0f} s" if o >= 1 else f"{o} s" for o in tim_offsets],
-                            fontsize=9)
-    ax_tim2.set_xlabel("Number of participants tested")
-    ax_tim2.set_xlim(0, max(d["n"] for d in tim_by_offset.values()) + 1)
-    ax_tim2.set_xticks([0, 1, 2, 3])
-    ax_tim2.spines["top"].set_visible(False)
-    ax_tim2.spines["right"].set_visible(False)
-    ax_tim2.text(
-        0.98, 0.95,
-        "Offset injected on one E4 signal;\n5-point method cannot detect it",
-        ha="right", va="top", fontsize=8, color="#444444",
-        transform=ax_tim2.transAxes,
-    )
-    ax_tim.set_visible(False)
-
-    _save(fig, "fig4_2_fault_injection")
-
-    # save data
     rows = []
     for ft in GRID_ROWS:
         for sev in SEVERITY_COLS:
             agg = grid[ft][sev]
             rows.append({
-                "fault_type": ft,
-                "severity": sev,
-                "n_records": agg["n"],
-                "detection_rate": agg["detection_rate"],
-                "verdict_flip": agg["verdict_flip"],
-                "false_positive_count": agg["false_positive_count"],
+                "fault_type":     ft,
+                "severity":       f"{sev * 100:.1f}%",
+                "n_records":      agg["n"],
+                "detection_rate": f"{agg['detection_rate']:.2f}" if not np.isnan(agg["detection_rate"]) else "NaN",
+                "verdict_flip":   agg["verdict_flip"],
             })
-    rows.append({
-        "fault_type": "conformance_sampling_rate_fault",
-        "severity": "N/A",
-        "n_records": sr_agg["n"],
-        "detection_rate": dr_sr,
-        "verdict_flip": sr_agg["verdict_flip"],
-        "false_positive_count": 0,
-    })
-    for off, d in tim_by_offset.items():
-        rows.append({
-            "fault_type": "timeliness_start_shift",
-            "severity": f"{off}s",
-            "n_records": d["n"],
-            "detection_rate": 0.0,
-            "verdict_flip": False,
-            "false_positive_count": 0,
-        })
-    _save_csv(rows, "fig4_2_fault_injection")
-    print("  saved: fig4_2_fault_injection")
+    _save_csv(rows, "fig4_2a_detection_grid")
+    print("  saved: fig4_2a_detection_grid")
+
+
+# ---------------------------------------------------------------------------
+# Figure 4.2b -- start-time shift vs measured residual
+# ---------------------------------------------------------------------------
+
+def fig_timeliness_shift(fi: dict) -> None:
+    """Figure 4.2b: injected start-time shift vs measured alignment residual."""
+    records = fi["records"]
+    tim = [r for r in records if r["fault_type"] == "timeliness_start_shift"]
+    pids    = sorted(set(r["participant"] for r in tim), key=_pid_key)
+    offsets = sorted(set(r["offset_injected_s"] for r in tim))
+
+    fig, ax = plt.subplots(figsize=(7, 4))
+
+    markers = ["o", "s", "^"]
+    colours = [BLUE, ORANGE, VERMILION]
+    for idx, pid in enumerate(pids):
+        pts = {r["offset_injected_s"]: r["dirty_residual_s"]
+               for r in tim if r["participant"] == pid}
+        xs = [off for off in offsets]
+        ys = [pts[off] for off in offsets]
+        ax.scatter(xs, ys,
+                   color=colours[idx % len(colours)],
+                   marker=markers[idx % len(markers)],
+                   s=55, zorder=4, label=pid)
+
+    threshold = 1.0
+    ax.axhline(threshold, color="#888888", lw=1.2, ls="--",
+               label=f"Threshold ({threshold:.1f} s)")
+
+    ax.set_xscale("log")
+    ax.set_xticks(offsets)
+    ax.set_xticklabels(
+        [f"{o:.0f} s" if o >= 1 else f"{o} s" for o in offsets],
+        fontsize=9,
+    )
+    ax.set_xlabel("Injected start-time shift (s)")
+    ax.set_ylabel("Measured alignment residual (s)")
+    ax.set_ylim(bottom=0)
+
+    # annotation: signal and device from experiment design
+    ax.annotate(
+        "Signal shifted: E4/EDA start timestamp\n(Empatica E4 wristband)",
+        xy=(0.03, 0.72), xycoords="axes fraction",
+        fontsize=8, color="#444444",
+        ha="left", va="top",
+    )
+
+    ax.legend(loc="upper right", framealpha=0.85, fontsize=8)
+    ax.grid(axis="y", color="#E8E8E8", zorder=0)
+
+    fig.tight_layout()
+    _save(fig, "fig4_2b_timeliness_shift")
+
+    rows = [
+        {
+            "participant":       r["participant"],
+            "offset_injected_s": r["offset_injected_s"],
+            "dirty_residual_s":  r["dirty_residual_s"],
+            "signal":            r["signal"],
+        }
+        for r in sorted(tim, key=lambda x: (_pid_key(x["participant"]), x["offset_injected_s"]))
+    ]
+    _save_csv(rows, "fig4_2b_timeliness_shift")
+    print("  saved: fig4_2b_timeliness_shift")
 
 
 # ---------------------------------------------------------------------------
@@ -658,20 +659,22 @@ def fig_fault_injection(fi: dict) -> None:
 # ---------------------------------------------------------------------------
 
 def fig_start_time_gap(al: dict) -> None:
-    """Figure 4.3: E4 to RespiBAN start-time gap per participant."""
-    pp = al["participants"]
-    pids = sorted(pp.keys())
+    """Figure 4.3: E4 to RespiBAN start-time gap per participant, S2 at top."""
+    pp   = al["participants"]
+    pids = sorted(pp.keys(), key=_pid_key)   # S2, S3 ... S17
     gaps = [pp[pid]["offset_before_s"] for pid in pids]
     mean_gap = al["summary"]["mean_offset_before_s"]
 
     fig, ax = plt.subplots(figsize=(7, 4.5))
 
-    ax.scatter(gaps, range(len(pids)), color=BLUE, s=60, zorder=3, label="Participant gap")
+    ax.scatter(gaps, range(len(pids)), color=BLUE, s=60, zorder=3,
+               label="Participant gap")
     ax.axvline(mean_gap, color=ORANGE, lw=1.5, ls="--",
                label=f"Mean ({mean_gap:.0f} s)")
 
     ax.set_yticks(range(len(pids)))
     ax.set_yticklabels(pids, fontsize=9)
+    ax.invert_yaxis()   # S2 at top, S17 at bottom
     ax.set_xlabel("E4 to RespiBAN start-time gap (s)")
     ax.set_xlim(700, 1550)
     ax.legend(framealpha=0.85)
@@ -696,59 +699,54 @@ def table_quality_before_after(qr: dict) -> None:
     dims = qr["dimensions"]
     rows = []
 
-    # completeness
     c = dims["completeness"]
     rows.append({
-        "Dimension": "Completeness",
-        "Threshold": c["threshold"],
-        "Before (Bronze)": c["before"]["missingness_rate"],
-        "After (Gold)": c["after"]["missingness_rate"],
-        "Gold passes": c["threshold_pass_gold"],
-        "Note": "60 intentional removals excluded from rate",
+        "Dimension":        "Completeness",
+        "Threshold":        c["threshold"],
+        "Before (Bronze)":  c["before"]["missingness_rate"],
+        "After cleaning":   c["after"]["missingness_rate"],
+        "Passes":           c["threshold_pass_gold"],
+        "Note":             "60 intentional removals excluded from rate",
     })
 
-    # validity_conformance
     vc = dims["validity_conformance"]
     rows.append({
-        "Dimension": "Validity: conformance",
-        "Threshold": vc["threshold"],
-        "Before (Bronze)": f"{vc['before']['violation_rate']:.2e} ({vc['before']['violation_count']} violations)",
-        "After (Gold)": f"{vc['after']['violation_rate']:.2e} ({vc['after']['violation_count']} violations)",
-        "Gold passes": vc["threshold_pass_gold"],
-        "Note": "TEMP warm-up artefact (60 samples, all participants)",
+        "Dimension":        "Validity: conformance",
+        "Threshold":        vc["threshold"],
+        "Before (Bronze)":  f"{vc['before']['violation_rate']:.2e} ({vc['before']['violation_count']} violations)",
+        "After cleaning":   f"{vc['after']['violation_rate']:.2e} ({vc['after']['violation_count']} violations)",
+        "Passes":           vc["threshold_pass_gold"],
+        "Note":             "TEMP warm-up artefact (60 samples, all participants)",
     })
 
-    # validity_plausibility
     vp = dims["validity_plausibility"]
     rows.append({
-        "Dimension": "Validity: plausibility",
-        "Threshold": f"<= {vp['threshold']}",
-        "Before (Bronze)": f"{vp['before']['failure_rate']:.2e} ({vp['before']['violation_count']} failures)",
-        "After (Gold)": f"{vp['after']['failure_rate']:.2e} ({vp['after']['violation_count']} failures)",
-        "Gold passes": vp["threshold_pass_gold"],
-        "Note": "Same 60 TEMP samples; BVP and IBI excluded",
+        "Dimension":        "Validity: plausibility",
+        "Threshold":        f"<= {vp['threshold']}",
+        "Before (Bronze)":  f"{vp['before']['failure_rate']:.2e} ({vp['before']['violation_count']} failures)",
+        "After cleaning":   f"{vp['after']['failure_rate']:.2e} ({vp['after']['violation_count']} failures)",
+        "Passes":           vp["threshold_pass_gold"],
+        "Note":             "Same 60 TEMP samples; BVP and IBI excluded",
     })
 
-    # timeliness
-    t = dims["timeliness"]
+    tl = dims["timeliness"]
     rows.append({
-        "Dimension": "Timeliness (partly assessed)",
-        "Threshold": f"<= {t['threshold']} s",
-        "Before (Bronze)": f"~{t['before']['value_s']:.0f} s start gap",
-        "After (Gold)": f"{t['after']['max_offset_s']:.6f} s max residual (15/15 pass)",
-        "Gold passes": t["threshold_pass_gold"],
-        "Note": "5-point method; cannot detect single-device clock offset",
+        "Dimension":        "Timeliness (partly assessed)",
+        "Threshold":        f"<= {tl['threshold']} s",
+        "Before (Bronze)":  f"~{tl['before']['value_s']:.0f} s start gap",
+        "After cleaning":   f"{tl['after']['max_offset_s']:.6f} s max residual (15/15 pass)",
+        "Passes":           tl["threshold_pass_gold"],
+        "Note":             "5-point method; cannot detect single-device clock offset",
     })
 
-    # consistency / accuracy
     for key, label in [("consistency", "Consistency"), ("accuracy", "Accuracy")]:
         rows.append({
-            "Dimension": label,
-            "Threshold": "N/A",
-            "Before (Bronze)": "not measured",
-            "After (Gold)": "not measured",
-            "Gold passes": "N/A",
-            "Note": dims[key].get("limitation", "intentionally unmeasured"),
+            "Dimension":        label,
+            "Threshold":        "N/A",
+            "Before (Bronze)":  "not measured",
+            "After cleaning":   "not measured",
+            "Passes":           "N/A",
+            "Note":             dims[key].get("limitation", "intentionally unmeasured"),
         })
 
     df = pd.DataFrame(rows)
@@ -761,18 +759,27 @@ def table_fault_injection_summary(fi: dict) -> None:
     records = fi["records"]
     fault_records = [r for r in records if r["fault_type"] != "control_no_injection"]
 
+    all_ft_labels = {
+        "completeness_scattered_nan":         "Completeness: scattered missing values",
+        "completeness_contiguous_dropout":    "Completeness: contiguous dropout",
+        "conformance_non_numeric":            "Conformance: non-numeric values",
+        "conformance_out_of_device_range":    "Conformance: out-of-range ECG",
+        "conformance_sampling_rate_fault":    "Conformance: sampling-rate fault",
+        "plausibility_physiological_impossible": "Plausibility: impossible values",
+    }
+
     rows = []
-    for ft in list(FAULT_LABELS.keys()):
+    for ft, label in all_ft_labels.items():
         if ft == "conformance_sampling_rate_fault":
             subset = [r for r in fault_records if r["fault_type"] == ft]
             n_det = sum(1 for r in subset if r.get("detected", False))
             rows.append({
-                "Fault type": FAULT_LABELS[ft],
-                "Dimension": subset[0]["dimension"] if subset else "",
-                "Severity": "N/A (binary)",
-                "n records": len(subset),
-                "Detection rate": f"{n_det / len(subset):.2f}" if subset else "N/A",
-                "Verdict flip": any(r.get("verdict_flip", False) for r in subset),
+                "Fault type":       label,
+                "Dimension":        subset[0]["dimension"] if subset else "",
+                "Severity":         "N/A (binary fault)",
+                "n records":        len(subset),
+                "Detection rate":   f"{n_det / len(subset):.2f}" if subset else "N/A",
+                "Verdict flip":     any(r.get("verdict_flip", False) for r in subset),
                 "False detections": sum(r.get("false_positive_count", 0) for r in subset
                                         if "false_positive_count" in r),
             })
@@ -784,28 +791,26 @@ def table_fault_injection_summary(fi: dict) -> None:
                 continue
             agg = _aggregate_fault_records(subset)
             rows.append({
-                "Fault type": FAULT_LABELS[ft],
-                "Dimension": subset[0]["dimension"],
-                "Severity": f"{sev * 100:.1f}%",
-                "n records": agg["n"],
-                "Detection rate": f"{agg['detection_rate']:.2f}",
-                "Verdict flip": agg["verdict_flip"],
-                "False detections": agg["false_positive_count"],
+                "Fault type":       label,
+                "Dimension":        subset[0]["dimension"],
+                "Severity":         f"{sev * 100:.1f}%",
+                "n records":        agg["n"],
+                "Detection rate":   f"{agg['detection_rate']:.2f}",
+                "Verdict flip":     agg["verdict_flip"],
+                "False detections": 0,
             })
 
-    # timeliness
     tim_records = [r for r in fault_records if r["fault_type"] == "timeliness_start_shift"]
-    tim_offsets = sorted(set(r["offset_injected_s"] for r in tim_records))
-    for off in tim_offsets:
+    for off in sorted(set(r["offset_injected_s"] for r in tim_records)):
         subset = [r for r in tim_records if r["offset_injected_s"] == off]
         detected = sum(1 for r in subset if r.get("detected", False))
         rows.append({
-            "Fault type": "Timeliness: start-time shift",
-            "Dimension": "timeliness",
-            "Severity": f"{off} s shift",
-            "n records": len(subset),
-            "Detection rate": f"{detected / len(subset):.2f}",
-            "Verdict flip": False,
+            "Fault type":       "Timeliness: start-time shift",
+            "Dimension":        "timeliness",
+            "Severity":         f"{off} s shift",
+            "n records":        len(subset),
+            "Detection rate":   f"{detected / len(subset):.2f}",
+            "Verdict flip":     False,
             "False detections": 0,
         })
 
@@ -815,15 +820,14 @@ def table_fault_injection_summary(fi: dict) -> None:
 
 
 def table_per_participant(al: dict, fi_records: list[dict]) -> None:
-    """Per-participant table: conformance violations, plausibility failures, removals, alignment."""
+    """Per-participant table sorted S2 to S17."""
     conf  = _load("wesad_conformance.json")
     plaus = _load("wesad_plausibility.json")
     clean = _load("wesad_cleaning.json")
 
-    pids = sorted(al["participants"].keys())
+    pids = sorted(al["participants"].keys(), key=_pid_key)
     rows = []
     for pid in pids:
-        # conformance: total range violations (e4 only, all signals)
         c = conf["participants"][pid]
         e4_viol = sum(
             sig.get("range", {}).get("n_violations", 0)
@@ -831,7 +835,6 @@ def table_per_participant(al: dict, fi_records: list[dict]) -> None:
             if isinstance(sig, dict) and "range" in sig
         )
 
-        # plausibility: total e4 violations
         p = plaus["participants"][pid]
         e4_plaus = sum(
             sig.get("n_violations", 0)
@@ -839,23 +842,17 @@ def table_per_participant(al: dict, fi_records: list[dict]) -> None:
             if isinstance(sig, dict)
         )
 
-        # cleaning
         n_replaced = len(clean["participants"][pid]["cleaning"]["indices_replaced"])
 
-        # alignment
         aln = al["participants"][pid]
-        offset_before = aln["offset_before_s"]
-        offset_after  = aln["offset_after_s"]
-        passes        = aln["passes_threshold"]
-
         rows.append({
-            "Participant": pid,
-            "Conf. violations (Bronze)": e4_viol,
-            "Plaus. failures (Bronze)": e4_plaus,
-            "Samples removed (cleaning)": n_replaced,
-            "Start-time gap (s)": offset_before,
-            "Within-overlap residual (s)": offset_after,
-            "Alignment passes (<=1.0 s)": passes,
+            "Participant":                 pid,
+            "Conf. violations (Bronze)":   e4_viol,
+            "Plaus. failures (Bronze)":    e4_plaus,
+            "Samples removed (cleaning)":  n_replaced,
+            "Start-time gap (s)":          aln["offset_before_s"],
+            "Within-overlap residual (s)": aln["offset_after_s"],
+            "Alignment passes (<=1.0 s)":  aln["passes_threshold"],
         })
 
     df = pd.DataFrame(rows)
@@ -873,6 +870,15 @@ def main() -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     TABLES_DIR.mkdir(parents=True, exist_ok=True)
 
+    # remove old split fig4_2 file replaced by 4.2a and 4.2b
+    for old in [
+        FIGURES / "fig4_2_fault_injection.png",
+        FIGURES / "fig4_2_fault_injection.pdf",
+        DATA_DIR / "fig4_2_fault_injection.csv",
+    ]:
+        if old.exists():
+            old.unlink()
+
     al = _load("wesad_alignment.json")
     qr = _load("wesad_quality_report.json")
     fi = json.loads(
@@ -882,7 +888,8 @@ def main() -> None:
     print("Building figures ...")
     fig_pipeline_overview()
     fig_temp_artefact("S2")
-    fig_fault_injection(fi)
+    fig_detection_grid(fi)
+    fig_timeliness_shift(fi)
     fig_start_time_gap(al)
 
     print("Building tables ...")
