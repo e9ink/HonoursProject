@@ -27,9 +27,10 @@ from src.checks import conformance as _conf
 from src.checks import completeness as _comp
 from src.checks import plausibility as _plaus
 
-ROOT = Path(__file__).resolve().parent.parent.parent
-BRONZE_WESAD = ROOT / "bronze" / "WESAD"
-SILVER_WESAD = ROOT / "silver" / "WESAD"
+ROOT = Path(__file__).resolve().parent.parent.parent  # wesad/
+DATA_ROOT = ROOT.parent                               # project root; bronze/silver/gold live here
+BRONZE_WESAD = DATA_ROOT / "bronze" / "WESAD"
+SILVER_WESAD = DATA_ROOT / "silver" / "WESAD"
 REPORTS = ROOT / "reports"
 CONFIG_DIR = ROOT / "config"
 

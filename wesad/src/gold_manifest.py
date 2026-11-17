@@ -16,7 +16,8 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent  # wesad/
+DATA_ROOT = ROOT.parent                        # project root; bronze/silver/gold live here
 
 _COMPLETENESS_RPT = ROOT / "reports" / "wesad_completeness_post_cleaning.json"
 _CONFORMANCE_RPT = ROOT / "reports" / "wesad_conformance_post_cleaning.json"
@@ -24,7 +25,7 @@ _PLAUSIBILITY_RPT = ROOT / "reports" / "wesad_plausibility_post_cleaning.json"
 _CLEANING_RPT = ROOT / "reports" / "wesad_cleaning.json"
 _QUALITY_RPT = ROOT / "reports" / "wesad_quality_report.json"
 
-_OUTPUT_DIR = ROOT / "gold" / "WESAD"
+_OUTPUT_DIR = DATA_ROOT / "gold" / "WESAD"
 _OUTPUT_PATH = _OUTPUT_DIR / "wesad_gold_manifest.json"
 
 _E4_SIGNALS = ["ACC", "BVP", "EDA", "HR", "IBI", "TEMP"]
@@ -198,7 +199,7 @@ def _rb_check_outcomes(comp_p: dict, conf_p: dict, pls_p: dict) -> dict:
 # Manifest generator
 # ---------------------------------------------------------------------------
 
-def generate_manifest(root: Path = ROOT, output_path: Path = _OUTPUT_PATH) -> None:
+def generate_manifest(root: Path = DATA_ROOT, output_path: Path = _OUTPUT_PATH) -> None:
     """Generate the Gold manifest and write it to output_path."""
     with open(_COMPLETENESS_RPT, encoding="utf-8") as f:
         comp_rpt = json.load(f)
@@ -345,7 +346,7 @@ def generate_manifest(root: Path = ROOT, output_path: Path = _OUTPUT_PATH) -> No
 
 def verify_manifest(
     manifest_path: Path = _OUTPUT_PATH,
-    root: Path = ROOT,
+    root: Path = DATA_ROOT,
 ) -> bool:
     """
     Recompute every SHA-256 checksum in the manifest and compare it to the

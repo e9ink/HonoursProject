@@ -6,59 +6,53 @@ This project designs and implements a data quality and governance framework for 
 
 ## Folder structure
 
+Each dataset has its own subfolder. Data layers (Bronze, Silver, Gold) live at the project
+root and are shared across datasets.
+
 ```
 bronze/          Raw, immutable participant data. Never written to by any pipeline code.
 silver/          Cleaned participant data (E4 TEMP warm-up artefact replaced with NaN).
 gold/            Gold dataset manifest and governance outputs:
-                   wesad_lineage.json       Provenance chain for each signal.
-                   wesad_gold_manifest.json Analysis-ready dataset manifest: one entry per
-                                            participant and signal file with authoritative
-                                            path (Silver for E4 TEMP, Bronze for all others),
-                                            SHA-256 checksum, sample count, post-cleaning
-                                            check outcomes, intentional removals, and
-                                            exclusion flags. No data is copied; Gold is
-                                            defined as the Silver and Bronze files listed here.
-config/          YAML configuration files:
-                   experiments.yaml        Pre-registered fault injection experiment design.
-                   physiological_ranges.yaml  Per-signal physiological and device bounds.
-                   thresholds.yaml         Decision thresholds for each quality dimension.
-reports/         Pipeline measurement outputs (JSON). One file per check per dataset.
-                   wesad_baseline.json               Bronze profiling summary.
-                   wesad_conformance.json            Conformance check results.
-                   wesad_completeness.json           Completeness check results.
-                   wesad_plausibility.json           Plausibility check results.
-                   wesad_alignment.json              Cross-modal temporal alignment.
-                   wesad_cleaning.json               Silver cleaning actions and indices.
-                   wesad_conformance_post_cleaning.json   Post-cleaning re-check.
-                   wesad_completeness_post_cleaning.json  Post-cleaning re-check.
-                   wesad_plausibility_post_cleaning.json  Post-cleaning re-check.
-                   wesad_governance.json             Governance audit trail.
-                   wesad_quality_report.json         Final before/after summary report.
-                   experiments/                      Fault injection results (when run).
-gold/WESAD/        Gold layer outputs:
-                   wesad_lineage.json                Signal provenance chain.
-                   wesad_gold_manifest.json          Gold dataset manifest (paths, checksums,
-                                                     check outcomes, intentional removals).
-src/             Python source code:
-                   profiling.py            Bronze profiling.
-                   checks/conformance.py   Conformance check.
-                   checks/completeness.py  Completeness check.
-                   checks/plausibility.py  Plausibility check.
-                   alignment.py            Cross-modal temporal alignment.
-                   cleaning.py             Silver cleaning.
-                   checks/post_cleaning.py Post-cleaning re-checks.
-                   governance.py           Governance artefacts (lineage and audit trail).
-                   report.py               Final quality report.
-                   gold_manifest.py        Gold dataset manifest generator and verifier.
-                   experiments/            Fault injection harness and runner.
-                   figures/                Figure and table generation for the thesis.
-figures/         Generated figures (PNG + PDF) and tables (CSV + Markdown).
-tests/           pytest unit tests for check modules and injectors.
-docs/            Decision log and governance documents:
+                   WESAD/wesad_lineage.json       Provenance chain for each signal.
+                   WESAD/wesad_gold_manifest.json Analysis-ready dataset manifest.
+docs/            Project-wide decision log:
                    progress_log.md         Full history of all threshold and design decisions.
-                   governance/             Data Impact Assessment, Datasheet, Policy Hierarchy,
-                               and Stewardship Roles documents.
-run_pipeline.py  One-command pipeline runner (see Usage below).
+wesad/           WESAD dataset pipeline (self-contained):
+  run_pipeline.py  One-command WESAD pipeline runner.
+  config/          YAML configuration files:
+                     experiments.yaml            Pre-registered fault injection design.
+                     physiological_ranges.yaml   Per-signal physiological/device bounds.
+                     thresholds.yaml             Decision thresholds for each dimension.
+  src/             Python source code:
+                     profiling.py            Bronze profiling.
+                     checks/conformance.py   Conformance check.
+                     checks/completeness.py  Completeness check.
+                     checks/plausibility.py  Plausibility check.
+                     alignment.py            Cross-modal temporal alignment.
+                     cleaning.py             Silver cleaning.
+                     checks/post_cleaning.py Post-cleaning re-checks.
+                     governance.py           Governance artefacts (lineage and audit trail).
+                     report.py               Final quality report.
+                     gold_manifest.py        Gold dataset manifest generator and verifier.
+                     experiments/            Fault injection harness and runner.
+                     figures/                Figure and table generation for the thesis.
+  tests/           pytest unit tests for check modules and injectors.
+  reports/         Pipeline measurement outputs (JSON). One file per check.
+                     wesad_baseline.json               Bronze profiling summary.
+                     wesad_conformance.json            Conformance check results.
+                     wesad_completeness.json           Completeness check results.
+                     wesad_plausibility.json           Plausibility check results.
+                     wesad_alignment.json              Cross-modal temporal alignment.
+                     wesad_cleaning.json               Silver cleaning actions and indices.
+                     wesad_*_post_cleaning.json        Post-cleaning re-checks.
+                     wesad_governance.json             Governance audit trail.
+                     wesad_quality_report.json         Final before/after summary.
+                     experiments/                      Fault injection results (when run).
+  figures/         Generated figures (PNG + PDF) and tables (CSV + Markdown).
+  final_checks/    Fact-checking notes for the thesis write-up.
+  docs/governance/ Data Impact Assessment, Datasheet, Policy Hierarchy, Stewardship Roles.
+README.md        This file.
+requirements.txt Python dependencies.
 ```
 
 ---
@@ -75,17 +69,19 @@ python -m venv .venv
 PowerShell's default execution policy may block `.venv\Scripts\Activate.ps1`. You do not need to activate the virtual environment; invoke Python directly:
 
 ```
-.venv\Scripts\python.exe run_pipeline.py
-.venv\Scripts\python.exe -m pytest tests/
+.venv\Scripts\python.exe wesad/run_pipeline.py
+.venv\Scripts\python.exe -m pytest wesad/tests/
 ```
 
 All commands below assume `.venv\Scripts\python.exe` wherever `python` is written.
+
+All commands should be run from the **project root** (the folder containing `wesad/`, `bronze/`, `silver/`, etc.).
 
 ---
 
 ## Placing the WESAD data
 
-The pipeline expects participant directories under `bronze/WESAD/`:
+The pipeline reads from the project root's `bronze/WESAD/` folder (data layers are at the project root, not inside `wesad/`). Place participant directories there:
 
 ```
 bronze/WESAD/S2/
@@ -111,38 +107,46 @@ The fault injection harness now writes scratch copies to the system temporary di
 
 ## Usage
 
-### Run the full pipeline
+### Run the full WESAD pipeline
+
+From the project root:
 
 ```
-python run_pipeline.py
+python wesad/run_pipeline.py
 ```
 
 Each stage prints its name and elapsed time. The runner stops immediately with a clear error message if any stage fails. To list the stages without running them:
 
 ```
-python run_pipeline.py --dry-run
+python wesad/run_pipeline.py --dry-run
 ```
 
 ### Run the tests
 
+From the project root:
+
 ```
-python -m pytest tests/ -v
+python -m pytest wesad/tests/ -v
 ```
 
 ### Generate figures and tables
 
+From the project root:
+
 ```
-python -m src.figures.make_figures
+python wesad/src/figures/make_figures.py
 ```
 
-Saves four figures (PNG and PDF, 300 dpi) and three CSV/Markdown tables to `figures/`.
+Saves four figures (PNG and PDF, 300 dpi) and three CSV/Markdown tables to `wesad/figures/`.
 
 ### Run the fault injection experiments
 
-The fault injection experiments use the pre-registered design in `config/experiments.yaml`. They copy participant data to a local temporary directory (outside the project folder) and write results to `reports/experiments/fault_injection_results.json`.
+The fault injection experiments use the pre-registered design in `wesad/config/experiments.yaml`. They copy participant data to a local temporary directory (outside the project folder) and write results to `wesad/reports/experiments/fault_injection_results.json`.
+
+From the project root:
 
 ```
-python -m src.experiments.run_fault_injection
+python wesad/src/experiments/run_fault_injection.py
 ```
 
 The harness prints progress per participant and per fault type. Results contain aggregate figures only; participant data copies are deleted after each run.

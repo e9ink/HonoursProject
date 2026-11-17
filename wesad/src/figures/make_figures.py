@@ -1,16 +1,20 @@
 """Generate all thesis figures and summary tables from existing pipeline outputs.
 
-Usage:
-    python -m src.figures.make_figures
+Usage (from project root):
+    python wesad/src/figures/make_figures.py
 
-Outputs go to figures/ (PNG + PDF) and figures/data/ (CSV).
-Tables go to figures/tables/ (CSV + Markdown).
+Outputs go to wesad/figures/ (PNG + PDF) and wesad/figures/data/ (CSV).
+Tables go to wesad/figures/tables/ (CSV + Markdown).
 """
 
+import sys
 import csv
 import json
 import time
 from pathlib import Path
+
+# Add wesad/ to sys.path so src.* imports resolve when run as a script
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 import matplotlib
 matplotlib.use("Agg")  # headless, deterministic
@@ -24,10 +28,11 @@ import pandas as pd
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-ROOT = Path(__file__).resolve().parent.parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent  # wesad/
+DATA_ROOT = ROOT.parent                               # project root; bronze/silver/gold live here
 REPORTS = ROOT / "reports"
-BRONZE = ROOT / "bronze" / "WESAD"
-SILVER = ROOT / "silver" / "WESAD"
+BRONZE = DATA_ROOT / "bronze" / "WESAD"
+SILVER = DATA_ROOT / "silver" / "WESAD"
 FIGURES = ROOT / "figures"
 DATA_DIR = FIGURES / "data"
 TABLES_DIR = FIGURES / "tables"

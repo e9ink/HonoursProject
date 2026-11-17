@@ -18,5 +18,8 @@ docs/sources/
 .venv_verify/
 
 # Experiment scratch space -- contains participant data copies; never commit
+# (harness writes to system temp, but these entries stay as a safeguard)
 experiments/scratch/
 experiments/scratch_dirty/
+wesad/experiments/scratch/
+wesad/experiments/scratch_dirty/
