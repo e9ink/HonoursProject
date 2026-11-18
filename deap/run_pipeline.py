@@ -14,9 +14,10 @@ Stages:
    6. quality_report    (before: Bronze state)
    7. cleaning          (Silver labels from XLS)
    8. post_cleaning     (Silver label checks)
-   9. quality_report    (after: before/after comparison)
-  10. governance        (lineage + audit trail)
-  11. gold_manifest     (SHA-256 manifest)
+   9. label_audit       (v1/v2 mirror vs XLS; inversion rule)
+  10. quality_report    (after: before/after comparison)
+  11. governance        (lineage + audit trail)
+  12. gold_manifest     (SHA-256 manifest)
 """
 
 import os
@@ -33,6 +34,7 @@ from deap.src.checks.post_cleaning import run as run_post_cleaning
 from deap.src.cleaning import run as run_cleaning
 from deap.src.gold_manifest import generate_manifest
 from deap.src.governance import main as run_governance
+from deap.src.label_audit import run_audit
 from deap.src.report import run as run_report
 
 
@@ -56,49 +58,53 @@ def _run_profiling():
 def main():
     print("=== DEAP quality pipeline ===", flush=True)
 
-    print("[1/11] Bronze profiling ...", flush=True)
+    print("[1/12] Bronze profiling ...", flush=True)
     try:
         _run_profiling()
         print("       done", flush=True)
     except Exception as exc:
         print(f"       WARNING: profiling skipped ({exc})", flush=True)
 
-    print("[2/11] Completeness check ...", flush=True)
+    print("[2/12] Completeness check ...", flush=True)
     comp = run_completeness()
     print(f"       overall_pass={comp['overall_pass']}", flush=True)
 
-    print("[3/11] Conformance check ...", flush=True)
+    print("[3/12] Conformance check ...", flush=True)
     conf = run_conformance()
     print(f"       overall_pass={conf['overall_pass']}", flush=True)
 
-    print("[4/11] Label plausibility check ...", flush=True)
+    print("[4/12] Label plausibility check ...", flush=True)
     lp = run_label_plausibility()
     print(f"       overall_pass={lp['overall_pass']}", flush=True)
 
-    print("[5/11] Consistency check ...", flush=True)
+    print("[5/12] Consistency check ...", flush=True)
     cons = run_consistency()
     print(f"       overall_pass={cons['overall_pass']}", flush=True)
 
-    print("[6/11] Quality report (Bronze baseline) ...", flush=True)
+    print("[6/12] Quality report (Bronze baseline) ...", flush=True)
     report = run_report()
     print(f"       overall_pass={report['overall_pass']}", flush=True)
 
-    print("[7/11] Silver cleaning ...", flush=True)
+    print("[7/12] Silver cleaning ...", flush=True)
     cleaning = run_cleaning()
     print(f"       total_corrections={cleaning['total_corrections']}", flush=True)
 
-    print("[8/11] Post-cleaning check ...", flush=True)
+    print("[8/12] Post-cleaning check ...", flush=True)
     post = run_post_cleaning()
     print(f"       overall_pass={post['overall_pass']}", flush=True)
 
-    print("[9/11] Quality report (before/after) ...", flush=True)
+    print("[9/12] Label audit (v1/v2 mirror vs XLS; inversion rule) ...", flush=True)
+    run_audit()
+    print("       done", flush=True)
+
+    print("[10/12] Quality report (before/after) ...", flush=True)
     report = run_report()
     print(f"       overall_pass={report['overall_pass']}", flush=True)
 
-    print("[10/11] Gold governance ...", flush=True)
+    print("[11/12] Gold governance ...", flush=True)
     run_governance()
 
-    print("[11/11] Gold manifest ...", flush=True)
+    print("[12/12] Gold manifest ...", flush=True)
     generate_manifest()
 
     print("=== Pipeline complete ===", flush=True)

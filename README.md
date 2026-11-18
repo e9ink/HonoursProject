@@ -18,7 +18,7 @@ gold/            Gold dataset manifest and governance outputs:
 docs/            Project-wide decision log:
                    progress_log.md         Full history of all threshold and design decisions.
 deap/            DEAP dataset pipeline (self-contained):
-  run_pipeline.py  One-command DEAP pipeline runner (11 stages).
+  run_pipeline.py  One-command DEAP pipeline runner (12 stages).
   config/          YAML configuration files:
                      cleaning.yaml               Pre-registered label correction rule.
                      experiments.yaml            Pre-registered fault injection design.
@@ -140,7 +140,7 @@ From the project root:
 python deap/run_pipeline.py
 ```
 
-Runs 11 stages: Bronze profiling, completeness, conformance, label plausibility, consistency, baseline quality report, Silver cleaning (label correction), post-cleaning checks, before/after quality report, Gold governance, Gold manifest. Each stage prints its name and elapsed time.
+Runs 12 stages: Bronze profiling, completeness, conformance, label plausibility, consistency, baseline quality report, Silver cleaning (label correction), post-cleaning checks, label audit (v1/v2 mirror vs XLS; inversion rule), before/after quality report, Gold governance, Gold manifest. Each stage prints its name and elapsed time.
 
 ### Run the DEAP tests
 
