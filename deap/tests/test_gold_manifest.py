@@ -1,12 +1,9 @@
 """
 Tests for deap/src/gold_manifest.py.
 """
-import csv
-import hashlib
 import json
 import os
 import sys
-import tempfile
 
 import pytest
 
@@ -36,7 +33,7 @@ def test_sha256_different_for_different_content(tmp_path):
 
 
 def test_verify_manifest_passes_on_live_data():
-    """verify_manifest() must pass for the current pipeline output."""
+    """verify_manifest() must pass (65 checksums) for the current pipeline output."""
     if not _OUTPUT_PATH.exists():
         pytest.skip("deap_gold_manifest.json not found; run pipeline first")
     result = verify_manifest()
@@ -77,14 +74,72 @@ def test_gold_manifest_post_cleaning_pass_true():
     assert manifest["summary"]["post_cleaning_overall_pass"] is True
 
 
-def test_gold_manifest_all_participants_have_silver_path():
-    """Every participant entry must have an authoritative_path under silver/DEAP/labels/."""
+def test_gold_manifest_participants_have_dat_and_labels():
+    """Every participant entry must have both 'dat' and 'labels' sub-entries."""
     if not _OUTPUT_PATH.exists():
         pytest.skip("deap_gold_manifest.json not found; run pipeline first")
     with open(_OUTPUT_PATH, encoding="utf-8") as f:
         manifest = json.load(f)
     for pid, entry in manifest["participants"].items():
-        assert entry["authoritative_path"].startswith("silver/DEAP/labels/"), (
-            f"{pid} has unexpected path: {entry['authoritative_path']}"
+        assert "dat" in entry, f"{pid} missing 'dat' sub-entry"
+        assert "labels" in entry, f"{pid} missing 'labels' sub-entry"
+        assert entry["dat"]["layer"] == "bronze", f"{pid}.dat has wrong layer"
+        assert entry["labels"]["layer"] == "silver", f"{pid}.labels has wrong layer"
+        assert entry["dat"]["authoritative_path"].startswith("bronze/DEAP/"), (
+            f"{pid}.dat has unexpected path: {entry['dat']['authoritative_path']}"
         )
-        assert entry["layer"] == "silver"
+        assert entry["labels"]["authoritative_path"].startswith("silver/DEAP/labels/"), (
+            f"{pid}.labels has unexpected path: {entry['labels']['authoritative_path']}"
+        )
+
+
+def test_gold_manifest_xls_entry_present():
+    """Manifest summary must contain participant_ratings.xls with a SHA-256."""
+    if not _OUTPUT_PATH.exists():
+        pytest.skip("deap_gold_manifest.json not found; run pipeline first")
+    with open(_OUTPUT_PATH, encoding="utf-8") as f:
+        manifest = json.load(f)
+    xls = manifest["summary"].get("participant_ratings_xls", {})
+    assert "authoritative_path" in xls, "XLS entry missing authoritative_path"
+    assert "sha256" in xls, "XLS entry missing sha256"
+    assert len(xls["sha256"]) == 64, "XLS sha256 must be 64 hex chars"
+    assert "participant_ratings.xls" in xls["authoritative_path"]
+
+
+def test_gold_manifest_65_checksums(tmp_path):
+    """verify_manifest must check exactly 65 checksums (32 dat + 32 CSV + 1 XLS)."""
+    if not _OUTPUT_PATH.exists():
+        pytest.skip("deap_gold_manifest.json not found; run pipeline first")
+    with open(_OUTPUT_PATH, encoding="utf-8") as f:
+        manifest = json.load(f)
+
+    # Count entries that have both authoritative_path and sha256
+    count = 0
+    for pid, entry in manifest["participants"].items():
+        for sub_key in ("dat", "labels"):
+            sub = entry.get(sub_key, {})
+            if sub.get("authoritative_path") and sub.get("sha256"):
+                count += 1
+    xls = manifest.get("summary", {}).get("participant_ratings_xls", {})
+    if xls.get("authoritative_path") and xls.get("sha256"):
+        count += 1
+    assert count == 65, f"Expected 65 checksums, found {count}"
+
+
+def test_gold_manifest_tampered_checksum_detected(tmp_path):
+    """verify_manifest must return False when a Silver CSV is tampered."""
+    if not _OUTPUT_PATH.exists():
+        pytest.skip("deap_gold_manifest.json not found; run pipeline first")
+
+    # Copy manifest and alter s01 labels sha256
+    with open(_OUTPUT_PATH, encoding="utf-8") as f:
+        manifest = json.load(f)
+
+    manifest["participants"]["s01"]["labels"]["sha256"] = "a" * 64
+
+    tampered = tmp_path / "tampered.json"
+    with open(tampered, "w", encoding="utf-8") as f:
+        json.dump(manifest, f)
+
+    result = verify_manifest(manifest_path=tampered)
+    assert result is False
