@@ -1,0 +1,629 @@
+{
+  "dataset": "DEAP",
+  "definition": "The DEAP Gold label dataset is defined by this manifest. It consists of the Silver label CSV files listed below, identified by their authoritative paths and SHA-256 checksums. No physical copy is made of the 40-channel physiological data array; that is read directly from bronze/ .dat files. Silver label CSVs contain XLS-corrected labels (v2 inversion artefact resolved).",
+  "participants": {
+    "s01": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s01_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 26,
+      "n_trials": 40,
+      "sha256": "2b7cbeb2c9f37f756a12d6bc780998c1b2362d1e2986b191c62bd0a5bff91c62"
+    },
+    "s02": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s02_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 32,
+      "n_trials": 40,
+      "sha256": "1058d435ea69f158f6f141c1bf380bc91b61e873f2d4ea8aa7710b74f91fd8fd"
+    },
+    "s03": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s03_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 2,
+      "n_trials": 40,
+      "sha256": "9a46302026652f970f7237475a9d2fa7df690b053afe00b6c764a4fc8ce65fcd"
+    },
+    "s04": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s04_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 24,
+      "n_trials": 40,
+      "sha256": "a4950f7df9546dd1bf6bd5feebe87f055150a5ecf90a2bf7dc64f4420bdef7ae"
+    },
+    "s05": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s05_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 26,
+      "n_trials": 40,
+      "sha256": "e0e9bb8da4bd2cd321a276cb0285eb072c5b85da56e102735be6c5ab88ed858c"
+    },
+    "s06": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s06_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 26,
+      "n_trials": 40,
+      "sha256": "7eebaa5f3d232b23b7348ce4f23e04721530ac4f3f90fe759e27e7249b52a61d"
+    },
+    "s07": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s07_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 36,
+      "n_trials": 40,
+      "sha256": "53ca770f6a791162b5c2f3d65a34a6b408484c637306090c19b090137b87e149"
+    },
+    "s08": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s08_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 28,
+      "n_trials": 40,
+      "sha256": "3defbe984b6dee18d7d6c1685f2883c74968fdc664d6cb34a7d5b75a77908559"
+    },
+    "s09": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s09_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 30,
+      "n_trials": 40,
+      "sha256": "a90357506b1cc86e1c7d421b031c32e6c5529dc7488f097d46f07ba5c475d68f"
+    },
+    "s10": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s10_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 22,
+      "n_trials": 40,
+      "sha256": "598a20d1b1c1518faa04c3ea4d6f85688da63ddb9e51fd710b6f4c1d14629de3"
+    },
+    "s11": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s11_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 18,
+      "n_trials": 40,
+      "sha256": "f3c21829c231b24c41f014748eaf3578644b60d55fc38a9e63a859fea06df822"
+    },
+    "s12": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s12_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 38,
+      "n_trials": 40,
+      "sha256": "58bfbf15ede05f909e04d2f9dc9064a84f697c8e5cae5c31abfc8bdae81ba0da"
+    },
+    "s13": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s13_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 30,
+      "n_trials": 40,
+      "sha256": "eb40a6daed93546594bcea90b9290628a7be3979d7e6ec3361cd17e114e43c93"
+    },
+    "s14": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s14_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 24,
+      "n_trials": 40,
+      "sha256": "b389e689c7a9df49ff5ad0423c42c417a45930889e3dc2220389b74806f6b9f2"
+    },
+    "s15": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s15_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 16,
+      "n_trials": 40,
+      "sha256": "2e7daf7806437ad1a3dd026b40643a5bdbd617c003a362335950279333afccf9"
+    },
+    "s16": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s16_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 18,
+      "n_trials": 40,
+      "sha256": "5ce0305e902089c7c3bfb93ffab087afa509fa5d8eb10c6c8a9b1df6c87943e1"
+    },
+    "s17": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s17_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 26,
+      "n_trials": 40,
+      "sha256": "1cf9da12cc63a2ceb003fddd06fd50c7713f28b13f111ddf238136c81370b970"
+    },
+    "s18": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s18_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 34,
+      "n_trials": 40,
+      "sha256": "40a1a42ca4790550f2da9953d352e63dd4a39c3807a22be925f45b133540c348"
+    },
+    "s19": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s19_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 36,
+      "n_trials": 40,
+      "sha256": "8f4c3a91bd7e8fbe4391b95122ae3a0cdf4864c5d20c54e52cafe04022e1a731"
+    },
+    "s20": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s20_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 34,
+      "n_trials": 40,
+      "sha256": "a30306390f12db4f960a0c077bdc8ceabbda8feed566a1ad232c0efe0fbcb282"
+    },
+    "s21": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s21_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 38,
+      "n_trials": 40,
+      "sha256": "e0db746dff1f7ab1c32bbb3853d2e3793be84fd9619ea873b80ed07a9b78447e"
+    },
+    "s22": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s22_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 24,
+      "n_trials": 40,
+      "sha256": "9858d74a4e6e1de20268d9a8a8aec5016cfac7253a7ece7a15c279e846fd295d"
+    },
+    "s23": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s23_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 20,
+      "n_trials": 40,
+      "sha256": "200f184f408b8e24ff1f25e7c2ce1b2ca63260a420c65c03d2e18a12e4a1d71b"
+    },
+    "s24": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s24_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 28,
+      "n_trials": 40,
+      "sha256": "04449611046a83acf633606143f3fcd7fd62fea1ff5e014fbff1c53680d262fd"
+    },
+    "s25": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s25_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 28,
+      "n_trials": 40,
+      "sha256": "ce93d26a077b757c735c8a3ba15859b6d7075f4d1530e5248ebe7b80a0b12de2"
+    },
+    "s26": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s26_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 32,
+      "n_trials": 40,
+      "sha256": "62be227843344a9633c680dba787df11e3242d67dc4f7a466b7eb48e4bd6db9f"
+    },
+    "s27": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s27_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 48,
+      "n_trials": 40,
+      "sha256": "182f08e59e76a8f0869a05139e66c3272e5d097021ed9c2b2bb78346f10b78a7"
+    },
+    "s28": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s28_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 30,
+      "n_trials": 40,
+      "sha256": "a5f47d4de38d9e1b2eae716ca3f0e2c78c7646eba16c0e75f3ca08c5a12971ea"
+    },
+    "s29": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s29_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 36,
+      "n_trials": 40,
+      "sha256": "ffa64b8d9b38968dfd399a2648713c526daca753bbfb6c490e1932f298ef0469"
+    },
+    "s30": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s30_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 34,
+      "n_trials": 40,
+      "sha256": "56f6e67b550caae2232e083a451123d0e64061d13925dad29482a36abddc5d50"
+    },
+    "s31": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s31_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 14,
+      "n_trials": 40,
+      "sha256": "09684315ddc7ca67b079bfc52dfa7ce5d565462175d14809c52e3ecb1a5d1568"
+    },
+    "s32": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "authoritative_path": "silver/DEAP/labels/s32_labels.csv",
+      "check_outcomes": {
+        "cross_source_post_cleaning": {
+          "pass": true,
+          "total_mismatches": 0
+        },
+        "label_plausibility_post_cleaning": {
+          "pass": true,
+          "total_out_of_range": 0
+        }
+      },
+      "layer": "silver",
+      "n_label_corrections": 20,
+      "n_trials": 40,
+      "sha256": "d4427ed292302c7918c13bd9c56f6181add8584e61735d282601d3b5d9ea5911"
+    }
+  },
+  "quality_report": "deap/reports/deap_quality_report.json",
+  "run_context": {
+    "generated_at": "2026-11-18T01:02:05.243238+00:00",
+    "generator": "deap/src/gold_manifest.py",
+    "note": "This field is non-deterministic. Strip it for diffing."
+  },
+  "schema": "deap_gold_manifest_v1",
+  "summary": {
+    "gold_overall_pass": true,
+    "n_participants": 32,
+    "participant_ids": [
+      "s01",
+      "s02",
+      "s03",
+      "s04",
+      "s05",
+      "s06",
+      "s07",
+      "s08",
+      "s09",
+      "s10",
+      "s11",
+      "s12",
+      "s13",
+      "s14",
+      "s15",
+      "s16",
+      "s17",
+      "s18",
+      "s19",
+      "s20",
+      "s21",
+      "s22",
+      "s23",
+      "s24",
+      "s25",
+      "s26",
+      "s27",
+      "s28",
+      "s29",
+      "s30",
+      "s31",
+      "s32"
+    ],
+    "post_cleaning_overall_pass": true,
+    "total_label_corrections": 878
+  }
+}

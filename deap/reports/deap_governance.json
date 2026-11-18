@@ -1,0 +1,164 @@
+{
+  "audit_trail": [
+    {
+      "display_name": "Bronze profiling",
+      "order": 1,
+      "outcome": "Baseline established for 32 participants.",
+      "report": "deap/reports/deap_baseline.json",
+      "stage_id": "profiling"
+    },
+    {
+      "display_name": "Completeness check (Bronze)",
+      "order": 2,
+      "outcome": "Zero NaN and Inf across all 32 participants.",
+      "report": "deap/reports/deap_completeness.json",
+      "stage_id": "completeness"
+    },
+    {
+      "display_name": "Conformance check (Bronze)",
+      "order": 3,
+      "outcome": "All 32 participants: shape (40,40,8064), labels (40,4), float64.",
+      "report": "deap/reports/deap_conformance.json",
+      "stage_id": "conformance"
+    },
+    {
+      "display_name": "Label plausibility (Bronze)",
+      "order": 4,
+      "outcome": "163 out-of-range label values in Bronze (v2 inversion artefact: 9 - v1 < 1 when v1 > 8).",
+      "report": "deap/reports/deap_label_plausibility.json",
+      "stage_id": "label_plausibility"
+    },
+    {
+      "display_name": "Consistency check (Bronze)",
+      "order": 5,
+      "outcome": "Structure: PASS. Cross-source: 878 mismatches vs XLS (v2 inversion pattern). Scale descriptive: Temp split noted.",
+      "report": "deap/reports/deap_consistency.json",
+      "stage_id": "consistency"
+    },
+    {
+      "display_name": "Silver label cleaning",
+      "order": 6,
+      "outcome": "878 label corrections across 32 participants. Silver label CSVs written to silver/DEAP/labels/. Bronze dat files untouched.",
+      "report": "deap/reports/deap_cleaning.json",
+      "stage_id": "cleaning"
+    },
+    {
+      "display_name": "Post-cleaning check (Silver)",
+      "order": 7,
+      "outcome": "0 OOR, 0 mismatches. Label plausibility and cross-source both PASS.",
+      "report": "deap/reports/deap_post_cleaning.json",
+      "stage_id": "post_cleaning"
+    }
+  ],
+  "bronze_integrity": {
+    "note": "bronze/ .dat files are read-only throughout the pipeline. No stage writes to or modifies bronze/.",
+    "status": "untouched"
+  },
+  "dataset": "DEAP",
+  "governance_summary": {
+    "all_ccp_checks_run": true,
+    "cleaning_run": true,
+    "n_participants": 32,
+    "n_participants_corrected": 32,
+    "n_transformations_applied": 1,
+    "pipeline_complete": true,
+    "pipeline_stages_completed": 11,
+    "total_label_corrections": 878
+  },
+  "grounding": {
+    "citation": "Tallon, P. P., Ramirez, R. V., & Short, J. E. (2013). The information artifact in IT governance: Toward a theory of information governance. Journal of Management Information Systems, 30(3), 141-178. https://doi.org/10.2753/MIS0742-1222300306",
+    "framework": "Tallon et al. (2013) information governance / accountability",
+    "note": "The audit trail provides an accountability record: what pipeline stages ran, in order, what each produced, and what transformations were applied."
+  },
+  "lineage_document": "gold/DEAP/deap_lineage.json",
+  "run_context": {
+    "generated_at": "2026-11-18T01:02:05.213838+00:00",
+    "generator": "deap/src/governance.py",
+    "note": "This field is non-deterministic. Strip it for diffing."
+  },
+  "silver_scope": {
+    "note": "silver/DEAP/labels/ contains corrected label CSVs for all 32 participants. The 40-channel data array is not in Silver; it is read directly from Bronze.",
+    "silver_file_list": [
+      "silver/DEAP/labels/s01_labels.csv",
+      "silver/DEAP/labels/s02_labels.csv",
+      "silver/DEAP/labels/s03_labels.csv",
+      "silver/DEAP/labels/s04_labels.csv",
+      "silver/DEAP/labels/s05_labels.csv",
+      "silver/DEAP/labels/s06_labels.csv",
+      "silver/DEAP/labels/s07_labels.csv",
+      "silver/DEAP/labels/s08_labels.csv",
+      "silver/DEAP/labels/s09_labels.csv",
+      "silver/DEAP/labels/s10_labels.csv",
+      "silver/DEAP/labels/s11_labels.csv",
+      "silver/DEAP/labels/s12_labels.csv",
+      "silver/DEAP/labels/s13_labels.csv",
+      "silver/DEAP/labels/s14_labels.csv",
+      "silver/DEAP/labels/s15_labels.csv",
+      "silver/DEAP/labels/s16_labels.csv",
+      "silver/DEAP/labels/s17_labels.csv",
+      "silver/DEAP/labels/s18_labels.csv",
+      "silver/DEAP/labels/s19_labels.csv",
+      "silver/DEAP/labels/s20_labels.csv",
+      "silver/DEAP/labels/s21_labels.csv",
+      "silver/DEAP/labels/s22_labels.csv",
+      "silver/DEAP/labels/s23_labels.csv",
+      "silver/DEAP/labels/s24_labels.csv",
+      "silver/DEAP/labels/s25_labels.csv",
+      "silver/DEAP/labels/s26_labels.csv",
+      "silver/DEAP/labels/s27_labels.csv",
+      "silver/DEAP/labels/s28_labels.csv",
+      "silver/DEAP/labels/s29_labels.csv",
+      "silver/DEAP/labels/s30_labels.csv",
+      "silver/DEAP/labels/s31_labels.csv",
+      "silver/DEAP/labels/s32_labels.csv"
+    ],
+    "silver_files_written": 32
+  },
+  "task": "gold_governance",
+  "transformations_applied": [
+    {
+      "action": "replace_inverted_labels_with_xls",
+      "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_modified": false,
+      "data_array_modified": false,
+      "rationale": "v2 mirror label inversion artefact: 878 Valence/Arousal entries follow v2 = 9 - v1. XLS is the authoritative self-report source (v1 mirror matched XLS exactly). Correction resolves 163 OOR violations and 878 cross-source mismatches.",
+      "report_ref": "deap/reports/deap_cleaning.json",
+      "scope": "32 of 32 participants",
+      "silver_files_written": [
+        "silver/DEAP/labels/s01_labels.csv",
+        "silver/DEAP/labels/s02_labels.csv",
+        "silver/DEAP/labels/s03_labels.csv",
+        "silver/DEAP/labels/s04_labels.csv",
+        "silver/DEAP/labels/s05_labels.csv",
+        "silver/DEAP/labels/s06_labels.csv",
+        "silver/DEAP/labels/s07_labels.csv",
+        "silver/DEAP/labels/s08_labels.csv",
+        "silver/DEAP/labels/s09_labels.csv",
+        "silver/DEAP/labels/s10_labels.csv",
+        "silver/DEAP/labels/s11_labels.csv",
+        "silver/DEAP/labels/s12_labels.csv",
+        "silver/DEAP/labels/s13_labels.csv",
+        "silver/DEAP/labels/s14_labels.csv",
+        "silver/DEAP/labels/s15_labels.csv",
+        "silver/DEAP/labels/s16_labels.csv",
+        "silver/DEAP/labels/s17_labels.csv",
+        "silver/DEAP/labels/s18_labels.csv",
+        "silver/DEAP/labels/s19_labels.csv",
+        "silver/DEAP/labels/s20_labels.csv",
+        "silver/DEAP/labels/s21_labels.csv",
+        "silver/DEAP/labels/s22_labels.csv",
+        "silver/DEAP/labels/s23_labels.csv",
+        "silver/DEAP/labels/s24_labels.csv",
+        "silver/DEAP/labels/s25_labels.csv",
+        "silver/DEAP/labels/s26_labels.csv",
+        "silver/DEAP/labels/s27_labels.csv",
+        "silver/DEAP/labels/s28_labels.csv",
+        "silver/DEAP/labels/s29_labels.csv",
+        "silver/DEAP/labels/s30_labels.csv",
+        "silver/DEAP/labels/s31_labels.csv",
+        "silver/DEAP/labels/s32_labels.csv"
+      ],
+      "total_corrections": 878
+    }
+  ]
+}

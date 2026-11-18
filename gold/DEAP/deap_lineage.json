@@ -1,0 +1,1055 @@
+{
+  "dataset": "DEAP",
+  "grounding": {
+    "citation": "Abraham, R., Schneider, J., & vom Brocke, J. (2019). Data governance: A conceptual framework, structured review, and research agenda. International Journal of Information Management, 49, 424-438. https://doi.org/10.1016/j.ijinfomgt.2019.07.008",
+    "framework": "Abraham et al. (2019) data governance framework",
+    "note": "Lineage records the provenance chain for each participant: bronze source, XLS authoritative label source, Silver label CSV, pipeline stages applied, and transformations."
+  },
+  "participants": {
+    "s01": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s01.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s01_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 26,
+          "silver_output": "silver/DEAP/labels/s01_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s02": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s02.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s02_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 32,
+          "silver_output": "silver/DEAP/labels/s02_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s03": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s03.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s03_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 2,
+          "silver_output": "silver/DEAP/labels/s03_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s04": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s04.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s04_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 24,
+          "silver_output": "silver/DEAP/labels/s04_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s05": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s05.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s05_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 26,
+          "silver_output": "silver/DEAP/labels/s05_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s06": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s06.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s06_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 26,
+          "silver_output": "silver/DEAP/labels/s06_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s07": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s07.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s07_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 36,
+          "silver_output": "silver/DEAP/labels/s07_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s08": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s08.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s08_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 28,
+          "silver_output": "silver/DEAP/labels/s08_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s09": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s09.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s09_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 30,
+          "silver_output": "silver/DEAP/labels/s09_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s10": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s10.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s10_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 22,
+          "silver_output": "silver/DEAP/labels/s10_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s11": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s11.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s11_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 18,
+          "silver_output": "silver/DEAP/labels/s11_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s12": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s12.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s12_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 38,
+          "silver_output": "silver/DEAP/labels/s12_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s13": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s13.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s13_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 30,
+          "silver_output": "silver/DEAP/labels/s13_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s14": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s14.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s14_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 24,
+          "silver_output": "silver/DEAP/labels/s14_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s15": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s15.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s15_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 16,
+          "silver_output": "silver/DEAP/labels/s15_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s16": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s16.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s16_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 18,
+          "silver_output": "silver/DEAP/labels/s16_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s17": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s17.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s17_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 26,
+          "silver_output": "silver/DEAP/labels/s17_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s18": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s18.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s18_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 34,
+          "silver_output": "silver/DEAP/labels/s18_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s19": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s19.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s19_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 36,
+          "silver_output": "silver/DEAP/labels/s19_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s20": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s20.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s20_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 34,
+          "silver_output": "silver/DEAP/labels/s20_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s21": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s21.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s21_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 38,
+          "silver_output": "silver/DEAP/labels/s21_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s22": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s22.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s22_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 24,
+          "silver_output": "silver/DEAP/labels/s22_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s23": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s23.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s23_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 20,
+          "silver_output": "silver/DEAP/labels/s23_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s24": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s24.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s24_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 28,
+          "silver_output": "silver/DEAP/labels/s24_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s25": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s25.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s25_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 28,
+          "silver_output": "silver/DEAP/labels/s25_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s26": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s26.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s26_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 32,
+          "silver_output": "silver/DEAP/labels/s26_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s27": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s27.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s27_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 48,
+          "silver_output": "silver/DEAP/labels/s27_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s28": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s28.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s28_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 30,
+          "silver_output": "silver/DEAP/labels/s28_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s29": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s29.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s29_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 36,
+          "silver_output": "silver/DEAP/labels/s29_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s30": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s30.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s30_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 34,
+          "silver_output": "silver/DEAP/labels/s30_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s31": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s31.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s31_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 14,
+          "silver_output": "silver/DEAP/labels/s31_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    },
+    "s32": {
+      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "bronze_dat_source": "bronze/DEAP/deap-dataset/data_preprocessed_python/s32.dat",
+      "data_array_note": "The 40-channel physiological data array is read-only from bronze. Cleaning applies to the labels array only.",
+      "silver_labels": "silver/DEAP/labels/s32_labels.csv",
+      "stages_applied": [
+        "profiling",
+        "completeness",
+        "conformance",
+        "label_plausibility",
+        "consistency",
+        "quality_report_before",
+        "cleaning",
+        "post_cleaning",
+        "quality_report_after",
+        "governance",
+        "gold_manifest"
+      ],
+      "transformations": [
+        {
+          "action": "replace_inverted_labels_with_xls",
+          "authoritative_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+          "cleaning_report_ref": "deap/reports/deap_cleaning.json",
+          "description": "v2 mirror label inversion artefact: some Valence/Arousal entries follow v2 = 9 - v1. Corrected by writing XLS (authoritative) values. Data array untouched.",
+          "n_corrections": 20,
+          "silver_output": "silver/DEAP/labels/s32_labels.csv",
+          "stage": "cleaning"
+        }
+      ]
+    }
+  },
+  "pipeline_stages": [
+    {
+      "description": "Dataset profiling: per-participant array shapes, dtypes, per-channel statistics. Establishes the Bronze baseline.",
+      "display_name": "Bronze profiling",
+      "module": "deap/src/profiling.py",
+      "report": "deap/reports/deap_baseline.json",
+      "stage_id": "profiling"
+    },
+    {
+      "description": "NaN and Inf detection per channel per participant.",
+      "display_name": "Completeness check (Bronze)",
+      "module": "deap/src/checks/completeness.py",
+      "report": "deap/reports/deap_completeness.json",
+      "stage_id": "completeness"
+    },
+    {
+      "description": "Array shape, dtype, and labels shape conformance.",
+      "display_name": "Conformance check (Bronze)",
+      "module": "deap/src/checks/conformance.py",
+      "report": "deap/reports/deap_conformance.json",
+      "stage_id": "conformance"
+    },
+    {
+      "description": "SAM scale [1,9] check on all label dimensions.",
+      "display_name": "Label plausibility (Bronze)",
+      "module": "deap/src/checks/label_plausibility.py",
+      "report": "deap/reports/deap_label_plausibility.json",
+      "stage_id": "label_plausibility"
+    },
+    {
+      "description": "Structure uniformity, cross-source label match (dat vs XLS), and descriptive per-channel scale comparison.",
+      "display_name": "Consistency check (Bronze)",
+      "module": "deap/src/checks/consistency.py",
+      "report": "deap/reports/deap_consistency.json",
+      "stage_id": "consistency"
+    },
+    {
+      "description": "Before/after quality comparison (before = Bronze state).",
+      "display_name": "Quality report (Bronze baseline)",
+      "module": "deap/src/report.py",
+      "report": "deap/reports/deap_quality_report.json",
+      "stage_id": "quality_report_before"
+    },
+    {
+      "description": "Label correction: writes Silver label CSVs from participant_ratings.xls (authoritative source). Corrects 878 v2 inversion artefacts. Bronze .dat files and data array are not modified.",
+      "display_name": "Silver label cleaning",
+      "module": "deap/src/cleaning.py",
+      "report": "deap/reports/deap_cleaning.json",
+      "stage_id": "cleaning"
+    },
+    {
+      "description": "Label plausibility and cross-source re-check on Silver label CSVs. Expected: 0 OOR, 0 mismatches.",
+      "display_name": "Post-cleaning check (Silver)",
+      "module": "deap/src/checks/post_cleaning.py",
+      "report": "deap/reports/deap_post_cleaning.json",
+      "stage_id": "post_cleaning"
+    },
+    {
+      "description": "Updated report incorporating Silver post-cleaning results.",
+      "display_name": "Quality report (before/after)",
+      "module": "deap/src/report.py",
+      "report": "deap/reports/deap_quality_report.json",
+      "stage_id": "quality_report_after"
+    },
+    {
+      "description": "Lineage and audit trail artefacts.",
+      "display_name": "Gold governance",
+      "module": "deap/src/governance.py",
+      "report": "deap/reports/deap_governance.json",
+      "stage_id": "governance"
+    },
+    {
+      "description": "SHA-256 manifest for all Silver label CSVs.",
+      "display_name": "Gold manifest",
+      "module": "deap/src/gold_manifest.py",
+      "report": "gold/DEAP/deap_gold_manifest.json",
+      "stage_id": "gold_manifest"
+    }
+  ],
+  "run_context": {
+    "generated_at": "2026-11-18T01:02:05.213838+00:00",
+    "generator": "deap/src/governance.py",
+    "note": "This field is non-deterministic. Strip it for diffing."
+  },
+  "schema": "deap_lineage_v1"
+}
