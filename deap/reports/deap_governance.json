@@ -72,7 +72,7 @@
   },
   "lineage_document": "gold/DEAP/deap_lineage.json",
   "run_context": {
-    "generated_at": "2026-11-18T04:07:26.495198+00:00",
+    "generated_at": "2026-11-18T04:28:44.082620+00:00",
     "generator": "deap/src/governance.py",
     "note": "This field is non-deterministic. Strip it for diffing."
   },
