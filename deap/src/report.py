@@ -34,6 +34,12 @@ def run(reports_dir: str = REPORTS, output_path: str = OUTPUT) -> dict:
     with open(CONFIG) as f:
         thresholds = yaml.safe_load(f)
 
+    if not thresholds.get("meta", {}).get("signed_off"):
+        raise RuntimeError(
+            "deap/config/thresholds.yaml is not signed off "
+            "(meta.signed_off is not true). Quality report refused."
+        )
+
     # Load check reports
     loaded = {}
     for key, fname in REQUIRED_REPORTS.items():

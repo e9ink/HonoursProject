@@ -201,6 +201,12 @@ def run(dat_dir: str = DAT_DIR, xls_path: str = XLS_PATH,
     with open(CONFIG) as f:
         thresholds = yaml.safe_load(f)
 
+    if not thresholds.get("meta", {}).get("signed_off"):
+        raise RuntimeError(
+            "deap/config/thresholds.yaml is not signed off "
+            "(meta.signed_off is not true). Consistency check refused."
+        )
+
     tolerance = float(thresholds["consistency_cross_source"]["tolerance"])
 
     dat_files = sorted(
