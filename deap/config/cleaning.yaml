@@ -1,0 +1,52 @@
+meta:
+  signed_off: true
+  signed_off_by: Kevin Hudoyo
+  note: "pending supervisor review"
+  date: "2026-11-18"
+
+# DEAP label correction: v2 mirror inversion artefact.
+#
+# Source of issue: deap/reports/deap_consistency.json (878 cross-source mismatches)
+# and deap/reports/deap_label_plausibility.json (163 out-of-range values).
+# Authoritative label source: participant_ratings.xls.
+
+label_correction:
+  action: replace_inverted_labels_with_xls
+  authoritative_source: participant_ratings.xls
+  source_path: "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls"
+  silver_output_dir: "silver/DEAP/labels/"
+  silver_format: csv
+  silver_columns:
+    - trial_index
+    - experiment_id
+    - valence
+    - arousal
+    - dominance
+    - liking
+
+  inversion_pattern: >
+    Some v2 mirror participants have Valence and Arousal labels following
+    v2 = 9 - v1, where v1 is the XLS value. Confirmed in
+    deap/reports/deap_consistency.json (consistency_cross_source sub-check).
+    878 inversions across 32 participants. The 163 out-of-range label values
+    are a subset: 9 - v1 < 1 when v1 > 8. XLS values are taken as authoritative
+    because participant_ratings.xls is the directly submitted self-report record
+    and was confirmed accurate by the v1 mirror (the v1 mirror matched XLS exactly).
+
+  rule: >
+    For each participant and each trial, write XLS values as the authoritative
+    Silver label for all four dimensions (valence, arousal, dominance, liking).
+    Where the dat value matches XLS, the Silver value is identical to Bronze.
+    Where the dat value follows v2 = 9 - v1, the Silver value is the XLS (v1)
+    value. This resolves the 163 out-of-range violations and the 878 cross-source
+    mismatches in a single operation.
+    Matching rule: dat labels[i] corresponds to XLS row with Experiment_id == i+1
+    (trials in Experiment_id order; confirmed by EDA_DEAP.ipynb notebook).
+
+  bronze_untouched: true
+  data_array_untouched: true
+  note: >
+    Label correction is applied to the labels array only. The 40-channel
+    physiological data array is not modified. Silver files are CSV for
+    human readability and audit-ability. No physical copy of the data
+    array is made.
