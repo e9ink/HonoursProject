@@ -1,0 +1,6414 @@
+{
+  "action": "replace_inverted_labels_with_xls",
+  "authoritative_source": "participant_ratings.xls",
+  "check": "cleaning",
+  "cleaning_config": "deap/config/cleaning.yaml",
+  "n_participants_with_corrections": 32,
+  "participant_count": 32,
+  "participants": {
+    "s01": {
+      "corrections": [
+        {
+          "dat_value": 1.29,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 7.71
+        },
+        {
+          "dat_value": 1.4,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 7.6
+        },
+        {
+          "dat_value": 0.9,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 8.1
+        },
+        {
+          "dat_value": 1.69,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 7.31
+        },
+        {
+          "dat_value": 0.42,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 8.58
+        },
+        {
+          "dat_value": 1.46,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 7.54
+        },
+        {
+          "dat_value": 2.19,
+          "dim": "valence",
+          "experiment_id": 16,
+          "trial_index": 15,
+          "xls_value": 6.81
+        },
+        {
+          "dat_value": 1.56,
+          "dim": "arousal",
+          "experiment_id": 16,
+          "trial_index": 15,
+          "xls_value": 7.44
+        },
+        {
+          "dat_value": 1.77,
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 7.23
+        },
+        {
+          "dat_value": 1.85,
+          "dim": "arousal",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 7.15
+        },
+        {
+          "dat_value": 1.83,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.17
+        },
+        {
+          "dat_value": 1.0,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 8.0
+        },
+        {
+          "dat_value": 0.74,
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 8.26
+        },
+        {
+          "dat_value": 1.09,
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 7.91
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 21,
+          "trial_index": 20,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 1.05,
+          "dim": "arousal",
+          "experiment_id": 21,
+          "trial_index": 20,
+          "xls_value": 7.95
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "valence",
+          "experiment_id": 24,
+          "trial_index": 23,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 1.91,
+          "dim": "arousal",
+          "experiment_id": 24,
+          "trial_index": 23,
+          "xls_value": 7.09
+        },
+        {
+          "dat_value": 0.14,
+          "dim": "valence",
+          "experiment_id": 25,
+          "trial_index": 24,
+          "xls_value": 8.86
+        },
+        {
+          "dat_value": 1.79,
+          "dim": "arousal",
+          "experiment_id": 25,
+          "trial_index": 24,
+          "xls_value": 7.21
+        },
+        {
+          "dat_value": 1.72,
+          "dim": "valence",
+          "experiment_id": 26,
+          "trial_index": 25,
+          "xls_value": 7.28
+        },
+        {
+          "dat_value": 1.73,
+          "dim": "arousal",
+          "experiment_id": 26,
+          "trial_index": 25,
+          "xls_value": 7.27
+        },
+        {
+          "dat_value": 1.65,
+          "dim": "valence",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 7.35
+        },
+        {
+          "dat_value": 2.05,
+          "dim": "arousal",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 6.95
+        },
+        {
+          "dat_value": 3.9,
+          "dim": "valence",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 5.1
+        },
+        {
+          "dat_value": 1.88,
+          "dim": "arousal",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 7.12
+        }
+      ],
+      "n_corrections": 26,
+      "n_trials": 40,
+      "participant": "s01",
+      "silver_path": "silver/DEAP/labels/s01_labels.csv"
+    },
+    "s02": {
+      "corrections": [
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 3.97,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 5.03
+        },
+        {
+          "dat_value": 0.99,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 8.01
+        },
+        {
+          "dat_value": 1.9,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 7.1
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 2.0,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 7.0
+        },
+        {
+          "dat_value": 0.99,
+          "dim": "valence",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "xls_value": 8.01
+        },
+        {
+          "dat_value": 2.94,
+          "dim": "arousal",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "xls_value": 6.06
+        },
+        {
+          "dat_value": 0.06,
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 8.94
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.99,
+          "dim": "arousal",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 8.01
+        },
+        {
+          "dat_value": 3.0,
+          "dim": "valence",
+          "experiment_id": 16,
+          "trial_index": 15,
+          "xls_value": 6.0
+        },
+        {
+          "dat_value": 3.95,
+          "dim": "arousal",
+          "experiment_id": 16,
+          "trial_index": 15,
+          "xls_value": 5.05
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 2.85,
+          "dim": "arousal",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 6.15
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.68,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 8.32
+        },
+        {
+          "dat_value": 0.03,
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 8.97
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "valence",
+          "experiment_id": 24,
+          "trial_index": 23,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "arousal",
+          "experiment_id": 24,
+          "trial_index": 23,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 25,
+          "trial_index": 24,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "arousal",
+          "experiment_id": 25,
+          "trial_index": 24,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 26,
+          "trial_index": 25,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.96,
+          "dim": "arousal",
+          "experiment_id": 26,
+          "trial_index": 25,
+          "xls_value": 8.04
+        },
+        {
+          "dat_value": 2.95,
+          "dim": "valence",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 6.05
+        },
+        {
+          "dat_value": 2.33,
+          "dim": "arousal",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 6.67
+        }
+      ],
+      "n_corrections": 32,
+      "n_trials": 40,
+      "participant": "s02",
+      "silver_path": "silver/DEAP/labels/s02_labels.csv"
+    },
+    "s03": {
+      "corrections": [
+        {
+          "dat_value": 3.99,
+          "dim": "valence",
+          "experiment_id": 36,
+          "trial_index": 35,
+          "xls_value": 5.01
+        },
+        {
+          "dat_value": 3.5,
+          "dim": "arousal",
+          "experiment_id": 36,
+          "trial_index": 35,
+          "xls_value": 5.5
+        }
+      ],
+      "n_corrections": 2,
+      "n_trials": 40,
+      "participant": "s03",
+      "silver_path": "silver/DEAP/labels/s03_labels.csv"
+    },
+    "s04": {
+      "corrections": [
+        {
+          "dat_value": 2.32,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 6.68
+        },
+        {
+          "dat_value": 3.97,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 5.03
+        },
+        {
+          "dat_value": 0.05,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 8.95
+        },
+        {
+          "dat_value": 0.9,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 8.1
+        },
+        {
+          "dat_value": 3.03,
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 5.97
+        },
+        {
+          "dat_value": 3.95,
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 5.05
+        },
+        {
+          "dat_value": 1.76,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 7.24
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "valence",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 2.04,
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 6.96
+        },
+        {
+          "dat_value": 2.03,
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 6.97
+        },
+        {
+          "dat_value": 2.04,
+          "dim": "valence",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 6.96
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "arousal",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "valence",
+          "experiment_id": 17,
+          "trial_index": 16,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 3.05,
+          "dim": "arousal",
+          "experiment_id": 17,
+          "trial_index": 16,
+          "xls_value": 5.95
+        },
+        {
+          "dat_value": 1.91,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.09
+        },
+        {
+          "dat_value": 2.78,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 6.22
+        },
+        {
+          "dat_value": 0.83,
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 8.17
+        },
+        {
+          "dat_value": 0.95,
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 8.05
+        },
+        {
+          "dat_value": 2.0,
+          "dim": "valence",
+          "experiment_id": 25,
+          "trial_index": 24,
+          "xls_value": 7.0
+        },
+        {
+          "dat_value": 2.96,
+          "dim": "arousal",
+          "experiment_id": 25,
+          "trial_index": 24,
+          "xls_value": 6.04
+        },
+        {
+          "dat_value": 2.86,
+          "dim": "valence",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 6.14
+        },
+        {
+          "dat_value": 2.87,
+          "dim": "arousal",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 6.13
+        }
+      ],
+      "n_corrections": 24,
+      "n_trials": 40,
+      "participant": "s04",
+      "silver_path": "silver/DEAP/labels/s04_labels.csv"
+    },
+    "s05": {
+      "corrections": [
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.76,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 8.24
+        },
+        {
+          "dat_value": 3.92,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 5.08
+        },
+        {
+          "dat_value": 0.91,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 8.09
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 3.88,
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 5.12
+        },
+        {
+          "dat_value": 2.03,
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 6.97
+        },
+        {
+          "dat_value": 0.83,
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 8.17
+        },
+        {
+          "dat_value": 3.09,
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 5.91
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 3.0,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 6.0
+        },
+        {
+          "dat_value": 2.03,
+          "dim": "valence",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 6.97
+        },
+        {
+          "dat_value": 2.95,
+          "dim": "arousal",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 6.05
+        },
+        {
+          "dat_value": 3.04,
+          "dim": "valence",
+          "experiment_id": 16,
+          "trial_index": 15,
+          "xls_value": 5.96
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 16,
+          "trial_index": 15,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 2.01,
+          "dim": "valence",
+          "experiment_id": 22,
+          "trial_index": 21,
+          "xls_value": 6.99
+        },
+        {
+          "dat_value": 1.05,
+          "dim": "arousal",
+          "experiment_id": 22,
+          "trial_index": 21,
+          "xls_value": 7.95
+        },
+        {
+          "dat_value": 2.1,
+          "dim": "valence",
+          "experiment_id": 31,
+          "trial_index": 30,
+          "xls_value": 6.9
+        },
+        {
+          "dat_value": 2.96,
+          "dim": "arousal",
+          "experiment_id": 31,
+          "trial_index": 30,
+          "xls_value": 6.04
+        },
+        {
+          "dat_value": 3.83,
+          "dim": "valence",
+          "experiment_id": 33,
+          "trial_index": 32,
+          "xls_value": 5.17
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "arousal",
+          "experiment_id": 33,
+          "trial_index": 32,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 2.97,
+          "dim": "valence",
+          "experiment_id": 34,
+          "trial_index": 33,
+          "xls_value": 6.03
+        },
+        {
+          "dat_value": 2.03,
+          "dim": "arousal",
+          "experiment_id": 34,
+          "trial_index": 33,
+          "xls_value": 6.97
+        },
+        {
+          "dat_value": 2.0,
+          "dim": "valence",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 7.0
+        },
+        {
+          "dat_value": 2.04,
+          "dim": "arousal",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 6.96
+        }
+      ],
+      "n_corrections": 26,
+      "n_trials": 40,
+      "participant": "s05",
+      "silver_path": "silver/DEAP/labels/s05_labels.csv"
+    },
+    "s06": {
+      "corrections": [
+        {
+          "dat_value": 2.17,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 6.83
+        },
+        {
+          "dat_value": 2.38,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 6.62
+        },
+        {
+          "dat_value": 1.31,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 7.69
+        },
+        {
+          "dat_value": 3.01,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 5.99
+        },
+        {
+          "dat_value": 1.45,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 7.55
+        },
+        {
+          "dat_value": 2.21,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 6.79
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 1.62,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 7.38
+        },
+        {
+          "dat_value": 0.74,
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 8.26
+        },
+        {
+          "dat_value": 0.73,
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 8.27
+        },
+        {
+          "dat_value": 1.13,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 7.87
+        },
+        {
+          "dat_value": 3.87,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 5.13
+        },
+        {
+          "dat_value": 1.63,
+          "dim": "valence",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 7.37
+        },
+        {
+          "dat_value": 3.54,
+          "dim": "arousal",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 5.46
+        },
+        {
+          "dat_value": 3.94,
+          "dim": "valence",
+          "experiment_id": 16,
+          "trial_index": 15,
+          "xls_value": 5.06
+        },
+        {
+          "dat_value": 1.55,
+          "dim": "arousal",
+          "experiment_id": 16,
+          "trial_index": 15,
+          "xls_value": 7.45
+        },
+        {
+          "dat_value": 1.41,
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 7.59
+        },
+        {
+          "dat_value": 3.19,
+          "dim": "arousal",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 5.81
+        },
+        {
+          "dat_value": 1.59,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.41
+        },
+        {
+          "dat_value": 3.4,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 5.6
+        },
+        {
+          "dat_value": 1.91,
+          "dim": "valence",
+          "experiment_id": 25,
+          "trial_index": 24,
+          "xls_value": 7.09
+        },
+        {
+          "dat_value": 2.58,
+          "dim": "arousal",
+          "experiment_id": 25,
+          "trial_index": 24,
+          "xls_value": 6.42
+        },
+        {
+          "dat_value": 3.29,
+          "dim": "valence",
+          "experiment_id": 36,
+          "trial_index": 35,
+          "xls_value": 5.71
+        },
+        {
+          "dat_value": 2.79,
+          "dim": "arousal",
+          "experiment_id": 36,
+          "trial_index": 35,
+          "xls_value": 6.21
+        },
+        {
+          "dat_value": 2.44,
+          "dim": "valence",
+          "experiment_id": 39,
+          "trial_index": 38,
+          "xls_value": 6.56
+        },
+        {
+          "dat_value": 2.5,
+          "dim": "arousal",
+          "experiment_id": 39,
+          "trial_index": 38,
+          "xls_value": 6.5
+        }
+      ],
+      "n_corrections": 26,
+      "n_trials": 40,
+      "participant": "s06",
+      "silver_path": "silver/DEAP/labels/s06_labels.csv"
+    },
+    "s07": {
+      "corrections": [
+        {
+          "dat_value": 1.85,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 7.15
+        },
+        {
+          "dat_value": 3.04,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 5.96
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 3.97,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 5.03
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 2.01,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 6.99
+        },
+        {
+          "dat_value": 2.03,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 6.97
+        },
+        {
+          "dat_value": 2.96,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 6.04
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 1.94,
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 7.06
+        },
+        {
+          "dat_value": 2.0,
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 7.0
+        },
+        {
+          "dat_value": 3.01,
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 5.99
+        },
+        {
+          "dat_value": 1.91,
+          "dim": "valence",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 7.09
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "arousal",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 1.97,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 7.03
+        },
+        {
+          "dat_value": 1.91,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 7.09
+        },
+        {
+          "dat_value": 1.91,
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 7.09
+        },
+        {
+          "dat_value": 3.97,
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 5.03
+        },
+        {
+          "dat_value": 2.01,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 6.99
+        },
+        {
+          "dat_value": 2.96,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 6.04
+        },
+        {
+          "dat_value": 0.94,
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 8.06
+        },
+        {
+          "dat_value": 2.94,
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 6.06
+        },
+        {
+          "dat_value": 2.04,
+          "dim": "valence",
+          "experiment_id": 31,
+          "trial_index": 30,
+          "xls_value": 6.96
+        },
+        {
+          "dat_value": 1.97,
+          "dim": "arousal",
+          "experiment_id": 31,
+          "trial_index": 30,
+          "xls_value": 7.03
+        },
+        {
+          "dat_value": 3.99,
+          "dim": "valence",
+          "experiment_id": 35,
+          "trial_index": 34,
+          "xls_value": 5.01
+        },
+        {
+          "dat_value": 0.95,
+          "dim": "arousal",
+          "experiment_id": 35,
+          "trial_index": 34,
+          "xls_value": 8.05
+        },
+        {
+          "dat_value": 0.9,
+          "dim": "valence",
+          "experiment_id": 36,
+          "trial_index": 35,
+          "xls_value": 8.1
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "arousal",
+          "experiment_id": 36,
+          "trial_index": 35,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 3.95,
+          "dim": "valence",
+          "experiment_id": 37,
+          "trial_index": 36,
+          "xls_value": 5.05
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "arousal",
+          "experiment_id": 37,
+          "trial_index": 36,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 3.97,
+          "dim": "valence",
+          "experiment_id": 38,
+          "trial_index": 37,
+          "xls_value": 5.03
+        },
+        {
+          "dat_value": 1.9,
+          "dim": "arousal",
+          "experiment_id": 38,
+          "trial_index": 37,
+          "xls_value": 7.1
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "valence",
+          "experiment_id": 39,
+          "trial_index": 38,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "arousal",
+          "experiment_id": 39,
+          "trial_index": 38,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "valence",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 1.97,
+          "dim": "arousal",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 7.03
+        }
+      ],
+      "n_corrections": 36,
+      "n_trials": 40,
+      "participant": "s07",
+      "silver_path": "silver/DEAP/labels/s07_labels.csv"
+    },
+    "s08": {
+      "corrections": [
+        {
+          "dat_value": 1.4,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 7.6
+        },
+        {
+          "dat_value": 2.22,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 6.78
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 2.49,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 6.51
+        },
+        {
+          "dat_value": 0.85,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 8.15
+        },
+        {
+          "dat_value": 2.04,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 6.96
+        },
+        {
+          "dat_value": 2.18,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 6.82
+        },
+        {
+          "dat_value": 0.77,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 8.23
+        },
+        {
+          "dat_value": 1.6,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 7.4
+        },
+        {
+          "dat_value": 1.74,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 7.26
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 0.18,
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 8.82
+        },
+        {
+          "dat_value": 2.6,
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 6.4
+        },
+        {
+          "dat_value": 0.22,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 8.78
+        },
+        {
+          "dat_value": 1.76,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 7.24
+        },
+        {
+          "dat_value": 0.53,
+          "dim": "valence",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "xls_value": 8.47
+        },
+        {
+          "dat_value": 2.46,
+          "dim": "arousal",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "xls_value": 6.54
+        },
+        {
+          "dat_value": 1.1,
+          "dim": "valence",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 7.9
+        },
+        {
+          "dat_value": 3.91,
+          "dim": "arousal",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 5.09
+        },
+        {
+          "dat_value": 0.67,
+          "dim": "valence",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 8.33
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 2.72,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 6.28
+        },
+        {
+          "dat_value": 2.67,
+          "dim": "valence",
+          "experiment_id": 32,
+          "trial_index": 31,
+          "xls_value": 6.33
+        },
+        {
+          "dat_value": 0.77,
+          "dim": "arousal",
+          "experiment_id": 32,
+          "trial_index": 31,
+          "xls_value": 8.23
+        },
+        {
+          "dat_value": 3.95,
+          "dim": "valence",
+          "experiment_id": 34,
+          "trial_index": 33,
+          "xls_value": 5.05
+        },
+        {
+          "dat_value": 2.17,
+          "dim": "arousal",
+          "experiment_id": 34,
+          "trial_index": 33,
+          "xls_value": 6.83
+        }
+      ],
+      "n_corrections": 28,
+      "n_trials": 40,
+      "participant": "s08",
+      "silver_path": "silver/DEAP/labels/s08_labels.csv"
+    },
+    "s09": {
+      "corrections": [
+        {
+          "dat_value": 1.92,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 2.86,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 6.14
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 1.86,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 7.14
+        },
+        {
+          "dat_value": 3.01,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 5.99
+        },
+        {
+          "dat_value": 3.03,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 5.97
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 2.81,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 6.19
+        },
+        {
+          "dat_value": 3.92,
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 5.08
+        },
+        {
+          "dat_value": 3.99,
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 5.01
+        },
+        {
+          "dat_value": 1.88,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 7.12
+        },
+        {
+          "dat_value": 1.9,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 7.1
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "valence",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 2.01,
+          "dim": "arousal",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "xls_value": 6.99
+        },
+        {
+          "dat_value": 0.85,
+          "dim": "valence",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 8.15
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "arousal",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 2.0,
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 7.0
+        },
+        {
+          "dat_value": 2.87,
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 6.13
+        },
+        {
+          "dat_value": 2.79,
+          "dim": "valence",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 6.21
+        },
+        {
+          "dat_value": 2.99,
+          "dim": "arousal",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 6.01
+        },
+        {
+          "dat_value": 2.97,
+          "dim": "valence",
+          "experiment_id": 17,
+          "trial_index": 16,
+          "xls_value": 6.03
+        },
+        {
+          "dat_value": 2.96,
+          "dim": "arousal",
+          "experiment_id": 17,
+          "trial_index": 16,
+          "xls_value": 6.04
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "valence",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 3.95,
+          "dim": "arousal",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 5.05
+        },
+        {
+          "dat_value": 2.94,
+          "dim": "valence",
+          "experiment_id": 31,
+          "trial_index": 30,
+          "xls_value": 6.06
+        },
+        {
+          "dat_value": 2.94,
+          "dim": "arousal",
+          "experiment_id": 31,
+          "trial_index": 30,
+          "xls_value": 6.06
+        },
+        {
+          "dat_value": 3.94,
+          "dim": "valence",
+          "experiment_id": 34,
+          "trial_index": 33,
+          "xls_value": 5.06
+        },
+        {
+          "dat_value": 2.9,
+          "dim": "arousal",
+          "experiment_id": 34,
+          "trial_index": 33,
+          "xls_value": 6.1
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "valence",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 3.99,
+          "dim": "arousal",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 5.01
+        }
+      ],
+      "n_corrections": 30,
+      "n_trials": 40,
+      "participant": "s09",
+      "silver_path": "silver/DEAP/labels/s09_labels.csv"
+    },
+    "s10": {
+      "corrections": [
+        {
+          "dat_value": 1.09,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 7.91
+        },
+        {
+          "dat_value": 2.85,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 6.15
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 3.09,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 5.91
+        },
+        {
+          "dat_value": 1.76,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 7.24
+        },
+        {
+          "dat_value": 2.77,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 6.23
+        },
+        {
+          "dat_value": 1.9,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 7.1
+        },
+        {
+          "dat_value": 3.0,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 6.0
+        },
+        {
+          "dat_value": 0.04,
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 8.96
+        },
+        {
+          "dat_value": 1.42,
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 7.58
+        },
+        {
+          "dat_value": 1.44,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 7.56
+        },
+        {
+          "dat_value": 2.79,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 6.21
+        },
+        {
+          "dat_value": 3.06,
+          "dim": "valence",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 5.94
+        },
+        {
+          "dat_value": 3.0,
+          "dim": "arousal",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 6.0
+        },
+        {
+          "dat_value": 0.01,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 8.99
+        },
+        {
+          "dat_value": 1.86,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 7.14
+        },
+        {
+          "dat_value": 1.18,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.82
+        },
+        {
+          "dat_value": 3.81,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 5.19
+        },
+        {
+          "dat_value": 3.04,
+          "dim": "valence",
+          "experiment_id": 32,
+          "trial_index": 31,
+          "xls_value": 5.96
+        },
+        {
+          "dat_value": 1.53,
+          "dim": "arousal",
+          "experiment_id": 32,
+          "trial_index": 31,
+          "xls_value": 7.47
+        },
+        {
+          "dat_value": 3.22,
+          "dim": "valence",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 5.78
+        },
+        {
+          "dat_value": 2.85,
+          "dim": "arousal",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 6.15
+        }
+      ],
+      "n_corrections": 22,
+      "n_trials": 40,
+      "participant": "s10",
+      "silver_path": "silver/DEAP/labels/s10_labels.csv"
+    },
+    "s11": {
+      "corrections": [
+        {
+          "dat_value": 1.59,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 7.41
+        },
+        {
+          "dat_value": 3.79,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 5.21
+        },
+        {
+          "dat_value": 1.35,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 7.65
+        },
+        {
+          "dat_value": 2.47,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 6.53
+        },
+        {
+          "dat_value": 1.59,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 7.41
+        },
+        {
+          "dat_value": 2.6,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 6.4
+        },
+        {
+          "dat_value": 3.68,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 5.32
+        },
+        {
+          "dat_value": 3.62,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 5.38
+        },
+        {
+          "dat_value": 2.74,
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 6.26
+        },
+        {
+          "dat_value": 2.86,
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 6.14
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 2.58,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 6.42
+        },
+        {
+          "dat_value": 1.04,
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 7.96
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 3.99,
+          "dim": "valence",
+          "experiment_id": 32,
+          "trial_index": 31,
+          "xls_value": 5.01
+        },
+        {
+          "dat_value": 2.17,
+          "dim": "arousal",
+          "experiment_id": 32,
+          "trial_index": 31,
+          "xls_value": 6.83
+        },
+        {
+          "dat_value": 3.36,
+          "dim": "valence",
+          "experiment_id": 33,
+          "trial_index": 32,
+          "xls_value": 5.64
+        },
+        {
+          "dat_value": 2.64,
+          "dim": "arousal",
+          "experiment_id": 33,
+          "trial_index": 32,
+          "xls_value": 6.36
+        }
+      ],
+      "n_corrections": 18,
+      "n_trials": 40,
+      "participant": "s11",
+      "silver_path": "silver/DEAP/labels/s11_labels.csv"
+    },
+    "s12": {
+      "corrections": [
+        {
+          "dat_value": 1.91,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 7.09
+        },
+        {
+          "dat_value": 1.9,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 7.1
+        },
+        {
+          "dat_value": 2.91,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 6.09
+        },
+        {
+          "dat_value": 1.86,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 7.14
+        },
+        {
+          "dat_value": 1.67,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 7.33
+        },
+        {
+          "dat_value": 1.67,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 7.33
+        },
+        {
+          "dat_value": 2.14,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 6.86
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 2.35,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 6.65
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 2.23,
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 6.77
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 3.9,
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 5.1
+        },
+        {
+          "dat_value": 2.9,
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 6.1
+        },
+        {
+          "dat_value": 1.05,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 7.95
+        },
+        {
+          "dat_value": 0.26,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 8.74
+        },
+        {
+          "dat_value": 1.22,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 7.78
+        },
+        {
+          "dat_value": 3.91,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 5.09
+        },
+        {
+          "dat_value": 2.14,
+          "dim": "valence",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "xls_value": 6.86
+        },
+        {
+          "dat_value": 2.1,
+          "dim": "arousal",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "xls_value": 6.9
+        },
+        {
+          "dat_value": 1.01,
+          "dim": "valence",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 7.99
+        },
+        {
+          "dat_value": 2.09,
+          "dim": "arousal",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 6.91
+        },
+        {
+          "dat_value": 0.85,
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 8.15
+        },
+        {
+          "dat_value": 3.81,
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 5.19
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "valence",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 3.05,
+          "dim": "arousal",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 5.95
+        },
+        {
+          "dat_value": 1.65,
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 7.35
+        },
+        {
+          "dat_value": 3.87,
+          "dim": "arousal",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 5.13
+        },
+        {
+          "dat_value": 1.97,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.03
+        },
+        {
+          "dat_value": 2.12,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 6.88
+        },
+        {
+          "dat_value": 1.65,
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 7.35
+        },
+        {
+          "dat_value": 2.09,
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 6.91
+        },
+        {
+          "dat_value": 2.92,
+          "dim": "valence",
+          "experiment_id": 26,
+          "trial_index": 25,
+          "xls_value": 6.08
+        },
+        {
+          "dat_value": 3.86,
+          "dim": "arousal",
+          "experiment_id": 26,
+          "trial_index": 25,
+          "xls_value": 5.14
+        },
+        {
+          "dat_value": 3.95,
+          "dim": "valence",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 5.05
+        },
+        {
+          "dat_value": 3.99,
+          "dim": "arousal",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 5.01
+        },
+        {
+          "dat_value": 2.19,
+          "dim": "valence",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 6.81
+        },
+        {
+          "dat_value": 0.28,
+          "dim": "arousal",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 8.72
+        }
+      ],
+      "n_corrections": 38,
+      "n_trials": 40,
+      "participant": "s12",
+      "silver_path": "silver/DEAP/labels/s12_labels.csv"
+    },
+    "s13": {
+      "corrections": [
+        {
+          "dat_value": 2.85,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 6.15
+        },
+        {
+          "dat_value": 0.91,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 8.09
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 1.94,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 7.06
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 3.99,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 5.01
+        },
+        {
+          "dat_value": 1.03,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 7.97
+        },
+        {
+          "dat_value": 1.01,
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 7.99
+        },
+        {
+          "dat_value": 1.97,
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 7.03
+        },
+        {
+          "dat_value": 1.94,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 7.06
+        },
+        {
+          "dat_value": 2.01,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 6.99
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 2.94,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 6.06
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 1.94,
+          "dim": "arousal",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 7.06
+        },
+        {
+          "dat_value": 1.03,
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 7.97
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 3.01,
+          "dim": "valence",
+          "experiment_id": 17,
+          "trial_index": 16,
+          "xls_value": 5.99
+        },
+        {
+          "dat_value": 3.97,
+          "dim": "arousal",
+          "experiment_id": 17,
+          "trial_index": 16,
+          "xls_value": 5.03
+        },
+        {
+          "dat_value": 1.06,
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 7.94
+        },
+        {
+          "dat_value": 3.01,
+          "dim": "arousal",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 5.99
+        },
+        {
+          "dat_value": 0.49,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 8.51
+        },
+        {
+          "dat_value": 3.03,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 5.97
+        },
+        {
+          "dat_value": 1.4,
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 7.6
+        },
+        {
+          "dat_value": 2.94,
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 6.06
+        },
+        {
+          "dat_value": 3.53,
+          "dim": "valence",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 5.47
+        },
+        {
+          "dat_value": 2.92,
+          "dim": "arousal",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 6.08
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "valence",
+          "experiment_id": 28,
+          "trial_index": 27,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 0.99,
+          "dim": "arousal",
+          "experiment_id": 28,
+          "trial_index": 27,
+          "xls_value": 8.01
+        }
+      ],
+      "n_corrections": 30,
+      "n_trials": 40,
+      "participant": "s13",
+      "silver_path": "silver/DEAP/labels/s13_labels.csv"
+    },
+    "s14": {
+      "corrections": [
+        {
+          "dat_value": 0.78,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 8.22
+        },
+        {
+          "dat_value": 1.22,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 7.78
+        },
+        {
+          "dat_value": 2.95,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 6.05
+        },
+        {
+          "dat_value": 1.1,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 7.9
+        },
+        {
+          "dat_value": 1.5,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 7.5
+        },
+        {
+          "dat_value": 2.32,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 6.68
+        },
+        {
+          "dat_value": 1.62,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 7.38
+        },
+        {
+          "dat_value": 2.28,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 6.72
+        },
+        {
+          "dat_value": 1.81,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 7.19
+        },
+        {
+          "dat_value": 2.17,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 6.83
+        },
+        {
+          "dat_value": 2.15,
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 6.85
+        },
+        {
+          "dat_value": 3.47,
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 5.53
+        },
+        {
+          "dat_value": 2.0,
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 7.0
+        },
+        {
+          "dat_value": 2.79,
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 6.21
+        },
+        {
+          "dat_value": 1.31,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 7.69
+        },
+        {
+          "dat_value": 1.56,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 7.44
+        },
+        {
+          "dat_value": 1.45,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.55
+        },
+        {
+          "dat_value": 3.08,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 5.92
+        },
+        {
+          "dat_value": 1.67,
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 7.33
+        },
+        {
+          "dat_value": 2.37,
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 6.63
+        },
+        {
+          "dat_value": 2.35,
+          "dim": "valence",
+          "experiment_id": 39,
+          "trial_index": 38,
+          "xls_value": 6.65
+        },
+        {
+          "dat_value": 1.94,
+          "dim": "arousal",
+          "experiment_id": 39,
+          "trial_index": 38,
+          "xls_value": 7.06
+        },
+        {
+          "dat_value": 2.32,
+          "dim": "valence",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 6.68
+        },
+        {
+          "dat_value": 2.14,
+          "dim": "arousal",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 6.86
+        }
+      ],
+      "n_corrections": 24,
+      "n_trials": 40,
+      "participant": "s14",
+      "silver_path": "silver/DEAP/labels/s14_labels.csv"
+    },
+    "s15": {
+      "corrections": [
+        {
+          "dat_value": 0.1,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 8.9
+        },
+        {
+          "dat_value": 3.14,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 5.86
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 1.85,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 7.15
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 3.87,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 5.13
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 3.94,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 5.06
+        },
+        {
+          "dat_value": 0.01,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 8.99
+        },
+        {
+          "dat_value": 3.99,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 5.01
+        },
+        {
+          "dat_value": 1.03,
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 7.97
+        },
+        {
+          "dat_value": 3.94,
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 5.06
+        },
+        {
+          "dat_value": 3.95,
+          "dim": "valence",
+          "experiment_id": 35,
+          "trial_index": 34,
+          "xls_value": 5.05
+        },
+        {
+          "dat_value": 2.09,
+          "dim": "arousal",
+          "experiment_id": 35,
+          "trial_index": 34,
+          "xls_value": 6.91
+        }
+      ],
+      "n_corrections": 16,
+      "n_trials": 40,
+      "participant": "s15",
+      "silver_path": "silver/DEAP/labels/s15_labels.csv"
+    },
+    "s16": {
+      "corrections": [
+        {
+          "dat_value": 2.55,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 6.45
+        },
+        {
+          "dat_value": 3.97,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 5.03
+        },
+        {
+          "dat_value": 2.26,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 6.74
+        },
+        {
+          "dat_value": 3.17,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 5.83
+        },
+        {
+          "dat_value": 1.91,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 7.09
+        },
+        {
+          "dat_value": 3.33,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 5.67
+        },
+        {
+          "dat_value": 3.49,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 5.51
+        },
+        {
+          "dat_value": 1.1,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 7.9
+        },
+        {
+          "dat_value": 3.86,
+          "dim": "valence",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 5.14
+        },
+        {
+          "dat_value": 1.5,
+          "dim": "arousal",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 7.5
+        },
+        {
+          "dat_value": 2.44,
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 6.56
+        },
+        {
+          "dat_value": 3.28,
+          "dim": "arousal",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 5.72
+        },
+        {
+          "dat_value": 3.99,
+          "dim": "valence",
+          "experiment_id": 32,
+          "trial_index": 31,
+          "xls_value": 5.01
+        },
+        {
+          "dat_value": 0.88,
+          "dim": "arousal",
+          "experiment_id": 32,
+          "trial_index": 31,
+          "xls_value": 8.12
+        },
+        {
+          "dat_value": 2.91,
+          "dim": "valence",
+          "experiment_id": 37,
+          "trial_index": 36,
+          "xls_value": 6.09
+        },
+        {
+          "dat_value": 3.5,
+          "dim": "arousal",
+          "experiment_id": 37,
+          "trial_index": 36,
+          "xls_value": 5.5
+        },
+        {
+          "dat_value": 2.87,
+          "dim": "valence",
+          "experiment_id": 39,
+          "trial_index": 38,
+          "xls_value": 6.13
+        },
+        {
+          "dat_value": 3.03,
+          "dim": "arousal",
+          "experiment_id": 39,
+          "trial_index": 38,
+          "xls_value": 5.97
+        }
+      ],
+      "n_corrections": 18,
+      "n_trials": 40,
+      "participant": "s16",
+      "silver_path": "silver/DEAP/labels/s16_labels.csv"
+    },
+    "s17": {
+      "corrections": [
+        {
+          "dat_value": 1.74,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 7.26
+        },
+        {
+          "dat_value": 1.97,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 7.03
+        },
+        {
+          "dat_value": 2.54,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 6.46
+        },
+        {
+          "dat_value": 3.22,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 5.78
+        },
+        {
+          "dat_value": 2.65,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 6.35
+        },
+        {
+          "dat_value": 3.44,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 5.56
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 0.85,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 8.15
+        },
+        {
+          "dat_value": 2.1,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 6.9
+        },
+        {
+          "dat_value": 3.05,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 5.95
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 2.4,
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 6.6
+        },
+        {
+          "dat_value": 2.96,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 6.04
+        },
+        {
+          "dat_value": 2.87,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 6.13
+        },
+        {
+          "dat_value": 2.91,
+          "dim": "valence",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 6.09
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "arousal",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 2.97,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 6.03
+        },
+        {
+          "dat_value": 3.33,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 5.67
+        },
+        {
+          "dat_value": 2.42,
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 6.58
+        },
+        {
+          "dat_value": 3.15,
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 5.85
+        },
+        {
+          "dat_value": 1.73,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.27
+        },
+        {
+          "dat_value": 2.97,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 6.03
+        },
+        {
+          "dat_value": 1.9,
+          "dim": "valence",
+          "experiment_id": 39,
+          "trial_index": 38,
+          "xls_value": 7.1
+        },
+        {
+          "dat_value": 1.97,
+          "dim": "arousal",
+          "experiment_id": 39,
+          "trial_index": 38,
+          "xls_value": 7.03
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "valence",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 2.97,
+          "dim": "arousal",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 6.03
+        }
+      ],
+      "n_corrections": 26,
+      "n_trials": 40,
+      "participant": "s17",
+      "silver_path": "silver/DEAP/labels/s17_labels.csv"
+    },
+    "s18": {
+      "corrections": [
+        {
+          "dat_value": 2.67,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 6.33
+        },
+        {
+          "dat_value": 2.26,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 6.74
+        },
+        {
+          "dat_value": 2.13,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 6.87
+        },
+        {
+          "dat_value": 2.91,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 6.09
+        },
+        {
+          "dat_value": 2.64,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 6.36
+        },
+        {
+          "dat_value": 2.28,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 6.72
+        },
+        {
+          "dat_value": 2.35,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 6.65
+        },
+        {
+          "dat_value": 1.03,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 7.97
+        },
+        {
+          "dat_value": 2.87,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 6.13
+        },
+        {
+          "dat_value": 1.28,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 7.72
+        },
+        {
+          "dat_value": 2.49,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 6.51
+        },
+        {
+          "dat_value": 2.96,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 6.04
+        },
+        {
+          "dat_value": 1.67,
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 7.33
+        },
+        {
+          "dat_value": 2.06,
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 6.94
+        },
+        {
+          "dat_value": 2.45,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 6.55
+        },
+        {
+          "dat_value": 2.97,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 6.03
+        },
+        {
+          "dat_value": 2.91,
+          "dim": "valence",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 6.09
+        },
+        {
+          "dat_value": 1.71,
+          "dim": "arousal",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 7.29
+        },
+        {
+          "dat_value": 2.76,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 6.24
+        },
+        {
+          "dat_value": 2.4,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 6.6
+        },
+        {
+          "dat_value": 2.96,
+          "dim": "valence",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 6.04
+        },
+        {
+          "dat_value": 3.65,
+          "dim": "arousal",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 5.35
+        },
+        {
+          "dat_value": 1.26,
+          "dim": "valence",
+          "experiment_id": 17,
+          "trial_index": 16,
+          "xls_value": 7.74
+        },
+        {
+          "dat_value": 3.23,
+          "dim": "arousal",
+          "experiment_id": 17,
+          "trial_index": 16,
+          "xls_value": 5.77
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 2.17,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 6.83
+        },
+        {
+          "dat_value": 2.76,
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 6.24
+        },
+        {
+          "dat_value": 3.29,
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 5.71
+        },
+        {
+          "dat_value": 3.06,
+          "dim": "valence",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 5.94
+        },
+        {
+          "dat_value": 3.76,
+          "dim": "arousal",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 5.24
+        },
+        {
+          "dat_value": 3.88,
+          "dim": "valence",
+          "experiment_id": 35,
+          "trial_index": 34,
+          "xls_value": 5.12
+        },
+        {
+          "dat_value": 1.94,
+          "dim": "arousal",
+          "experiment_id": 35,
+          "trial_index": 34,
+          "xls_value": 7.06
+        },
+        {
+          "dat_value": 3.76,
+          "dim": "valence",
+          "experiment_id": 36,
+          "trial_index": 35,
+          "xls_value": 5.24
+        },
+        {
+          "dat_value": 2.01,
+          "dim": "arousal",
+          "experiment_id": 36,
+          "trial_index": 35,
+          "xls_value": 6.99
+        }
+      ],
+      "n_corrections": 34,
+      "n_trials": 40,
+      "participant": "s18",
+      "silver_path": "silver/DEAP/labels/s18_labels.csv"
+    },
+    "s19": {
+      "corrections": [
+        {
+          "dat_value": 1.56,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 7.44
+        },
+        {
+          "dat_value": 2.55,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 6.45
+        },
+        {
+          "dat_value": 2.54,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 6.46
+        },
+        {
+          "dat_value": 2.19,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 6.81
+        },
+        {
+          "dat_value": 2.18,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 6.82
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 3.23,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 5.77
+        },
+        {
+          "dat_value": 3.47,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 5.53
+        },
+        {
+          "dat_value": 1.21,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 7.79
+        },
+        {
+          "dat_value": 0.38,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 8.62
+        },
+        {
+          "dat_value": 1.27,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 7.73
+        },
+        {
+          "dat_value": 2.1,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 6.9
+        },
+        {
+          "dat_value": 2.36,
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 6.64
+        },
+        {
+          "dat_value": 2.41,
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 6.59
+        },
+        {
+          "dat_value": 1.56,
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 7.44
+        },
+        {
+          "dat_value": 2.33,
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 6.67
+        },
+        {
+          "dat_value": 1.91,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 7.09
+        },
+        {
+          "dat_value": 3.33,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 5.67
+        },
+        {
+          "dat_value": 3.99,
+          "dim": "valence",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 5.01
+        },
+        {
+          "dat_value": 1.33,
+          "dim": "arousal",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 7.67
+        },
+        {
+          "dat_value": 3.17,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 5.83
+        },
+        {
+          "dat_value": 3.37,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 5.63
+        },
+        {
+          "dat_value": 2.74,
+          "dim": "valence",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "xls_value": 6.26
+        },
+        {
+          "dat_value": 3.33,
+          "dim": "arousal",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "xls_value": 5.67
+        },
+        {
+          "dat_value": 1.47,
+          "dim": "valence",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 7.53
+        },
+        {
+          "dat_value": 2.51,
+          "dim": "arousal",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 6.49
+        },
+        {
+          "dat_value": 1.23,
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 7.77
+        },
+        {
+          "dat_value": 2.65,
+          "dim": "arousal",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 6.35
+        },
+        {
+          "dat_value": 1.35,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.65
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 2.87,
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 6.13
+        },
+        {
+          "dat_value": 2.99,
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 6.01
+        },
+        {
+          "dat_value": 3.97,
+          "dim": "valence",
+          "experiment_id": 31,
+          "trial_index": 30,
+          "xls_value": 5.03
+        },
+        {
+          "dat_value": 3.12,
+          "dim": "arousal",
+          "experiment_id": 31,
+          "trial_index": 30,
+          "xls_value": 5.88
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "valence",
+          "experiment_id": 39,
+          "trial_index": 38,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 3.95,
+          "dim": "arousal",
+          "experiment_id": 39,
+          "trial_index": 38,
+          "xls_value": 5.05
+        }
+      ],
+      "n_corrections": 36,
+      "n_trials": 40,
+      "participant": "s19",
+      "silver_path": "silver/DEAP/labels/s19_labels.csv"
+    },
+    "s20": {
+      "corrections": [
+        {
+          "dat_value": 2.23,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 6.77
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 3.08,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 5.92
+        },
+        {
+          "dat_value": 0.18,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 8.82
+        },
+        {
+          "dat_value": 0.94,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 8.06
+        },
+        {
+          "dat_value": 1.38,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 7.62
+        },
+        {
+          "dat_value": 3.26,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 5.74
+        },
+        {
+          "dat_value": 3.73,
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 5.27
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 1.37,
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 7.63
+        },
+        {
+          "dat_value": 3.08,
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 5.92
+        },
+        {
+          "dat_value": 0.78,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 8.22
+        },
+        {
+          "dat_value": 1.69,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 7.31
+        },
+        {
+          "dat_value": 3.87,
+          "dim": "valence",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 5.13
+        },
+        {
+          "dat_value": 2.19,
+          "dim": "arousal",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 6.81
+        },
+        {
+          "dat_value": 0.82,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 8.18
+        },
+        {
+          "dat_value": 2.59,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 6.41
+        },
+        {
+          "dat_value": 1.36,
+          "dim": "valence",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "xls_value": 7.64
+        },
+        {
+          "dat_value": 3.54,
+          "dim": "arousal",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "xls_value": 5.46
+        },
+        {
+          "dat_value": 1.09,
+          "dim": "valence",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 7.91
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 2.6,
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 6.4
+        },
+        {
+          "dat_value": 3.4,
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 5.6
+        },
+        {
+          "dat_value": 2.65,
+          "dim": "valence",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 6.35
+        },
+        {
+          "dat_value": 3.74,
+          "dim": "arousal",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 5.26
+        },
+        {
+          "dat_value": 1.65,
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 7.35
+        },
+        {
+          "dat_value": 2.64,
+          "dim": "arousal",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 6.36
+        },
+        {
+          "dat_value": 1.41,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.59
+        },
+        {
+          "dat_value": 3.38,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 5.62
+        },
+        {
+          "dat_value": 2.35,
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 6.65
+        },
+        {
+          "dat_value": 3.69,
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 5.31
+        },
+        {
+          "dat_value": 2.72,
+          "dim": "valence",
+          "experiment_id": 32,
+          "trial_index": 31,
+          "xls_value": 6.28
+        },
+        {
+          "dat_value": 3.29,
+          "dim": "arousal",
+          "experiment_id": 32,
+          "trial_index": 31,
+          "xls_value": 5.71
+        }
+      ],
+      "n_corrections": 34,
+      "n_trials": 40,
+      "participant": "s20",
+      "silver_path": "silver/DEAP/labels/s20_labels.csv"
+    },
+    "s21": {
+      "corrections": [
+        {
+          "dat_value": 1.95,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 2.96,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 6.04
+        },
+        {
+          "dat_value": 3.95,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 5.05
+        },
+        {
+          "dat_value": 2.99,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 6.01
+        },
+        {
+          "dat_value": 0.91,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 8.09
+        },
+        {
+          "dat_value": 1.85,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 7.15
+        },
+        {
+          "dat_value": 1.08,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 7.92
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 2.42,
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 6.58
+        },
+        {
+          "dat_value": 0.19,
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 8.81
+        },
+        {
+          "dat_value": 1.9,
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 7.1
+        },
+        {
+          "dat_value": 0.44,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 8.56
+        },
+        {
+          "dat_value": 2.0,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 7.0
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "valence",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 2.12,
+          "dim": "arousal",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 6.88
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 2.44,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 6.56
+        },
+        {
+          "dat_value": 0.9,
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 8.1
+        },
+        {
+          "dat_value": 1.9,
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 7.1
+        },
+        {
+          "dat_value": 2.08,
+          "dim": "valence",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 6.92
+        },
+        {
+          "dat_value": 3.01,
+          "dim": "arousal",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 5.99
+        },
+        {
+          "dat_value": 3.01,
+          "dim": "valence",
+          "experiment_id": 16,
+          "trial_index": 15,
+          "xls_value": 5.99
+        },
+        {
+          "dat_value": 1.9,
+          "dim": "arousal",
+          "experiment_id": 16,
+          "trial_index": 15,
+          "xls_value": 7.1
+        },
+        {
+          "dat_value": 1.01,
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 7.99
+        },
+        {
+          "dat_value": 0.77,
+          "dim": "arousal",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 8.23
+        },
+        {
+          "dat_value": 1.74,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.26
+        },
+        {
+          "dat_value": 2.71,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 6.29
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "valence",
+          "experiment_id": 31,
+          "trial_index": 30,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 3.99,
+          "dim": "arousal",
+          "experiment_id": 31,
+          "trial_index": 30,
+          "xls_value": 5.01
+        },
+        {
+          "dat_value": 2.73,
+          "dim": "valence",
+          "experiment_id": 32,
+          "trial_index": 31,
+          "xls_value": 6.27
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "arousal",
+          "experiment_id": 32,
+          "trial_index": 31,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 1.97,
+          "dim": "valence",
+          "experiment_id": 33,
+          "trial_index": 32,
+          "xls_value": 7.03
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "arousal",
+          "experiment_id": 33,
+          "trial_index": 32,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 2.12,
+          "dim": "valence",
+          "experiment_id": 36,
+          "trial_index": 35,
+          "xls_value": 6.88
+        },
+        {
+          "dat_value": 1.79,
+          "dim": "arousal",
+          "experiment_id": 36,
+          "trial_index": 35,
+          "xls_value": 7.21
+        },
+        {
+          "dat_value": 2.91,
+          "dim": "valence",
+          "experiment_id": 39,
+          "trial_index": 38,
+          "xls_value": 6.09
+        },
+        {
+          "dat_value": 2.23,
+          "dim": "arousal",
+          "experiment_id": 39,
+          "trial_index": 38,
+          "xls_value": 6.77
+        }
+      ],
+      "n_corrections": 38,
+      "n_trials": 40,
+      "participant": "s21",
+      "silver_path": "silver/DEAP/labels/s21_labels.csv"
+    },
+    "s22": {
+      "corrections": [
+        {
+          "dat_value": 1.92,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 2.97,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 6.03
+        },
+        {
+          "dat_value": 1.94,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 7.06
+        },
+        {
+          "dat_value": 3.04,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 5.96
+        },
+        {
+          "dat_value": 1.9,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 7.1
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.95,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 8.05
+        },
+        {
+          "dat_value": 0.95,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 8.05
+        },
+        {
+          "dat_value": 2.94,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 6.06
+        },
+        {
+          "dat_value": 0.95,
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 8.05
+        },
+        {
+          "dat_value": 2.99,
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 6.01
+        },
+        {
+          "dat_value": 0.92,
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 8.08
+        },
+        {
+          "dat_value": 2.92,
+          "dim": "arousal",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 6.08
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 2.86,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 6.14
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 3.97,
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 5.03
+        },
+        {
+          "dat_value": 1.94,
+          "dim": "valence",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 7.06
+        },
+        {
+          "dat_value": 3.01,
+          "dim": "arousal",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 5.99
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "valence",
+          "experiment_id": 34,
+          "trial_index": 33,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "arousal",
+          "experiment_id": 34,
+          "trial_index": 33,
+          "xls_value": 7.05
+        }
+      ],
+      "n_corrections": 24,
+      "n_trials": 40,
+      "participant": "s22",
+      "silver_path": "silver/DEAP/labels/s22_labels.csv"
+    },
+    "s23": {
+      "corrections": [
+        {
+          "dat_value": 1.29,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 7.71
+        },
+        {
+          "dat_value": 2.44,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 6.56
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.79,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 8.21
+        },
+        {
+          "dat_value": 2.03,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 6.97
+        },
+        {
+          "dat_value": 2.06,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 6.94
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 0.06,
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 8.94
+        },
+        {
+          "dat_value": 1.19,
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 7.81
+        },
+        {
+          "dat_value": 0.99,
+          "dim": "valence",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 8.01
+        },
+        {
+          "dat_value": 3.94,
+          "dim": "arousal",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 5.06
+        },
+        {
+          "dat_value": 0.99,
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 8.01
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 0.85,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 8.15
+        },
+        {
+          "dat_value": 3.99,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 5.01
+        },
+        {
+          "dat_value": 1.03,
+          "dim": "valence",
+          "experiment_id": 32,
+          "trial_index": 31,
+          "xls_value": 7.97
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "arousal",
+          "experiment_id": 32,
+          "trial_index": 31,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 2.28,
+          "dim": "valence",
+          "experiment_id": 34,
+          "trial_index": 33,
+          "xls_value": 6.72
+        },
+        {
+          "dat_value": 2.65,
+          "dim": "arousal",
+          "experiment_id": 34,
+          "trial_index": 33,
+          "xls_value": 6.35
+        }
+      ],
+      "n_corrections": 20,
+      "n_trials": 40,
+      "participant": "s23",
+      "silver_path": "silver/DEAP/labels/s23_labels.csv"
+    },
+    "s24": {
+      "corrections": [
+        {
+          "dat_value": 1.94,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 7.06
+        },
+        {
+          "dat_value": 2.91,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 6.09
+        },
+        {
+          "dat_value": 2.96,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 6.04
+        },
+        {
+          "dat_value": 2.91,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 6.09
+        },
+        {
+          "dat_value": 0.04,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 8.96
+        },
+        {
+          "dat_value": 1.88,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 7.12
+        },
+        {
+          "dat_value": 2.95,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 6.05
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 1.94,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 7.06
+        },
+        {
+          "dat_value": 3.04,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 5.96
+        },
+        {
+          "dat_value": 3.04,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 5.96
+        },
+        {
+          "dat_value": 3.01,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 5.99
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 3.99,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 5.01
+        },
+        {
+          "dat_value": 3.99,
+          "dim": "valence",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 5.01
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 1.97,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 7.03
+        },
+        {
+          "dat_value": 3.94,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 5.06
+        },
+        {
+          "dat_value": 1.0,
+          "dim": "valence",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 8.0
+        },
+        {
+          "dat_value": 2.94,
+          "dim": "arousal",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 6.06
+        },
+        {
+          "dat_value": 0.95,
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 8.05
+        },
+        {
+          "dat_value": 2.96,
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 6.04
+        },
+        {
+          "dat_value": 0.04,
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 8.96
+        },
+        {
+          "dat_value": 2.0,
+          "dim": "arousal",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 7.0
+        },
+        {
+          "dat_value": 1.97,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.03
+        },
+        {
+          "dat_value": 3.95,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 5.05
+        },
+        {
+          "dat_value": 2.92,
+          "dim": "valence",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 6.08
+        },
+        {
+          "dat_value": 3.97,
+          "dim": "arousal",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 5.03
+        }
+      ],
+      "n_corrections": 28,
+      "n_trials": 40,
+      "participant": "s24",
+      "silver_path": "silver/DEAP/labels/s24_labels.csv"
+    },
+    "s25": {
+      "corrections": [
+        {
+          "dat_value": 0.94,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 8.06
+        },
+        {
+          "dat_value": 0.92,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 8.08
+        },
+        {
+          "dat_value": 1.88,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 7.12
+        },
+        {
+          "dat_value": 1.91,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 7.09
+        },
+        {
+          "dat_value": 2.92,
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 6.08
+        },
+        {
+          "dat_value": 0.95,
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 8.05
+        },
+        {
+          "dat_value": 0.96,
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 8.04
+        },
+        {
+          "dat_value": 0.94,
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 8.06
+        },
+        {
+          "dat_value": 0.91,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 8.09
+        },
+        {
+          "dat_value": 1.01,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 7.99
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.96,
+          "dim": "valence",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "xls_value": 8.04
+        },
+        {
+          "dat_value": 0.92,
+          "dim": "arousal",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "xls_value": 8.08
+        },
+        {
+          "dat_value": 1.03,
+          "dim": "valence",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 7.97
+        },
+        {
+          "dat_value": 2.96,
+          "dim": "arousal",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 6.04
+        },
+        {
+          "dat_value": 0.91,
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 8.09
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "valence",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 3.92,
+          "dim": "arousal",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 5.08
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "valence",
+          "experiment_id": 17,
+          "trial_index": 16,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 17,
+          "trial_index": 16,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 1.94,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.06
+        },
+        {
+          "dat_value": 2.92,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 6.08
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 1.91,
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 7.09
+        },
+        {
+          "dat_value": 0.97,
+          "dim": "valence",
+          "experiment_id": 22,
+          "trial_index": 21,
+          "xls_value": 8.03
+        },
+        {
+          "dat_value": 1.94,
+          "dim": "arousal",
+          "experiment_id": 22,
+          "trial_index": 21,
+          "xls_value": 7.06
+        }
+      ],
+      "n_corrections": 28,
+      "n_trials": 40,
+      "participant": "s25",
+      "silver_path": "silver/DEAP/labels/s25_labels.csv"
+    },
+    "s26": {
+      "corrections": [
+        {
+          "dat_value": 1.03,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 7.97
+        },
+        {
+          "dat_value": 1.1,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 7.9
+        },
+        {
+          "dat_value": 2.04,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 6.96
+        },
+        {
+          "dat_value": 1.87,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 7.13
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.92,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 8.08
+        },
+        {
+          "dat_value": 0.97,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 8.03
+        },
+        {
+          "dat_value": 0.95,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 8.05
+        },
+        {
+          "dat_value": 0.91,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 8.09
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 2.92,
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 6.08
+        },
+        {
+          "dat_value": 1.9,
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 7.1
+        },
+        {
+          "dat_value": 0.99,
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 8.01
+        },
+        {
+          "dat_value": 0.83,
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 8.17
+        },
+        {
+          "dat_value": 0.95,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 8.05
+        },
+        {
+          "dat_value": 1.83,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 7.17
+        },
+        {
+          "dat_value": 0.96,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 8.04
+        },
+        {
+          "dat_value": 2.12,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 6.88
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "valence",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 12,
+          "trial_index": 11,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.95,
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 8.05
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "valence",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 15,
+          "trial_index": 14,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "valence",
+          "experiment_id": 17,
+          "trial_index": 16,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 3.97,
+          "dim": "arousal",
+          "experiment_id": 17,
+          "trial_index": 16,
+          "xls_value": 5.03
+        },
+        {
+          "dat_value": 1.0,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 8.0
+        },
+        {
+          "dat_value": 1.94,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.06
+        },
+        {
+          "dat_value": 0.92,
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 8.08
+        },
+        {
+          "dat_value": 2.03,
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 6.97
+        },
+        {
+          "dat_value": 3.03,
+          "dim": "valence",
+          "experiment_id": 28,
+          "trial_index": 27,
+          "xls_value": 5.97
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 28,
+          "trial_index": 27,
+          "xls_value": 5.04
+        }
+      ],
+      "n_corrections": 32,
+      "n_trials": 40,
+      "participant": "s26",
+      "silver_path": "silver/DEAP/labels/s26_labels.csv"
+    },
+    "s27": {
+      "corrections": [
+        {
+          "dat_value": 2.97,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 6.03
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 2.0,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 7.0
+        },
+        {
+          "dat_value": 1.97,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 7.03
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.96,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 8.04
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 2.0,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 7.0
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 0.76,
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 8.24
+        },
+        {
+          "dat_value": 0.83,
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 8.17
+        },
+        {
+          "dat_value": 0.01,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 8.99
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 2.99,
+          "dim": "valence",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 6.01
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "valence",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 1.86,
+          "dim": "arousal",
+          "experiment_id": 13,
+          "trial_index": 12,
+          "xls_value": 7.14
+        },
+        {
+          "dat_value": 0.94,
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 8.06
+        },
+        {
+          "dat_value": 1.97,
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 7.03
+        },
+        {
+          "dat_value": 0.94,
+          "dim": "valence",
+          "experiment_id": 16,
+          "trial_index": 15,
+          "xls_value": 8.06
+        },
+        {
+          "dat_value": 2.94,
+          "dim": "arousal",
+          "experiment_id": 16,
+          "trial_index": 15,
+          "xls_value": 6.06
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 17,
+          "trial_index": 16,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "arousal",
+          "experiment_id": 17,
+          "trial_index": 16,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.01,
+          "dim": "arousal",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 8.99
+        },
+        {
+          "dat_value": 2.03,
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 6.97
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 21,
+          "trial_index": 20,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.86,
+          "dim": "arousal",
+          "experiment_id": 21,
+          "trial_index": 20,
+          "xls_value": 8.14
+        },
+        {
+          "dat_value": 1.71,
+          "dim": "valence",
+          "experiment_id": 22,
+          "trial_index": 21,
+          "xls_value": 7.29
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 22,
+          "trial_index": 21,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 1.0,
+          "dim": "valence",
+          "experiment_id": 23,
+          "trial_index": 22,
+          "xls_value": 8.0
+        },
+        {
+          "dat_value": 2.96,
+          "dim": "arousal",
+          "experiment_id": 23,
+          "trial_index": 22,
+          "xls_value": 6.04
+        },
+        {
+          "dat_value": 0.1,
+          "dim": "valence",
+          "experiment_id": 24,
+          "trial_index": 23,
+          "xls_value": 8.9
+        },
+        {
+          "dat_value": 1.03,
+          "dim": "arousal",
+          "experiment_id": 24,
+          "trial_index": 23,
+          "xls_value": 7.97
+        },
+        {
+          "dat_value": 1.82,
+          "dim": "valence",
+          "experiment_id": 29,
+          "trial_index": 28,
+          "xls_value": 7.18
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 29,
+          "trial_index": 28,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "valence",
+          "experiment_id": 30,
+          "trial_index": 29,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "arousal",
+          "experiment_id": 30,
+          "trial_index": 29,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 3.92,
+          "dim": "valence",
+          "experiment_id": 31,
+          "trial_index": 30,
+          "xls_value": 5.08
+        },
+        {
+          "dat_value": 2.96,
+          "dim": "arousal",
+          "experiment_id": 31,
+          "trial_index": 30,
+          "xls_value": 6.04
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "valence",
+          "experiment_id": 32,
+          "trial_index": 31,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 3.97,
+          "dim": "arousal",
+          "experiment_id": 32,
+          "trial_index": 31,
+          "xls_value": 5.03
+        },
+        {
+          "dat_value": 2.87,
+          "dim": "valence",
+          "experiment_id": 36,
+          "trial_index": 35,
+          "xls_value": 6.13
+        },
+        {
+          "dat_value": 1.79,
+          "dim": "arousal",
+          "experiment_id": 36,
+          "trial_index": 35,
+          "xls_value": 7.21
+        }
+      ],
+      "n_corrections": 48,
+      "n_trials": 40,
+      "participant": "s27",
+      "silver_path": "silver/DEAP/labels/s27_labels.csv"
+    },
+    "s28": {
+      "corrections": [
+        {
+          "dat_value": 1.97,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 7.03
+        },
+        {
+          "dat_value": 1.91,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 7.09
+        },
+        {
+          "dat_value": 1.01,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 7.99
+        },
+        {
+          "dat_value": 0.9,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 8.1
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 0.92,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 8.08
+        },
+        {
+          "dat_value": 1.91,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 7.09
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 0.97,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 8.03
+        },
+        {
+          "dat_value": 0.85,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 8.15
+        },
+        {
+          "dat_value": 0.9,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 8.1
+        },
+        {
+          "dat_value": 0.91,
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 8.09
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 1.01,
+          "dim": "valence",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 7.99
+        },
+        {
+          "dat_value": 1.87,
+          "dim": "arousal",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 7.13
+        },
+        {
+          "dat_value": 1.97,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.03
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 0.96,
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 8.04
+        },
+        {
+          "dat_value": 2.01,
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 6.99
+        },
+        {
+          "dat_value": 2.92,
+          "dim": "valence",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 6.08
+        },
+        {
+          "dat_value": 2.99,
+          "dim": "arousal",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 6.01
+        },
+        {
+          "dat_value": 2.09,
+          "dim": "valence",
+          "experiment_id": 31,
+          "trial_index": 30,
+          "xls_value": 6.91
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "arousal",
+          "experiment_id": 31,
+          "trial_index": 30,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "valence",
+          "experiment_id": 33,
+          "trial_index": 32,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 1.08,
+          "dim": "arousal",
+          "experiment_id": 33,
+          "trial_index": 32,
+          "xls_value": 7.92
+        },
+        {
+          "dat_value": 3.01,
+          "dim": "valence",
+          "experiment_id": 34,
+          "trial_index": 33,
+          "xls_value": 5.99
+        },
+        {
+          "dat_value": 1.94,
+          "dim": "arousal",
+          "experiment_id": 34,
+          "trial_index": 33,
+          "xls_value": 7.06
+        },
+        {
+          "dat_value": 1.9,
+          "dim": "valence",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 7.1
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "arousal",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 7.04
+        }
+      ],
+      "n_corrections": 30,
+      "n_trials": 40,
+      "participant": "s28",
+      "silver_path": "silver/DEAP/labels/s28_labels.csv"
+    },
+    "s29": {
+      "corrections": [
+        {
+          "dat_value": 2.94,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 6.06
+        },
+        {
+          "dat_value": 3.94,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 5.06
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 1.83,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 7.17
+        },
+        {
+          "dat_value": 0.91,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 8.09
+        },
+        {
+          "dat_value": 2.95,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 6.05
+        },
+        {
+          "dat_value": 0.95,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 8.05
+        },
+        {
+          "dat_value": 0.97,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 8.03
+        },
+        {
+          "dat_value": 2.92,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 6.08
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 1.9,
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 7.1
+        },
+        {
+          "dat_value": 1.94,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 7.06
+        },
+        {
+          "dat_value": 2.94,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 6.06
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "valence",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 0.0,
+          "dim": "arousal",
+          "experiment_id": 10,
+          "trial_index": 9,
+          "xls_value": 9.0
+        },
+        {
+          "dat_value": 0.97,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 8.03
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 0.94,
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 8.06
+        },
+        {
+          "dat_value": 3.95,
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 5.05
+        },
+        {
+          "dat_value": 1.99,
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 7.01
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 2.94,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 6.06
+        },
+        {
+          "dat_value": 0.97,
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 8.03
+        },
+        {
+          "dat_value": 1.91,
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 7.09
+        },
+        {
+          "dat_value": 1.91,
+          "dim": "valence",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 7.09
+        },
+        {
+          "dat_value": 2.94,
+          "dim": "arousal",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 6.06
+        },
+        {
+          "dat_value": 3.97,
+          "dim": "valence",
+          "experiment_id": 36,
+          "trial_index": 35,
+          "xls_value": 5.03
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "arousal",
+          "experiment_id": 36,
+          "trial_index": 35,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 2.95,
+          "dim": "valence",
+          "experiment_id": 39,
+          "trial_index": 38,
+          "xls_value": 6.05
+        },
+        {
+          "dat_value": 0.92,
+          "dim": "arousal",
+          "experiment_id": 39,
+          "trial_index": 38,
+          "xls_value": 8.08
+        },
+        {
+          "dat_value": 2.99,
+          "dim": "valence",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 6.01
+        },
+        {
+          "dat_value": 1.91,
+          "dim": "arousal",
+          "experiment_id": 40,
+          "trial_index": 39,
+          "xls_value": 7.09
+        }
+      ],
+      "n_corrections": 36,
+      "n_trials": 40,
+      "participant": "s29",
+      "silver_path": "silver/DEAP/labels/s29_labels.csv"
+    },
+    "s30": {
+      "corrections": [
+        {
+          "dat_value": 3.96,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 1.85,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 7.15
+        },
+        {
+          "dat_value": 2.88,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 6.12
+        },
+        {
+          "dat_value": 2.85,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 6.15
+        },
+        {
+          "dat_value": 3.08,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 5.92
+        },
+        {
+          "dat_value": 1.96,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 7.04
+        },
+        {
+          "dat_value": 2.04,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 6.96
+        },
+        {
+          "dat_value": 2.81,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 6.19
+        },
+        {
+          "dat_value": 2.06,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 6.94
+        },
+        {
+          "dat_value": 2.78,
+          "dim": "valence",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 6.22
+        },
+        {
+          "dat_value": 3.05,
+          "dim": "arousal",
+          "experiment_id": 6,
+          "trial_index": 5,
+          "xls_value": 5.95
+        },
+        {
+          "dat_value": 2.95,
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 6.05
+        },
+        {
+          "dat_value": 2.99,
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 6.01
+        },
+        {
+          "dat_value": 1.92,
+          "dim": "valence",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 7.08
+        },
+        {
+          "dat_value": 2.86,
+          "dim": "arousal",
+          "experiment_id": 9,
+          "trial_index": 8,
+          "xls_value": 6.14
+        },
+        {
+          "dat_value": 2.94,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 6.06
+        },
+        {
+          "dat_value": 1.86,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 7.14
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "valence",
+          "experiment_id": 16,
+          "trial_index": 15,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 16,
+          "trial_index": 15,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 1.87,
+          "dim": "valence",
+          "experiment_id": 17,
+          "trial_index": 16,
+          "xls_value": 7.13
+        },
+        {
+          "dat_value": 2.94,
+          "dim": "arousal",
+          "experiment_id": 17,
+          "trial_index": 16,
+          "xls_value": 6.06
+        },
+        {
+          "dat_value": 1.95,
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 7.05
+        },
+        {
+          "dat_value": 3.94,
+          "dim": "arousal",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 5.06
+        },
+        {
+          "dat_value": 0.73,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 8.27
+        },
+        {
+          "dat_value": 1.97,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.03
+        },
+        {
+          "dat_value": 1.74,
+          "dim": "valence",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 7.26
+        },
+        {
+          "dat_value": 1.94,
+          "dim": "arousal",
+          "experiment_id": 20,
+          "trial_index": 19,
+          "xls_value": 7.06
+        },
+        {
+          "dat_value": 0.99,
+          "dim": "valence",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 8.01
+        },
+        {
+          "dat_value": 2.73,
+          "dim": "arousal",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 6.27
+        },
+        {
+          "dat_value": 1.77,
+          "dim": "valence",
+          "experiment_id": 29,
+          "trial_index": 28,
+          "xls_value": 7.23
+        },
+        {
+          "dat_value": 3.9,
+          "dim": "arousal",
+          "experiment_id": 29,
+          "trial_index": 28,
+          "xls_value": 5.1
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "valence",
+          "experiment_id": 38,
+          "trial_index": 37,
+          "xls_value": 5.04
+        },
+        {
+          "dat_value": 3.96,
+          "dim": "arousal",
+          "experiment_id": 38,
+          "trial_index": 37,
+          "xls_value": 5.04
+        }
+      ],
+      "n_corrections": 34,
+      "n_trials": 40,
+      "participant": "s30",
+      "silver_path": "silver/DEAP/labels/s30_labels.csv"
+    },
+    "s31": {
+      "corrections": [
+        {
+          "dat_value": 2.21,
+          "dim": "valence",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 6.79
+        },
+        {
+          "dat_value": 3.03,
+          "dim": "arousal",
+          "experiment_id": 1,
+          "trial_index": 0,
+          "xls_value": 5.97
+        },
+        {
+          "dat_value": 3.97,
+          "dim": "valence",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 5.03
+        },
+        {
+          "dat_value": 1.94,
+          "dim": "arousal",
+          "experiment_id": 2,
+          "trial_index": 1,
+          "xls_value": 7.06
+        },
+        {
+          "dat_value": 0.96,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 8.04
+        },
+        {
+          "dat_value": 3.92,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 5.08
+        },
+        {
+          "dat_value": 2.78,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 6.22
+        },
+        {
+          "dat_value": 3.97,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 5.03
+        },
+        {
+          "dat_value": 2.95,
+          "dim": "valence",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 6.05
+        },
+        {
+          "dat_value": 3.94,
+          "dim": "arousal",
+          "experiment_id": 7,
+          "trial_index": 6,
+          "xls_value": 5.06
+        },
+        {
+          "dat_value": 1.05,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.95
+        },
+        {
+          "dat_value": 2.94,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 6.06
+        },
+        {
+          "dat_value": 3.91,
+          "dim": "valence",
+          "experiment_id": 21,
+          "trial_index": 20,
+          "xls_value": 5.09
+        },
+        {
+          "dat_value": 0.96,
+          "dim": "arousal",
+          "experiment_id": 21,
+          "trial_index": 20,
+          "xls_value": 8.04
+        }
+      ],
+      "n_corrections": 14,
+      "n_trials": 40,
+      "participant": "s31",
+      "silver_path": "silver/DEAP/labels/s31_labels.csv"
+    },
+    "s32": {
+      "corrections": [
+        {
+          "dat_value": 0.95,
+          "dim": "valence",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 8.05
+        },
+        {
+          "dat_value": 1.91,
+          "dim": "arousal",
+          "experiment_id": 3,
+          "trial_index": 2,
+          "xls_value": 7.09
+        },
+        {
+          "dat_value": 2.04,
+          "dim": "valence",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 6.96
+        },
+        {
+          "dat_value": 3.86,
+          "dim": "arousal",
+          "experiment_id": 4,
+          "trial_index": 3,
+          "xls_value": 5.14
+        },
+        {
+          "dat_value": 1.85,
+          "dim": "valence",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 7.15
+        },
+        {
+          "dat_value": 3.06,
+          "dim": "arousal",
+          "experiment_id": 5,
+          "trial_index": 4,
+          "xls_value": 5.94
+        },
+        {
+          "dat_value": 1.04,
+          "dim": "valence",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 7.96
+        },
+        {
+          "dat_value": 2.94,
+          "dim": "arousal",
+          "experiment_id": 8,
+          "trial_index": 7,
+          "xls_value": 6.06
+        },
+        {
+          "dat_value": 0.76,
+          "dim": "valence",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 8.24
+        },
+        {
+          "dat_value": 2.78,
+          "dim": "arousal",
+          "experiment_id": 11,
+          "trial_index": 10,
+          "xls_value": 6.22
+        },
+        {
+          "dat_value": 1.9,
+          "dim": "valence",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 7.1
+        },
+        {
+          "dat_value": 2.97,
+          "dim": "arousal",
+          "experiment_id": 14,
+          "trial_index": 13,
+          "xls_value": 6.03
+        },
+        {
+          "dat_value": 2.91,
+          "dim": "valence",
+          "experiment_id": 17,
+          "trial_index": 16,
+          "xls_value": 6.09
+        },
+        {
+          "dat_value": 3.97,
+          "dim": "arousal",
+          "experiment_id": 17,
+          "trial_index": 16,
+          "xls_value": 5.03
+        },
+        {
+          "dat_value": 0.97,
+          "dim": "valence",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 8.03
+        },
+        {
+          "dat_value": 1.94,
+          "dim": "arousal",
+          "experiment_id": 18,
+          "trial_index": 17,
+          "xls_value": 7.06
+        },
+        {
+          "dat_value": 0.76,
+          "dim": "valence",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 8.24
+        },
+        {
+          "dat_value": 1.76,
+          "dim": "arousal",
+          "experiment_id": 19,
+          "trial_index": 18,
+          "xls_value": 7.24
+        },
+        {
+          "dat_value": 3.0,
+          "dim": "valence",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 6.0
+        },
+        {
+          "dat_value": 1.76,
+          "dim": "arousal",
+          "experiment_id": 27,
+          "trial_index": 26,
+          "xls_value": 7.24
+        }
+      ],
+      "n_corrections": 20,
+      "n_trials": 40,
+      "participant": "s32",
+      "silver_path": "silver/DEAP/labels/s32_labels.csv"
+    }
+  },
+  "silver_dir": "silver/DEAP/labels",
+  "total_corrections": 878
+}

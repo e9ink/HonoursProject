@@ -183,11 +183,26 @@ No updates announced.
 
 **Data in this framework:**
 - Bronze: read-only .dat files in bronze/DEAP/deap-dataset/data_preprocessed_python/
-- No Silver layer: no cleaning was needed (no warm-up artefact or similar issue found).
-- No Gold layer: not generated for DEAP (no cross-device alignment to verify).
+- Silver: corrected label CSVs in silver/DEAP/labels/sXX_labels.csv (one per participant).
+  Labels taken from participant_ratings.xls (authoritative source). 878 v2 inversion
+  artefacts corrected. The 40-channel physiological data array is not in Silver; it is
+  read directly from Bronze .dat files.
+- Gold: manifest with SHA-256 checksums for all 32 Silver label CSVs
+  (gold/DEAP/deap_gold_manifest.json). Lineage document: gold/DEAP/deap_lineage.json.
+
+**Before/after quality summary:**
+| Dimension | Before (Bronze) | After (Silver) | Threshold | Pass |
+|---|---|---|---|---|
+| Completeness | 0 NaN, 0 Inf | unchanged | max=0 | PASS |
+| Conformance | 0 violations | unchanged | max=0 | PASS |
+| Label plausibility | 163 OOR | 0 OOR | max=0 | PASS (after) |
+| Consistency cross-source | 878 mismatches | 0 mismatches | max=0 | PASS (after) |
+| Physiological plausibility | not applied | not applied | -- | N/A |
+| Timeliness | not applicable | not applicable | -- | N/A |
 
 **Key finding from quality checks:**
 The 878-entry label inversion in the v2 mirror is detected by the cross-source
-consistency check, which compares .dat labels against participant_ratings.xls.
-The check fails for all v2 participants affected by the inversion.
-See deap/reports/deap_consistency.json for details.
+consistency check and the 163 out-of-range violations by the label_plausibility check.
+Both are resolved by writing Silver label CSVs from participant_ratings.xls
+(authoritative source). After cleaning, all measured dimensions pass.
+See deap/reports/deap_cleaning.json and deap/reports/deap_post_cleaning.json.

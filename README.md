@@ -17,6 +17,31 @@ gold/            Gold dataset manifest and governance outputs:
                    WESAD/wesad_gold_manifest.json Analysis-ready dataset manifest.
 docs/            Project-wide decision log:
                    progress_log.md         Full history of all threshold and design decisions.
+deap/            DEAP dataset pipeline (self-contained):
+  run_pipeline.py  One-command DEAP pipeline runner (11 stages).
+  config/          YAML configuration files:
+                     cleaning.yaml               Pre-registered label correction rule.
+                     experiments.yaml            Pre-registered fault injection design.
+                     rules.yaml                  Pre-registered quality rules with citations.
+                     thresholds.yaml             Decision thresholds for each dimension.
+  src/             Python source code:
+                     profiling.py            Bronze profiling.
+                     checks/completeness.py  Completeness check.
+                     checks/conformance.py   Conformance check.
+                     checks/label_plausibility.py  Label plausibility check.
+                     checks/consistency.py   Consistency checks (structure, cross-source, scale).
+                     cleaning.py             Silver label cleaning (XLS as authoritative source).
+                     checks/post_cleaning.py Post-cleaning label checks on Silver CSVs.
+                     governance.py           Gold governance artefacts (lineage and audit trail).
+                     report.py               Before/after quality report.
+                     gold_manifest.py        Gold label manifest generator and verifier.
+                     experiments/            Fault injection harness and runner.
+                     figures/                Figure and table generation for the thesis.
+  tests/           pytest unit tests (25 tests across 7 files).
+  reports/         Pipeline measurement outputs (JSON). One file per check.
+  figures/         Generated figures (PNG + PDF) and tables (CSV + Markdown).
+  final_checks/    Reference numbers and verification script.
+  docs/governance/ Data Impact Assessment, Datasheet, Policy Hierarchy, Stewardship Roles.
 wesad/           WESAD dataset pipeline (self-contained):
   run_pipeline.py  One-command WESAD pipeline runner.
   config/          YAML configuration files:
@@ -106,6 +131,49 @@ The fault injection harness now writes scratch copies to the system temporary di
 ---
 
 ## Usage
+
+### Run the full DEAP pipeline
+
+From the project root:
+
+```
+python deap/run_pipeline.py
+```
+
+Runs 11 stages: Bronze profiling, completeness, conformance, label plausibility, consistency, baseline quality report, Silver cleaning (label correction), post-cleaning checks, before/after quality report, Gold governance, Gold manifest. Each stage prints its name and elapsed time.
+
+### Run the DEAP tests
+
+```
+python -m pytest deap/tests/ -v
+```
+
+### Generate DEAP figures and tables
+
+```
+python deap/src/figures/make_figures.py
+```
+
+Saves Figure 4.4 (label audit before/after) and Figure 4.5 (Temp channel scale split) plus two tables to `deap/figures/`.
+
+### Verify DEAP reference numbers
+
+```
+python deap/final_checks/compare_ref_numbers.py
+```
+
+Checks 17 reference numbers against the live pipeline reports. All must pass.
+
+### Verify DEAP Gold manifest checksums
+
+```python
+import sys
+sys.path.insert(0, '.')
+from deap.src.gold_manifest import verify_manifest
+verify_manifest()
+```
+
+---
 
 ### Run the full WESAD pipeline
 

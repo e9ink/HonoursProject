@@ -4,6 +4,7 @@
     "completeness": {
       "detail": "total NaN: 0, total Inf: 0",
       "dimension": "completeness",
+      "note": "Checks the physiological data array. Not affected by label cleaning.",
       "status": "pass",
       "threshold": "max_nan_count=0, max_inf_count=0",
       "value": 0
@@ -11,24 +12,33 @@
     "conformance": {
       "detail": "total violations: 0",
       "dimension": "conformance",
+      "note": "Checks data array shape and dtype. Not affected by label cleaning.",
       "status": "pass",
       "threshold": "max_violations=0",
       "value": 0
     },
     "consistency": {
       "dimension": "consistency",
-      "status": "fail",
       "sub_checks": {
         "cross_source": {
-          "status": "fail",
-          "threshold": "max_mismatches=0, tolerance=0.0001",
-          "value": 878
+          "after": {
+            "source": "silver/DEAP/labels/ (after label correction)",
+            "status": "pass",
+            "value": 0
+          },
+          "before": {
+            "status": "fail",
+            "threshold": "max_mismatches=0, tolerance=0.0001",
+            "value": 878
+          },
+          "note": "dat labels vs participant_ratings.xls. Corrected by label cleaning."
         },
         "scale_descriptive": {
           "detail": "Descriptive only; no threshold.",
           "status": "not_applicable"
         },
         "structure": {
+          "note": "Shape uniformity across participants. Not affected by label cleaning.",
           "status": "pass",
           "threshold": "max_mismatches=0",
           "value": 0
@@ -36,11 +46,19 @@
       }
     },
     "label_plausibility": {
-      "detail": "total out-of-SAM-range: 163",
-      "dimension": "label_plausibility",
-      "status": "fail",
-      "threshold": "max_out_of_range=0",
-      "value": 163
+      "after": {
+        "detail": "total out-of-SAM-range: 0",
+        "source": "silver/DEAP/labels/ (after label correction)",
+        "status": "pass",
+        "value": 0
+      },
+      "before": {
+        "detail": "total out-of-SAM-range: 163",
+        "status": "fail",
+        "threshold": "max_out_of_range=0",
+        "value": 163
+      },
+      "dimension": "label_plausibility"
     },
     "physiological_plausibility": {
       "dimension": "physiological_plausibility",
@@ -53,7 +71,9 @@
       "status": "not_applied"
     }
   },
-  "overall_pass": false,
+  "note": "overall_pass reflects the Gold (after-cleaning) state. label_plausibility and cross_source dimensions show before/after. completeness, conformance, and structure check the data array and are unaffected by label cleaning.",
+  "overall_pass": true,
   "participant_count": 32,
+  "report_type": "before_after_quality_comparison",
   "threshold_source": "deap/config/thresholds.yaml"
 }
