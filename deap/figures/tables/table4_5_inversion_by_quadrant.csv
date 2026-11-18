@@ -1,0 +1,5 @@
+quadrant,trials,trials_inverted,pct_inverted
+Valence > 5 and Arousal > 5,439,439,100.0
+Valence > 5 and Arousal <= 5,269,0,0.0
+Valence <= 5 and Arousal > 5,298,0,0.0
+Valence <= 5 and Arousal <= 5,274,0,0.0
