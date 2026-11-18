@@ -1,592 +1,1841 @@
 {
   "dataset": "DEAP",
-  "definition": "The DEAP Gold label dataset is defined by this manifest. It consists of the Silver label CSV files listed below, identified by their authoritative paths and SHA-256 checksums. No physical copy is made of the 40-channel physiological data array; that is read directly from bronze/ .dat files. Silver label CSVs contain XLS-corrected labels (v2 inversion artefact resolved).",
+  "definition": "The DEAP Gold dataset is defined by this manifest. It consists of the Bronze .dat files (physiological signals) and Silver label CSV files (XLS-corrected labels) listed below, identified by their authoritative paths and SHA-256 checksums. No physical copy of the data arrays is made. Analysis code should read from the paths listed in each entry.",
   "participants": {
     "s01": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s01_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s01.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 26
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 5
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 73791,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 449
+        },
+        "layer": "bronze",
+        "sha256": "ab9621d2d1e5d99115a4caa439c7450f5c398b9ff1be9f63392374b8d1471efe"
       },
-      "layer": "silver",
-      "n_label_corrections": 26,
-      "n_trials": 40,
-      "sha256": "2b7cbeb2c9f37f756a12d6bc780998c1b2362d1e2986b191c62bd0a5bff91c62"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s01_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 26
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "2b7cbeb2c9f37f756a12d6bc780998c1b2362d1e2986b191c62bd0a5bff91c62"
+      }
     },
     "s02": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s02_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s02.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 32
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 22
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 131826,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 406
+        },
+        "layer": "bronze",
+        "sha256": "6a927e1afec112ef1e7fc78899b1c7f1e5c3b19003c583c0229e4b80d949d1da"
       },
-      "layer": "silver",
-      "n_label_corrections": 32,
-      "n_trials": 40,
-      "sha256": "1058d435ea69f158f6f141c1bf380bc91b61e873f2d4ea8aa7710b74f91fd8fd"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s02_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 32
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "1058d435ea69f158f6f141c1bf380bc91b61e873f2d4ea8aa7710b74f91fd8fd"
+      }
     },
     "s03": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s03_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s03.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 2
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 46692,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 436
+        },
+        "layer": "bronze",
+        "sha256": "e805ef8f06d2685b5183bde066853f2c6975c74cc1eeb90a2ce9020b3591d052"
       },
-      "layer": "silver",
-      "n_label_corrections": 2,
-      "n_trials": 40,
-      "sha256": "9a46302026652f970f7237475a9d2fa7df690b053afe00b6c764a4fc8ce65fcd"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s03_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 2
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "9a46302026652f970f7237475a9d2fa7df690b053afe00b6c764a4fc8ce65fcd"
+      }
     },
     "s04": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s04_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s04.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 24
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 4
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 107459,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 379
+        },
+        "layer": "bronze",
+        "sha256": "3c7067f8b6b2de3c3d377c9e5b4ded200902178a2631b13bacff1d9efdb2ba0c"
       },
-      "layer": "silver",
-      "n_label_corrections": 24,
-      "n_trials": 40,
-      "sha256": "a4950f7df9546dd1bf6bd5feebe87f055150a5ecf90a2bf7dc64f4420bdef7ae"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s04_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 24
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "a4950f7df9546dd1bf6bd5feebe87f055150a5ecf90a2bf7dc64f4420bdef7ae"
+      }
     },
     "s05": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s05_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s05.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 26
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 7
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 73432,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 282
+        },
+        "layer": "bronze",
+        "sha256": "6e8939801e51e52979568041c42d97c9fa833633790de457430233136826ff0f"
       },
-      "layer": "silver",
-      "n_label_corrections": 26,
-      "n_trials": 40,
-      "sha256": "e0e9bb8da4bd2cd321a276cb0285eb072c5b85da56e102735be6c5ab88ed858c"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s05_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 26
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "e0e9bb8da4bd2cd321a276cb0285eb072c5b85da56e102735be6c5ab88ed858c"
+      }
     },
     "s06": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s06_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s06.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 26
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 2
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 123953,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 303
+        },
+        "layer": "bronze",
+        "sha256": "98939f2d44d05376dd31020dbc47a84924f82fc3f96893af9d980f90bf6794e7"
       },
-      "layer": "silver",
-      "n_label_corrections": 26,
-      "n_trials": 40,
-      "sha256": "7eebaa5f3d232b23b7348ce4f23e04721530ac4f3f90fe759e27e7249b52a61d"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s06_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 26
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "7eebaa5f3d232b23b7348ce4f23e04721530ac4f3f90fe759e27e7249b52a61d"
+      }
     },
     "s07": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s07_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s07.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 36
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 4
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 37310,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 338
+        },
+        "layer": "bronze",
+        "sha256": "5997746d66176bf745304b4e977be70256536d2370c90185177de7e22fd07bcc"
       },
-      "layer": "silver",
-      "n_label_corrections": 36,
-      "n_trials": 40,
-      "sha256": "53ca770f6a791162b5c2f3d65a34a6b408484c637306090c19b090137b87e149"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s07_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 36
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "53ca770f6a791162b5c2f3d65a34a6b408484c637306090c19b090137b87e149"
+      }
     },
     "s08": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s08_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s08.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 28
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 7
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 48933,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 650
+        },
+        "layer": "bronze",
+        "sha256": "89a57386b608fa0bc0332d07d97f495d6795fb5d5875980f66be696df1172c16"
       },
-      "layer": "silver",
-      "n_label_corrections": 28,
-      "n_trials": 40,
-      "sha256": "3defbe984b6dee18d7d6c1685f2883c74968fdc664d6cb34a7d5b75a77908559"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s08_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 28
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "3defbe984b6dee18d7d6c1685f2883c74968fdc664d6cb34a7d5b75a77908559"
+      }
     },
     "s09": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s09_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s09.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 30
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 1
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 50159,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 698
+        },
+        "layer": "bronze",
+        "sha256": "e4460a6351723d07d076f7856e001b5ee6b0bb768d1caf05d5d4b900a5a12778"
       },
-      "layer": "silver",
-      "n_label_corrections": 30,
-      "n_trials": 40,
-      "sha256": "a90357506b1cc86e1c7d421b031c32e6c5529dc7488f097d46f07ba5c475d68f"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s09_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 30
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "a90357506b1cc86e1c7d421b031c32e6c5529dc7488f097d46f07ba5c475d68f"
+      }
     },
     "s10": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s10_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s10.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 22
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 2
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 92819,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 1183
+        },
+        "layer": "bronze",
+        "sha256": "42843f9eee637dd4d583d6f5daf32372507ea5469c61ecd0c02d54b4a076b37f"
       },
-      "layer": "silver",
-      "n_label_corrections": 22,
-      "n_trials": 40,
-      "sha256": "598a20d1b1c1518faa04c3ea4d6f85688da63ddb9e51fd710b6f4c1d14629de3"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s10_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 22
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "598a20d1b1c1518faa04c3ea4d6f85688da63ddb9e51fd710b6f4c1d14629de3"
+      }
     },
     "s11": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s11_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s11.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 18
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 55119,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 783
+        },
+        "layer": "bronze",
+        "sha256": "1cd9a03905f88430a4ca7d5719870340e917a1d04bd9309342eebc8e5468e127"
       },
-      "layer": "silver",
-      "n_label_corrections": 18,
-      "n_trials": 40,
-      "sha256": "f3c21829c231b24c41f014748eaf3578644b60d55fc38a9e63a859fea06df822"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s11_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 18
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "f3c21829c231b24c41f014748eaf3578644b60d55fc38a9e63a859fea06df822"
+      }
     },
     "s12": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s12_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s12.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 38
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 4
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 82633,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 924
+        },
+        "layer": "bronze",
+        "sha256": "4e6245db64bcb63b464e59c0bb4eb2022476f0677fd6eac819fed9a21ec6a8ff"
       },
-      "layer": "silver",
-      "n_label_corrections": 38,
-      "n_trials": 40,
-      "sha256": "58bfbf15ede05f909e04d2f9dc9064a84f697c8e5cae5c31abfc8bdae81ba0da"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s12_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 38
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "58bfbf15ede05f909e04d2f9dc9064a84f697c8e5cae5c31abfc8bdae81ba0da"
+      }
     },
     "s13": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s13_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s13.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 30
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 5
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 35107,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 633
+        },
+        "layer": "bronze",
+        "sha256": "cd9f75fa9e6fd574a3a1b51ac72195cb330fadcffb10cd3bc7f7646b4a803b61"
       },
-      "layer": "silver",
-      "n_label_corrections": 30,
-      "n_trials": 40,
-      "sha256": "eb40a6daed93546594bcea90b9290628a7be3979d7e6ec3361cd17e114e43c93"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s13_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 30
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "eb40a6daed93546594bcea90b9290628a7be3979d7e6ec3361cd17e114e43c93"
+      }
     },
     "s14": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s14_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s14.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 24
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 1
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 131100,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 495
+        },
+        "layer": "bronze",
+        "sha256": "f70a42d90bd28cb07506ccf538290815fe5f57540ada54cc86e1abd17485d73b"
       },
-      "layer": "silver",
-      "n_label_corrections": 24,
-      "n_trials": 40,
-      "sha256": "b389e689c7a9df49ff5ad0423c42c417a45930889e3dc2220389b74806f6b9f2"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s14_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 24
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "b389e689c7a9df49ff5ad0423c42c417a45930889e3dc2220389b74806f6b9f2"
+      }
     },
     "s15": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s15_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s15.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 16
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 6
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 101689,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 127
+        },
+        "layer": "bronze",
+        "sha256": "6ca779e0cb36b993bce6883c85db8cd156c50aebb22c1b8b79a89cb5b850c6ac"
       },
-      "layer": "silver",
-      "n_label_corrections": 16,
-      "n_trials": 40,
-      "sha256": "2e7daf7806437ad1a3dd026b40643a5bdbd617c003a362335950279333afccf9"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s15_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 16
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "2e7daf7806437ad1a3dd026b40643a5bdbd617c003a362335950279333afccf9"
+      }
     },
     "s16": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s16_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s16.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 18
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 1
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 100047,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 485
+        },
+        "layer": "bronze",
+        "sha256": "1bdddcddefe0e870ddc95a136bde8b3a2e1c33da354f886b76b5ebaade2f1a49"
       },
-      "layer": "silver",
-      "n_label_corrections": 18,
-      "n_trials": 40,
-      "sha256": "5ce0305e902089c7c3bfb93ffab087afa509fa5d8eb10c6c8a9b1df6c87943e1"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s16_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 18
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "5ce0305e902089c7c3bfb93ffab087afa509fa5d8eb10c6c8a9b1df6c87943e1"
+      }
     },
     "s17": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s17_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s17.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 26
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 1
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 87188,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 420
+        },
+        "layer": "bronze",
+        "sha256": "8d71991393dd157772bfec40b9d7a523539f9b44594d5a63087609f73bb644e0"
       },
-      "layer": "silver",
-      "n_label_corrections": 26,
-      "n_trials": 40,
-      "sha256": "1cf9da12cc63a2ceb003fddd06fd50c7713f28b13f111ddf238136c81370b970"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s17_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 26
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "1cf9da12cc63a2ceb003fddd06fd50c7713f28b13f111ddf238136c81370b970"
+      }
     },
     "s18": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s18_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s18.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 34
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 94757,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 571
+        },
+        "layer": "bronze",
+        "sha256": "ed3cc4dc49cddb2f2fb7f04a3a24655b7b35e4dc747a1f3650d2927ae277acd0"
       },
-      "layer": "silver",
-      "n_label_corrections": 34,
-      "n_trials": 40,
-      "sha256": "40a1a42ca4790550f2da9953d352e63dd4a39c3807a22be925f45b133540c348"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s18_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 34
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "40a1a42ca4790550f2da9953d352e63dd4a39c3807a22be925f45b133540c348"
+      }
     },
     "s19": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s19_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s19.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 36
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 1
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 83864,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 419
+        },
+        "layer": "bronze",
+        "sha256": "97de6d095da4491d2e440858cbc383f665d8c2c42abc34434e4182e513dd534c"
       },
-      "layer": "silver",
-      "n_label_corrections": 36,
-      "n_trials": 40,
-      "sha256": "8f4c3a91bd7e8fbe4391b95122ae3a0cdf4864c5d20c54e52cafe04022e1a731"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s19_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 36
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "8f4c3a91bd7e8fbe4391b95122ae3a0cdf4864c5d20c54e52cafe04022e1a731"
+      }
     },
     "s20": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s20_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s20.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 34
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 4
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 37339,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 609
+        },
+        "layer": "bronze",
+        "sha256": "006948dad65e3a17938f8555b5b473091139a9f87ca8d74b364127adbfbb7bb9"
       },
-      "layer": "silver",
-      "n_label_corrections": 34,
-      "n_trials": 40,
-      "sha256": "a30306390f12db4f960a0c077bdc8ceabbda8feed566a1ad232c0efe0fbcb282"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s20_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 34
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "a30306390f12db4f960a0c077bdc8ceabbda8feed566a1ad232c0efe0fbcb282"
+      }
     },
     "s21": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s21_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s21.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 38
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 5
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 95475,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 863
+        },
+        "layer": "bronze",
+        "sha256": "e3b9a627c3aa960f0249de1e838066380af427e1425cf0b96e2c5c599934990b"
       },
-      "layer": "silver",
-      "n_label_corrections": 38,
-      "n_trials": 40,
-      "sha256": "e0db746dff1f7ab1c32bbb3853d2e3793be84fd9619ea873b80ed07a9b78447e"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s21_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 38
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "e0db746dff1f7ab1c32bbb3853d2e3793be84fd9619ea873b80ed07a9b78447e"
+      }
     },
     "s22": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s22_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s22.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 24
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 6
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 107754,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 880
+        },
+        "layer": "bronze",
+        "sha256": "352adba74d404fa01305da076640bb9b40b890f54a97a8827bf4393847acf813"
       },
-      "layer": "silver",
-      "n_label_corrections": 24,
-      "n_trials": 40,
-      "sha256": "9858d74a4e6e1de20268d9a8a8aec5016cfac7253a7ece7a15c279e846fd295d"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s22_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 24
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "9858d74a4e6e1de20268d9a8a8aec5016cfac7253a7ece7a15c279e846fd295d"
+      }
     },
     "s23": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s23_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s23.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 20
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 7
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 145515,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 904
+        },
+        "layer": "bronze",
+        "sha256": "7f9bc3f88e9ad7a64fefd67268f2d34bbe04d560d6472d10154530ee4ef4362a"
       },
-      "layer": "silver",
-      "n_label_corrections": 20,
-      "n_trials": 40,
-      "sha256": "200f184f408b8e24ff1f25e7c2ce1b2ca63260a420c65c03d2e18a12e4a1d71b"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s23_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 20
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "200f184f408b8e24ff1f25e7c2ce1b2ca63260a420c65c03d2e18a12e4a1d71b"
+      }
     },
     "s24": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s24_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s24.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 28
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 3
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 78925,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "B",
+          "temp_group_description": "Group B: large raw values; preprocessing unknown",
+          "temp_longest_flatline_samples": 2
+        },
+        "layer": "bronze",
+        "sha256": "29ae1409d85398f567852891ac75bb90ee3612768802c9980ba39c8161f90712"
       },
-      "layer": "silver",
-      "n_label_corrections": 28,
-      "n_trials": 40,
-      "sha256": "04449611046a83acf633606143f3fcd7fd62fea1ff5e014fbff1c53680d262fd"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s24_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 28
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "04449611046a83acf633606143f3fcd7fd62fea1ff5e014fbff1c53680d262fd"
+      }
     },
     "s25": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s25_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s25.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 28
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 12
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 248282,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "A",
+          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_longest_flatline_samples": 4
+        },
+        "layer": "bronze",
+        "sha256": "88dd4e201487396f584924ca621e4edb53b9d94aae469e0ee9a5e3e593b54862"
       },
-      "layer": "silver",
-      "n_label_corrections": 28,
-      "n_trials": 40,
-      "sha256": "ce93d26a077b757c735c8a3ba15859b6d7075f4d1530e5248ebe7b80a0b12de2"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s25_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 28
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "ce93d26a077b757c735c8a3ba15859b6d7075f4d1530e5248ebe7b80a0b12de2"
+      }
     },
     "s26": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s26_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s26.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 32
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 12
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 204777,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "B",
+          "temp_group_description": "Group B: large raw values; preprocessing unknown",
+          "temp_longest_flatline_samples": 2
+        },
+        "layer": "bronze",
+        "sha256": "1de802257bbc3c78dbfb7d2d5cc54ac390e653204930c3a4a879ebe8d6b7f956"
       },
-      "layer": "silver",
-      "n_label_corrections": 32,
-      "n_trials": 40,
-      "sha256": "62be227843344a9633c680dba787df11e3242d67dc4f7a466b7eb48e4bd6db9f"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s26_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 32
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "62be227843344a9633c680dba787df11e3242d67dc4f7a466b7eb48e4bd6db9f"
+      }
     },
     "s27": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s27_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s27.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 48
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 15
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 82598,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "B",
+          "temp_group_description": "Group B: large raw values; preprocessing unknown",
+          "temp_longest_flatline_samples": 2
+        },
+        "layer": "bronze",
+        "sha256": "1d94c647fcf5b9bfcd131b69773331aab1c353a6543879ac3f8024a251a53869"
       },
-      "layer": "silver",
-      "n_label_corrections": 48,
-      "n_trials": 40,
-      "sha256": "182f08e59e76a8f0869a05139e66c3272e5d097021ed9c2b2bb78346f10b78a7"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s27_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 48
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "182f08e59e76a8f0869a05139e66c3272e5d097021ed9c2b2bb78346f10b78a7"
+      }
     },
     "s28": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s28_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s28.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 30
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 9
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 107475,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "B",
+          "temp_group_description": "Group B: large raw values; preprocessing unknown",
+          "temp_longest_flatline_samples": 2
+        },
+        "layer": "bronze",
+        "sha256": "ac1462eeb0592dd714610fa946ddb87f69a12b88262e91272fcb9e1462c386be"
       },
-      "layer": "silver",
-      "n_label_corrections": 30,
-      "n_trials": 40,
-      "sha256": "a5f47d4de38d9e1b2eae716ca3f0e2c78c7646eba16c0e75f3ca08c5a12971ea"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s28_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 30
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "a5f47d4de38d9e1b2eae716ca3f0e2c78c7646eba16c0e75f3ca08c5a12971ea"
+      }
     },
     "s29": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s29_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s29.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 36
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 9
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 137352,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "B",
+          "temp_group_description": "Group B: large raw values; preprocessing unknown",
+          "temp_longest_flatline_samples": 2
+        },
+        "layer": "bronze",
+        "sha256": "c43e7081bd4a72117485541e86e729895b743745082fee43ada3abc62fd34d5a"
       },
-      "layer": "silver",
-      "n_label_corrections": 36,
-      "n_trials": 40,
-      "sha256": "ffa64b8d9b38968dfd399a2648713c526daca753bbfb6c490e1932f298ef0469"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s29_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 36
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "ffa64b8d9b38968dfd399a2648713c526daca753bbfb6c490e1932f298ef0469"
+      }
     },
     "s30": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s30_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s30.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 34
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 2
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 137093,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "B",
+          "temp_group_description": "Group B: large raw values; preprocessing unknown",
+          "temp_longest_flatline_samples": 2
+        },
+        "layer": "bronze",
+        "sha256": "d5b7ed92619ad0e9614948e5b8ce29a33eff66aebba594ac9692010fc3434abc"
       },
-      "layer": "silver",
-      "n_label_corrections": 34,
-      "n_trials": 40,
-      "sha256": "56f6e67b550caae2232e083a451123d0e64061d13925dad29482a36abddc5d50"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s30_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 34
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "56f6e67b550caae2232e083a451123d0e64061d13925dad29482a36abddc5d50"
+      }
     },
     "s31": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s31_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s31.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 14
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 2
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 157552,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "B",
+          "temp_group_description": "Group B: large raw values; preprocessing unknown",
+          "temp_longest_flatline_samples": 2
+        },
+        "layer": "bronze",
+        "sha256": "51977929f8b015dac9de41ad52626c180428f4a83c11fb71f8ca71bc6f1923b4"
       },
-      "layer": "silver",
-      "n_label_corrections": 14,
-      "n_trials": 40,
-      "sha256": "09684315ddc7ca67b079bfc52dfa7ce5d565462175d14809c52e3ecb1a5d1568"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s31_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 14
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "09684315ddc7ca67b079bfc52dfa7ce5d565462175d14809c52e3ecb1a5d1568"
+      }
     },
     "s32": {
-      "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
-      "authoritative_path": "silver/DEAP/labels/s32_labels.csv",
-      "check_outcomes": {
-        "cross_source_post_cleaning": {
-          "pass": true,
-          "total_mismatches": 0
+      "dat": {
+        "authoritative_path": "bronze/DEAP/deap-dataset/data_preprocessed_python/s32.dat",
+        "check_outcomes": {
+          "completeness": {
+            "pass": true,
+            "total_inf": 0,
+            "total_nan": 0
+          },
+          "conformance": {
+            "pass": true,
+            "violation_count": 0
+          },
+          "consistency_cross_source_pre_cleaning": {
+            "pass": false,
+            "total_mismatches": 20
+          },
+          "consistency_structure": {
+            "pass": true
+          },
+          "label_plausibility_pre_cleaning": {
+            "pass": false,
+            "total_out_of_range": 4
+          }
         },
-        "label_plausibility_post_cleaning": {
-          "pass": true,
-          "total_out_of_range": 0
-        }
+        "flag_and_retain": {
+          "gsr_negative_count": 93385,
+          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "temp_group": "B",
+          "temp_group_description": "Group B: large raw values; preprocessing unknown",
+          "temp_longest_flatline_samples": 2
+        },
+        "layer": "bronze",
+        "sha256": "aad3f885254d99c7a77647d59c1f74d6a955ee9d36d95074ab39873267b942ec"
       },
-      "layer": "silver",
-      "n_label_corrections": 20,
-      "n_trials": 40,
-      "sha256": "d4427ed292302c7918c13bd9c56f6181add8584e61735d282601d3b5d9ea5911"
+      "labels": {
+        "authoritative_label_source": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+        "authoritative_path": "silver/DEAP/labels/s32_labels.csv",
+        "check_outcomes": {
+          "consistency_cross_source_post_cleaning": {
+            "pass": true,
+            "total_mismatches": 0
+          },
+          "label_plausibility_post_cleaning": {
+            "pass": true,
+            "total_out_of_range": 0
+          }
+        },
+        "intentional_changes": {
+          "description": "v2 inversion artefact corrected: labels replaced with participant_ratings.xls values where they differed.",
+          "n_label_corrections": 20
+        },
+        "layer": "silver",
+        "n_trials": 40,
+        "sha256": "d4427ed292302c7918c13bd9c56f6181add8584e61735d282601d3b5d9ea5911"
+      }
     }
   },
   "quality_report": "deap/reports/deap_quality_report.json",
   "run_context": {
-    "generated_at": "2026-11-18T01:02:05.243238+00:00",
+    "generated_at": "2026-11-18T01:32:22.561411+00:00",
     "generator": "deap/src/gold_manifest.py",
     "note": "This field is non-deterministic. Strip it for diffing."
   },
   "schema": "deap_gold_manifest_v1",
   "summary": {
+    "flag_and_retain_policy": "Temp scale groups (A vs B), GSR negative values, and Temp flatlines are flagged per participant and retained unmodified. Their cause is not confirmed in available sources.",
     "gold_overall_pass": true,
     "n_participants": 32,
     "participant_ids": [
@@ -623,7 +1872,14 @@
       "s31",
       "s32"
     ],
+    "participant_ratings_xls": {
+      "authoritative_path": "bronze/DEAP/deap-dataset/Metadata/participant_ratings.xls",
+      "description": "Authoritative label source; v1 mirror matched exactly; used to correct v2 inversion artefact in Silver.",
+      "sha256": "e3269144e3018848760b0f1a7b2301912cee402012911f427728e3a04bbdfb94"
+    },
+    "physiological_plausibility_not_applied": "Units and preprocessing for peripheral channels (GSR, Resp, BVP, Temp) are not documented in available sources; bounds cannot be set without confirmed units.",
     "post_cleaning_overall_pass": true,
+    "provenance": "Data sourced from v2 Kaggle mirror (32 participants). v1 mirror was incomplete (12 participants) and replaced. Labels verified against participant_ratings.xls; 878 v2 inversion artefacts corrected in Silver.",
     "total_label_corrections": 878
   }
 }
