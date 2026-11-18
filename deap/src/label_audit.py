@@ -256,6 +256,73 @@ def run_audit() -> None:
             "out_of_range": out_of_range,
         }
 
+    # Inversion rule verification (v2 only, all 32 participants)
+    # Rule: a trial is inverted (both Valence and Arousal replaced by 9 - x)
+    # if and only if XLS Valence > 5 AND XLS Arousal > 5.
+    _quadrant_labels = {
+        ("high", "high"): "xls_valence_gt5_arousal_gt5",
+        ("high", "low"):  "xls_valence_gt5_arousal_le5",
+        ("low",  "high"): "xls_valence_le5_arousal_gt5",
+        ("low",  "low"):  "xls_valence_le5_arousal_le5",
+    }
+    quadrant_counts = {k: {"trials": 0, "inverted": 0} for k in _quadrant_labels.values()}
+    inversion_exceptions = []
+
+    for pid_str in sorted(v2_labels.keys()):
+        pid_int = int(pid_str[1:])
+        xp = xls_ratings.get(pid_int, {})
+        labels = v2_labels[pid_str]
+        for trial_idx in range(40):
+            exp_id = trial_idx + 1
+            if exp_id not in xp:
+                continue
+            xv = xp[exp_id]["Valence"]
+            xa = xp[exp_id]["Arousal"]
+            mv = float(labels[trial_idx, 0])
+            ma = float(labels[trial_idx, 1])
+            v_key = "high" if xv > 5 else "low"
+            a_key = "high" if xa > 5 else "low"
+            qkey = _quadrant_labels[(v_key, a_key)]
+            quadrant_counts[qkey]["trials"] += 1
+            # A trial is inverted if both V and A follow 9 - xls_val
+            v_inv = abs(mv - (9.0 - xv)) <= TOLERANCE and abs(mv - xv) > TOLERANCE
+            a_inv = abs(ma - (9.0 - xa)) <= TOLERANCE and abs(ma - xa) > TOLERANCE
+            both_inv = v_inv and a_inv
+            if both_inv:
+                quadrant_counts[qkey]["inverted"] += 1
+            elif v_inv or a_inv:
+                inversion_exceptions.append({
+                    "participant": pid_str,
+                    "experiment_id": exp_id,
+                    "trial_index": trial_idx,
+                    "xls_valence": round(xv, 6),
+                    "xls_arousal": round(xa, 6),
+                    "v2_valence": round(mv, 6),
+                    "v2_arousal": round(ma, 6),
+                    "note": "partial inversion (only one of V/A follows 9 - xls_val)",
+                })
+
+    total_hh_trials    = quadrant_counts["xls_valence_gt5_arousal_gt5"]["trials"]
+    total_hh_inverted  = quadrant_counts["xls_valence_gt5_arousal_gt5"]["inverted"]
+    total_non_hh_inverted = sum(
+        v["inverted"] for k, v in quadrant_counts.items()
+        if k != "xls_valence_gt5_arousal_gt5"
+    )
+
+    inversion_rule = {
+        "rule": (
+            "A trial is counted as inverted if both Valence and Arousal in the v2 "
+            "mirror equal 9 minus the participant_ratings.xls value (within 1e-4). "
+            "The condition tested: XLS Valence > 5 AND XLS Arousal > 5."
+        ),
+        "quadrant_counts": quadrant_counts,
+        "trials_meeting_condition": total_hh_trials,
+        "trials_inverted_in_condition": total_hh_inverted,
+        "trials_inverted_outside_condition": total_non_hh_inverted,
+        "rule_exceptions_count": len(inversion_exceptions),
+        "rule_exceptions": inversion_exceptions,
+    }
+
     # XLS comparison -- v1 and v2 (all 32 for v2; 12 for v1)
     v1_audit = {}
     for pid_str in sorted(v1_pids):
@@ -291,6 +358,7 @@ def run_audit() -> None:
     v2_total_oor = sum(v["out_of_range_count"] for v in sam_v2.values())
 
     report = {
+        "inversion_rule": inversion_rule,
         "matching_methodology": (
             "Trials in .dat labels arrays are in Experiment_id order (1..40). "
             "Matching: dat labels[i] corresponds to XLS row where "

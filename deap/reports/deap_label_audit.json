@@ -1,5 +1,31 @@
 {
   "inversion_note": "An 'inverted' classification means mirror_value == 9.0 - xls_value within tolerance. Affects only Valence and Arousal dimensions, and only specific trials per participant.",
+  "inversion_rule": {
+    "quadrant_counts": {
+      "xls_valence_gt5_arousal_gt5": {
+        "inverted": 439,
+        "trials": 439
+      },
+      "xls_valence_gt5_arousal_le5": {
+        "inverted": 0,
+        "trials": 269
+      },
+      "xls_valence_le5_arousal_gt5": {
+        "inverted": 0,
+        "trials": 298
+      },
+      "xls_valence_le5_arousal_le5": {
+        "inverted": 0,
+        "trials": 274
+      }
+    },
+    "rule": "A trial is counted as inverted if both Valence and Arousal in the v2 mirror equal 9 minus the participant_ratings.xls value (within 1e-4). The condition tested: XLS Valence > 5 AND XLS Arousal > 5.",
+    "rule_exceptions": [],
+    "rule_exceptions_count": 0,
+    "trials_inverted_in_condition": 439,
+    "trials_inverted_outside_condition": 0,
+    "trials_meeting_condition": 439
+  },
   "matching_methodology": "Trials in .dat labels arrays are in Experiment_id order (1..40). Matching: dat labels[i] corresponds to XLS row where Experiment_id == i+1 for the same participant. Confirmed: sorting participant 1 XLS rows by Experiment_id yields Experiment_ids 1,2,...,40, and labels[0] matches XLS Experiment_id=1.",
   "sam_scale_note": "SAM scale range is 1-9 (Koelstra et al. 2012). Tolerance for float comparison: 1e-4.",
   "v1_mirror": {

@@ -1829,7 +1829,7 @@
   },
   "quality_report": "deap/reports/deap_quality_report.json",
   "run_context": {
-    "generated_at": "2026-11-18T03:52:32.225770+00:00",
+    "generated_at": "2026-11-18T04:07:30.050546+00:00",
     "generator": "deap/src/gold_manifest.py",
     "note": "This field is non-deterministic. Strip it for diffing."
   },

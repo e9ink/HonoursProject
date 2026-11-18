@@ -363,7 +363,7 @@ def fig4_6_label_inversion():
     ax.set_ylim(-0.5, 9.5)
     ax.set_xlabel("Rating in participant_ratings.xls")
     ax.set_ylabel("Rating in Kaggle v2 mirror")
-    ax.legend(loc="upper right", frameon=False, fontsize=8)
+    ax.legend(loc="center right", frameon=False, fontsize=8)
     fig.tight_layout()
     _save(fig, "fig4_6_label_inversion")
     plt.close(fig)
@@ -423,20 +423,27 @@ def fig4_7_fault_injection_vs_control():
     colors_pid = {participants[0]: BLUE, participants[1]: ORANGE}
 
     fig, ax = plt.subplots(figsize=(8, 4))
+
+    # Use log scale if range > 2 orders of magnitude
+    all_vals = [v for pd in deltas.values() for v in pd.values() if v > 0]
+    use_log = bool(all_vals and max(all_vals) / max(min(all_vals), 1) > 100)
+    if use_log:
+        ax.set_yscale("log")
+
     for i, pid in enumerate(participants):
         vals = [deltas[f].get(pid, 0) for f in faults]
         bars = ax.bar(x + (i - 0.5) * width, vals, width,
                       color=colors_pid[pid], label=pid)
+        for bar, val in zip(bars, vals):
+            if val > 0:
+                # Position label above bar; for log scale offset multiplicatively
+                y_pos = bar.get_height() * 1.08 if use_log else bar.get_height() + max(all_vals) * 0.01
+                ax.text(bar.get_x() + bar.get_width() / 2, y_pos,
+                        str(val), ha="center", va="bottom", fontsize=8)
 
     ax.set_xticks(x)
     ax.set_xticklabels([fault_labels[f] for f in faults])
     ax.set_ylabel("Increase over control (flagged count)")
-
-    # Use log scale if range > 2 orders of magnitude
-    all_vals = [v for pd in deltas.values() for v in pd.values() if v > 0]
-    if all_vals and max(all_vals) / max(min(all_vals), 1) > 100:
-        ax.set_yscale("log")
-
     ax.legend(frameon=False)
     fig.tight_layout()
     _save(fig, "fig4_7_fault_injection_vs_control")
@@ -678,6 +685,46 @@ def table_per_participant():
 
 
 # ---------------------------------------------------------------------------
+# Table 4.5 -- inversion rule by quadrant
+# ---------------------------------------------------------------------------
+def table4_5_inversion_by_quadrant():
+    audit_path = REPORTS / "deap_label_audit.json"
+    if not audit_path.exists():
+        raise FileNotFoundError(f"Required report missing: {audit_path}")
+    with open(audit_path, encoding="utf-8") as f:
+        audit = json.load(f)
+
+    ir = audit.get("inversion_rule")
+    if ir is None:
+        raise KeyError("inversion_rule key missing from deap_label_audit.json; re-run label_audit")
+
+    qc = ir["quadrant_counts"]
+    # Canonical display order
+    quadrant_display = [
+        ("xls_valence_gt5_arousal_gt5",  "Valence > 5 and Arousal > 5"),
+        ("xls_valence_gt5_arousal_le5",  "Valence > 5 and Arousal <= 5"),
+        ("xls_valence_le5_arousal_gt5",  "Valence <= 5 and Arousal > 5"),
+        ("xls_valence_le5_arousal_le5",  "Valence <= 5 and Arousal <= 5"),
+    ]
+
+    rows = []
+    for key, label in quadrant_display:
+        entry = qc.get(key, {"trials": 0, "inverted": 0})
+        n = entry["trials"]
+        inv = entry["inverted"]
+        pct = round(100.0 * inv / n, 1) if n > 0 else 0.0
+        rows.append({
+            "quadrant": label,
+            "trials": n,
+            "trials_inverted": inv,
+            "pct_inverted": pct,
+        })
+
+    _save_csv(rows, "table4_5_inversion_by_quadrant", TABLES_DIR)
+    _save_md(rows, "table4_5_inversion_by_quadrant", TABLES_DIR)
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 def main():
@@ -705,6 +752,9 @@ def main():
 
     print("Table: per participant ...")
     table_per_participant()
+
+    print("Table 4.5: inversion by quadrant ...")
+    table4_5_inversion_by_quadrant()
 
     print("Done.")
 

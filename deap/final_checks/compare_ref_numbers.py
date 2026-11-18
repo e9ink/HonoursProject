@@ -107,8 +107,21 @@ check("label_audit.v2_mismatches_satisfying_mirror_plus_xls_eq_9",
       n_inv,
       rla["v2_mismatches_satisfying_mirror_plus_xls_eq_9"])
 
+# Inversion rule verification
+ir = audit["inversion_rule"]
+rir = REF["inversion_rule"]
+check("inversion_rule.trials_meeting_condition",
+      ir["trials_meeting_condition"],
+      rir["trials_meeting_condition"])
+check("inversion_rule.trials_inverted_in_condition",
+      ir["trials_inverted_in_condition"],
+      rir["trials_inverted_in_condition"])
+check("inversion_rule.rule_exceptions_count",
+      ir["rule_exceptions_count"],
+      rir["rule_exceptions_count"])
+
 print()
-N_CHECKS = 18
+N_CHECKS = 21
 if failures:
     print(f"FAIL -- reference numbers changed:")
     for f in failures:

@@ -45,5 +45,11 @@
   "label_audit": {
     "v2_mismatches_satisfying_mirror_plus_xls_eq_9": 878,
     "note": "All 878 Valence/Arousal mismatches satisfy mirror + xls = 9 within 1e-4; confirmed by fig4_6_label_inversion"
+  },
+  "inversion_rule": {
+    "trials_meeting_condition": 439,
+    "trials_inverted_in_condition": 439,
+    "rule_exceptions_count": 0,
+    "note": "Condition: XLS Valence > 5 AND XLS Arousal > 5. All 439 such trials inverted in v2; none outside condition inverted."
   }
 }
