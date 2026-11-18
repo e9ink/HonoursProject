@@ -1047,7 +1047,7 @@
     }
   ],
   "run_context": {
-    "generated_at": "2026-11-18T01:32:18.966185+00:00",
+    "generated_at": "2026-11-18T03:52:28.481015+00:00",
     "generator": "deap/src/governance.py",
     "note": "This field is non-deterministic. Strip it for diffing."
   },

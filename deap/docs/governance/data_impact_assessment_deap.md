@@ -37,16 +37,15 @@ the clip.
    Reports: deap/reports/deap_consistency.json, deap/reports/deap_cleaning.json.
 
 2. *Temp channel scale split:* Participants split into two groups by Temp channel scale
-   (Group A s01-s23, s25: small baseline-corrected values; Group B s24, s26-s32: large
-   raw values). Source of the split is not documented in available sources. Models
-   treating Temp as a uniform channel across participants would learn from incompatible
-   scales.
+   (Group A s01-s23, s25: small value range, under 10 per participant; Group B s24,
+   s26-s32: large value range, over 500 per participant). Cause of the split is not
+   documented in available sources. Models treating Temp as a uniform channel across
+   participants would learn from incompatible scales.
 
 3. *GSR negative values:* The GSR channel has negative values across participants.
-   Koelstra et al. (2012, p. 10) describes subtracting a 256-point moving average from
-   GSR as part of the paper's own analysis. Whether this was applied to the released
-   preprocessed files is not stated, so negative GSR is a possible consequence. Models
-   that assume non-negative GSR (conductance) would need to account for this.
+   Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis,
+   but whether this applies to the released preprocessed files is not stated.
+   Models that assume non-negative GSR (conductance) would need to account for this.
 
 4. *Sampling rate not stated:* 128 Hz is inferred from array length. Neither the paper
    nor the dataset website states the sampling rate for the released preprocessed files.
@@ -98,9 +97,9 @@ reference choices may not match expectations. These risks cannot be resolved fro
 available sources.
 
 **Risk 4: GSR unit ambiguity**
-If GSR is treated as raw conductance (uS) without accounting for drift subtraction,
-negative values would be treated as errors rather than intentional baseline corrections.
-The pipeline documents this as a known issue but cannot confirm the exact preprocessing.
+If GSR is treated as raw conductance (uS), negative values would be treated as errors.
+Whether the negative values arise from preprocessing applied to the released files is
+not stated in available sources. The pipeline documents this as a known issue.
 
 ---
 

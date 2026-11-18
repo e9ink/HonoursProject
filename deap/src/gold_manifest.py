@@ -193,15 +193,16 @@ def generate_manifest(root: Path = DATA_ROOT,
             "flag_and_retain": {
                 "temp_group": temp_group,
                 "temp_group_description": (
-                    "Group A: baseline-corrected small values"
+                    "Group A: small value range (under 10 per participant)"
                     if temp_group == "A"
-                    else "Group B: large raw values; preprocessing unknown"
+                    else "Group B: large value range (over 500 per participant); cause undocumented"
                 ),
                 "temp_longest_flatline_samples": temp_stats.get("longest_flatline"),
                 "gsr_negative_count": gsr_neg,
                 "gsr_note": (
-                    "Negative GSR values are a possible consequence of drift "
-                    "removal; cause in released files is not confirmed."
+                    "Negative values present. Koelstra et al. (2012, p. 10) "
+                    "describe GSR detrending for their own analysis, but whether "
+                    "this applies to the released files is not stated."
                 ),
             },
         }

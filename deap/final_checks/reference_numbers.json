@@ -41,5 +41,9 @@
     "label_plausibility_after_value": 0,
     "cross_source_before_value": 878,
     "cross_source_after_value": 0
+  },
+  "label_audit": {
+    "v2_mismatches_satisfying_mirror_plus_xls_eq_9": 878,
+    "note": "All 878 Valence/Arousal mismatches satisfy mirror + xls = 9 within 1e-4; confirmed by fig4_6_label_inversion"
   }
 }

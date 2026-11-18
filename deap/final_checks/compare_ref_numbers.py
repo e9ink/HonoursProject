@@ -91,8 +91,24 @@ check("quality_report.cross_source_after_value",
       qr["dimensions"]["consistency"]["sub_checks"]["cross_source"]["after"]["value"],
       rqr["cross_source_after_value"])
 
+# Label audit inversion verification
+audit_path = REPORTS / "deap_label_audit.json"
+if not audit_path.exists():
+    print(f"MISSING: {audit_path}")
+    sys.exit(1)
+audit = json.loads(audit_path.read_text(encoding="utf-8"))
+# Count Valence/Arousal mismatches satisfying mirror + xls = 9
+n_inv = sum(
+    len([d for d in pp["discrepancies"] if d["dim"] in ("Valence", "Arousal")])
+    for pp in audit["v2_mirror"]["xls_comparison"]["per_participant"].values()
+)
+rla = REF["label_audit"]
+check("label_audit.v2_mismatches_satisfying_mirror_plus_xls_eq_9",
+      n_inv,
+      rla["v2_mismatches_satisfying_mirror_plus_xls_eq_9"])
+
 print()
-N_CHECKS = 17
+N_CHECKS = 18
 if failures:
     print(f"FAIL -- reference numbers changed:")
     for f in failures:

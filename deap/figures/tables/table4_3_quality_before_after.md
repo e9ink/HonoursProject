@@ -1,0 +1,9 @@
+| dimension | bronze_value | silver_value | threshold | pass | note |
+|---|---|---|---|---|---|
+| Completeness | 0 | 0 | max_nan_count=0, max_inf_count=0 | PASS | Checks the physiological data array. Not affected by label cleaning. |
+| Conformance | 0 | 0 | max_violations=0 | PASS | Checks data array shape and dtype. Not affected by label cleaning. |
+| Label plausibility | 163 | 0 | max_out_of_range=0 | PASS |  |
+| Consistency (cross-source) | 878 | 0 | max_mismatches=0, tolerance=0.0001 | PASS | dat labels vs participant_ratings.xls. Corrected by label cleaning. |
+| Consistency (structure) | 0 | 0 | max_mismatches=0 | PASS | Shape uniformity across participants. Not affected by label cleaning. |
+| Physiological plausibility | not applied | not applied | N/A | NOT APPLIED | Units undocumented for peripheral channels |
+| Timeliness | not applicable | not applicable | N/A | NOT APPLICABLE | Single sample clock per participant |
