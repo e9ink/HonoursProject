@@ -1,0 +1,45 @@
+{
+  "_note": "Reference numbers locked after full pipeline run on deap-parity branch. Do not modify.",
+  "completeness": {
+    "total_nan_all_participants": 0,
+    "total_inf_all_participants": 0,
+    "participant_count": 32,
+    "overall_pass": true
+  },
+  "conformance": {
+    "total_violations": 0,
+    "participant_count": 32,
+    "overall_pass": true
+  },
+  "label_plausibility": {
+    "total_out_of_range_all_participants": 163,
+    "participant_count": 32,
+    "overall_pass": false
+  },
+  "consistency": {
+    "structure_total_mismatches": 0,
+    "cross_source_total_mismatches": 878,
+    "participant_count": 32,
+    "overall_pass": false
+  },
+  "cleaning": {
+    "total_corrections": 878,
+    "n_participants_with_corrections": 32,
+    "participant_count": 32
+  },
+  "post_cleaning": {
+    "total_label_plausibility_oor": 0,
+    "total_cross_source_mismatches": 0,
+    "participant_count": 32,
+    "overall_pass": true
+  },
+  "quality_report": {
+    "overall_pass": true,
+    "completeness_status": "pass",
+    "conformance_status": "pass",
+    "label_plausibility_before_value": 163,
+    "label_plausibility_after_value": 0,
+    "cross_source_before_value": 878,
+    "cross_source_after_value": 0
+  }
+}
