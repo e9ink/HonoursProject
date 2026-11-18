@@ -29,9 +29,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 73791,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 449
         },
         "layer": "bronze",
@@ -86,9 +86,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 131826,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 406
         },
         "layer": "bronze",
@@ -143,9 +143,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 46692,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 436
         },
         "layer": "bronze",
@@ -200,9 +200,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 107459,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 379
         },
         "layer": "bronze",
@@ -257,9 +257,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 73432,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 282
         },
         "layer": "bronze",
@@ -314,9 +314,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 123953,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 303
         },
         "layer": "bronze",
@@ -371,9 +371,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 37310,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 338
         },
         "layer": "bronze",
@@ -428,9 +428,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 48933,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 650
         },
         "layer": "bronze",
@@ -485,9 +485,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 50159,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 698
         },
         "layer": "bronze",
@@ -542,9 +542,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 92819,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 1183
         },
         "layer": "bronze",
@@ -599,9 +599,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 55119,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 783
         },
         "layer": "bronze",
@@ -656,9 +656,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 82633,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 924
         },
         "layer": "bronze",
@@ -713,9 +713,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 35107,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 633
         },
         "layer": "bronze",
@@ -770,9 +770,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 131100,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 495
         },
         "layer": "bronze",
@@ -827,9 +827,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 101689,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 127
         },
         "layer": "bronze",
@@ -884,9 +884,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 100047,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 485
         },
         "layer": "bronze",
@@ -941,9 +941,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 87188,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 420
         },
         "layer": "bronze",
@@ -998,9 +998,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 94757,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 571
         },
         "layer": "bronze",
@@ -1055,9 +1055,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 83864,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 419
         },
         "layer": "bronze",
@@ -1112,9 +1112,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 37339,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 609
         },
         "layer": "bronze",
@@ -1169,9 +1169,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 95475,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 863
         },
         "layer": "bronze",
@@ -1226,9 +1226,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 107754,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 880
         },
         "layer": "bronze",
@@ -1283,9 +1283,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 145515,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 904
         },
         "layer": "bronze",
@@ -1340,9 +1340,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 78925,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "B",
-          "temp_group_description": "Group B: large raw values; preprocessing unknown",
+          "temp_group_description": "Group B: large value range (over 500 per participant); cause undocumented",
           "temp_longest_flatline_samples": 2
         },
         "layer": "bronze",
@@ -1397,9 +1397,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 248282,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
-          "temp_group_description": "Group A: baseline-corrected small values",
+          "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 4
         },
         "layer": "bronze",
@@ -1454,9 +1454,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 204777,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "B",
-          "temp_group_description": "Group B: large raw values; preprocessing unknown",
+          "temp_group_description": "Group B: large value range (over 500 per participant); cause undocumented",
           "temp_longest_flatline_samples": 2
         },
         "layer": "bronze",
@@ -1511,9 +1511,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 82598,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "B",
-          "temp_group_description": "Group B: large raw values; preprocessing unknown",
+          "temp_group_description": "Group B: large value range (over 500 per participant); cause undocumented",
           "temp_longest_flatline_samples": 2
         },
         "layer": "bronze",
@@ -1568,9 +1568,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 107475,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "B",
-          "temp_group_description": "Group B: large raw values; preprocessing unknown",
+          "temp_group_description": "Group B: large value range (over 500 per participant); cause undocumented",
           "temp_longest_flatline_samples": 2
         },
         "layer": "bronze",
@@ -1625,9 +1625,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 137352,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "B",
-          "temp_group_description": "Group B: large raw values; preprocessing unknown",
+          "temp_group_description": "Group B: large value range (over 500 per participant); cause undocumented",
           "temp_longest_flatline_samples": 2
         },
         "layer": "bronze",
@@ -1682,9 +1682,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 137093,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "B",
-          "temp_group_description": "Group B: large raw values; preprocessing unknown",
+          "temp_group_description": "Group B: large value range (over 500 per participant); cause undocumented",
           "temp_longest_flatline_samples": 2
         },
         "layer": "bronze",
@@ -1739,9 +1739,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 157552,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "B",
-          "temp_group_description": "Group B: large raw values; preprocessing unknown",
+          "temp_group_description": "Group B: large value range (over 500 per participant); cause undocumented",
           "temp_longest_flatline_samples": 2
         },
         "layer": "bronze",
@@ -1796,9 +1796,9 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 93385,
-          "gsr_note": "Negative GSR values are a possible consequence of drift removal; cause in released files is not confirmed.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "B",
-          "temp_group_description": "Group B: large raw values; preprocessing unknown",
+          "temp_group_description": "Group B: large value range (over 500 per participant); cause undocumented",
           "temp_longest_flatline_samples": 2
         },
         "layer": "bronze",
@@ -1829,7 +1829,7 @@
   },
   "quality_report": "deap/reports/deap_quality_report.json",
   "run_context": {
-    "generated_at": "2026-11-18T01:32:22.561411+00:00",
+    "generated_at": "2026-11-18T03:52:32.225770+00:00",
     "generator": "deap/src/gold_manifest.py",
     "note": "This field is non-deterministic. Strip it for diffing."
   },

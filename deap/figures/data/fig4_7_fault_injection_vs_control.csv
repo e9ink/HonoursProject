@@ -1,0 +1,4 @@
+fault,fault_label,s01_delta,s25_delta
+nan_in_eeg,NaN in EEG,3225,3225
+label_out_of_range,Label out of range,8,7
+truncated_data,Truncated data,1,1

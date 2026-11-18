@@ -62,7 +62,7 @@
     },
     "physiological_plausibility": {
       "dimension": "physiological_plausibility",
-      "reason": "Peripheral channel units and preprocessing in the preprocessed release are not documented in available sources. GSR has negative values due to drift subtraction (Koelstra et al. 2012, p. 10: low-frequency drift removed by 256-point moving average subtraction). Temp channel is on incompatible scales across participants (s01-s23 and s25 show baseline-corrected small values; s24 and s26-s32 show extreme raw values; source of split unknown). Resp and BVP units are not stated in the paper.\n",
+      "reason": "Peripheral channel units and preprocessing in the preprocessed release are not documented in available sources. GSR has negative values across participants; Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated. Temp channel range differs markedly across participants (Group A, s01-s23 and s25: range under 10 per participant; Group B, s24 and s26-s32: range over 500 per participant); cause of the split is undocumented. Resp and BVP units are not stated in the paper.\n",
       "status": "not_applied"
     },
     "timeliness": {

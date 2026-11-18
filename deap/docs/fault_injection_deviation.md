@@ -93,3 +93,13 @@ Note: the label_out_of_range fault increases consistency_cross_source because
 the injected values (0.0 and 10.0) also differ from the XLS ratings. This is
 expected: any label modification that changes a value will show up in the
 cross-source check as well as in label_plausibility.
+
+---
+
+## Note on experiments.yaml wording (2026-11-18)
+
+The comment "Temp baseline-corrected" in deap/config/experiments.yaml is
+unsourced. The data-only description is: Group A (s01-s23, s25) has a Temp
+channel range under 10 per participant; Group B (s24, s26-s32) has a range
+over 500 per participant; cause of the split is undocumented. experiments.yaml
+is pre-registered and is not changed; this note records the correction.

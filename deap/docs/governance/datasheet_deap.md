@@ -58,15 +58,13 @@ No NaN or Inf values detected in the v2 mirror (see deap/reports/deap_completene
 **Are there any known issues with the data?**
 
 1. GSR (galvanic skin response) has negative values in the preprocessed data.
-   Koelstra et al. (2012), p. 10, describes removing the GSR trend by subtracting
-   a 256-point moving average as part of the paper's own analysis pipeline. Whether
-   this step was applied to the released preprocessed files is not stated, so negative
-   GSR values are a possible consequence of that described process rather than a
-   confirmed one. They are not treated as errors in this framework.
+   Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis,
+   but whether this applies to the released preprocessed files is not stated.
+   Negative GSR values are not treated as errors in this framework.
 
 2. Temp channel splits into two groups across participants:
-   - Group A (s01-s23, s25): small baseline-corrected values (typically -1 to 1 degC)
-   - Group B (s24, s26-s32): extreme raw values (source unknown; may differ preprocessing)
+   - Group A (s01-s23, s25): small value range (under 10 per participant)
+   - Group B (s24, s26-s32): large value range (over 500 per participant); cause undocumented
    This anomaly is flagged in the descriptive consistency report but not treated as
    a threshold violation because Temp units and preprocessing are undocumented in the paper.
 
