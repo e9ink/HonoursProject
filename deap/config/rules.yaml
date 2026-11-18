@@ -8,7 +8,7 @@
 meta:
   signed_off: true
   signed_off_by: Kevin Hudoyo
-  note: "pending supervisor review"
+  note: "approved by supervisor (Dr Tobias Cibis) 2026-11-18"
   date: "2026-11-17"
   source: "Koelstra et al. (2012)"
 
@@ -40,14 +40,14 @@ rules:
       8064 time samples.
     threshold: "max_violations = 0"
     rationale: >
-      Koelstra et al. (2012): 40 one-minute music video trials (p. 1), 32 EEG +
-      8 peripheral channels = 40 total (p. 5, p. 10). 8064 samples per trial.
-      The paper documents a 60-second stimulus per trial (p. 5); at 128 Hz,
+      Koelstra et al. (2012): 40 one-minute music video trials (p. 18), 32 EEG +
+      8 peripheral channels = 40 total (p. 22, p. 27). 8064 samples per trial.
+      The paper documents a 60-second stimulus per trial (p. 22); at 128 Hz,
       8064 samples span 63 s. Neither the sampling rate of the released files
       nor the composition of the extra 3 s is documented in the sources held.
-      The paper documents downsampling to 256 Hz for its own analysis (p. 10),
+      The paper documents downsampling to 256 Hz for its own analysis (p. 27),
       not to 128 Hz.
-    source: "Koelstra et al. (2012), pp. 1, 5, 10"
+    source: "Koelstra et al. (2012), pp. 18, 22, 27"
 
   - id: conformance_labels_shape
     dimension: conformance
@@ -56,9 +56,9 @@ rules:
       (valence, arousal, dominance, liking).
     threshold: "max_violations = 0"
     rationale: >
-      Koelstra et al. (2012), p. 5-6: participants rated each video for arousal,
+      Koelstra et al. (2012), pp. 22-23: participants rated each video for arousal,
       valence, liking, and dominance using SAM scales.
-    source: "Koelstra et al. (2012), pp. 5-6"
+    source: "Koelstra et al. (2012), pp. 22-23"
 
   - id: conformance_dtype
     dimension: conformance
@@ -76,13 +76,13 @@ rules:
       Every label value must be in [1.0, 9.0].
     threshold: "max_out_of_range = 0"
     rationale: >
-      SAM scale uses numbers 1-9. Koelstra et al. (2012), p. 6: "The manikins
+      SAM scale uses numbers 1-9. Koelstra et al. (2012), p. 23: "The manikins
       were displayed in the middle of the screen with the numbers 1-9 printed
       below. Participants moved the mouse strictly horizontally just below the
       numbers and clicked to indicate their self-assessment level. Participants
       were informed they could click anywhere directly below or in-between the
       numbers." This defines a continuous scale within [1, 9].
-    source: "Koelstra et al. (2012), p. 6"
+    source: "Koelstra et al. (2012), p. 23"
     applies_to: "valence, arousal, dominance, liking (columns 0-3 of labels array)"
     note: >
       Label audit showed v2 mirror has 163 values outside [1, 9] due to scale
@@ -97,7 +97,7 @@ rules:
     rationale: >
       All participants completed the same protocol. Any shape mismatch indicates
       a data integrity issue.
-    source: "Koelstra et al. (2012), p. 1; Bronze profiling"
+    source: "Koelstra et al. (2012), p. 18; Bronze profiling"
 
   - id: consistency_cross_source
     dimension: consistency
@@ -133,7 +133,7 @@ rules:
       Peripheral channel units and preprocessing are not documented in available
       sources (Koelstra et al. 2012 does not state units for Temp, Resp, or BVP).
       GSR has negative values in the preprocessed data. Koelstra et al. (2012),
-      p. 10, describes removing GSR drift by subtracting a 256-point moving average
+      p. 27, describes removing GSR drift by subtracting a 256-point moving average
       as part of the paper's own analysis. Whether this was applied to the released
       files is not stated; negative GSR values are a possible consequence. Temp channel has incompatible scales across participants
       (Groups A and B identified in profiling; source unknown). EEG plausibility
@@ -146,7 +146,7 @@ rules:
     description: "NOT APPLICABLE"
     rationale: >
       All 40 channels in DEAP share a single sample clock per participant
-      (Biosemi ActiveTwo system, Koelstra et al. 2012, p. 5). No cross-device
+      (Biosemi ActiveTwo system, Koelstra et al. 2012, p. 22). No cross-device
       temporal alignment is needed. This contrasts with WESAD, which uses two
       separate recording devices (E4 wristband and RespiBAN chest device).
-    source: "Koelstra et al. (2012), p. 5"
+    source: "Koelstra et al. (2012), p. 22"

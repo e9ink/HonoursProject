@@ -29,7 +29,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 73791,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 449
@@ -86,7 +86,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 131826,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 406
@@ -143,7 +143,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 46692,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 436
@@ -200,7 +200,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 107459,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 379
@@ -257,7 +257,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 73432,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 282
@@ -314,7 +314,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 123953,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 303
@@ -371,7 +371,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 37310,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 338
@@ -428,7 +428,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 48933,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 650
@@ -485,7 +485,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 50159,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 698
@@ -542,7 +542,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 92819,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 1183
@@ -599,7 +599,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 55119,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 783
@@ -656,7 +656,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 82633,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 924
@@ -713,7 +713,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 35107,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 633
@@ -770,7 +770,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 131100,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 495
@@ -827,7 +827,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 101689,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 127
@@ -884,7 +884,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 100047,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 485
@@ -941,7 +941,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 87188,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 420
@@ -998,7 +998,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 94757,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 571
@@ -1055,7 +1055,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 83864,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 419
@@ -1112,7 +1112,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 37339,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 609
@@ -1169,7 +1169,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 95475,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 863
@@ -1226,7 +1226,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 107754,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 880
@@ -1283,7 +1283,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 145515,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 904
@@ -1340,7 +1340,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 78925,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "B",
           "temp_group_description": "Group B: large value range (over 500 per participant); cause undocumented",
           "temp_longest_flatline_samples": 2
@@ -1397,7 +1397,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 248282,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "A",
           "temp_group_description": "Group A: small value range (under 10 per participant)",
           "temp_longest_flatline_samples": 4
@@ -1454,7 +1454,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 204777,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "B",
           "temp_group_description": "Group B: large value range (over 500 per participant); cause undocumented",
           "temp_longest_flatline_samples": 2
@@ -1511,7 +1511,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 82598,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "B",
           "temp_group_description": "Group B: large value range (over 500 per participant); cause undocumented",
           "temp_longest_flatline_samples": 2
@@ -1568,7 +1568,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 107475,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "B",
           "temp_group_description": "Group B: large value range (over 500 per participant); cause undocumented",
           "temp_longest_flatline_samples": 2
@@ -1625,7 +1625,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 137352,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "B",
           "temp_group_description": "Group B: large value range (over 500 per participant); cause undocumented",
           "temp_longest_flatline_samples": 2
@@ -1682,7 +1682,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 137093,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "B",
           "temp_group_description": "Group B: large value range (over 500 per participant); cause undocumented",
           "temp_longest_flatline_samples": 2
@@ -1739,7 +1739,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 157552,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "B",
           "temp_group_description": "Group B: large value range (over 500 per participant); cause undocumented",
           "temp_longest_flatline_samples": 2
@@ -1796,7 +1796,7 @@
         },
         "flag_and_retain": {
           "gsr_negative_count": 93385,
-          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
+          "gsr_note": "Negative values present. Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis, but whether this applies to the released files is not stated.",
           "temp_group": "B",
           "temp_group_description": "Group B: large value range (over 500 per participant); cause undocumented",
           "temp_longest_flatline_samples": 2
@@ -1829,7 +1829,7 @@
   },
   "quality_report": "deap/reports/deap_quality_report.json",
   "run_context": {
-    "generated_at": "2026-11-18T04:28:47.490662+00:00",
+    "generated_at": "2026-11-18T06:41:06.688856+00:00",
     "generator": "deap/src/gold_manifest.py",
     "note": "This field is non-deterministic. Strip it for diffing."
   },

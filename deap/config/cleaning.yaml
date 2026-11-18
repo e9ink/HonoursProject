@@ -1,7 +1,7 @@
 meta:
   signed_off: true
   signed_off_by: Kevin Hudoyo
-  note: "pending supervisor review"
+  note: "approved by supervisor (Dr Tobias Cibis) 2026-11-18"
   date: "2026-11-18"
 
 # DEAP label correction: v2 mirror inversion artefact.
@@ -25,7 +25,7 @@ label_correction:
     - liking
 
   inversion_pattern: >
-    Some v2 mirror participants have Valence and Arousal labels following
+    All 32 v2 mirror participants have Valence and Arousal labels following
     v2 = 9 - v1, where v1 is the XLS value. Confirmed in
     deap/reports/deap_consistency.json (consistency_cross_source sub-check).
     878 inversions across 32 participants. The 163 out-of-range label values

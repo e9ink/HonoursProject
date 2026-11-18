@@ -3,7 +3,7 @@ Label plausibility check for DEAP dataset.
 
 Checks that every label value is within the SAM scale [1, 9].
 Threshold: max_out_of_range = 0.
-Source: Koelstra et al. (2012), p. 6: "numbers 1-9 printed below" the SAM.
+Source: Koelstra et al. (2012), p. 23: "numbers 1-9 printed below" the SAM.
 
 Output: deap/reports/deap_label_plausibility.json (deterministic, sorted keys).
 Never modifies bronze/ data.
@@ -89,7 +89,7 @@ def run(dat_dir: str = DAT_DIR, output_path: str = OUTPUT) -> dict:
 
     report = {
         "check": "label_plausibility",
-        "scale": "SAM 1-9 (Koelstra et al. 2012, p. 6)",
+        "scale": "SAM 1-9 (Koelstra et al. 2012, p. 23)",
         "threshold_source": "deap/config/thresholds.yaml",
         "participant_count": len(results),
         "overall_pass": overall_pass,

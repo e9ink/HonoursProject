@@ -200,7 +200,7 @@ def generate_manifest(root: Path = DATA_ROOT,
                 "temp_longest_flatline_samples": temp_stats.get("longest_flatline"),
                 "gsr_negative_count": gsr_neg,
                 "gsr_note": (
-                    "Negative values present. Koelstra et al. (2012, p. 10) "
+                    "Negative values present. Koelstra et al. (2012, p. 27) "
                     "describe GSR detrending for their own analysis, but whether "
                     "this applies to the released files is not stated."
                 ),

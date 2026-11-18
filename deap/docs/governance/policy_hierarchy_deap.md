@@ -63,13 +63,17 @@ which is a known mirror artefact, not a corrected rating.
 
 ## Tier 2: Data Quality Policies
 
-### Policy 2.1 -- Pre-registered Thresholds, Locked Before Checks Run
+### Policy 2.1 -- Pre-registered Thresholds, Signed Off Before Checks Run
 
-**Statement:** Quality thresholds must be defined and signed off before any check runs.
-No threshold may be set, adjusted, or overridden after seeing the data.
+**Statement:** Thresholds are set and signed off before any check is built and run.
+For DEAP specifically, the thresholds were set after Bronze profiling because peripheral
+channel units are undocumented in the available sources; this was disclosed in
+deap/config/thresholds.yaml and was approved by the supervisor (Dr Tobias Cibis) on
+2026-11-18. No threshold was adjusted after seeing check results.
 
 **Enforcement:**
-- deap/config/thresholds.yaml: thresholds set and signed off (meta.signed_off: true).
+- deap/config/thresholds.yaml: thresholds set and signed off (meta.signed_off: true;
+  note records supervisor approval and date).
 - Sign-off gate in all five check modules and the quality report: each reads
   meta.signed_off from thresholds.yaml and raises RuntimeError if false.
 

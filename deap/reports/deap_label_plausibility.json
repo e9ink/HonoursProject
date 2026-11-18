@@ -1235,7 +1235,7 @@
       ]
     }
   },
-  "scale": "SAM 1-9 (Koelstra et al. 2012, p. 6)",
+  "scale": "SAM 1-9 (Koelstra et al. 2012, p. 23)",
   "threshold_source": "deap/config/thresholds.yaml",
   "total_out_of_range_all_participants": 163
 }
