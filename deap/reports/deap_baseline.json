@@ -506,7 +506,7 @@
       },
       "participant": "s01",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -967,7 +967,7 @@
       },
       "participant": "s02",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -1428,7 +1428,7 @@
       },
       "participant": "s03",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -1889,7 +1889,7 @@
       },
       "participant": "s04",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -2350,7 +2350,7 @@
       },
       "participant": "s05",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -2811,7 +2811,7 @@
       },
       "participant": "s06",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -3272,7 +3272,7 @@
       },
       "participant": "s07",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -3733,7 +3733,7 @@
       },
       "participant": "s08",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -4194,7 +4194,7 @@
       },
       "participant": "s09",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -4655,7 +4655,7 @@
       },
       "participant": "s10",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -5116,7 +5116,7 @@
       },
       "participant": "s11",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -5577,7 +5577,7 @@
       },
       "participant": "s12",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -6038,7 +6038,7 @@
       },
       "participant": "s13",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -6499,7 +6499,7 @@
       },
       "participant": "s14",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -6960,7 +6960,7 @@
       },
       "participant": "s15",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -7421,7 +7421,7 @@
       },
       "participant": "s16",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -7882,7 +7882,7 @@
       },
       "participant": "s17",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -8343,7 +8343,7 @@
       },
       "participant": "s18",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -8804,7 +8804,7 @@
       },
       "participant": "s19",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -9265,7 +9265,7 @@
       },
       "participant": "s20",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -9726,7 +9726,7 @@
       },
       "participant": "s21",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -10187,7 +10187,7 @@
       },
       "participant": "s22",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -10648,7 +10648,7 @@
       },
       "participant": "s23",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -11109,7 +11109,7 @@
       },
       "participant": "s24",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -11570,7 +11570,7 @@
       },
       "participant": "s25",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -12031,7 +12031,7 @@
       },
       "participant": "s26",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -12492,7 +12492,7 @@
       },
       "participant": "s27",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -12953,7 +12953,7 @@
       },
       "participant": "s28",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -13414,7 +13414,7 @@
       },
       "participant": "s29",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -13875,7 +13875,7 @@
       },
       "participant": "s30",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -14336,7 +14336,7 @@
       },
       "participant": "s31",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -14797,7 +14797,7 @@
       },
       "participant": "s32",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s (3 s pre-trial + 60 s trial per DEAP paper)"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
     }
   ],
   "profiling_note": "Deterministic output. No wall-clock timestamps. Loaded with restricted unpickler; allowed classes: numpy.core.multiarray._reconstruct, numpy.ndarray, numpy.dtype.",
