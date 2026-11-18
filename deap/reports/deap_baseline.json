@@ -90,7 +90,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -506,7 +506,7 @@
       },
       "participant": "s01",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -551,7 +551,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -967,7 +967,7 @@
       },
       "participant": "s02",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -1012,7 +1012,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -1428,7 +1428,7 @@
       },
       "participant": "s03",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -1473,7 +1473,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -1889,7 +1889,7 @@
       },
       "participant": "s04",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -1934,7 +1934,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -2350,7 +2350,7 @@
       },
       "participant": "s05",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -2395,7 +2395,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -2811,7 +2811,7 @@
       },
       "participant": "s06",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -2856,7 +2856,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -3272,7 +3272,7 @@
       },
       "participant": "s07",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -3317,7 +3317,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -3733,7 +3733,7 @@
       },
       "participant": "s08",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -3778,7 +3778,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -4194,7 +4194,7 @@
       },
       "participant": "s09",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -4239,7 +4239,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -4655,7 +4655,7 @@
       },
       "participant": "s10",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -4700,7 +4700,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -5116,7 +5116,7 @@
       },
       "participant": "s11",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -5161,7 +5161,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -5577,7 +5577,7 @@
       },
       "participant": "s12",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -5622,7 +5622,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -6038,7 +6038,7 @@
       },
       "participant": "s13",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -6083,7 +6083,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -6499,7 +6499,7 @@
       },
       "participant": "s14",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -6544,7 +6544,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -6960,7 +6960,7 @@
       },
       "participant": "s15",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -7005,7 +7005,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -7421,7 +7421,7 @@
       },
       "participant": "s16",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -7466,7 +7466,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -7882,7 +7882,7 @@
       },
       "participant": "s17",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -7927,7 +7927,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -8343,7 +8343,7 @@
       },
       "participant": "s18",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -8388,7 +8388,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -8804,7 +8804,7 @@
       },
       "participant": "s19",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -8849,7 +8849,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -9265,7 +9265,7 @@
       },
       "participant": "s20",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -9310,7 +9310,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -9726,7 +9726,7 @@
       },
       "participant": "s21",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -9771,7 +9771,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -10187,7 +10187,7 @@
       },
       "participant": "s22",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -10232,7 +10232,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -10648,7 +10648,7 @@
       },
       "participant": "s23",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -10693,7 +10693,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -11109,7 +11109,7 @@
       },
       "participant": "s24",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -11154,7 +11154,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -11570,7 +11570,7 @@
       },
       "participant": "s25",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -11615,7 +11615,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -12031,7 +12031,7 @@
       },
       "participant": "s26",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -12076,7 +12076,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -12492,7 +12492,7 @@
       },
       "participant": "s27",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -12537,7 +12537,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -12953,7 +12953,7 @@
       },
       "participant": "s28",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -12998,7 +12998,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -13414,7 +13414,7 @@
       },
       "participant": "s29",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -13459,7 +13459,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -13875,7 +13875,7 @@
       },
       "participant": "s30",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -13920,7 +13920,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -14336,7 +14336,7 @@
       },
       "participant": "s31",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     },
     {
       "channel_list": [
@@ -14381,7 +14381,7 @@
         "BVP",
         "Temp"
       ],
-      "channel_list_source": "Koelstra et al. (2012), Table 1 channel order; not embedded in file",
+      "channel_list_source": "Official DEAP documentation channel order; not embedded in file",
       "channel_stats": {
         "AF3": {
           "inf_count": 0,
@@ -14797,12 +14797,12 @@
       },
       "participant": "s32",
       "sampling_rate_hz": 128,
-      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 5); extra 3 s composition not documented in sources held"
+      "sampling_rate_source": "inferred from sample count: 8064 / 128 Hz = 63 s; paper documents 60 s stimulus (p. 22); extra 3 s composition not documented in sources held"
     }
   ],
   "profiling_note": "Deterministic output. No wall-clock timestamps. Loaded with restricted unpickler; allowed classes: numpy.core.multiarray._reconstruct, numpy.ndarray, numpy.dtype.",
   "readme_files_in_archive": "None. No readme or documentation files were present in archive_DEAP.zip. Channel order and sampling rate sourced from Koelstra et al. (2012).",
   "shapes_consistent_across_participants": true,
   "timestamps_note": "No timestamp arrays are embedded in the .dat files. Signals are contiguous sample arrays at a uniform rate (128 Hz). All signals in one participant file share one sample clock (single device time base). No cross-device alignment is needed within a participant.",
-  "units_note": "Units are NOT stated in any file in this archive. Based on the DEAP paper and readme (not present in this mirror): EEG channels are in microvolts (uV) after preprocessing; peripheral channel units are as follows -- GSR: Ohm (inverted conductance; note: may need conversion to uS); Respiration: amplitude (dimensionless, belt tension); BVP: amplitude (dimensionless, photoplethysmograph); Temperature: degrees Celsius. These units require verification against the official DEAP readme before physiological bounds can be set."
+  "units_note": "Units are NOT stated in any file in this archive. Based on the DEAP paper and readme (not present in this mirror): EEG channels are in microvolts (uV) after preprocessing; peripheral channel units are not stated in any file in this archive. Units require verification against the official DEAP readme before physiological bounds can be set."
 }

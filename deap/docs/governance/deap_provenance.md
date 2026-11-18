@@ -7,9 +7,9 @@
 - **SHA-256:** 9a128c46148ca975580c2c72549491882b011685b2051d5e4867592145daa36c
 - **Participants:** 12 of 32 (s01, s02, s03, s05, s07, s08, s09, s11, s15, s16, s22, s25)
 - **Origin:** Unofficial Kaggle mirror
-- **Kaggle URL:** *(fill in)*
-- **Uploader:** *(fill in)*
-- **Download date:** *(fill in)*
+- **Kaggle URL:** https://www.kaggle.com/datasets/harshilgupta28/deap-dataset
+- **Uploader:** harshilgupta28
+- **Download date:** 2026-11-16
 - **Status:** Replaced by mirror 2 on 2026-11-17 on explicit instruction. Archive kept at project root as archive_DEAP_v1.zip.
 
 ## Mirror 2 (current -- in bronze/DEAP/)
@@ -19,9 +19,9 @@
 - **SHA-256:** c67587d95c355d8c87aee6177a3827ede3656d0002c1b697c35be3e60a0576b7
 - **Participants:** 32 of 32 (complete)
 - **Origin:** Unofficial Kaggle mirror
-- **Kaggle URL:** *(fill in)*
-- **Uploader:** *(fill in)*
-- **Download date:** *(fill in)*
+- **Kaggle URL:** https://www.kaggle.com/datasets/manh123df/deap-dataset
+- **Uploader:** manh123df
+- **Download date:** 2026-11-16
 - **Status:** Current. Extracted to bronze/DEAP/deap-dataset/ on 2026-11-17.
 
 ## Official dataset

@@ -28,7 +28,7 @@ use, sets policy, and bears responsibility for how the data is managed.
 **In the context of the original DEAP dataset:**
 Sander Koelstra and collaborators (Queen Mary University of London) are the data owners
 of the raw DEAP dataset. The dataset is distributed under a license agreement
-(non-commercial research use; Koelstra et al. 2012, p. 1). This project uses the
+(non-commercial research use; Koelstra et al. 2012, p. 18). This project uses the
 dataset in accordance with that license.
 
 **In the context of this pipeline's outputs:**

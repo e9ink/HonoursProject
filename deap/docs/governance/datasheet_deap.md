@@ -38,7 +38,7 @@ Each instance is one participant's data for one 60-second music video trial.
 
 **What data does each instance consist of?**
 40 channels. Each trial array contains 8064 samples. The paper documents a 60-second
-stimulus per trial (Koelstra et al. 2012, p. 5); at 128 Hz, 8064 samples span 63 s.
+stimulus per trial (Koelstra et al. 2012, p. 22); at 128 Hz, 8064 samples span 63 s.
 Neither the sampling rate of the released files nor the composition of the extra 3 s
 is documented in the sources held. The dataset website lists the preprocessed files as
 "downsampling, EOG removal, filtering, segmenting etc." without per-channel detail
@@ -50,7 +50,7 @@ Oz, Pz, Fp2, AF4, Fz, F4, F8, FC6, FC2, Cz, C4, T8, CP6, CP2, P4, P8, PO4, O2.
 Peripheral channels (8): hEOG, vEOG, zEMG, tEMG, GSR, Resp, BVP, Temp.
 
 Self-report labels (4 per trial): valence, arousal, dominance, liking.
-Scale: SAM (Self-Assessment Manikin), 1-9 (Koelstra et al. 2012, p. 6).
+Scale: SAM (Self-Assessment Manikin), 1-9 (Koelstra et al. 2012, p. 23).
 
 **Is there any missing data?**
 No NaN or Inf values detected in the v2 mirror (see deap/reports/deap_completeness.json).
@@ -58,7 +58,7 @@ No NaN or Inf values detected in the v2 mirror (see deap/reports/deap_completene
 **Are there any known issues with the data?**
 
 1. GSR (galvanic skin response) has negative values in the preprocessed data.
-   Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis,
+   Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis,
    but whether this applies to the released preprocessed files is not stated.
    Negative GSR values are not treated as errors in this framework.
 
@@ -87,7 +87,7 @@ No NaN or Inf values detected in the v2 mirror (see deap/reports/deap_completene
 ## Collection Process
 
 **How was the data associated with each instance acquired?**
-EEG recorded with a 32-channel Biosemi ActiveTwo EEG system (Koelstra et al. 2012, p. 3).
+EEG recorded with a 32-channel Biosemi ActiveTwo EEG system (Koelstra et al. 2012, p. 20).
 Peripheral signals (GSR, Resp, BVP, Temp, EOG, EMG) recorded simultaneously.
 Participants watched 40 one-minute music video excerpts. Self-report collected after
 each clip via SAM questionnaire on a 1-9 scale.
@@ -95,7 +95,7 @@ each clip via SAM questionnaire on a 1-9 scale.
 **Who was involved in the data collection process?**
 32 participants (22 males, 10 females; mean age 26.9 years).
 Data collection took place at EECS, Queen Mary University of London
-(Koelstra et al. 2012, p. 4).
+(Koelstra et al. 2012, p. 21).
 
 **Over what timeframe was the data collected?**
 Not stated in the paper.
@@ -113,8 +113,8 @@ the preprocessed Python files as having undergone "downsampling, EOG removal, fi
 segmenting etc." No per-channel detail is given for the released files.
 
 Koelstra et al. (2012) describes the preprocessing applied in the paper's own analysis
-pipeline (pp. 9-10), which includes downsampling to 256 Hz (p. 10) and removing ECG and
-GSR drift using a 256-point moving average (p. 10). Whether these steps were applied to
+pipeline (pp. 26-27), which includes downsampling to 256 Hz (p. 27) and removing ECG and
+GSR drift using a 256-point moving average (p. 27). Whether these steps were applied to
 the released preprocessed files in the same way is not stated.
 
 The following are therefore not documented in available sources for the released files:

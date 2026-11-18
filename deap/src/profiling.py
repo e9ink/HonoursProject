@@ -48,10 +48,10 @@ def load_dat(path: str) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Channel definitions (from DEAP paper / readme)
-# Channel order is documented in Koelstra et al. (2012), Table 1.
-# Source: official DEAP readme at http://www.eecs.qmul.ac.uk/mmv/datasets/deap/readme.html
-# (not present in this Kaggle mirror, so channel names are from the paper only)
+# Channel definitions (from DEAP official documentation)
+# Channel order follows the official DEAP documentation
+# (http://www.eecs.qmul.ac.uk/mmv/datasets/deap/readme.html),
+# which was not present in this Kaggle mirror.
 # ---------------------------------------------------------------------------
 
 EEG_CHANNELS = [
@@ -66,10 +66,10 @@ PERIPHERAL_CHANNELS = [
     "vEOG",   # 33: vertical EOG
     "zEMG",   # 34: zygomaticus EMG
     "tEMG",   # 35: trapezius EMG
-    "GSR",    # 36: galvanic skin response (Ohm, inverted = conductance)
+    "GSR",    # 36: galvanic skin response
     "Resp",   # 37: respiration amplitude belt
     "BVP",    # 38: blood volume pressure (photoplethysmograph)
-    "Temp",   # 39: skin temperature (degrees C)
+    "Temp",   # 39: skin temperature
 ]  # 8 peripheral channels, indices 32-39
 
 ALL_CHANNELS = EEG_CHANNELS + PERIPHERAL_CHANNELS  # 40 total
@@ -147,7 +147,7 @@ def profile_participant(path: str) -> dict:
                 result["sampling_rate_hz"] = 128
                 result["sampling_rate_source"] = (
                     "inferred from sample count: 8064 / 128 Hz = 63 s; "
-                    "paper documents 60 s stimulus (p. 5); extra 3 s composition "
+                    "paper documents 60 s stimulus (p. 22); extra 3 s composition "
                     "not documented in sources held"
                 )
             else:
@@ -160,7 +160,7 @@ def profile_participant(path: str) -> dict:
             if d.shape[1] == 40:
                 result["channel_list"] = ALL_CHANNELS
                 result["channel_list_source"] = (
-                    "Koelstra et al. (2012), Table 1 channel order; "
+                    "Official DEAP documentation channel order; "
                     "not embedded in file"
                 )
             else:
@@ -269,12 +269,8 @@ def run_profiling(bronze_dir: str, output_path: str) -> None:
             "Units are NOT stated in any file in this archive. "
             "Based on the DEAP paper and readme (not present in this mirror): "
             "EEG channels are in microvolts (uV) after preprocessing; "
-            "peripheral channel units are as follows -- "
-            "GSR: Ohm (inverted conductance; note: may need conversion to uS); "
-            "Respiration: amplitude (dimensionless, belt tension); "
-            "BVP: amplitude (dimensionless, photoplethysmograph); "
-            "Temperature: degrees Celsius. "
-            "These units require verification against the official DEAP readme "
+            "peripheral channel units are not stated in any file in this archive. "
+            "Units require verification against the official DEAP readme "
             "before physiological bounds can be set."
         ),
         "timestamps_note": (

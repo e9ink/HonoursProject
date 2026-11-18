@@ -1,7 +1,7 @@
 meta:
   signed_off: true
   signed_off_by: Kevin Hudoyo
-  note: "pending supervisor review"
+  note: "approved by supervisor (Dr Tobias Cibis) 2026-11-18"
   date: "2026-11-17"
 
 # NOTE: These rules were defined after Bronze profiling (unlike the WESAD rules,
@@ -35,7 +35,7 @@ label_plausibility:
   max_label_value: 9.0
   max_out_of_range: 0
   justification: >
-    SAM 1-9 scale. Koelstra et al. (2012), p. 6: "numbers 1-9 printed below"
+    SAM 1-9 scale. Koelstra et al. (2012), p. 23: "numbers 1-9 printed below"
     the self-assessment manikins. Participants could click anywhere below or
     in between numbers, making this a continuous scale within [1, 9].
 
@@ -61,7 +61,7 @@ physiological_plausibility:
   reason: >
     Peripheral channel units and preprocessing in the preprocessed release are
     not documented in available sources. GSR has negative values across
-    participants; Koelstra et al. (2012, p. 10) describe GSR detrending for
+    participants; Koelstra et al. (2012, p. 27) describe GSR detrending for
     their own analysis, but whether this applies to the released files is not
     stated. Temp channel range differs markedly across participants
     (Group A, s01-s23 and s25: range under 10 per participant; Group B, s24

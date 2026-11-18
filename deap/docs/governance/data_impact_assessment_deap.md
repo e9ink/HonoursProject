@@ -14,7 +14,7 @@ Statistical estimates derived from this sample carry wide confidence intervals a
 limited generalisability to other populations.
 
 **Population representativeness:**
-22 males, 10 females; mean age 26.9 years (Koelstra et al. 2012, p. 4). Ethnic and
+22 males, 10 females; mean age 26.9 years (Koelstra et al. 2012, p. 21). Ethnic and
 cultural composition: not documented. The study was conducted at Queen Mary University
 of London. Any model trained on this data may not generalise to populations with
 different demographic compositions, including children, older adults, or non-Western
@@ -43,13 +43,13 @@ the clip.
    participants would learn from incompatible scales.
 
 3. *GSR negative values:* The GSR channel has negative values across participants.
-   Koelstra et al. (2012, p. 10) describe GSR detrending for their own analysis,
+   Koelstra et al. (2012, p. 27) describe GSR detrending for their own analysis,
    but whether this applies to the released preprocessed files is not stated.
    Models that assume non-negative GSR (conductance) would need to account for this.
 
 4. *Sampling rate not stated:* 128 Hz is inferred from array length. Neither the paper
    nor the dataset website states the sampling rate for the released preprocessed files.
-   The paper documents downsampling to 256 Hz for its own analysis (p. 10), not for
+   The paper documents downsampling to 256 Hz for its own analysis (p. 27), not for
    the released files.
 
 ---
@@ -62,10 +62,14 @@ in any data file (confirmed by directory inspection of bronze/DEAP/).
 
 **Access-agreement constraints:**
 DEAP is restricted to registered users who have signed the DEAP license agreement
-(non-commercial research use). This pipeline excludes all raw data from version
-control (bronze/* in .gitignore). The Gold layer governance outputs, quality reports,
-and pipeline code do not contain participant physiological measurements and are
-therefore version-controlled.
+(non-commercial research use). The official access page
+(http://www.eecs.qmul.ac.uk/mmv/datasets/deap/) could not be reached during this
+project. The dataset was obtained from a public Kaggle mirror with supervisor approval
+(Dr Tobias Cibis, 2026-11-18); see deap/docs/governance/deap_provenance.md for mirror
+details. The raw data is not version-controlled (bronze/* in .gitignore) and is not
+redistributed. The Gold layer governance outputs, quality reports, and pipeline code
+do not contain participant physiological measurements and are therefore
+version-controlled.
 
 **Physiological signal sensitivity:**
 EEG, GSR, BVP, and skin temperature signals can be used for inference beyond emotion
@@ -112,7 +116,7 @@ Decision recorded in deap/config/thresholds.yaml and deap/config/rules.yaml.
 
 **Timeliness not applicable:**
 All 40 channels share a single sample clock per participant (Biosemi ActiveTwo system,
-Koelstra et al. 2012, p. 5). No cross-device temporal alignment is needed.
+Koelstra et al. 2012, p. 22). No cross-device temporal alignment is needed.
 
 **Accuracy not measured:**
 No ground-truth physiological reference was recorded alongside participant ratings.

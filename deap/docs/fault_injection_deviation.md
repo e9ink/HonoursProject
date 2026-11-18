@@ -96,6 +96,14 @@ cross-source check as well as in label_plausibility.
 
 ---
 
+## Supervisor approval (2026-11-18)
+
+The fault injection design (deap/config/experiments.yaml, pre-registered commit a1e5a5e)
+and this deviation note were reviewed and approved by Dr Tobias Cibis on 2026-11-18.
+experiments.yaml is not changed.
+
+---
+
 ## Note on experiments.yaml wording (2026-11-18)
 
 The comment "Temp baseline-corrected" in deap/config/experiments.yaml is
