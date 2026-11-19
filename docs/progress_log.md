@@ -12,11 +12,11 @@ Summary table of every active decision. Check the referenced section for the ful
 
 | Item | Current value | Date set | Section |
 |---|---|---|---|
-| max_missingness_rate | 0.0 | 2026-09-06 (commit ec93f8f); signed off 2026-09-09 | Threshold decisions: Completeness |
-| max_conformance_violation_rate | 0.0 | 2026-09-06 (commit ec93f8f); signed off 2026-09-09 | Threshold decisions: Validity |
-| max_plausibility_failure_rate | 0.01 | 2026-09-06 (commit ec93f8f); signed off 2026-09-09 | Threshold decisions: Validity |
-| max_cross_modal_offset_seconds | 1.0 s | 2026-09-06 (commit ec93f8f); signed off 2026-09-09 | Threshold decisions: Timeliness |
-| RespiBAN ACC bound | plus-or-minus 8 g | 2026-09-09 Meeting 4; committed 2026-09-18 (8517bfd) | Supervisor decisions Meeting 4, Decision 1 |
+| max_missingness_rate | 0.0 | 2026-09-06 (commit 649b758); signed off 2026-09-09 | Threshold decisions: Completeness |
+| max_conformance_violation_rate | 0.0 | 2026-09-06 (commit 649b758); signed off 2026-09-09 | Threshold decisions: Validity |
+| max_plausibility_failure_rate | 0.01 | 2026-09-06 (commit 649b758); signed off 2026-09-09 | Threshold decisions: Validity |
+| max_cross_modal_offset_seconds | 1.0 s | 2026-09-06 (commit 649b758); signed off 2026-09-09 | Threshold decisions: Timeliness |
+| RespiBAN ACC bound | plus-or-minus 8 g | 2026-09-09 Meeting 4; committed 2026-09-18 (beea8ae) | Supervisor decisions Meeting 4, Decision 1 |
 | E4 ACC bound | plus-or-minus 2 g | 2026-08-22 (from hardware spec) | Physiological range decisions |
 | E4 EDA bound | 0-100 uS | 2026-08-27 (supervisor confirmed) | Physiological range decisions: EDA |
 | E4 TEMP bound | 15-42 degrees C | 2026-08-27 | Physiological range decisions: Skin temperature |
@@ -27,7 +27,7 @@ Summary table of every active decision. Check the referenced section for the ful
 | IBI | Excluded from plausibility | 2026-08-27 (supervisor confirmed) | Physiological range decisions: IBI |
 | RespiBAN CH2 (EDA), CH4 (TEMP) | Excluded from plausibility | 2026-10-09 (Kevin, delegated) | Chest EDA/TEMP channels scoped out |
 | Completeness definition | Unintended absence only; intentional removals excluded | 2026-10-12 (Kevin) | Completeness definition: intentional removals excluded |
-| Alignment approach | Detect and report only; 5-point reconstruction residual | 2026-09-23 (commit 51eda26) | Alignment detection rebuilt |
+| Alignment approach | Detect and report only; 5-point reconstruction residual | 2026-09-23 (commit 79ef7b0) | Alignment detection rebuilt |
 | Frequency-based flagging | Deferred to DEAP | 2026-09-23 (Kevin) | Frequency-based flagging: deferred to DEAP |
 | Consistency | Intentionally unmeasured for WESAD | 2026-08-22 (Kevin) | Threshold decisions: Consistency |
 
@@ -246,7 +246,7 @@ Consistency is therefore intentionally unmeasured for WESAD. This decision will 
 
 ### Timeliness — `max_cross_modal_offset_seconds` — **not yet set**
 
-> **SUPERSEDED BY:** [Supervisor decisions, 9 Sept meeting (Meeting 4) Decision 5] and commit `ec93f8f` (2026-09-06). Value set to 1.0 s; signed off 2026-09-09.
+> **SUPERSEDED BY:** [Supervisor decisions, 9 Sept meeting (Meeting 4) Decision 5] and commit `649b758` (2026-09-06). Value set to 1.0 s; signed off 2026-09-09.
 
 Deliberately unset. The threshold requires a baseline cross-modal offset measurement, which will come from Task 7 (cross-modal temporal alignment). The value will be set from that output before Task 11 runs.
 
@@ -254,7 +254,7 @@ Deliberately unset. The threshold requires a baseline cross-modal offset measure
 
 ### Validity — `max_conformance_violation_rate` and `max_plausibility_failure_rate` — **not yet set**
 
-> **SUPERSEDED BY:** commit `ec93f8f` (2026-09-06). max_conformance_violation_rate set to 0.0; max_plausibility_failure_rate set to 0.01; signed off 2026-09-09.
+> **SUPERSEDED BY:** commit `649b758` (2026-09-06). max_conformance_violation_rate set to 0.0; max_plausibility_failure_rate set to 0.01; signed off 2026-09-09.
 
 Both deliberately unset.
 
@@ -267,14 +267,14 @@ Both deliberately unset.
 
 *Source: `git log --format="%H %ad %s" --date=short -- config/thresholds.yaml` and commits for each check.*
 
-All four threshold values were first committed in `ec93f8f` ("feat: silver conformance check", 2026-09-06). The file's `meta.date_locked: 2026-09-09` reflects the formal supervisor sign-off date.
+All four threshold values were first committed in `649b758` ("feat: silver conformance check", 2026-09-06). The file's `meta.date_locked: 2026-09-09` reflects the formal supervisor sign-off date.
 
 | Threshold | Value | Committed | First check ran | Set before check? |
 |---|---|---|---|---|
-| max_missingness_rate | 0.0 | ec93f8f, 2026-09-06 | b4b28a6 ("feat: silver completeness check"), 2026-09-08 | Yes |
-| max_conformance_violation_rate | 0.0 | ec93f8f, 2026-09-06 | ec93f8f, 2026-09-06 (same commit) | Same commit |
-| max_plausibility_failure_rate | 0.01 | ec93f8f, 2026-09-06 | 72db2d7 ("feat: silver plausibility check"), 2026-09-08 | Yes |
-| max_cross_modal_offset_seconds | 1.0 | ec93f8f, 2026-09-06 | fa6709d ("feat: cross-modal temporal alignment"), 2026-09-09 | Yes |
+| max_missingness_rate | 0.0 | 649b758, 2026-09-06 | 3987aaa ("feat: silver completeness check"), 2026-09-08 | Yes |
+| max_conformance_violation_rate | 0.0 | 649b758, 2026-09-06 | 649b758, 2026-09-06 (same commit) | Same commit |
+| max_plausibility_failure_rate | 0.01 | 649b758, 2026-09-06 | 3a077be ("feat: silver plausibility check"), 2026-09-08 | Yes |
+| max_cross_modal_offset_seconds | 1.0 | 649b758, 2026-09-06 | b2ad200 ("feat: cross-modal temporal alignment"), 2026-09-09 | Yes |
 
 Note: max_conformance_violation_rate was committed in the same commit as the conformance check first ran. The threshold value and the check implementation were introduced together. The pre-registration intent (thresholds declared before checks run) is satisfied for max_missingness_rate, max_plausibility_failure_rate, and max_cross_modal_offset_seconds. For max_conformance_violation_rate the threshold and first check run are co-committed.
 
@@ -304,7 +304,7 @@ Note: max_conformance_violation_rate was committed in the same commit as the con
 
 ### RespiBAN accelerometry — **±1 g calibrated range confirmed; data-span check cancelled**
 
-> **SUPERSEDED BY:** [Supervisor decisions, 9 Sept meeting (Meeting 4) Decision 1]. Bound raised to ±8 g; committed 2026-09-18 (commit `8517bfd`).
+> **SUPERSEDED BY:** [Supervisor decisions, 9 Sept meeting (Meeting 4) Decision 1]. Bound raised to ±8 g; committed 2026-09-18 (commit `beea8ae`).
 
 **Decision:** keep the −1 to +1 g plausibility bound derived from the calibration transfer function. Cancel the previously planned data-span check.
 
@@ -406,7 +406,7 @@ The threshold stays at 0.0. Task 3 correctly reports "fails threshold" for the p
 
 ## Alignment detection rebuilt: result and limitation
 
-*Date: 2026-09-23. Commit: `51eda26`.*
+*Date: 2026-09-23. Commit: `79ef7b0`.*
 
 ### What was done
 
@@ -429,11 +429,11 @@ Per the supervisor decision recorded in the 9 Sept meeting (Meeting 4), fully re
 
 ## Completeness picture after TEMP cleaning
 
-*Date: 2026-09-24. Commit: `2c66073`.*
+*Date: 2026-09-24. Commit: `31f209f`.*
 
 Before Task 8 cleaning, WESAD showed zero missingness across all signals and all 15 participants.
 
-After the TEMP warm-up cleaning (commit `2c66073`), the E4 TEMP channel now contains 4 NaN values per participant (60 total across 15 participants) at indices 0–3, where the ~382°C NTC thermistor warm-up artefact was replaced with the literal text `NaN`. Channel length is unchanged — the rows are present, the values are marked missing.
+After the TEMP warm-up cleaning (commit `31f209f`), the E4 TEMP channel now contains 4 NaN values per participant (60 total across 15 participants) at indices 0–3, where the ~382°C NTC thermistor warm-up artefact was replaced with the literal text `NaN`. Channel length is unchanged — the rows are present, the values are marked missing.
 
 This is an **intended cleaning outcome, not a data defect**. A known sensor artefact was removed and honestly marked missing rather than left in place (where it would inflate conformance violation counts) or replaced with a fabricated value (which would corrupt the signal). The completeness check will correctly report these 60 NaN samples as missing going forward.
 
@@ -449,7 +449,7 @@ Net effect: the honest completeness statement for cleaned WESAD is *"zero missin
 
 ### Issue 1 — RespiBAN accelerometer bound vs observed motion
 
-> **SUPERSEDED BY:** [Supervisor decisions, 9 Sept meeting (Meeting 4) Decision 1]. Bound set to ±8 g; committed 2026-09-18 (commit `8517bfd`).
+> **SUPERSEDED BY:** [Supervisor decisions, 9 Sept meeting (Meeting 4) Decision 1]. Bound set to ±8 g; committed 2026-09-18 (commit `beea8ae`).
 
 **Finding:** the plausibility check flagged 201,687 values on the RespiBAN accelerometer (almost entirely CH5 / x-axis) for exceeding the configured ±1 g calibrated bound. Example: participant S2 alone had ~25,000 above-Cmax violations on CH5. All were classified as `device_rail` (not `physiological_implausible`), so the total failure rate (0.00052) still passed the 0.01 threshold and the genuine physiological finding was not obscured.
 
@@ -539,7 +539,7 @@ New test class TestNonNumericConformance in tests/test_conformance.py asserts:
 
 ## Task 7 alignment: offset_after_s is not a real measurement (OPEN)
 
-> **SUPERSEDED BY:** [Supervisor decisions, 9 Sept meeting (Meeting 4) Decision 5] and [Alignment detection rebuilt: result and limitation] (commit `51eda26`, 2026-09-23).
+> **SUPERSEDED BY:** [Supervisor decisions, 9 Sept meeting (Meeting 4) Decision 5] and [Alignment detection rebuilt: result and limitation] (commit `79ef7b0`, 2026-09-23).
 
 **Date noted:** 2026-09-09
 
@@ -763,9 +763,9 @@ This is consistent with the purpose of the threshold: the 0.0 floor was designed
 
 **Date:** 2026-10-28
 
-Two fix commits were applied to `src/experiments/fault_injection.py` before the first complete experiment run. Neither changes the experimental design or any pre-registered expectation. `config/experiments.yaml` is unchanged from the amendment commit `bdd3e9d`.
+Two fix commits were applied to `src/experiments/fault_injection.py` before the first complete experiment run. Neither changes the experimental design or any pre-registered expectation. `config/experiments.yaml` is unchanged from the amendment commit `9c27b5d`.
 
-### Commit 1: `7910b75` -- fix: separate clean and injected scratch copies in fault injection harness
+### Commit 1: `a64c0a3` -- fix: separate clean and injected scratch copies in fault injection harness
 
 **What was fixed:** A path-collision bug in the harness caused the injected (dirty) copy to overwrite the clean reference copy, because both `_copy_participant_to_scratch` calls returned `SCRATCH_DIR / pid` -- the same path. When the dirty copy was deleted at the end of an inner loop iteration, the next modality iteration failed reading from the now-deleted clean directory. No results were produced from the attempted run.
 
@@ -782,14 +782,14 @@ Two fix commits were applied to `src/experiments/fault_injection.py` before the 
 - Added `src/experiments/run_fault_injection.py` as a foreground runner with per-participant and per-section progress output.
 - The external wrapper script used during the first failed run (`run_experiments.py` in the system temp folder) was deleted.
 
-**Design and expectations:** Unchanged. `config/experiments.yaml` is identical to commit `bdd3e9d`.
+**Design and expectations:** Unchanged. `config/experiments.yaml` is identical to commit `9c27b5d`.
 
 ---
 
 ## Fault injection: performance fix before first complete run
 
 **Date:** 2026-10-28
-**Commit:** `a3de08c` -- perf: speed up fault injection harness without changing measurements
+**Commit:** `fc48211` -- perf: speed up fault injection harness without changing measurements
 
 ### Motivation
 
@@ -856,18 +856,18 @@ Completeness: ~4 min. Conformance: ~4 min. Plausibility: ~1 min. Timeliness: ~11
 
 ### Design and expectations
 
-Unchanged. `config/experiments.yaml` is identical to commit `bdd3e9d`. `pytest`: 101 passed.
+Unchanged. `config/experiments.yaml` is identical to commit `9c27b5d`. `pytest`: 101 passed.
 
 ---
 
 ## Fault injection experiments: results (WESAD)
 
 **Date:** 2026-10-29
-**Design commit:** `bdd3e9d` -- feat: amend fault injection design before first run
-**Harness commits:** `7910b75`, `197fadc`, `a3de08c`
+**Design commit:** `9c27b5d` -- feat: amend fault injection design before first run
+**Harness commits:** `a64c0a3`, `f507941`, `fc48211`
 **Results file:** `reports/experiments/fault_injection_results.json` (213 records)
 
-The experiment was executed manually by running `python -m src.experiments.run_fault_injection` in a terminal, after confirming `config/experiments.yaml` matches `bdd3e9d` and `src/experiments/` matches `a3de08c`.
+The experiment was executed manually by running `python -m src.experiments.run_fault_injection` in a terminal, after confirming `config/experiments.yaml` matches `9c27b5d` and `src/experiments/` matches `fc48211`.
 
 ### Determinism check
 

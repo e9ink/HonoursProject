@@ -7,7 +7,7 @@
 
 ## Deviation
 
-The pre-registered fault injection design (commit 6d23dcb) stated that the
+The pre-registered fault injection design (commit 2108432) stated that the
 control case -- no fault applied -- was expected to pass all checks including
 `label_plausibility` and `consistency_cross_source`. That expectation was
 incorrect.
@@ -15,7 +15,7 @@ incorrect.
 ### Root cause
 
 The fault injection participants (s01 and s25) were selected after the label
-audit (commit b9bef20) had already established that every participant in the
+audit (commit 9f22f98) had already established that every participant in the
 v2 mirror carries label inversions. The audit showed that inverted values
 sometimes fall below the SAM floor of 1 (specifically, any trial with an
 original XLS rating above 8 produces an inverted value below 1 after
@@ -34,7 +34,7 @@ Both checks therefore fail on the control, which makes the pre-registered
 ### Design oversight, not data modification
 
 The pre-registered file is not changed. The expected outcomes remain as
-written in commit 6d23dcb. This document records the deviation and specifies
+written in commit 2108432. This document records the deviation and specifies
 the alternative evaluation criterion used instead.
 
 ---
