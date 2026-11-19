@@ -98,9 +98,14 @@ cross-source check as well as in label_plausibility.
 
 ## Supervisor approval (2026-11-18)
 
-The fault injection design (deap/config/experiments.yaml, pre-registered commit a1e5a5e)
-and this deviation note were reviewed and approved by Dr Tobias Cibis on 2026-11-18.
-experiments.yaml is not changed.
+The 2026-11-18 supervisor approval (Dr Tobias Cibis) covered three decisions only:
+using the Kaggle mirror to obtain the DEAP dataset, setting the quality rules after
+Bronze profiling (because peripheral channel units are undocumented), and correcting
+the inverted Valence and Arousal ratings in Silver using participant_ratings.xls as
+the authoritative source.
+
+The fault-injection design and this deviation note have not been separately reviewed
+by the supervisor.
 
 ---
 

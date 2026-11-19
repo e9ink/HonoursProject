@@ -32,12 +32,13 @@ deap/            DEAP dataset pipeline (self-contained):
                      checks/consistency.py   Consistency checks (structure, cross-source, scale).
                      cleaning.py             Silver label cleaning (XLS as authoritative source).
                      checks/post_cleaning.py Post-cleaning label checks on Silver CSVs.
+                     label_audit.py          v1/v2 mirror vs XLS audit; inversion rule verification.
                      governance.py           Gold governance artefacts (lineage and audit trail).
                      report.py               Before/after quality report.
                      gold_manifest.py        Gold label manifest generator and verifier.
                      experiments/            Fault injection harness and runner.
                      figures/                Figure and table generation for the thesis.
-  tests/           pytest unit tests (25 tests across 7 files).
+  tests/           pytest unit tests (57 tests across 8 files).
   reports/         Pipeline measurement outputs (JSON). One file per check.
   figures/         Generated figures (PNG + PDF) and tables (CSV + Markdown).
   final_checks/    Reference numbers and verification script.
@@ -154,7 +155,7 @@ python -m pytest deap/tests/ -v
 python deap/src/figures/make_figures.py
 ```
 
-Saves Figure 4.4 (label audit before/after) and Figure 4.5 (Temp channel scale split) plus two tables to `deap/figures/`.
+Saves five figures (4.4 label audit, 4.5 Temp channel scale split, 4.6 label inversion scatter, 4.7 fault injection vs control, 4.8 GSR negative share) and four tables (quality before/after, fault injection vs control, inversion by quadrant, per participant) to `deap/figures/`. Each figure is saved as PNG and PDF; each table as CSV and Markdown. Data CSVs accompany each figure in `deap/figures/data/`.
 
 ### Verify DEAP reference numbers
 
@@ -162,7 +163,7 @@ Saves Figure 4.4 (label audit before/after) and Figure 4.5 (Temp channel scale s
 python deap/final_checks/compare_ref_numbers.py
 ```
 
-Checks 17 reference numbers against the live pipeline reports. All must pass.
+Checks 21 reference numbers against the live pipeline reports. All must pass.
 
 ### Verify DEAP Gold manifest checksums
 
