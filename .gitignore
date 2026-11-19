@@ -29,3 +29,7 @@ experiments/scratch/
 experiments/scratch_dirty/
 wesad/experiments/scratch/
 wesad/experiments/scratch_dirty/
+
+# Local tooling files, not part of the project
+docs/archive/
+OneDrive.lnk
