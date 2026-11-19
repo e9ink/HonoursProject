@@ -206,9 +206,9 @@ Source: `pytest tests/ --collect-only -q` run against the repository.
 
 ---
 
-## 12. Commit 59454f0: fault-injection design
+## 12. Commit bdd3e9d: fault-injection design
 
-Source: `git show 59454f0 --stat` and `config/experiments.yaml`.
+Source: `git show bdd3e9d --stat` and `config/experiments.yaml`.
 
 Commit message: "feat: amend fault injection design before first run". Six pre-registration amendments applied before any experiment was run.
 
@@ -268,7 +268,7 @@ Source: `docs/progress_log.md`, sections "Plausibility check open issues (Task 5
 
 **Values flagged by the original ±1 g bound:** 201,687 values on the RespiBAN accelerometer (mostly CH5 / x-axis). S2 alone had approximately 25,000 above-Cmax violations on CH5. All were classified as `device_rail`, not `physiological_implausible`. Rate was 0.00052, which still passed the 0.01 threshold.
 
-**Date changed:** Decided at the 9 September 2026 supervisor meeting (Meeting 4), Decision 1. Committed 2026-09-18, commit `fe7d396`.
+**Date changed:** Decided at the 9 September 2026 supervisor meeting (Meeting 4), Decision 1. Committed 2026-09-18, commit `8517bfd`.
 
 **Justification:** From `docs/progress_log.md`, Meeting 4 Decision 1: "The maximum observed genuine movement across participants was approximately +-4.5 g (S3 raw-ADC-zero floor-hit excluded); +-8 g provides headroom for vigorous movement while flagging physically implausible values." Kevin had proposed +-5 g; Dr. Tobias Cibis raised it to +-8 g. `config/physiological_ranges.yaml` records: "Bound set at +-8 g by supervisor (Dr. Tobias Cibis, 9 Sept 2026, Meeting 4). The S3 raw-ADC-zero hit (transfer function yields -6.6 g for ADC = 0) lies inside +-8 g and is correctly retained as a device artefact rather than a plausibility violation. Previous bound was +-1 g (calibrated Cmin/Cmax window); revised upward on supervisor instruction."
 

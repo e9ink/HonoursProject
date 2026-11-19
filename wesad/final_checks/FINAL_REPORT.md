@@ -195,10 +195,10 @@ run command, outputs, tests, fault injection, repo map).
 
 ### Commits on final-fixes
 
-1. `de7320c` docs(final-fixes): timeliness wording, stewardship names, false-detection terminology
-2. `3aac006` chore(final-fixes): add .venv_verify/ to .gitignore
-3. `45f0a5c` refactor(final-fixes): remove unused imports/variables, add docstrings
-4. `26741f1` docs(final-fixes): replace em dash with double-hyphen in progress_log line 525
+1. `1b5ae22` docs(final-fixes): timeliness wording, stewardship names, false-detection terminology
+2. `7123097` chore(final-fixes): add .venv_verify/ to .gitignore
+3. `1ea0ae1` refactor(final-fixes): remove unused imports/variables, add docstrings
+4. `d096c7b` docs(final-fixes): replace em dash with double-hyphen in progress_log line 525
 
 ---
 
